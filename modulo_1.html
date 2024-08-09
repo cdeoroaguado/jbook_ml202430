@@ -62,7 +62,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
     <link rel="prev" title="Ciencia de datos con Python" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,9 +183,6 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Módulo 1: Introducción a la ciencia de datos con Python</strong></a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Informe de Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 </ul>
 
     </div>
@@ -392,7 +388,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-activacion-y-desactivacion-de-ambiente-virtuales"><strong>1.2.2 Creación, activación y desactivación de ambiente virtuales</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-y-actualizacion-de-paquetess"><strong>1.2.3 Instalación y actualización de paquetess</strong></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-sintaxis-y-estructura"><strong>1.3 Fundamentos de sintaxis y estructura</strong></a></li>
@@ -570,46 +565,20 @@ deben ejecutar desde la consola <strong>Powershell de Anaconda</strong>.</p>
 <p>Un <strong>ambiente virtual</strong> es un entorno aislado que permite instalar y manejar paquetes específicos de Python sin afectar el entorno global de Python o interferir con otros proyectos. Para crear un ambiente virtual, se usa la siguiente sintaxis:</p>
 <p>Este entorno debe ser creado con la versión de python 3.9 en adelante de Python, para que no exista conflicto con la
 ejecución de algoritmos a utilizar.</p>
-<p>• Proceso</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">ml_venv</span> <span class="pre">python=3.9</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">new_venv</span></code></p></li>
-</ul>
-<p>• Recuerde que puede desactivar cualquier entorno activado utilizando la siguiente orden
-en la consola Powershell de Anaconda</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">desactivate</span> <span class="pre">new_venv</span></code></p></li>
-</ul>
-</section>
-<section id="instalacion-y-actualizacion-de-paquetess">
-<h3><strong>1.2.3 Instalación y actualización de paquetess</strong><a class="headerlink" href="#instalacion-y-actualizacion-de-paquetess" title="Link to this heading">#</a></h3>
-<p>Para instalar modulos, por ejemplo <strong>pyjanitor</strong>, basta con seguir las siguientes instrucciones:</p>
-<ol class="arabic simple">
-<li><p>Cerrar todas las sesiones y archivos relacionados con jupyter notebook, inlcuyendo la ventana negra de comandos.</p></li>
-<li><p>Ir a todos los programas.</p></li>
-<li><p>Buscar Anaconda3 <span class="math notranslate nohighlight">\(\longrightarrow\)</span> <strong>Anaconda prompt</strong></p></li>
-<li><p>Escribir cualquiera de los dos siguientes códigos</p>
-<ul class="simple">
-<li><p>conda install -c conda-forge pyjanitor (DARLE ENTER).</p></li>
-<li><p>pip install pyjanitor  (DARLE ENTER).</p></li>
-</ul>
-</li>
-<li><p>Esperar a que cargue (lo cual puede tardar algunos minutos) y si aparece una pregunta con respecto a instalar módulos adicionales con la opción <strong>y/n</strong>, darle <strong>y</strong> y esperar.</p></li>
-</ol>
-<p><strong>NOTA:</strong> En ocasiones se presentan inconvenientes en la instalación de algún módulo de interés. Una posible causa de esto tiene que ver con la versión que tenemos del Anaconda o de algunos de los módulos ya instalados. Para resolver esto, se deben seguir los siguientes pasos:</p>
-<ol class="arabic simple">
-<li><p>Cerrar todas las sesiones y archivos relacionados con jupyter notebook, incluyendo la ventana negra de comandos.</p></li>
-<li><p>Ir a todos los programas.</p></li>
-<li><p>Buscar Anaconda3 <span class="math notranslate nohighlight">\(\longrightarrow\)</span> <strong>Anaconda prompt</strong></p></li>
-<li><p>Escribir cualquiera de los dos siguientes códigos</p>
-<ul class="simple">
-<li><p>conda update conda  (DARLE ENTER).</p></li>
-<li><p>conda update anaconda  (DARLE ENTER).</p></li>
-<li><p>conda update -n root conda (DARLE ENTER).</p></li>
-<li><p>conda update –all  (DARLE ENTER).</p></li>
-</ul>
-</li>
-</ol>
+<p><img alt="amb_1" src="_images/amb_1.png" /></p>
+<p>Para activar el ambiente hacemos:</p>
+<p><img alt="amb_2" src="_images/amb_2.png" /></p>
+<p>Para instalar las librerías en el ambiente podemos usar la instrucción <code class="docutils literal notranslate"><span class="pre">conda</span></code> o <code class="docutils literal notranslate"><span class="pre">pip</span></code>.
+Si prefieres usar conda (recomendado para evitar problemas de compatibilidad), puedes instalar las librerías con los siguientes comandos:</p>
+<p><img alt="amb_3" src="_images/amb_3.png" /></p>
+<p>Ya hemos venido trabajando muchas librerias para ciencia de datos, en un archivo .txt tenemos agregados muchas librerias, el cual usaremos en el transcurso del curso. En el siguiente enlace podras encontrar el <a class="reference external" href="https://github.com/cdeoroaguado/jbook_ml202430/blob/main/requirements.txt">requirements</a>. Despues de descargarla, debes ubicarla en la carpeta que creaste para el desarrollo del curso, en nuestro caso es <code class="docutils literal notranslate"><span class="pre">CD_Serfinanzas</span></code>. <strong>Recuerda tener activo tu ambiente</strong>. Esto se instala de la siguiente manera:</p>
+<p><img alt="amb_6" src="_images/amb_6.png" /></p>
+<p>Para poder usar el ambiente que se creó con todas las librerías instaladas, siga los siguientes pasos:</p>
+<p><img alt="amb_4" src="_images/amb_4.png" /></p>
+<p><img alt="amb_5" src="_images/amb_5.png" /></p>
+<p>Despues de haber realizado todo este proceso. Tiene en forma adecuada VSCode y así podrá trabajar de manera más óptima.</p>
+<p>Si usted desea desactivar cualquier entorno activado utilizando la siguiente orden
+en la consola Powershell de Anaconda.  <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span> </code></p>
 </section>
 </section>
 <section id="fundamentos-de-sintaxis-y-estructura">
@@ -644,11 +613,6 @@ El objetivo de esta sesión NO es de ningún modo aprender a utilizar el Python 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(int, float, complex, str, bool)
-</pre></div>
-</div>
-</div>
 </div>
 <p>1.3.3 <strong>Variables</strong></p>
 <p>Las <strong>variables</strong> son nombres que hacen referencia a un valor. Este valor puede cambiar a lo largo de la ejecución de un programa. Las <strong>variables</strong> son espacios de la memoria principal del computador, en donde se almacenan valores de forma temporal o permanente durante la ejecución de un programa.</p>
@@ -675,11 +639,6 @@ El objetivo de esta sesión NO es de ningún modo aprender a utilizar el Python 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(int, float, complex, bool, str)
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p><strong>Reglas para el nombre de las variables</strong>:
@@ -699,11 +658,6 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;3&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -718,11 +672,6 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tipo de dato de x</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
 </pre></div>
 </div>
 </div>
@@ -764,14 +713,6 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python
-El número ingresado es  25
-IntroducciónalacienciadedatosconPython
-Introducción a la ciencia de datos con Python
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -783,23 +724,11 @@ Introducción a la ciencia de datos con Python
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ciencia de datos
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uso del print con salto de línea</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ciencia&#39;</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="s1">&#39;de&#39;</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="s1">&#39;datos&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ciencia
-de
-datos
 </pre></div>
 </div>
 </div>
@@ -814,23 +743,11 @@ datos
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ciencia
-de
-datos
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uso de print separado por un caracter</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ciencia&#39;</span><span class="p">,</span><span class="s1">&#39;de&#39;</span><span class="p">,</span><span class="s1">&#39;datos&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ciencia\de\datos
 </pre></div>
 </div>
 </div>
@@ -900,11 +817,6 @@ datos
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resultado: ((10 + 3) * 2) - (10 / 3) ** 2 % 3 // 2 = 25.0
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>Observación</strong>: La concatenación de caracteres en Python se realiza utilizando el operador <code class="docutils literal notranslate"><span class="pre">+</span></code>. Este operador permite unir dos o más cadenas de texto en una sola cadena. Es importante asegurarse de que ambos operandos sean cadenas de texto para evitar errores de tipo. Aquí tienes un ejemplo:</p>
 <div class="cell docutils container">
@@ -912,11 +824,6 @@ datos
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cadena1</span> <span class="o">=</span> <span class="s2">&quot;Hola, &quot;</span>
 <span class="n">cadena2</span> <span class="o">=</span> <span class="s2">&quot;¿cómo estás?&quot;</span>
 <span class="n">cadena1</span> <span class="o">+</span> <span class="n">cadena2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hola, ¿cómo estás?&#39;
 </pre></div>
 </div>
 </div>
@@ -967,11 +874,6 @@ datos
 
 <span class="c1"># imprimir las nuevas asignaciones</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;El valor de a es </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">, el valor de b es </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El valor de a es 5, el valor de b es 4
 </pre></div>
 </div>
 </div>
@@ -1031,12 +933,6 @@ datos
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a &gt; b: True
-a &lt;= b: False
-</pre></div>
-</div>
-</div>
 </div>
 <p>1.3.8 <strong>Operadores lógicos</strong>:</p>
 <p>Los <strong>operadores lógicos</strong> permiten combinar subexpresiones booleanas para obtener un nuevo valor booleano. Los operadores más comunes son and, or y not, y se detallan en la siguiente tabla.</p>
@@ -1076,12 +972,6 @@ a &lt;= b: False
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-True
-</pre></div>
-</div>
-</div>
 </div>
 <p>1.3.9 <strong>Estructuras algorítmicas</strong></p>
 <p>Las <strong>estructuras algorítmicas</strong> consisten en bloques formados por múltiples sentencias. Estas sentencias pueden ser simples o también pueden contener otras estructuras de bloques. Al escribir estructuras algorítmicas en Python, es crucial tener en cuenta dos aspectos importantes:</p>
@@ -1116,11 +1006,6 @@ True
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eres mayor de edad
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p><strong>Sentencia if-else anidada</strong>: Las sentencias <strong>if-else anidadas</strong> permiten manejar múltiples condiciones en un algoritmo, ejecutando diferentes bloques de código según diversas situaciones. La estructura básica de una sentencia <code class="docutils literal notranslate"><span class="pre">if-else</span></code> anidada es la siguiente:</p></li>
@@ -1137,23 +1022,6 @@ True
     <span class="k">else</span><span class="p">:</span>
         <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">si</span> <span class="n">condición2</span> <span class="n">es</span> <span class="n">falsa</span>
 </pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if condición1:</span>
-    <span class="c1">## bloque de código a ejecutar si condición1 es verdadera</span>
-    <span class="c1"># if condición1_1:</span>
-        <span class="c1">## bloque de código a ejecutar si condición1_1 es verdadera</span>
-    <span class="c1"># else:</span>
-        <span class="c1">## bloque de código a ejecutar si condición1_1 es falsa</span>
-<span class="c1"># else:</span>
-    <span class="c1"># if condición2:</span>
-        <span class="c1">## bloque de código a ejecutar si condición2 es verdadera</span>
-    <span class="c1"># else:</span>
-        <span class="c1">## bloque de código a ejecutar si condición2 es falsa</span>
-</pre></div>
-</div>
-</div>
 </div>
 <p>Cada <code class="docutils literal notranslate"><span class="pre">if</span></code> o <code class="docutils literal notranslate"><span class="pre">else</span></code> dentro de otro <code class="docutils literal notranslate"><span class="pre">if</span></code> o <code class="docutils literal notranslate"><span class="pre">else</span></code> se denomina <strong>anidado</strong>. Esta estructura permite evaluar múltiples condiciones de manera secuencial. Por ejemplo</p>
 <div class="cell docutils container">
@@ -1175,30 +1043,20 @@ True
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Escriba la nota que obtuvo en el examen 50
-Necesita mejorar
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p><strong>Sentencia if-elif anidada</strong></p></li>
 </ul>
 <p>La sentencia <strong>if-elif</strong> en programación es una forma abreviada de manejar múltiples condiciones consecutivas sin necesidad de anidar múltiples <code class="docutils literal notranslate"><span class="pre">else-if</span></code>. La palabra clave <strong>elif</strong> (abreviatura de <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>) permite evaluar una nueva condición si la condición anterior es falsa, simplificando la estructura del código y mejorando su legibilidad. La estructura básica de una sentencia <code class="docutils literal notranslate"><span class="pre">if-elif</span></code> es la siguiente:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if condición1:</span>
-    <span class="c1">## bloque de código a ejecutar si condición1 es verdadera</span>
-<span class="c1"># elif condición2:</span>
-    <span class="c1">## bloque de código a ejecutar si condición2 es verdadera</span>
-<span class="c1"># elif condición3:</span>
-    <span class="c1">## bloque de código a ejecutar si condición3 es verdadera</span>
-<span class="c1"># else:</span>
-    <span class="c1">## bloque de código a ejecutar si ninguna de las condiciones anteriores es verdadera</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condición1</span><span class="p">:</span>
+    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">si</span> <span class="n">condición1</span> <span class="n">es</span> <span class="n">verdadera</span>
+<span class="k">elif</span> <span class="n">condición2</span><span class="p">:</span>
+    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">si</span> <span class="n">condición2</span> <span class="n">es</span> <span class="n">verdadera</span>
+<span class="k">elif</span> <span class="n">condición3</span><span class="p">:</span>
+    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">si</span> <span class="n">condición3</span> <span class="n">es</span> <span class="n">verdadera</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">si</span> <span class="n">ninguna</span> <span class="n">de</span> <span class="n">las</span> <span class="n">condiciones</span> <span class="n">anteriores</span> <span class="n">es</span> <span class="n">verdadera</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Cada <code class="docutils literal notranslate"><span class="pre">elif</span></code> es evaluado solo si las condiciones anteriores son falsas. Si una condición <code class="docutils literal notranslate"><span class="pre">elif</span></code> es verdadera, su bloque de código correspondiente se ejecuta y las demás condiciones no se evalúan. Por ejemplo</p>
 <div class="cell docutils container">
@@ -1224,13 +1082,9 @@ Necesita mejorar
 <ul class="simple">
 <li><p><strong>Bucle For</strong>: El bucle <code class="docutils literal notranslate"><span class="pre">for</span></code> es una estructura de control de flujo que permite iterar sobre una secuencia de elementos (como una lista, tupla, cadena, conjunto o rango) y ejecutar un bloque de código para cada elemento de la secuencia. Este tipo de bucle es muy útil cuando se sabe de antemano cuántas veces se debe repetir el bloque de código, o cuando se quiere realizar una operación en cada elemento de una colección. La estructura básica de un bucle for en Python es:</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for elemento in secuencia:</span>
-    <span class="c1">## bloque de código a ejecutar para cada elemento</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">elemento</span> <span class="ow">in</span> <span class="n">secuencia</span><span class="p">:</span>
+    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">para</span> <span class="n">cada</span> <span class="n">elemento</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Aquí, elemento es una variable que toma el valor de cada elemento en la secuencia durante cada iteración del bucle. El bloque de código dentro del bucle se ejecuta una vez por cada elemento en la secuencia. Por ejemplo</p>
 <div class="cell docutils container">
@@ -1294,13 +1148,9 @@ Necesita mejorar
 <ul class="simple">
 <li><p><strong>Bucle While</strong>: El bucle <strong>while</strong> son estructuras de control de flujo que permiten ejecutar repetidamente un bloque de código mientras se cumpla una condición específica. La estructura básica de un bucle while es la siguiente:</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># while condición:</span>
-    <span class="c1">## bloque de código a ejecutar mientras la condición sea verdadera</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condición</span><span class="p">:</span>
+    <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">mientras</span> <span class="n">la</span> <span class="n">condición</span> <span class="n">sea</span> <span class="n">verdadera</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>El flujo de control funciona de la siguiente manera: primero, se evalúa la condición. Si la condición es verdadera (<code class="docutils literal notranslate"><span class="pre">True</span></code>), se ejecuta el bloque de código dentro del <code class="docutils literal notranslate"><span class="pre">while</span></code>. Después de ejecutar el bloque de código, se vuelve a evaluar la condición. Este proceso se repite hasta que la condición se vuelve falsa (<code class="docutils literal notranslate"><span class="pre">False</span></code>). Por ejemplo en Python:</p>
 <div class="cell docutils container">
@@ -1312,15 +1162,6 @@ Necesita mejorar
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-1
-2
-3
-4
 </pre></div>
 </div>
 </div>
@@ -1355,6 +1196,13 @@ Necesita mejorar
 <ol class="arabic simple">
 <li><p><strong>Definición de una función</strong>: Una <strong>función</strong> se define utilizando la palabra clave <code class="docutils literal notranslate"><span class="pre">def</span></code>, seguida del nombre de la función y un paréntesis que puede contener parámetros. Dentro del bloque de código de la función, se especifican las instrucciones que se ejecutarán cuando se llame a la función.</p></li>
 </ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nombre_de_la_funcion</span><span class="p">(</span><span class="n">nombre</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Esta función recibe un nombre (input) y muestra un saludo (output).&quot;&quot;&quot;</span>
+    <span class="n">cuerpo</span>
+    <span class="k">return</span> <span class="n">respuesta</span>
+</pre></div>
+</div>
+<p>Por ejemplo</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">saludar</span><span class="p">(</span><span class="n">nombre</span><span class="p">):</span>
@@ -1373,11 +1221,6 @@ Necesita mejorar
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mensaje</span> <span class="o">=</span> <span class="n">saludar</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span>  <span class="c1"># Salida: Hola, Ana!</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hola, Ana!
 </pre></div>
 </div>
 </div>
@@ -1400,12 +1243,6 @@ Necesita mejorar
 <span class="c1"># Llamada a la función con un argumento</span>
 <span class="n">mensaje2</span> <span class="o">=</span> <span class="n">saludar</span><span class="p">(</span><span class="s2">&quot;Carlos&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mensaje2</span><span class="p">)</span>  <span class="c1"># Output: Hola, Carlos!</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hola, Invitado!
-Hola, Carlos!
 </pre></div>
 </div>
 </div>
@@ -1438,11 +1275,6 @@ Hola, Carlos!
 <span class="c1"># Llamada a la función lambda</span>
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">suma</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>  <span class="c1"># Output: 10</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
 </pre></div>
 </div>
 </div>
@@ -1610,11 +1442,6 @@ En programación científica, estas operaciones a menudo se realizan utilizando 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 4]
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p><strong>Ordenar elementos</strong>:</p></li>
@@ -1721,15 +1548,6 @@ a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
         <p class="prev-next-title">Ciencia de datos con Python</p>
       </div>
     </a>
-    <a class="right-next"
-       href="markdown.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1756,7 +1574,6 @@ a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-activacion-y-desactivacion-de-ambiente-virtuales"><strong>1.2.2 Creación, activación y desactivación de ambiente virtuales</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-y-actualizacion-de-paquetess"><strong>1.2.3 Instalación y actualización de paquetess</strong></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-sintaxis-y-estructura"><strong>1.3 Fundamentos de sintaxis y estructura</strong></a></li>
