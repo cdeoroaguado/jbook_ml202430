@@ -386,7 +386,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1. Introducción a Python</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.1 Introducción a Python</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entornos-de-desarrollo-jupyter-notebook"><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-miniconda"><strong>1.2.1   Descarga e instalación de Miniconda</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-miniconda-vscode"><strong>1.2.1   Descarga e instalación de Miniconda, VSCode</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda"><strong>Miniconda</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-visual-studio-code"><strong>Descarga e instalación de Visual Studio Code</strong></a></li>
 </ul>
@@ -457,8 +457,8 @@ Python cuenta con una comunidad de desarrolladores grande y activa que contribuy
 </section>
 <section id="entornos-de-desarrollo-jupyter-notebook">
 <h2><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong><a class="headerlink" href="#entornos-de-desarrollo-jupyter-notebook" title="Link to this heading">#</a></h2>
-<section id="descarga-e-instalacion-de-miniconda">
-<h3><strong>1.2.1   Descarga e instalación de Miniconda</strong><a class="headerlink" href="#descarga-e-instalacion-de-miniconda" title="Link to this heading">#</a></h3>
+<section id="descarga-e-instalacion-de-miniconda-vscode">
+<h3><strong>1.2.1   Descarga e instalación de Miniconda, VSCode</strong><a class="headerlink" href="#descarga-e-instalacion-de-miniconda-vscode" title="Link to this heading">#</a></h3>
 <p>Para comenzar a programar en Python, primero debes descargar e instalar Miniconda en tu computadora. Sigue estos pasos:</p>
 <section id="miniconda">
 <h4><strong>Miniconda</strong><a class="headerlink" href="#miniconda" title="Link to this heading">#</a></h4>
@@ -525,17 +525,54 @@ Python cuenta con una comunidad de desarrolladores grande y activa que contribuy
 </tbody>
 </table>
 </div>
+<p>Ahora, agreguemos las extensiones que necesitamos para el desarrollo optimo del curso</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="vs_8" src="_images/vs_8.png" /></p></th>
+<th class="head"><p><img alt="vs_9" src="_images/vs_9.png" /></p></th>
+</tr>
+</thead>
+</table>
+</div>
+<p>Para crear un documento en jupiter notebook es importante seguir los siguientes pasos:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="uso_1" src="_images/uso_1.png" /></p></th>
+<th class="head"><p><img alt="uso_2" src="_images/uso_2.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="uso_3" src="_images/uso_3.png" /></p></td>
+<td><p><img alt="uso_4" src="_images/uso_4.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="uso_5" src="_images/uso_5.png" /></p></th>
+<th class="head"><p><img alt="uso_6" src="_images/uso_6.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="uso_7" src="_images/uso_7.png" /></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 <section id="creacion-activacion-y-desactivacion-de-ambiente-virtuales">
 <h3><strong>1.2.2 Creación, activación y desactivación de ambiente virtuales</strong><a class="headerlink" href="#creacion-activacion-y-desactivacion-de-ambiente-virtuales" title="Link to this heading">#</a></h3>
 <p>El proceso para crear, activar y desactivar ambientes se
-deben ejecutar desde la consola <strong>Powershell de Anaconda</strong>. Este entorno debe ser
-creado con la versión 3.9 en adelante de Python, para que no exista conflicto con la
+deben ejecutar desde la consola <strong>Powershell de Anaconda</strong>.</p>
+<p>Un <strong>ambiente virtual</strong> es un entorno aislado que permite instalar y manejar paquetes específicos de Python sin afectar el entorno global de Python o interferir con otros proyectos. Para crear un ambiente virtual, se usa la siguiente sintaxis:</p>
+<p>Este entorno debe ser creado con la versión de python 3.9 en adelante de Python, para que no exista conflicto con la
 ejecución de algoritmos a utilizar.</p>
 <p>• Proceso</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">new_venv</span> <span class="pre">python=3.9</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">ml_venv</span> <span class="pre">python=3.9</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">new_venv</span></code></p></li>
 </ul>
 <p>• Recuerde que puede desactivar cualquier entorno activado utilizando la siguiente orden
@@ -695,18 +732,6 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conversión de una string numérico entero a un entero</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Escribe un número entero &#39;</span><span class="p">))</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Conversión de una string numérico entero a un entero</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Escribe un número entero &#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;&#39;
 </pre></div>
 </div>
 </div>
@@ -1725,7 +1750,7 @@ a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1. Introducción a Python</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.1 Introducción a Python</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entornos-de-desarrollo-jupyter-notebook"><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-miniconda"><strong>1.2.1   Descarga e instalación de Miniconda</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-miniconda-vscode"><strong>1.2.1   Descarga e instalación de Miniconda, VSCode</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda"><strong>Miniconda</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-visual-studio-code"><strong>Descarga e instalación de Visual Studio Code</strong></a></li>
 </ul>
