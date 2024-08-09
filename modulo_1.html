@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Markdown Files" href="markdown.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="prev" title="Ciencia de datos con Python" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Ciencia de datos con Python
                 </a>
             </li>
         </ul>
@@ -386,6 +386,11 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1. Introducción a Python</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.1 Introducción a Python</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entornos-de-desarrollo-jupyter-notebook"><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-miniconda"><strong>1.2.1   Descarga e instalación de Miniconda</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda"><strong>Miniconda</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-visual-studio-code"><strong>Descarga e instalación de Visual Studio Code</strong></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-activacion-y-desactivacion-de-ambiente-virtuales"><strong>1.2.2 Creación, activación y desactivación de ambiente virtuales</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-y-actualizacion-de-paquetess"><strong>1.2.3 Instalación y actualización de paquetess</strong></a></li>
 </ul>
@@ -414,9 +419,13 @@ document.write(`
 <h1><strong>1. Introducción a Python</strong><a class="headerlink" href="#introduccion-a-python" title="Link to this heading">#</a></h1>
 <section id="id1">
 <h2><strong>1.1 Introducción a Python</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Python fue creado por <strong>Guido van Rossum</strong>, un programador holandés, a finales de los años 80 y principios de los 90. La primera versión de Python, la 0.9.0, fue lanzada en 1991. Guido van Rossum nombró el lenguaje en honor al grupo de comedia británico Monty Python, del cual era un gran fan.</p>
+<p><strong>Python se creó con el objetivo de ser un lenguaje fácil de leer y escribir, con una sintaxis clara y concisa</strong>. A lo largo de los años, ha evolucionado y ganado popularidad hasta convertirse en uno de los lenguajes de programación más utilizados en el mundo.</p>
 <p>Python es un lenguaje de programación de alto nivel y de gran utilidad para la construcción de cualquier clase de soluciones informáticas.</p>
 <p>Algunas características que tiene python:</p>
 <ul class="simple">
+<li><p><strong>Legibilidad</strong>:
+Python utiliza una sintaxis clara y sencilla, lo que facilita la lectura y comprensión del código. Utiliza indentación (espacios o tabulaciones) para delimitar bloques de código, lo que promueve un estilo de programación estructurado y legible.</p></li>
 <li><p><strong>Lenguaje interpretado</strong>: Python es un lenguaje interpretado, diferenciándolo de otros lenguajes de programación de alto nivel como Java o C++. Al ser un lenguaje interpretado, no necesita ser compilado para ejecutar las instrucciones escritas. Por lo tanto, su ejecución no implica llevarlo a código de máquina.</p></li>
 <li><p><strong>Código abierto, multiplataforma y multiparadigma</strong>:
 Python es un lenguaje de programación de código abierto; es decir, puede ser utilizado por cualquier persona gracias a las licencias gratuitas. Además, es multiplataforma, ya que puede ser adaptado para diferentes contextos y sistemas operativos. También, se aplica en muchos paradigmas de programación, tales como programación imperativa y la orientada a objetos. Así mismo, cuenta con una sintaxis y legibilidad que lo hacen muy sencillo y cercano al lenguaje natural.</p></li>
@@ -430,22 +439,94 @@ Python es un lenguaje de tipado dinámico. Esto quiere decir que, cuando se util
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(int, str, bool, float)
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
-<li><p><strong>Bibliotecas y funciones</strong>
+<li><p><strong>Bibliotecas y funciones</strong>:
 Python cuenta con una gran cantidad de bibliotecas y funciones que facilitan el trabajo de programación. Además, existe una gran comunidad que sirve de apoyo a los neófitos de Python y apoyan con información de las herramientas. Entre las bibliotecas, se destacan las utilizadas en la ciencia de datos: <code class="docutils literal notranslate"><span class="pre">Numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code> y <code class="docutils literal notranslate"><span class="pre">Scikit-learn</span></code>.</p></li>
+<li><p><strong>Comunidad activa</strong>:
+Python cuenta con una comunidad de desarrolladores grande y activa que contribuye con bibliotecas, <code class="docutils literal notranslate"><span class="pre">frameworks</span></code> y herramientas adicionales. Esto significa que encontrarás una gran cantidad de recursos y soporte disponibles.</p></li>
+</ul>
+<p>Python se utiliza en una amplia gama de aplicaciones y dominios, algunos ejemplos son:</p>
+<ul class="simple">
+<li><p><strong>Desarrollo web</strong>: Python es ampliamente utilizado en el desarrollo web backend, con frameworks populares como Django y Flask.</p></li>
+<li><p><strong>Ciencia de datos</strong>: Python es el lenguaje preferido para el análisis de datos y la ciencia de datos debido a bibliotecas como <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code>, entre otras.</p></li>
+<li><p><strong>Inteligencia artificial y machine learning</strong>: Python es la elección principal para proyectos de IA y machine learning, gracias a bibliotecas como <code class="docutils literal notranslate"><span class="pre">TensorFlow</span></code> y <code class="docutils literal notranslate"><span class="pre">Scikit-learn</span></code>.</p></li>
+<li><p><strong>Automatización de tareas</strong>: Python se puede utilizar para automatizar tareas repetitivas, como procesamiento de archivos, <code class="docutils literal notranslate"><span class="pre">web</span> <span class="pre">scraping</span></code> y pruebas de software.</p></li>
+<li><p><strong>Desarrollo de juegos</strong>: Python se utiliza en el desarrollo de juegos simples, especialmente con bibliotecas como Pygame.</p></li>
 </ul>
 </section>
 <section id="entornos-de-desarrollo-jupyter-notebook">
 <h2><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong><a class="headerlink" href="#entornos-de-desarrollo-jupyter-notebook" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>IMAGENES DE JUPYTER NOTEBOOK Y ADICIONAL VSCODE</p></li>
-</ol>
+<section id="descarga-e-instalacion-de-miniconda">
+<h3><strong>1.2.1   Descarga e instalación de Miniconda</strong><a class="headerlink" href="#descarga-e-instalacion-de-miniconda" title="Link to this heading">#</a></h3>
+<p>Para comenzar a programar en Python, primero debes descargar e instalar Miniconda en tu computadora. Sigue estos pasos:</p>
+<section id="miniconda">
+<h4><strong>Miniconda</strong><a class="headerlink" href="#miniconda" title="Link to this heading">#</a></h4>
+<p><strong>Miniconda</strong> es una distribución ligera de <strong>Anaconda</strong>, que es una distribución de Python y R para la computación científica, que incluye más de 250 paquetes científicos preinstalados y es compatible con Windows, macOS y Linux.</p>
+<p>Entra a la página de <a class="reference external" href="https://docs.anaconda.com/miniconda/">miniconda</a> y escoger su instalador. Esta instalación se hizo para windows. Siga los siguientes pasos:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="miniconda_1" src="_images/miniconda_1.png" /></p></th>
+<th class="head"><p><img alt="miniconda_2" src="_images/miniconda_2.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="miniconda_3" src="_images/miniconda_3.png" /></p></td>
+<td><p><img alt="miniconda_4" src="_images/miniconda_4.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="miniconda_5" src="_images/miniconda_5.png" /></p></th>
+<th class="head"><p><img alt="miniconda_6" src="_images/miniconda_6.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="miniconda_7" src="_images/miniconda_7.png" /></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ahora verifiquemos que se ha instalado correctamente</p>
+<p><img alt="miniconda_8" src="_images/miniconda_8.png" /></p>
+<p>Ahora, digita en <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code> en la consola de <strong>Powershell Prompt</strong></p>
+<p><img alt="miniconda_9" src="_images/miniconda_9.png" /></p>
+</section>
+<section id="descarga-e-instalacion-de-visual-studio-code">
+<h4><strong>Descarga e instalación de Visual Studio Code</strong><a class="headerlink" href="#descarga-e-instalacion-de-visual-studio-code" title="Link to this heading">#</a></h4>
+<p><strong>Visual Studio Code (VSCode)</strong> es un editor de código desarrollado por Microsoft. Con la extensión de Python, se convierte en un IDE ligero y versátil para el desarrollo de Python.</p>
+<p>Entra a la pagina de <a class="reference external" href="https://code.visualstudio.com/download/">VSCode</a> y descargalo. Y sigue los siguientes pasos para su instalación adecuada:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="vs_1" src="_images/vs_1.png" /></p></th>
+<th class="head"><p><img alt="vs_2" src="_images/vs_2.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="vs_3" src="_images/vs_3.png" /></p></td>
+<td><p><img alt="vs_4" src="_images/vs_4.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="vs_5" src="_images/vs_5.png" /></p></th>
+<th class="head"><p><img alt="vs_6" src="_images/vs_6.png" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="vs_7" src="_images/vs_7.png" /></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
 <section id="creacion-activacion-y-desactivacion-de-ambiente-virtuales">
 <h3><strong>1.2.2 Creación, activación y desactivación de ambiente virtuales</strong><a class="headerlink" href="#creacion-activacion-y-desactivacion-de-ambiente-virtuales" title="Link to this heading">#</a></h3>
 <p>El proceso para crear, activar y desactivar ambientes se
@@ -581,6 +662,11 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;3&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,12 +684,29 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conversión de una string numérico entero a un entero</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Escribe un número entero &#39;</span><span class="p">))</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Conversión de una string numérico entero a un entero</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Escribe un número entero &#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;&#39;
 </pre></div>
 </div>
 </div>
@@ -973,16 +1076,6 @@ True
 <span class="k">else</span><span class="p">:</span>
     <span class="n">bloque</span> <span class="n">de</span> <span class="n">código</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">si</span> <span class="n">la</span> <span class="n">condición</span> <span class="n">es</span> <span class="n">falsa</span>
 </pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if condición:</span>
-    <span class="c1">## bloque de código a ejecutar si la condición es verdadera</span>
-<span class="c1"># else:</span>
-    <span class="c1">## bloque de código a ejecutar si la condición es falsa</span>
-</pre></div>
-</div>
-</div>
 </div>
 <p>El flujo de control funciona así: primero, se evalúa la condición. Si la condición es verdadera (<code class="docutils literal notranslate"><span class="pre">True</span></code>), se ejecuta el bloque de código dentro del <code class="docutils literal notranslate"><span class="pre">if</span></code>. Si la condición es falsa (<code class="docutils literal notranslate"><span class="pre">False</span></code>), se ejecuta el bloque de código dentro del else. Por ejemplo:</p>
 <div class="cell docutils container">
@@ -1600,7 +1693,7 @@ a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Ciencia de datos con Python</p>
       </div>
     </a>
     <a class="right-next"
@@ -1632,6 +1725,11 @@ a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1. Introducción a Python</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.1 Introducción a Python</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entornos-de-desarrollo-jupyter-notebook"><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-miniconda"><strong>1.2.1   Descarga e instalación de Miniconda</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda"><strong>Miniconda</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-visual-studio-code"><strong>Descarga e instalación de Visual Studio Code</strong></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-activacion-y-desactivacion-de-ambiente-virtuales"><strong>1.2.2 Creación, activación y desactivación de ambiente virtuales</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-y-actualizacion-de-paquetess"><strong>1.2.3 Instalación y actualización de paquetess</strong></a></li>
 </ul>
