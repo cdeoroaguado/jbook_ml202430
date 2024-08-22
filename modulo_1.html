@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Módulo 2: Estructuración y manipulación de datos con Python" href="modulo_2.html" />
     <link rel="prev" title="Ciencia de datos con Python" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,7 +183,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Módulo 1: Introducción a la ciencia de datos con Python</strong></a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="modulo_2.html"><strong>Módulo 2: Estructuración y manipulación de datos con Python</strong></a></li>
 </ul>
 
     </div>
@@ -378,25 +379,49 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Módulo 1: Introducción a la ciencia de datos con Python</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1. Introducción a Python</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.1 Introducción a Python</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>1.1 Python</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1.1.1 Introducción a Python</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entornos-de-desarrollo-jupyter-notebook"><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-miniconda-vscode"><strong>1.2.1   Descarga e instalación de Miniconda, VSCode</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda"><strong>Miniconda</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-visual-studio-code"><strong>Descarga e instalación de Visual Studio Code</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda"><strong>1.2.1.1 Miniconda</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-visual-studio-code"><strong>1.2.1.2 Descarga e instalación de Visual Studio Code</strong></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-activacion-y-desactivacion-de-ambiente-virtuales"><strong>1.2.2 Creación, activación y desactivación de ambiente virtuales</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-sintaxis-y-estructura"><strong>1.3 Fundamentos de sintaxis y estructura</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios"><strong>1.4 Uso de estructuras de datos básicas (vectores, listas, matrices, diccionarios)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-la-manipulacion-de-datos-creacion-manipulacion-y-analisis-de-datos-tabulares"><strong>1.5 Introducción a la manipulación de datos: Creación, manipulación y análisis de datos tabulares</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-sintaxis-y-estructura"><strong>1.3 Fundamentos de sintaxis y estructura</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constantes-o-valores"><strong>1.3.1 Constantes o valores</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos"><strong>1.3.2 Tipos de datos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias"><strong>1.3.3 Sentencias</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-aritmeticas"><strong>1.3.4 Operaciones aritmeticas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simbolos-de-asignacion-aumentada"><strong>1.3.5 Símbolos de asignación aumentada</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-comparacion"><strong>1.3.6 Operadores de comparación</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-logicos"><strong>1.3.7 Operadores lógicos</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructuras-algoritmicas"><strong>1.3.8 Estructuras algorítmicas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias-condicionales"><strong>1.3.8.1 Sentencias condicionales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias-repetitivas"><strong>1.3.8.2 Sentencias repetitivas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-en-python"><strong>1.3.9 Funciones en python</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios"><strong>1.4 Uso de estructuras de datos básicas (vectores, listas, matrices, diccionarios)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores"><strong>1.4.1 Vectores</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listas"><strong>1.4.2 Listas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices"><strong>1.4.3 Matrices</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios"><strong>1.4.4 Diccionarios</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-la-manipulacion-de-datos-creacion-manipulacion-y-analisis-de-datos-tabulares"><strong>1.5 Introducción a la manipulación de datos: Creación, manipulación y análisis de datos tabulares</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-datos-tabulares"><strong>1.5.1 Creación de datos tabulares</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos"><strong>1.5.2 Manipulación de datos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio"><strong>Ejercicio</strong></a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -409,11 +434,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modulo-1-introduccion-a-la-ciencia-de-datos-con-python">
 <h1><strong>Módulo 1: Introducción a la ciencia de datos con Python</strong><a class="headerlink" href="#modulo-1-introduccion-a-la-ciencia-de-datos-con-python" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-python">
-<h1><strong>1. Introducción a Python</strong><a class="headerlink" href="#introduccion-a-python" title="Link to this heading">#</a></h1>
-<section id="id1">
-<h2><strong>1.1 Introducción a Python</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="python">
+<h2><strong>1.1 Python</strong><a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
+<section id="introduccion-a-python">
+<h3><strong>1.1.1 Introducción a Python</strong><a class="headerlink" href="#introduccion-a-python" title="Link to this heading">#</a></h3>
 <p>Python fue creado por <strong>Guido van Rossum</strong>, un programador holandés, a finales de los años 80 y principios de los 90. La primera versión de Python, la 0.9.0, fue lanzada en 1991. Guido van Rossum nombró el lenguaje en honor al grupo de comedia británico Monty Python, del cual era un gran fan.</p>
 <p><strong>Python se creó con el objetivo de ser un lenguaje fácil de leer y escribir, con una sintaxis clara y concisa</strong>. A lo largo de los años, ha evolucionado y ganado popularidad hasta convertirse en uno de los lenguajes de programación más utilizados en el mundo.</p>
 <p>Python es un lenguaje de programación de alto nivel y de gran utilidad para la construcción de cualquier clase de soluciones informáticas.</p>
@@ -450,13 +474,14 @@ Python cuenta con una comunidad de desarrolladores grande y activa que contribuy
 <li><p><strong>Desarrollo de juegos</strong>: Python se utiliza en el desarrollo de juegos simples, especialmente con bibliotecas como Pygame.</p></li>
 </ul>
 </section>
+</section>
 <section id="entornos-de-desarrollo-jupyter-notebook">
 <h2><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong><a class="headerlink" href="#entornos-de-desarrollo-jupyter-notebook" title="Link to this heading">#</a></h2>
 <section id="descarga-e-instalacion-de-miniconda-vscode">
 <h3><strong>1.2.1   Descarga e instalación de Miniconda, VSCode</strong><a class="headerlink" href="#descarga-e-instalacion-de-miniconda-vscode" title="Link to this heading">#</a></h3>
 <p>Para comenzar a programar en Python, primero debes descargar e instalar Miniconda en tu computadora. Sigue estos pasos:</p>
 <section id="miniconda">
-<h4><strong>Miniconda</strong><a class="headerlink" href="#miniconda" title="Link to this heading">#</a></h4>
+<h4><strong>1.2.1.1 Miniconda</strong><a class="headerlink" href="#miniconda" title="Link to this heading">#</a></h4>
 <p><strong>Miniconda</strong> es una distribución ligera de <strong>Anaconda</strong>, que es una distribución de Python y R para la computación científica, que incluye más de 250 paquetes científicos preinstalados y es compatible con Windows, macOS y Linux.</p>
 <p>Entra a la página de <a class="reference external" href="https://docs.anaconda.com/miniconda/">miniconda</a> y escoger su instalador. Esta instalación se hizo para windows. Siga los siguientes pasos:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -491,7 +516,7 @@ Python cuenta con una comunidad de desarrolladores grande y activa que contribuy
 <p><img alt="miniconda_9" src="_images/miniconda_9.png" /></p>
 </section>
 <section id="descarga-e-instalacion-de-visual-studio-code">
-<h4><strong>Descarga e instalación de Visual Studio Code</strong><a class="headerlink" href="#descarga-e-instalacion-de-visual-studio-code" title="Link to this heading">#</a></h4>
+<h4><strong>1.2.1.2 Descarga e instalación de Visual Studio Code</strong><a class="headerlink" href="#descarga-e-instalacion-de-visual-studio-code" title="Link to this heading">#</a></h4>
 <p><strong>Visual Studio Code (VSCode)</strong> es un editor de código desarrollado por Microsoft. Con la extensión de Python, se convierte en un IDE ligero y versátil para el desarrollo de Python.</p>
 <p>Entra a la pagina de <a class="reference external" href="https://code.visualstudio.com/download/">VSCode</a> y descargalo. Y sigue los siguientes pasos para su instalación adecuada:</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -577,7 +602,7 @@ Si prefieres usar conda (recomendado para evitar problemas de compatibilidad), p
 <p><img alt="amb_4" src="_images/amb_4.png" /></p>
 <p><img alt="amb_5" src="_images/amb_5.png" /></p>
 <p>Despues de haber realizado todo este proceso. Tiene en forma adecuada VSCode y así podrá trabajar de manera más óptima.</p>
-<p>Si usted desea desactivar cualquier entorno activado utilizando la siguiente orden
+<p>Si usted desea desactivar cualquier entorno activado utilice la siguiente orden
 en la consola Powershell de Anaconda.  <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span> </code></p>
 </section>
 </section>
@@ -596,9 +621,12 @@ El objetivo de esta sesión NO es de ningún modo aprender a utilizar el Python 
 </div>
 </div>
 </div>
-<p>1.3.1 <strong>Constantes o valores</strong></p>
+<section id="constantes-o-valores">
+<h3><strong>1.3.1 Constantes o valores</strong><a class="headerlink" href="#constantes-o-valores" title="Link to this heading">#</a></h3>
 <p>Las constantes son elementos que se fijan en un programa y que no permiten cambios; por ejemplo, un número (<span class="math notranslate nohighlight">\(45\)</span> o <span class="math notranslate nohighlight">\(32\)</span>), una letra (<code class="docutils literal notranslate"><span class="pre">a</span></code> o <code class="docutils literal notranslate"><span class="pre">b</span></code>), una cadena (‘cuaderno’ o ‘borrador’) o un booleano (<code class="docutils literal notranslate"><span class="pre">True</span></code>). Como se puede observar, cada una de estas constantes tiene una forma o tipo.</p>
-<p>1.3.2. <strong>Tipos de datos</strong></p>
+</section>
+<section id="tipos-de-datos">
+<h3><strong>1.3.2 Tipos de datos</strong><a class="headerlink" href="#tipos-de-datos" title="Link to this heading">#</a></h3>
 <p>Los tipos de datos básicos más comunes en Python son:</p>
 <ul class="simple">
 <li><p><strong>Entero</strong>: Se representa con la palabra clave <strong>int</strong>; por ejemplo, <span class="math notranslate nohighlight">\(45\)</span> o <span class="math notranslate nohighlight">\(38\)</span>.</p></li>
@@ -614,7 +642,7 @@ El objetivo de esta sesión NO es de ningún modo aprender a utilizar el Python 
 </div>
 </div>
 </div>
-<p>1.3.3 <strong>Variables</strong></p>
+<p><strong>Variables</strong></p>
 <p>Las <strong>variables</strong> son nombres que hacen referencia a un valor. Este valor puede cambiar a lo largo de la ejecución de un programa. Las <strong>variables</strong> son espacios de la memoria principal del computador, en donde se almacenan valores de forma temporal o permanente durante la ejecución de un programa.</p>
 <ul class="simple">
 <li><p><strong>Operacción de asignación</strong>: Para darles el valor a las variables, se realiza la operación de asignación. Esta se hace mediante el signo igual (=), escrito entre el nombre de la variable y el elemento que se le asigna. El elemento asignado puede ser un valor, otra variable previamente definida o una expresión resultante del uso de otras variables, valores u operadores. Algunos ejemplos de asignación son:</p></li>
@@ -646,7 +674,9 @@ Python es sensible a mayúsculas y minúsculas. La variable <strong>X</strong> y
 Los nombres de las variables no pueden empezar con caracteres especiales, excepto el guion bajo (<code class="docutils literal notranslate"><span class="pre">_</span></code>); por ejemplo, <strong>_cuenta</strong> es válida, pero <strong>$cuenta</strong> no lo es.
 Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </ul>
-<p>1.3.4 <strong>Sentencias</strong></p>
+</section>
+<section id="sentencias">
+<h3><strong>1.3.3 Sentencias</strong><a class="headerlink" href="#sentencias" title="Link to this heading">#</a></h3>
 <p>Las <strong>sentencias</strong> son las mínimas acciones escritas en un programa de Python que el <strong>intérprete</strong> es capaz de ejecutar. Las asignaciones son consideradas sentencias. Un programa está compuesto de muchas sentencias para lograr su objetivo. En modo interactivo, también se ejecutan las sentencias y se muestra su resultado, siempre y cuando generen alguna salida.</p>
 <ul class="simple">
 <li><p><strong>Sentencia de entrada</strong>: La sentencia de entrada  de datos corresponden a la función <code class="docutils literal notranslate"><span class="pre">input</span></code>. Esta sentencia se utiliza para capturar la entrada del usuario desde la consola.  Por ejemplo:</p></li>
@@ -752,7 +782,9 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </div>
 </div>
 </div>
-<p>1.3.5 <strong>Operaciones aritmeticas</strong></p>
+</section>
+<section id="operaciones-aritmeticas">
+<h3><strong>1.3.4 Operaciones aritmeticas</strong><a class="headerlink" href="#operaciones-aritmeticas" title="Link to this heading">#</a></h3>
 <p>Los <strong>operadores aritméticos</strong> en Python son fundamentales para realizar cálculos. Se aplican sobre operandos, que pueden ser tanto variables como constantes. La tabla siguiente recoge los operadores más comunes en Python.</p>
 <div align="center">
 <div class="pst-scrollable-table-container"><table class="table">
@@ -828,7 +860,9 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </div>
 </div>
 </div>
-<p>1.3.6 <strong>Símbolos de asignación aumentada</strong></p>
+</section>
+<section id="simbolos-de-asignacion-aumentada">
+<h3><strong>1.3.5 Símbolos de asignación aumentada</strong><a class="headerlink" href="#simbolos-de-asignacion-aumentada" title="Link to this heading">#</a></h3>
 <p>Los <strong>símbolos de asignación aumentada</strong> en Python son una forma conveniente de modificar el valor de una variable utilizando un operador aritmético y la asignación. Estos operadores combinan una operación aritmética con la asignación, simplificando el código.</p>
 <p>Aquí están los símbolos de asignación aumentada más comunes en Python:</p>
 <div align="center">
@@ -878,7 +912,9 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </div>
 </div>
 </div>
-<p>1.3.7 <strong>Operadores de comparación</strong></p>
+</section>
+<section id="operadores-de-comparacion">
+<h3><strong>1.3.6 Operadores de comparación</strong><a class="headerlink" href="#operadores-de-comparacion" title="Link to this heading">#</a></h3>
 <p>Los operadores relacionales sirven para comparar dos expresiones y devuelven un valor booleano, que puede ser <strong>True</strong> (verdadero) o <strong>False</strong> (falso). Consulta la tabla siguiente para más detalles sobre estos operadores</p>
 <div align="center">
 <div class="pst-scrollable-table-container"><table class="table">
@@ -934,7 +970,9 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </div>
 </div>
 </div>
-<p>1.3.8 <strong>Operadores lógicos</strong>:</p>
+</section>
+<section id="operadores-logicos">
+<h3><strong>1.3.7 Operadores lógicos</strong>:<a class="headerlink" href="#operadores-logicos" title="Link to this heading">#</a></h3>
 <p>Los <strong>operadores lógicos</strong> permiten combinar subexpresiones booleanas para obtener un nuevo valor booleano. Los operadores más comunes son and, or y not, y se detallan en la siguiente tabla.</p>
 <div align="center">
 <div class="pst-scrollable-table-container"><table class="table">
@@ -973,7 +1011,9 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </div>
 </div>
 </div>
-<p>1.3.9 <strong>Estructuras algorítmicas</strong></p>
+</section>
+<section id="estructuras-algoritmicas">
+<h3><strong>1.3.8 Estructuras algorítmicas</strong><a class="headerlink" href="#estructuras-algoritmicas" title="Link to this heading">#</a></h3>
 <p>Las <strong>estructuras algorítmicas</strong> consisten en bloques formados por múltiples sentencias. Estas sentencias pueden ser simples o también pueden contener otras estructuras de bloques. Al escribir estructuras algorítmicas en Python, es crucial tener en cuenta dos aspectos importantes:</p>
 <ol class="arabic simple">
 <li><p>Cada vez que se inicia una estructura, el encabezado debe terminar con dos puntos (:).</p></li>
@@ -981,7 +1021,8 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </ol>
 <div align="center">
 <p><img alt="Est_Alg.PNG" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWUAAAE4CAYAAACDleKSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAEpySURBVHhe7Z0HlBRF14Y/c06fYgIEzKCCCVFARRFzAAP+ihExB1RETCj4YVZEzGICc0BMGMEsoihmxYQZFQVzDvWfp7Zqp7a2e3ZmNtg7+z7n9Nnt6prq6vR21a3qe/9jhBBCZAaJshBCZAiJshBCZAiJshBCZAiJshBCZAiJshBCZAiJshBCZAiJshBCZAiJshBCZAiJshBCZAiJshBCZIiyFuWePXuaJZZYwnz//fcupXFz4okn2uP5+OOPXcq/x1prrWX23XdftyaEqCvKWpS7detm/vOf/5SNKB9xxBH2eLIgyi1atDC77babWysP3nzzTXPIIYeYv/76y6U0Dn755RfTt29f8/rrr7uUxsHff/9tnnjiCXPQQQeZDz74wKUKiXIjQqJcv1xxxRVmwQUXNH/88YdLaRwgxtwXDz74oEvJPv/3f/9nWrZsaevN8txzz7ktQqLciJAo1y9nnnmmWWihhcyff/7pUhoHzzzzjL0vaHU2Fs4++2y7nHHGGUWJ8rvvvms++eQTt1aeFCXKr732mn3DLbnkkmappZYyhx56qJk2bZrbWgEnrF+/fuaff/4xn332mTnuuOPMf//7X7Pyyiub888/P/WG//TTT80FF1xg2rZtay9Sx44dzR133FGt1UJX7dFHHzV77bWXadasmVljjTXM7rvvbi9WjBdlukYjRowwyy+/vP0NttnPP//c5arKd999Z6688kpb7pxzzmnWWWcdM3bsWPP777+7HBW89957Zv/997fLscceW/n/YYcdZv/efvvtLmeOV155xQwaNMieC2zDm222mT2WJN566y0retR/3XXXtXUYMGCAXY9FmXPNtdl6663NYostZgVz2LBhZubMmS5H6XD+R48ebTp06GD3zfV/++23zUorrZQqyk8++aTZYostrMC1atXK1uWrr75yW0sHswKtwY022sjMO++8ZtVVVzWXXHKJ+fbbb12OqiBSvXr1MiussIJZdNFF7X3Jw//rr7+6HMbeoyeddJK9ZquvvrqZe+65K69n//797d8777zT5c5x4IEH2uvA/XzXXXeZHXfc0Z4f6ubPO/cYv3/++eftesi5555rt3E/x/z8889m3LhxZsMNNzTzzDOPPYfnnHOO+eabb1yOiq4/x04Z3EfsmzqwznHyl8VDXo4rCe7Zu+++263l4LoNHTrU/j99+nQzcOBAe29xj3HOQmbNmmXv+e22286e6/XWW8/qw+zZs12OZHiuqHshonzttdfavCwffvihSy0/ChblSy+91Mw111xmlVVWMTfffLO56KKLTOvWrc0cc8xhXnrpJZcr15VCJHgoEbU999zTLLfccjb9yCOPdDlzPP3003YbF7t79+627E6dOpkFFljACquHGxiBX3jhhc3GG29s8/Fw0OXkt4hFiBflZZdd1gryCSecYG9gfo84hw8n8DDxAHBT0Sql/D59+lgB8C8az7PPPmvatGlTZeG3CPl8881nnnrqKZezAvZLOYg9L6rhw4fbepGfl0/I448/butNPXr06GHPH3lJYwlFmTpxs1IOx8hDtM8++5hFFlnEvjxrY6tDBPfbbz97jTm28847z55TjoN6JInyzjvvbLdzvNdcc40ZPHiwWXzxxe1LqDa22t9++82+qOeff347gIup4eijj7bXknsMkQoZOXKkrWOXLl3sdWRBoPk9fz1cJ3/9OGccK/d1eF057hjKQWy5D7n/aExQLi8rz5QpU2wd4usLiBfbQqEFXhKkUz7HizBy/TmHvFw8nEvuJeq39NJL299wj4T1ZvEg2FzDJLg2NBZiuNbrr7++eeSRR2z5PMNbbbWVbSTQEPLwUqS+PJvbbLONbdTssMMOVi+o008//eRyVqcYUaZM8rLQyi5XChJlThgnYu+993YpOdZcc017kTxelFniFgwtkfCm9SC+iP2PP/7oUnLEF/Sxxx5z/1WF/R111FFurQIvypdddplLqeCBBx6w6dyoIeTnwYzNHbfddpsV8ZpsdrQeKJfyY1544YVqDyCQv3nz5lVaTDxMPADx+dt2221t/lCUacEgyNQ9hB4LeTfddFOXUjz33HOPLSOeZUFvAjGMRdm3ZPhdyIwZM2wLlBduqZx88sn2OOOu68svv2xFEYEOYXZIu3bt3FoOXmKxgHtOOeWUgm3KiBD3PftIE51SRJn7jLK//PJLl5Ij7pV6JkyYYMvKd3+WKsqUS+MgvqYxSc8lPQV+f+utt7qU6hQjyg8//LB9abKUi0kyiYJEmTc1rd6km/Xqq6+2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ag8+vTlOzgtlcx3S4Nr5vJzLpHpw3vz122677cyKK65Yue7/xvvg+Px5ALZzLdkPf9kOPp9fD/Flp0GZ4XHG15PzwO9ZllhiCev4i3uLdf83hP0ljUVw/ORNOo/kD+9/1nkuuHeTngvqyPFz3ak7+0xi/Pjx7r+qLLTQQtZfexr8buDAgfbeqg2ZFeV8wpTEvffeawVuzjnntMLA31VXXbXaib/77rvtmxAGDx5s5p577sr8a665ZrWbxcPFmGeeecwcc8xh8+NbebnllnNbc0yZMsU+OGwnL+XPO++85sYbb3Q5cnhRvu6668wCCyxg/TvzG/Lfd999LldVtthii8qyWRZccEFzww03uK05hg8fbvfNQr39/365/vrrXc4KuPnXWWcde+P5sqlbz549XY6q7L777pX+pTl37du3N0OGDEkUZW7STTfd1LRs2bIyP8f47LPPuhyl89FHH9my/HXn2EaMGGG7zEmizIPZrl27yvz8pQEwceJEl6N0aEWx37Bs7pE33njD5chx3nnn2evi83IuF1tsMXPNNde4HBWMGTOm8vr56+LX/d+xY8e63BXQ/eZ+4t7nWlAHf634iyDBE088YX//yiuv2PWQLl262DKSXhQM6M4333xVjpNrEAaLwJ85ZbP4PH7d1zsEd7gdOnRwazl4Hnkurr32WpeSo1OnTvY+hH333deW689Rnz59bLrn1ltvrXwuqQ8awMLzWigtWrSw+0mClxD7pezevXu71NIoi4E+bkou8pFHHmm++OIL+6bEveYyyyxjll566Spv2XHjxtkTt8MOO5g2bdqYadOmmY8//ticf/75Nv2AAw5wOXNss802dtuJJ55oPvzwQ1s+N+Daa69tBcBDi4MLTVeNB5QWJ6LBzUD94ggniLK/sbnReYPzgHCzcSPGPp5XX3112319+umnK1spRx99tL0Zpk+f7nJVwMP49ttvV1nohvHwEG0lbklww6277rpm6tSptlwWXKBS9oABA1yuCnbaaSdb50GDBtlzxzHyP2ksoSjzcuU68BAjwrRkEI0NN9zQPkRJD1uhcMwLL7ywWWqppWyQAl824kY9YlGmXrzE1ltvPSuUrM+YMcPssssu9nzTiioV7jeOkd7CJ598Yq89A0SdO3e290T4sn///ffteT3zzDPtNed+4r69+OKL7bUJoU7++m2++eZW9MNr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CCEyhERZCCEyhAb6hBAiQ0iUhRAiQ0iUhRAiQ8imLIQQGUKiLIQQGUKiLIQQGUI2ZSGEyBASZSGEyBAS5Qbm3HPPNbfddptby8/XX39tjjrqKDN79myXkp8nnnjC5v/tt99cihCisZFZUb7jjjvcf+XDkUceaUPcE2m5EGEm8CeRqpdaainzww8/uNR05p9/fpu/Z8+eLkUI0djQQF8DQoRlwtmzXHHFFS41HZ93zjnnNN9++61LTcfnJ3q0EKJxIlFuQN58800byv6AAw4wv/zyi0tNh9Z0x44dbYj/f/75x6Wmc/TRR5suXbqY5557zqUIIRobmRXliRMnuv+EEKLpoIE+IYTIEBJlIYTIEBJlIYTIEBroE0KIDCFRFkKIDCFRFkKIDCGbshBCZAiJsqjGn3/+aV555RUzY8YMlyKEaCgkyqIaN998s/1ce80113QpQoiGQjbleuDnn3+2olaIf4ssgie7eeaZxzpEqg+uvPJKe37OPPNMlyKE8EiU64HPPvvMik5j9nT31Vdfmd9//92t1R2zZs0yc801l0RZiBQkyvXAyy+/3KhbyvUFTpWWXnpps++++5oWLVpIlIVIILOivPfee7v/CgNfxa1atTKLLLKI9Vncrl07c9BBB9kWXxKjRo0yq622mvU/PN9885m2bduaq666ym3Nsf/++5tu3brZ/3Egzz5o6S2//PJm+PDhNt2D2FBO69atrSgjPKyvs8469m+HDh1czhy//vqr/d2yyy5rXXQuvvjiZuONNzaffvqpy1EB+95kk03s/8cff7xp06aNrQe/GzZsWKIXuT/++MMMGDDAHucCCyxg67Tyyivb/CEzZ8609WNZa621rGc6/sfrXBrnnHOO6dSpk1liiSXM3HPPbZZZZhnTp0+fVAf7tLpXX311u+AbmvwSZSGqUxYDfYccckhly5RW6uTJk+3/W221lbnoootcrhynn366FeL+/fubSZMmmRdeeMEKEGVceumlLlcFPXr0sOn4KN56663NjTfeaEaPHm022GADK0bvvfeey2nMDTfcYC688EJz7LHH2t/stttudj1cQujKI+4IJb9lxsODDz5oB9hID917UhZldu/e3Wy22WY2P3Xp2rWrFfOpU6e6nBUQrQQ3nji+5zjvvPNOe15OOOEE62T/oYcecjmN+emnn6rVE7HdcccdXY6q8IJo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UcYUgWguvvji5osvvnCp6Zx99tk2/3rrrVctLH4SnTp1svkHDx7sUoQQom4pK1GGn376yfzwww9urWa++uor89dff7m1/JBv5syZbk0IIeqezIpynz593H9CCNF0KKuBPiGEaOxIlIUQIkNkVpT33Xdf958QQjQdym6gTwghGjMSZSGEyBASZSGEyBAa6BNCiAwhURbVeOKJJ0yLFi3M7rvv7lKEEA2FRLke+OOPP8yhhx5qnnrqKZfSuBg2bFjl5+q1Zfz48aZjx45mwIABLiUHvkq22WYbtyaEANmU64HPPvvMitqYMWNcSuPjpptuKtgFaj5Gjx5tz8XCCy/sUnLsueeecu4kRIREuR547733rBBdccUVLqXpgigvtthi1j3q0Ucf7VIrkCgLUZ2yEeVJkyaZ7bbbzrRq1cosuuii5uCDDzYvvfSS+e2331yOqrz//vvWvSf+kTGV9OvXz0ybNs1tzXHOOeeYk08+2f7PPrbffnsrMN26dTPvvvuuTffcdttttpyePXtaUd54443t+qBBg+zfgw46yOXMgZOjCRMmmM6dO5t5553X+my+/PLLzS+//OJyVHDxxRebE0880f7/wgsv2H2Qv2vXrubtt9+26TE48Z86darZb7/97HFSJ+zEr776qstRAb6kqZ+v4yGHHGL/v+GGG1yO6rzzzjvmrLPOMu3atTMLLbSQrf/DDz9s9xmCKLdp08acccYZZo455jDfffed2yJRFiKJsrApI2IIzgYbbGCuvvpqc8EFF5j27dvbLjNCHTN27FgrEAjVueeeay666CKz8sor2zIY5Arp0aOHTUekFllkEdO9e3ezySabWGf6iPPvv//uchor1Mstt5xZaqml7G9oIbIeLiG8MKgz4ko9r7vuOnPYYYfZcrHDhgK322672TKPPfZYK4Lsi7osuOCCZq655rJRUUIQ+5NOOskeJ478d911V3teEME555yziuB++eWX1epJmTvuuKPLUZV99tnHzD333KZZs2amf//+ZujQofZ/6se1CEGUsU3/+OOPdjt2ZI9EWYjqlIUor7322qZt27ZuLceMGTOqueV88803rSghav/8849LrWhV7rDDDqZ169YupQIvyuwjLGvKlCk2nRZgDPtgW03mi1NOOcWK30cffeRSKvDmj+OPP96l5ER5jTXWqFIPnxcBDrnqqqsqewDhcfI/tuIwLQl6HGmi/Morr5gPP/ywShnUab755rMvgdmzZ7vUnCgDfqjZzksAJMpCVKcsRJmuM+IWt3KTOO6446x4JDm1pwWNYCN0Hi/KcUt01qxZNn3LLbd0KTkwL7Bt1KhRLqU6lEedadEnsdVWW9lWtMeLMi+aEN8CpfUegnivssoq1cwJhZJPlNPgBUVdpk+f7lKqijIiTm+D1j5IlIWoTmZF+fHHH3f/1czXX39dGRVk2WWXNRtuuKFthSbF3UPc6P4TbSResI9SxhtvvOFy50Q5bP0B66QniTK2bLblaykj/LwA6PYn1QWTwzrrrONy50QZp/whOPUnPRZl0vhNqdQkyswwwWkULxXy8qJjnywffPCBy1VVlAFTB+YabPoSZSGqUzYDfUC3/Pzzz7cPO+JAV5mBrbC7v+2221rhphWbtoQCXIoo+5by9ddf71Kqg/CTp3fv3ol1YBk3bpzLXZooU3ap5BPl008/3drrKZ9gtbxg6Hn4ljKmDU8syuSjF3TCCSfYXotEWYiqlJUoh/Dw82ECIhFGtmYGAwNx8eyGNEoR5ZdfftluyzdPmVkImC9o4RdCsaJMq3/NNdd0a8WTT5QZwDziiCPcWg4GTKlLvpYyIMYMlBJNXKIsRFUyK8pMLyuUW2+9NTEunx+MC6eA0Zqmq530JRlf4sXllCLKH3/8sd3G9Ll80FpkFgPmjpjvv//e/VdBsaI8ZMgQmz58+HCXkuP555+3dcxHPlGmXHokIZy3Dh062G1h2UmiTJ15MbZs2VKiLEREox/owwywxBJL2AEkWsFPPvmkXfgiDYFYccUVrQiEXHPNNXYbU88Y3CM/09GYI8zUsZBSRBkwkyC41IkByGuvvdZOewvLoV7ejn3ggQeaiRMn2rrwG9ImT57schYvyvQUeCmwDRv7hRdeaE0NzN8mjRdCPvKJ8vrrr2/NFyNGjLD1ZZobrf5evXrZstMG+kKY+01eibIQVWn0ouzBVLD88svbFhgizcO+1157pc4+wA6KuDCgRnec3x5++OHm559/djkqIIDrCiusUOWjB2Cd9LQAr4gvwuPL5y8CHn9wQv1Gjhxp60u9qT/T+xDQEHxpsD8GNUOoL+nxy8Rz11132bKpA+cUR0Oh2Kex0UYbmQMOOMCtVYVWMdMHl1xySVtfZokwGwWoS9hSvvPOO1PNKLyQwhkmQogyEmUhhCgHynagTwghGiMSZSGEyBASZSGEyBCyKQshRIaQKAshRIaQKAshRIaQTVkIITKERFkIITKERFkIITJEZkVZoeeFEE0RDfQJIUSGkCgLIUSGyKwoH3PMMe4/IYRoOmigTwghMoREWQghMoRsykIIkSEkykIIkSEkykIIkSEyK8rjxo1z/wkhRNNBA31CCJEhJMpCCJEhMivKU6ZMcf8JIUTTQQN9QgiRITIryiNGjHD/CSFE00E2ZSGEyBASZSGEyBASZSGEyBASZSGEyBASZSGEyBASZSGEyBASZSGEyBASZSGEyBASZSGEyAzG/D83n77r3w+BWAAAAABJRU5ErkJggg==" /></p>
-</div><p>1.3.9.1 <strong>Sentencias condicionales</strong></p>
+</div><section id="sentencias-condicionales">
+<h4><strong>1.3.8.1 Sentencias condicionales</strong><a class="headerlink" href="#sentencias-condicionales" title="Link to this heading">#</a></h4>
 <p>Las <strong>sentencias condicionales</strong> son estructuras de programación que permiten ejecutar cierto bloque de código si se cumple una condición especificada. En las sentencias condicionales, siempre habrá una condición después de la palabra clave.</p>
 <ul class="simple">
 <li><p><strong>Sentencia if-else simple</strong>: Las sentencias <strong>if-else</strong> en programación permiten tomar decisiones dentro de un algoritmo. La estructura básica es la siguiente:</p></li>
@@ -1077,7 +1118,9 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </div>
 </div>
 </div>
-<p>1.3.9.2 <strong>Sentencias repetitivas</strong></p>
+</section>
+<section id="sentencias-repetitivas">
+<h4><strong>1.3.8.2 Sentencias repetitivas</strong><a class="headerlink" href="#sentencias-repetitivas" title="Link to this heading">#</a></h4>
 <p>Las <strong>sentencias repetitivas</strong>, también conocidas como <strong>bucles</strong> o <strong>ciclos</strong>, son estructuras de programación que permiten ejecutar repetidamente un bloque de código mientras se cumple una condición específica o durante un número determinado de iteraciones. Estas sentencias son esenciales para automatizar tareas repetitivas y para procesar secuencias de datos de manera eficiente. Los tipos más comunes de sentencias repetitivas incluyen:</p>
 <ul class="simple">
 <li><p><strong>Bucle For</strong>: El bucle <code class="docutils literal notranslate"><span class="pre">for</span></code> es una estructura de control de flujo que permite iterar sobre una secuencia de elementos (como una lista, tupla, cadena, conjunto o rango) y ejecutar un bloque de código para cada elemento de la secuencia. Este tipo de bucle es muy útil cuando se sabe de antemano cuántas veces se debe repetir el bloque de código, o cuando se quiere realizar una operación en cada elemento de una colección. La estructura básica de un bucle for en Python es:</p></li>
@@ -1191,7 +1234,10 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 </div>
 </div>
 </div>
-<p>1.3.10 <strong>Funciones en python</strong></p>
+</section>
+</section>
+<section id="funciones-en-python">
+<h3><strong>1.3.9 Funciones en python</strong><a class="headerlink" href="#funciones-en-python" title="Link to this heading">#</a></h3>
 <p>Las funciones en Python son bloques de código diseñados para realizar tareas específicas y se pueden reutilizar en diferentes partes del programa. Definir y usar funciones te permite organizar tu código de manera más efectiva y reducir la redundancia.</p>
 <ol class="arabic simple">
 <li><p><strong>Definición de una función</strong>: Una <strong>función</strong> se define utilizando la palabra clave <code class="docutils literal notranslate"><span class="pre">def</span></code>, seguida del nombre de la función y un paréntesis que puede contener parámetros. Dentro del bloque de código de la función, se especifican las instrucciones que se ejecutarán cuando se llame a la función.</p></li>
@@ -1259,7 +1305,8 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 
 <span class="c1"># Llamada a la función</span>
 <span class="n">resultado_suma</span> <span class="o">=</span> <span class="n">suma</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">resultado_suma</span><span class="p">)</span>  <span class="c1"># Output: 15</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado_suma</span><span class="p">)</span>  <span class="c1"># Output: 15000</span>
 </pre></div>
 </div>
 </div>
@@ -1302,9 +1349,11 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 <li><p><strong>Funciones Internas</strong>: Python incluye una serie de funciones integradas que facilitan tareas comunes. Estas funciones están disponibles por defecto y no requieren importación adicional. Algunas de estas funciones internas son <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">max()</span></code>, <code class="docutils literal notranslate"><span class="pre">min()</span></code>, etc., se llaman directamente con su nombre y los argumentos necesarios entre paréntesis. Estas funciones están disponibles globalmente en Python y no pertenecen a un objeto específico. Aquí puedes encontrar más funciones internas de python. Aquí tienes un enlace a la documentación oficial de Python sobre funciones integradas <a class="reference external" href="https://docs.python.org/3/library/functions.html">built-in functions</a>.</p></li>
 </ol>
 </section>
+</section>
 <section id="uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios">
 <h2><strong>1.4 Uso de estructuras de datos básicas (vectores, listas, matrices, diccionarios)</strong><a class="headerlink" href="#uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios" title="Link to this heading">#</a></h2>
-<p>1.4.1 <strong>Vectores</strong></p>
+<section id="vectores">
+<h3><strong>1.4.1 Vectores</strong><a class="headerlink" href="#vectores" title="Link to this heading">#</a></h3>
 <p>Un <strong>vector</strong> es una secuencia ordenada de elementos, que pueden ser números, caracteres o cualquier otro tipo de dato. En Python, los vectores se pueden implementar utilizando listas.</p>
 <p>Las características de un vector son:</p>
 <ul class="simple">
@@ -1391,7 +1440,9 @@ En programación científica, estas operaciones a menudo se realizan utilizando 
 </div>
 </div>
 </div>
-<p>1.4.2 <strong>Listas</strong></p>
+</section>
+<section id="listas">
+<h3><strong>1.4.2 Listas</strong><a class="headerlink" href="#listas" title="Link to this heading">#</a></h3>
 <p>Las <strong>listas</strong> en Python son estructuras de datos que pueden almacenar una colección ordenada de elementos, los cuales pueden ser de diferentes tipos. Las listas son dinámicas, lo que significa que pueden crecer o reducirse según sea necesario.</p>
 <p>Las características de una lista son:</p>
 <ul class="simple">
@@ -1489,7 +1540,9 @@ En programación científica, estas operaciones a menudo se realizan utilizando 
 </div>
 </div>
 </div>
-<p>1.4.3 <strong>Matrices</strong></p>
+</section>
+<section id="matrices">
+<h3><strong>1.4.3 Matrices</strong><a class="headerlink" href="#matrices" title="Link to this heading">#</a></h3>
 <p>Las <strong>matrices</strong> son arreglos rectangulares de elementos, es decir,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1503,9 +1556,614 @@ a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
 \end{split}\]</div>
 <p>donde <span class="math notranslate nohighlight">\(m\)</span> es el número de filas y <span class="math notranslate nohighlight">\(n\)</span> es el número de columnas</p>
 <p>En Python, las matrices pueden ser implementadas usando listas de listas o utilizando bibliotecas como <strong>NumPy</strong>, que proporciona una funcionalidad más eficiente para el manejo de matrices.</p>
+<p>Las matrices poseen varias características que las hacen útiles para muchas aplicaciones, especialmente en matemáticas, ciencia de datos, y programación científica:</p>
+<ul class="simple">
+<li><p>Dimensionalidad: Las matrices son bidimensionales, organizadas en filas y columnas. Además, se pueden extender a más dimensiones, formando tensores en contextos más avanzados.</p></li>
+<li><p>Homogeneidad: Los elementos de una matriz deben ser del mismo tipo (e.g., todos enteros, todos flotantes).</p></li>
+<li><p>Indexación: Los elementos de una matriz se acceden utilizando un par de índices: uno para la fila y otro para la columna.</p></li>
+<li><p>Mutabilidad: Las matrices pueden ser modificadas después de su creación, permitiendo la actualización de elementos individuales o la reasignación de filas y columnas completas.</p></li>
+<li><p>Operaciones Matemáticas: Las matrices admiten una variedad de operaciones matemáticas, tales como suma, resta, multiplicación (tanto elemento a elemento como producto matricial), y transposición. Estas operaciones son esenciales para cálculos algebraicos lineales y análisis numérico.</p></li>
+</ul>
+<p>Transposición: La transposición de una matriz implica intercambiar sus filas por columnas, y es una operación comúnmente utilizada en diversas aplicaciones matemáticas y científicas.</p>
+<ul class="simple">
+<li><p>Determinante y Rango: Para matrices cuadradas (mismo número de filas y columnas), se pueden calcular propiedades como el determinante y el rango, que tienen importantes aplicaciones en álgebra lineal.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Creacion de matriz</span>
+<span class="n">matriz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Acceso a elementos por filas y columnas:</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acceder al elemento en la primera fila, segunda columna</span>
+<span class="n">matriz</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Acceder al elemento en la tercera fila, primera columna</span>
+<span class="n">matriz</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Acceder a la segunda columna</span>
+<span class="n">matriz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Acceder a la segunda fila</span>
+<span class="n">fila</span> <span class="o">=</span> <span class="n">matriz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Realizacemos algunas operaciones con matrices</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear dos matrices</span>
+<span class="n">matriz1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">matriz2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="c1"># Suma de matrices (deben tener las mismas dimensiones)</span>
+<span class="n">suma</span> <span class="o">=</span> <span class="n">matriz1</span> <span class="o">+</span> <span class="n">matriz2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Suma:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">suma</span><span class="p">)</span>
+
+<span class="c1"># Resta de matrices (deben tener las mismas dimensiones)</span>
+<span class="n">resta</span> <span class="o">=</span> <span class="n">matriz1</span> <span class="o">-</span> <span class="n">matriz2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resta:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">resta</span><span class="p">)</span>
+
+
+<span class="c1"># Multiplicación de elmento a elemento de matrices (deben tener las mismas dimensiones)</span>
+<span class="n">multiplicacion</span> <span class="o">=</span> <span class="n">matriz1</span> <span class="o">*</span> <span class="n">matriz2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Multiplicación elemento por elemento:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">multiplicacion</span><span class="p">)</span>
+
+<span class="c1"># Multiplicación de matrices (producto matricial)</span>
+
+<span class="c1"># El número de columnas de la matriz izquierda debe ser igual</span>
+<span class="c1"># al número de filas de la matriz derecha</span>
+<span class="n">producto_matricial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">matriz1</span><span class="p">,</span> <span class="n">matriz2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Producto matricial:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">producto_matricial</span><span class="p">)</span>
+
+<span class="c1"># Transponer la matriz</span>
+<span class="n">transpuesta</span> <span class="o">=</span> <span class="n">matriz</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transposición:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">transpuesta</span><span class="p">)</span>
+
+<span class="c1"># Crear una matriz identidad de 3x3</span>
+<span class="n">identidad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriz identidad:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">identidad</span><span class="p">)</span>
+
+<span class="c1"># Calcular el determinante</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">matriz1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="diccionarios">
+<h3><strong>1.4.4 Diccionarios</strong><a class="headerlink" href="#diccionarios" title="Link to this heading">#</a></h3>
+<p>Los <strong>diccionarios</strong> son una estructura de datos que almacena pares de clave-valor. Cada clave es única y se utiliza para acceder a su valor asociado. Los diccionarios son útiles cuando se necesita un mapeo entre elementos, como por ejemplo, asociar nombres con números de teléfono.</p>
+<p>Las características de los diccionarios son:</p>
+<ul class="simple">
+<li><p><strong>Clave-Valor</strong>: Cada elemento en un diccionario es un par clave-valor. Las claves deben ser únicas y de un tipo de datos inmutable (como cadenas, números o tuplas), mientras que los valores pueden ser de cualquier tipo de datos, incluso listas o otros diccionarios.</p></li>
+<li><p><strong>Acceso Rápido</strong>: Los diccionarios permiten un acceso rápido a los valores mediante sus claves, lo que los hace muy eficientes para búsquedas y actualizaciones.</p></li>
+<li><p><strong>No Ordenado</strong>: A partir de Python 3.7, mantienen el orden de inserción, pero esto no es algo en lo que debas confiar en versiones anteriores.</p></li>
+<li><p><strong>Mutable</strong>: Los diccionarios pueden ser modificados después de su creación, permitiendo agregar, eliminar o cambiar pares clave-valor.</p></li>
+<li><p><strong>Flexible</strong>: Los valores en un diccionario pueden ser de cualquier tipo de datos, y los diccionarios pueden incluso anidarse dentro de otros diccionarios.:</p></li>
+</ul>
+<p>Algunos ejemplos de diccionarios:</p>
+<ul class="simple">
+<li><p><strong>Creación de un diccionarios</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diccionario vacío</span>
+<span class="n">mi_diccionario</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Crear un diccionario con algunos pares clave-valor</span>
+<span class="n">estudiante</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Juan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;edad&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="s2">&quot;carrera&quot;</span><span class="p">:</span> <span class="s2">&quot;Ingeniería&quot;</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">estudiante</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Acceso a un valor</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acceder al valor asociado con la clave &quot;nombre&quot;</span>
+<span class="n">nombre</span> <span class="o">=</span> <span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Modificar un valor</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cambiar el valor asociado con la clave &quot;edad&quot;</span>
+<span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;edad&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">estudiante</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Agregar un nuevo par clave-valor</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agregar una nueva clave &quot;promedio&quot; con su valor</span>
+<span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;promedio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">estudiante</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Eliminar un par clave-valor</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eliminar la clave &quot;carrera&quot; y su valor asociado</span>
+<span class="k">del</span> <span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;carrera&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">estudiante</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Recorrer un diccionario</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recorrer las claves y valores de un diccionario</span>
+<span class="k">for</span> <span class="n">clave</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">estudiante</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">clave</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">valor</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Comprobar si una clave existe</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;nombre&quot;</span> <span class="ow">in</span> <span class="n">estudiante</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El nombre del estudiante es:&quot;</span><span class="p">,</span> <span class="n">estudiante</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Diccionarios anidados</strong>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diccionario anidado</span>
+<span class="n">clases</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Matemáticas&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Profesor&quot;</span><span class="p">:</span> <span class="s2">&quot;Sr. Pérez&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Horario&quot;</span><span class="p">:</span> <span class="s2">&quot;8:00 - 10:00&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;Historia&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Profesor&quot;</span><span class="p">:</span> <span class="s2">&quot;Sra. García&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Horario&quot;</span><span class="p">:</span> <span class="s2">&quot;10:00 - 12:00&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Acceder a datos en un diccionario anidado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clases</span><span class="p">[</span><span class="s2">&quot;Matemáticas&quot;</span><span class="p">][</span><span class="s2">&quot;Profesor&quot;</span><span class="p">])</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los diccionarios son una estructura fundamental en Python, especialmente útil para organizar y acceder a datos de manera eficiente.</p>
+</section>
 </section>
 <section id="introduccion-a-la-manipulacion-de-datos-creacion-manipulacion-y-analisis-de-datos-tabulares">
 <h2><strong>1.5 Introducción a la manipulación de datos: Creación, manipulación y análisis de datos tabulares</strong><a class="headerlink" href="#introduccion-a-la-manipulacion-de-datos-creacion-manipulacion-y-analisis-de-datos-tabulares" title="Link to this heading">#</a></h2>
+<p>La manipulación de datos es una habilidad fundamental en el análisis de datos. Los datos tabulares se organizan en un formato de filas y columnas, similar a una hoja de cálculo, lo que permite un acceso ordenado y eficiente a la información. Este formato es especialmente útil para realizar análisis estadísticos, crear visualizaciones, y construir modelos predictivos.</p>
+<p>Los <strong>datos tabulares</strong> se refieren a la disposición de la información en una tabla, donde:</p>
+<ul class="simple">
+<li><p><strong>Filas</strong>: Cada fila (o registro) representa una observación individual o una instancia de un conjunto de datos. Por ejemplo, en un conjunto de datos sobre clientes, cada fila podría representar a un cliente único, incluyendo toda la información relevante de ese cliente.</p></li>
+<li><p><strong>Columnas</strong>: Cada columna (o variable) contiene una característica específica de las observaciones. Siguiendo el ejemplo anterior, las columnas podrían incluir variables como el nombre del cliente, la edad, la ciudad de residencia, o el monto de compra. Las columnas son homogéneas, es decir, todas las entradas en una columna deben ser del mismo tipo de datos (números, texto, fechas, etc.).</p></li>
+</ul>
+<p>Este formato tabular facilita operaciones como la búsqueda de valores específicos, el filtrado de datos basados en condiciones, la agregación de resultados, y la combinación de diferentes conjuntos de datos.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> es una herramienta de manipulación de datos de alto nivel desarrollada por Wes McKinney. En su inicio es construido sobre <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> y ahora compatible con Arrow y <strong>permite el análisis de datos</strong> que cuenta con las estructuras de datos que necesitamos para limpiar los datos en bruto y que sean aptos para el análisis (por ejemplo, tablas). Como <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> permite realizar tareas importantes, como alinear datos para su comparación, fusionar conjuntos de datos, gestión de datos perdidos, etc., se ha convertido en una librería muy importante para procesar datos a alto nivel en Python (es decir, estadísticas ). <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> fue diseñada originalmente para gestionar datos financieros, y como alternativo al uso de hojas de cálculo (es decir, Microsoft Excel). Las dos principales estructuras de datos que ofrece <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> son:</p>
+<ul class="simple">
+<li><p><strong>Series</strong>: Una <code class="docutils literal notranslate"><span class="pre">Series</span></code> es un arreglo unidimensional similar a un array de <code class="docutils literal notranslate"><span class="pre">Numpy</span></code> o a una lista en Python, pero con etiquetas de eje (llamadas índices). Es ideal para trabajar con datos univariados.</p></li>
+<li><p><strong>DataFrame</strong>: Un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> es una estructura de datos bidimensional, como una tabla en una hoja de cálculo, que permite el almacenamiento y manipulación de datos tabulares. Es la estructura de datos más utilizada en Pandas y soporta operaciones de filtrado, agregación, pivote, fusión, y mucho más.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> proporciona herramientas que permiten:</p>
+<ul class="simple">
+<li><p>leer y escribir datos en diferentes formatos: CSV, JSON, Excel, bases SQL, parquet y HDF5 entre otros.</p></li>
+<li><p>seleccionar y filtrar de manera sencilla tablas de datos en función de posición, valor o etiquetas.</p></li>
+<li><p>fusionar y unir datos</p></li>
+<li><p>transformar datos aplicando funciones tanto en global como por ventanas</p></li>
+<li><p>manipulación de series temporales</p></li>
+<li><p>hacer gráficas</p></li>
+</ul>
+<p>Pandas es extremadamente poderoso debido a su capacidad para manejar grandes volúmenes de datos, realizar cálculos complejos y trabajar con diferentes tipos de datos, todo de manera eficiente.</p>
+<p>En este link podrás encontrar todas las funciones que necesitas para trabajar ETL de los datos usando <a class="reference external" href="https://pandas.pydata.org/docs/index.html">Pandas</a>.</p>
+<section id="creacion-de-datos-tabulares">
+<h3><strong>1.5.1 Creación de datos tabulares</strong><a class="headerlink" href="#creacion-de-datos-tabulares" title="Link to this heading">#</a></h3>
+<p>Los datos tabulares pueden ser creados de varias maneras dependiendo de la fuente de datos y el propósito del análisis. Aquí exploramos la creación manual:</p>
+<ol class="arabic simple">
+<li><p>Creamos primero una lista de listas o diccionario:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diccionario</span>
+<span class="n">data</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;Nombre&quot;</span><span class="p">:[</span><span class="s2">&quot;María&quot;</span><span class="p">,</span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span> <span class="s2">&quot;Pedro&quot;</span><span class="p">,</span> <span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="s2">&quot;Carlos&quot;</span><span class="p">,</span> <span class="s2">&quot;Sara&quot;</span><span class="p">],</span> <span class="c1"># Lista de nombres se plantea con corchetes</span>
+    <span class="s2">&quot;Edad&quot;</span><span class="p">:[</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">19</span><span class="p">],</span> <span class="c1"># Lista de edades se plantea con corchetes</span>
+    <span class="s2">&quot;Género&quot;</span><span class="p">:[</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="c1"># Lista de género se plantea con corchetes</span>
+<span class="p">}</span>
+
+<span class="c1"># Imprimir data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Importemos el módulo <strong>pandas</strong>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Libreria </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Convertimos el diccionario en un <strong>DataFrame</strong>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DataFrame es una función que está dentro del módulo pandas</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manipulacion-de-datos">
+<h3><strong>1.5.2 Manipulación de datos</strong><a class="headerlink" href="#manipulacion-de-datos" title="Link to this heading">#</a></h3>
+<p>Una vez que los datos tabulares están disponibles en un DataFrame, Pandas ofrece una variedad de herramientas para manipularlos de forma efectiva. Esto incluye la capacidad de:</p>
+<ul class="simple">
+<li><p><strong>Seleccionar y Filtrar</strong>: Acceder a subconjuntos de los datos basados en condiciones específicas.</p></li>
+<li><p><strong>Ordenar</strong>: Organizar los datos en función de los valores de una o más columnas.</p></li>
+<li><p><strong>Agregar y Transformar</strong>: Crear nuevas columnas, modificar las existentes o realizar operaciones matemáticas en los datos.</p></li>
+<li><p><strong>Combinar</strong>: Fusionar, concatenar y unir diferentes DataFrames para enriquecer los datos.</p></li>
+</ul>
+<p>Estas son algunas propiedades generales:</p>
+<ul class="simple">
+<li><p>El método <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> en Pandas es una herramienta útil para obtener un resumen conciso de la estructura de un DataFrame. Este método proporciona información clave sobre el DataFrame, incluyendo el número de filas y columnas, el nombre de cada columna, el número de valores no nulos en cada columna, el tipo de datos de cada columna y la cantidad de memoria utilizada por el DataFrame.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener información sobre la estructura del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 6 entries, 0 to 5
+Data columns (total 3 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   Nombre  6 non-null      object
+ 1   Edad    6 non-null      int64 
+ 2   Género  6 non-null      object
+dtypes: int64(1), object(2)
+memory usage: 272.0+ bytes
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observación</strong>:</p>
+<ul class="simple">
+<li><p><strong>object:</strong> significa que la variable es categórica o cualitativa</p></li>
+<li><p><strong>int64:</strong> significa que la variable es numérica o cuantitativa (números enteros). El número es el tamaño en bits que ocupa de memoria.</p></li>
+<li><p><strong>float64:</strong> significa que la variable es numérica o cuantitativa (números decimales). El número es el tamaño en bits que ocupa de memoria.</p></li>
+</ul>
+<p>El atributo <code class="docutils literal notranslate"><span class="pre">df.shape</span></code> en Pandas es una propiedad que proporciona las dimensiones del DataFrame df. Específicamente, devuelve una tupla que indica el número de filas y columnas que contiene el DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener las dimensiones del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>El método <code class="docutils literal notranslate"><span class="pre">df.head()</span></code> en Pandas se utiliza para ver las primeras filas de un DataFrame. Por defecto, <code class="docutils literal notranslate"><span class="pre">head()</span></code> muestra las primeras 5 filas, pero puedes especificar cuántas filas deseas ver pasando un número como argumento.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mostrar las 5 primeras filas del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Mostrar las 2 primeras filas del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>El método <code class="docutils literal notranslate"><span class="pre">df.tail()</span></code> en Pandas se utiliza para ver las últimas filas de un DataFrame. Por defecto, <code class="docutils literal notranslate"><span class="pre">tail()</span></code> muestra las últimas 5 filas, pero también puedes especificar cuántas filas deseas ver pasando un número como argumento.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mostrar las 5 ultimas filas de DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+
+<span class="c1"># Mostrar las 3 ultimas filas de DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>El atributo <code class="docutils literal notranslate"><span class="pre">df.columns</span></code> en Pandas se utiliza para acceder a los nombres de las columnas de un DataFrame. Este atributo devuelve un objeto de tipo Index que contiene los nombres de todas las columnas del DataFrame.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observación</strong>:</p>
+<p>Puedes utilizar <code class="docutils literal notranslate"><span class="pre">df.columns</span></code> para acceder o modificar los nombres de las columnas. Por ejemplo, si quieres cambiar el nombre de una columna, puedes hacerlo asignando un nuevo valor a <code class="docutils literal notranslate"><span class="pre">df.columns</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Renombrar las columnas del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Nombre_Cliente&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad_Cliente&#39;</span><span class="p">,</span> <span class="s1">&#39;Genero_Cliente&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El atributo <code class="docutils literal notranslate"><span class="pre">df.index</span></code> en Pandas se utiliza para acceder al índice (o las etiquetas de las filas) de un DataFrame. Este índice es una estructura que identifica cada fila de manera única, y puede ser numérico, alfanumérico, o incluso basado en fechas, dependiendo de cómo se construyó el DataFrame</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener el índice del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observación</strong>:</p>
+<p>Puedes utilizar <code class="docutils literal notranslate"><span class="pre">df.index</span></code> para acceder o modificar los nombres de las filas. Por ejemplo, si quieres cambiar el nombre de una columna, puedes hacerlo asignando un nuevo valor a <code class="docutils literal notranslate"><span class="pre">df.index</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;f&quot;</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>El método <code class="docutils literal notranslate"><span class="pre">df.sort_values()</span></code> en Pandas se utiliza para ordenar un DataFrame en función de los valores de una o más columnas. Por ejemplo:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ordenar el DataFrame df por la columna &#39;Edad&#39; en orden descendente</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Edad&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observación</strong>:</p>
+<p>Algunos de los parámetros del ejemplo anterior de la función <code class="docutils literal notranslate"><span class="pre">sort_values</span></code> son:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Edad</span></code>: Especifica la columna en función de la cual deseas ordenar los datos. En este caso, se está ordenando por la columna <code class="docutils literal notranslate"><span class="pre">Edad</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ascending=False</span></code>: Indica que la ordenación debe hacerse en orden descendente. Si quisieras ordenar en orden ascendente, usarías <code class="docutils literal notranslate"><span class="pre">ascending=True</span></code> (que es el valor por defecto).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>: Al establecer <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>, el DataFrame original df se modifica directamente y se ordena. Si se omitiera o se estableciera como False, el método devolvería un nuevo DataFrame ordenado, dejando el DataFrame original sin cambios.</p></li>
+</ul>
+<p>El atributo <code class="docutils literal notranslate"><span class="pre">df.iloc</span></code> en Pandas se utiliza para acceder a un DataFrame mediante índices enteros (basados en la posición). Este método es útil cuando necesitas seleccionar filas y columnas de un DataFrame basándote en su posición, en lugar de los nombres de las etiquetas. Por ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seleccionar la primera fila (índice 0)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar las primeras tres filas</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar el valor en la primera fila y segunda columna</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar las primeras dos filas y las primeras tres columnas</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar todos los valores de la segunda columna</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar las últimas dos filas de todas las columnas</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+
+<span class="c1"># Seleccionar las columnas por su nombre </span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Nombre&quot;</span><span class="p">]</span>
+
+<span class="c1"># Otra forma de seleccionar las columnas por su nombre </span>
+<span class="n">df</span><span class="o">.</span><span class="n">Nombre</span>
+
+<span class="c1"># Seleccionar el valor en la primera fila como un DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">],:]</span>
+
+<span class="c1"># Seleccionar las filas 1 y 3 como un DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],:]</span>
+
+<span class="c1"># Seleccionar las columnas 1 y 3 como un DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este método es clave para acceder y manipular datos en un DataFrame utilizando posiciones, especialmente cuando los índices o nombres de columnas no son intuitivos o cuando estás realizando operaciones sobre DataFrames grandes y complejos.</p>
+<ul class="simple">
+<li><p>El método <code class="docutils literal notranslate"><span class="pre">df.loc</span></code> en Pandas se utiliza para acceder a un DataFrame por etiquetas de filas y columnas, a diferencia de <code class="docutils literal notranslate"><span class="pre">iloc</span></code>, que usa posiciones numéricas. <code class="docutils literal notranslate"><span class="pre">loc</span></code> permite una variedad de operaciones para seleccionar y filtrar datos basados en las etiquetas de los índices y columnas. Por ejemplo:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seleccionar la fila con la etiqueta &#39;b&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar las filas con etiquetas de &#39;a&#39; a &#39;c&#39; (inclusive)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar el valor en la fila con etiqueta &#39;b&#39; y columna &#39;Edad&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad&#39;</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar las filas &#39;a&#39; a &#39;c&#39; y las columnas &#39;Nombre&#39; y &#39;Edad&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Seleccionar todas las filas y solo la columna &#39;Ciudad&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Género&#39;</span><span class="p">]</span>
+
+<span class="c1"># Seleccionar todas las filas donde &#39;Edad&#39; es mayor que 25</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Edad&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Género</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>d</th>
+      <td>Juan</td>
+      <td>26</td>
+      <td>M</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="ejercicio">
+<h3><strong>Ejercicio</strong><a class="headerlink" href="#ejercicio" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Se recolectaron datos de 8 estudiantes universitarios y se resumieron en la siguiente tabla:</p></li>
+</ol>
+<div align="center">
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>MASA</p></th>
+<th class="head"><p>ESTATURA</p></th>
+<th class="head"><p>GENERO</p></th>
+<th class="head"><p>ESTRATO</p></th>
+<th class="head"><p>FUMA</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>71</p></td>
+<td><p>183</p></td>
+<td><p>HOMBRE</p></td>
+<td><p>2</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>45</p></td>
+<td><p>168</p></td>
+<td><p>HOMBRE</p></td>
+<td><p>1</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>164</p></td>
+<td><p>HOMBRE</p></td>
+<td><p>1</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>60</p></td>
+<td><p>164</p></td>
+<td><p>MUJER</p></td>
+<td><p>3</p></td>
+<td><p>SI</p></td>
+</tr>
+<tr class="row-even"><td><p>61</p></td>
+<td><p>167</p></td>
+<td><p>HOMBRE</p></td>
+<td><p>3</p></td>
+<td><p>SI</p></td>
+</tr>
+<tr class="row-odd"><td><p>84</p></td>
+<td><p>182</p></td>
+<td><p>HOMBRE</p></td>
+<td><p>3</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>55</p></td>
+<td><p>168</p></td>
+<td><p>MUJER</p></td>
+<td><p>3</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>60</p></td>
+<td><p>170</p></td>
+<td><p>HOMBRE</p></td>
+<td><p>3</p></td>
+<td><p>SI</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>Crear un data frame y llamarlo <strong>df</strong>.</p></li>
+<li><p>Realizar un análisis descriptivo básico de todas las variables.</p></li>
+<li><p>Extraer un subconjunto de datos con los primeros 4 estudiantes y llamarlo <strong>subc1</strong>.</p></li>
+<li><p>Extraer las variables categóricas y guardarlas en un subconjunto llamado <strong>subc2</strong></p></li>
+<li><p>Extraer las variables numéricas y guardarlas en un subconjunto llamado <strong>subc3</strong></p></li>
+</ol>
+</section>
 </section>
 </section>
 
@@ -1548,6 +2206,15 @@ a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
         <p class="prev-next-title">Ciencia de datos con Python</p>
       </div>
     </a>
+    <a class="right-next"
+       href="modulo_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Módulo 2: Estructuración y manipulación de datos con Python</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1564,25 +2231,49 @@ a_{m1} &amp; a_{m2} &amp; ⋯ &amp; a_{mn}\\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Módulo 1: Introducción a la ciencia de datos con Python</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1. Introducción a Python</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>1.1 Introducción a Python</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>1.1 Python</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-python"><strong>1.1.1 Introducción a Python</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entornos-de-desarrollo-jupyter-notebook"><strong>1.2	Entornos de desarrollo (Jupyter Notebook)</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-miniconda-vscode"><strong>1.2.1   Descarga e instalación de Miniconda, VSCode</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda"><strong>Miniconda</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-visual-studio-code"><strong>Descarga e instalación de Visual Studio Code</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda"><strong>1.2.1.1 Miniconda</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-e-instalacion-de-visual-studio-code"><strong>1.2.1.2 Descarga e instalación de Visual Studio Code</strong></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-activacion-y-desactivacion-de-ambiente-virtuales"><strong>1.2.2 Creación, activación y desactivación de ambiente virtuales</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-sintaxis-y-estructura"><strong>1.3 Fundamentos de sintaxis y estructura</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios"><strong>1.4 Uso de estructuras de datos básicas (vectores, listas, matrices, diccionarios)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-la-manipulacion-de-datos-creacion-manipulacion-y-analisis-de-datos-tabulares"><strong>1.5 Introducción a la manipulación de datos: Creación, manipulación y análisis de datos tabulares</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamentos-de-sintaxis-y-estructura"><strong>1.3 Fundamentos de sintaxis y estructura</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constantes-o-valores"><strong>1.3.1 Constantes o valores</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos"><strong>1.3.2 Tipos de datos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias"><strong>1.3.3 Sentencias</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operaciones-aritmeticas"><strong>1.3.4 Operaciones aritmeticas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simbolos-de-asignacion-aumentada"><strong>1.3.5 Símbolos de asignación aumentada</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-comparacion"><strong>1.3.6 Operadores de comparación</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-logicos"><strong>1.3.7 Operadores lógicos</strong>:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estructuras-algoritmicas"><strong>1.3.8 Estructuras algorítmicas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias-condicionales"><strong>1.3.8.1 Sentencias condicionales</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sentencias-repetitivas"><strong>1.3.8.2 Sentencias repetitivas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-en-python"><strong>1.3.9 Funciones en python</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uso-de-estructuras-de-datos-basicas-vectores-listas-matrices-diccionarios"><strong>1.4 Uso de estructuras de datos básicas (vectores, listas, matrices, diccionarios)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores"><strong>1.4.1 Vectores</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listas"><strong>1.4.2 Listas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices"><strong>1.4.3 Matrices</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diccionarios"><strong>1.4.4 Diccionarios</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-la-manipulacion-de-datos-creacion-manipulacion-y-analisis-de-datos-tabulares"><strong>1.5 Introducción a la manipulación de datos: Creación, manipulación y análisis de datos tabulares</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-datos-tabulares"><strong>1.5.1 Creación de datos tabulares</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos"><strong>1.5.2 Manipulación de datos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio"><strong>Ejercicio</strong></a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
