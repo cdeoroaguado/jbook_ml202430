@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -60,6 +61,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_1';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Módulo 2: Estructuración y manipulación de datos con Python" href="modulo_2.html" />
@@ -554,7 +556,7 @@ Python cuenta con una comunidad de desarrolladores grande y activa que contribuy
 </thead>
 </table>
 </div>
-<p>Para crear un documento en jupiter notebook es importante seguir los siguientes pasos:</p>
+<p>Para crear un documento en jupyter notebook es importante seguir los siguientes pasos:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><img alt="uso_1" src="_images/uso_1.png" /></p></th>
@@ -846,6 +848,11 @@ Las variables no pueden iniciar con un número, sino con una letra.</p></li>
 <span class="n">resultado</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span> <span class="o">-</span> <span class="p">(((</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span> <span class="o">**</span> <span class="n">c</span> <span class="p">)</span><span class="o">%</span> <span class="n">b</span> <span class="p">)</span><span class="o">//</span> <span class="n">c</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Resultado: ((</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">) * </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">) - (</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">) ** </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1"> % </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1"> // </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">resultado</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resultado: ((10 + 3) * 2) - (10 / 3) ** 2 % 3 // 2 = 25.0
 </pre></div>
 </div>
 </div>
@@ -2052,40 +2059,6 @@ memory usage: 272.0+ bytes
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Nombre</th>
-      <th>Edad</th>
-      <th>Género</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>d</th>
-      <td>Juan</td>
-      <td>26</td>
-      <td>M</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="ejercicio">

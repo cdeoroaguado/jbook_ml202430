@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -58,6 +59,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_2';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Módulo 1: Introducción a la ciencia de datos con Python" href="modulo_1.html" />
@@ -376,7 +378,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-desde-diferentes-formatos"><strong>2.1 Importación y exportación de datos desde diferentes formatos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-numpy-y-pandas"><strong>Archivos planos con Numpy y Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos"><strong>Archivos planos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-numpy"><strong>Archivos planos con Numpy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-pandas"><strong>Archivos planos con Pandas</strong></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -395,8 +402,253 @@ document.write(`
 <p>El módulo también se centrará en el uso de librerías especializadas como NumPy y Pandas, que son esenciales para el análisis de datos en Python. Estas librerías ofrecen potentes funciones para la manipulación y el análisis de datos estructurados, permitiendo realizar operaciones avanzadas con facilidad y eficiencia.</p>
 <p>Además, aprenderemos a trabajar con secuencias de datos utilizando herramientas como <code class="docutils literal notranslate"><span class="pre">re</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code> e <code class="docutils literal notranslate"><span class="pre">itertools</span></code>, que son fundamentales para el procesamiento y análisis de cadenas de texto y otras secuencias de información. La habilidad para manipular secuencias es clave en tareas como la limpieza de datos y la preparación de datos para modelos de machine learning.</p>
 <p>Finalmente, exploraremos las bases de la visualización de datos para representar de manera gráfica los resultados del análisis, facilitando la interpretación y comunicación de los hallazgos. Este módulo también incluirá casos prácticos que permitirán a los participantes aplicar las técnicas aprendidas en escenarios reales, consolidando así los conceptos y habilidades adquiridos.</p>
-<section id="importacion-y-exportacion-de-datos-desde-diferentes-formatos">
-<h2><strong>2.1 Importación y exportación de datos desde diferentes formatos</strong><a class="headerlink" href="#importacion-y-exportacion-de-datos-desde-diferentes-formatos" title="Link to this heading">#</a></h2>
+<section id="archivos-planos-con-numpy-y-pandas">
+<h2><strong>Archivos planos con Numpy y Pandas</strong><a class="headerlink" href="#archivos-planos-con-numpy-y-pandas" title="Link to this heading">#</a></h2>
+<p>En esta sección aprenderás a importar datos a Python desde todo tipo de archivos planos, que son una forma sencilla y frecuente de almacenamiento de datos. Ya has aprendido a utilizar NumPy y Pandas: aprenderás a utilizar estos paquetes para importar archivos planos y personalizar tus importaciones.</p>
+<section id="archivos-planos">
+<h3><strong>Archivos planos</strong><a class="headerlink" href="#archivos-planos" title="Link to this heading">#</a></h3>
+<p>Los archivos de texto plano se pueden clasificar en dos grandes tipos:</p>
+<ol class="arabic simple">
+<li><p><strong>Archivos que contienen texto sin formato</strong> . Por ejemplo:</p></li>
+</ol>
+<p><img alt="no estructurado" src="_images/noestructurado.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Archivos que contienen registros estructurados</strong>. Un ejemplo es el conjunto de datos del Titanic</p></li>
+</ol>
+<p><img alt="estructurado" src="_images/estructurado.png" /></p>
+<p>En este archivo, cada columna representa una característica o rasgo, como el género, la cabina o si la persona sobrevivió, mientras que cada fila corresponde a una persona que estaba a bordo del Titanic.</p>
+<p>Es fundamental que cualquier científico de datos comprenda el concepto de <strong>archivo plano</strong>. Estos son archivos de texto simples que contienen datos organizados en tablas, pero sin relaciones estructuradas complejas.</p>
+<p>Es probable que hayas notado que la extensión del archivo es <code class="docutils literal notranslate"><span class="pre">.csv</span></code>. Tal vez te preguntes qué significa:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.csv</span></code> (Comma-Separated Values): Archivo en el que los valores están separados por comas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.txt</span></code>: Archivo de texto simple.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.tsv</span></code> (Tab-Separated Values): Archivo en el que los valores están separados por tabulaciones.</p></li>
+</ul>
+<p>Los valores en archivos planos pueden estar separados por diferentes caracteres, como comas o tabulaciones, conocidos como <strong>delimitadores</strong>. Estos delimitadores permiten organizar y estructurar los datos de manera sencilla y efectiva.</p>
+<p>Ahora, para consultar cualquier archivo de texto sin formato, que debemos hacer:</p>
+<ul class="simple">
+<li><p>Asignar el nombre del archivo a una variable como una cadena.</p></li>
+<li><p>Usamos la función básica <code class="docutils literal notranslate"><span class="pre">open</span></code> de Python para abrir una conexión al archivo y le pasamos el argumento <code class="docutils literal notranslate"><span class="pre">mode='r'</span></code>, lo que garantiza que solo podamos leerlo.</p></li>
+<li><p>Despues le asignamos el texto del archivo a una variable <code class="docutils literal notranslate"><span class="pre">text</span></code> aplicando el método <code class="docutils literal notranslate"><span class="pre">read</span></code> a la conexión al archivo.</p></li>
+<li><p>Después asegúrese de cerrar la conexión al archivo usando el comando <code class="docutils literal notranslate"><span class="pre">file.close</span></code>.</p></li>
+</ul>
+<p>Miremos un ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;_data/elprincipito.txt&#39;</span>
+<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># &#39;r&#39; es de lectura</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imprimir el texto</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="attention admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<ul class="simple">
+<li><p>Para abrir un archivo en modo de escritura, debes usar <code class="docutils literal notranslate"><span class="pre">mode='w'</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;_data/escritura.txt&#39;</span>
+<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>  <span class="c1"># &#39;w&#39; es para escritura</span>
+
+
+<span class="c1"># Escribir texto en el archivo</span>
+<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Era un pequeño príncipe que vivía en un planeta apenas más grande que él.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cerrar el archivo después de escribir</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Para verificar el contenido escrito en <code class="docutils literal notranslate"><span class="pre">escritura.txt</span></code>, primero debes abrir el archivo en modo de escritura como se muestra arriba. Luego, abre el archivo en modo de lectura para ver el contenido:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Abrir el archivo en modo lectura</span>
+<span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>  <span class="c1"># &#39;r&#39; es para lectura</span>
+
+<span class="c1"># Leer el contenido del archivo</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># Imprimir el contenido</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="c1"># Cerrar el archivo después de leer</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Puedes evitar tener que cerrar la conexión al archivo utilizando una declaración <code class="docutils literal notranslate"><span class="pre">with</span></code>. Esto le permite crear un contexto en el que puede ejecutar comandos con el archivo abierto. Una vez fuera de esta cláusula o contexto, el archivo ya no está abierto y, por esta razón, <code class="docutils literal notranslate"><span class="pre">with</span></code> se denomina <strong>administrador de contexto</strong>. Realmente asegura que el archivo se cierre correctamente, incluso si ocurre un error durante la escritura. Por ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;_data/elprincipito.txt&#39;</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicios</strong></p>
+<ol class="arabic simple">
+<li><p>Abre el archivo de texto <code class="docutils literal notranslate"><span class="pre">GabrielGarciaMarquez.txt</span></code> e imprimelo. Utiliza el administrador de contexto <code class="docutils literal notranslate"><span class="pre">with</span></code>.</p></li>
+<li><p>En el caso de archivos grandes, puede que no queramos imprimir todo su contenido en el shell: tal vez quieras imprimir sólo las primeras líneas. Use el archivo de texto <code class="docutils literal notranslate"><span class="pre">GabrielGarciaMarquez.txt</span></code> e imprima las 3 primeras líneas. <strong>Sugerencia</strong>: use el método <code class="docutils literal notranslate"><span class="pre">readline()</span></code>.</p></li>
+</ol>
+</div>
+</section>
+<section id="archivos-planos-con-numpy">
+<h3><strong>Archivos planos con Numpy</strong><a class="headerlink" href="#archivos-planos-con-numpy" title="Link to this heading">#</a></h3>
+<p>Ahora que sabes cómo usar la función incorporada <code class="docutils literal notranslate"><span class="pre">open</span></code> de Python para abrir archivos de texto, veamos cómo importar un archivo plano y asignarlo a una variable. Si todos los datos son numéricos, puedes usar el paquete NumPy para importarlos como una matriz NumPy. ¿Por qué querríamos hacer esto?</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características de las matrices NumPy</strong></p>
+<ol class="arabic">
+<li><p><strong>Eficiencia y velocidad</strong>:</p>
+<ul class="simple">
+<li><p>Las matrices NumPy son el estándar de Python para almacenar datos numéricos debido a su eficiencia y rapidez.</p></li>
+<li><p>Son ideales para manejar grandes volúmenes de datos de manera limpia y ordenada.</p></li>
+</ul>
+<figure class="align-center" id="imagen-de-numpy">
+<a class="reference internal image-reference" href="_images/NumPy.png"><img alt="_images/NumPy.png" src="_images/NumPy.png" style="width: 192.0px; height: 86.4px;" /></a>
+</figure>
+</li>
+<li><p><strong>Compatibilidad con otros paquetes</strong>:</p>
+<ul class="simple">
+<li><p>NumPy es esencial para muchos otros paquetes en Python, como <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, un popular paquete de aprendizaje automático.</p></li>
+</ul>
+<figure class="align-center" id="imagen-de-scikitlearn">
+<a class="reference internal image-reference" href="_images/scikitlearn.png"><img alt="_images/scikitlearn.png" src="_images/scikitlearn.png" style="width: 122.4px; height: 66.0px;" /></a>
+</figure>
+<ul class="simple">
+<li><p>Al trabajar con scikit-learn, es común que los datos estén en formato de matriz NumPy.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">NumPy</span></code> tiene varias funciones integradas que nos permiten importar datos como matrices de forma mucho más sencilla y eficiente. Aquí se encuentran las funciones <code class="docutils literal notranslate"><span class="pre">loadtxt</span></code> y <code class="docutils literal notranslate"><span class="pre">genfromtxt</span></code>.</p>
+<ol class="arabic simple">
+<li><p><strong>loadtxt</strong>: Importa datos de un archivo de texto como una matriz NumPy. Por ejemplo</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># dataset</span>
+<span class="c1"># mnist es una colección de dígitos manuscritos del 0 al 9</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;_data/mnist.csv&#39;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+<span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Algunos argumentos adicionales de <code class="docutils literal notranslate"><span class="pre">loadtxt</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">skiprows</span></code>: Si deseas omitir la primera fila (por ejemplo, un encabezado), puedes usar <code class="docutils literal notranslate"><span class="pre">skiprows=1</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;_data/babosa.txt&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">usecols</span></code>: Si solo quieres importar columnas específicas, usa <code class="docutils literal notranslate"><span class="pre">usecols</span></code> con una lista de los índices de las columnas.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;_data/50_Startups.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: Te ayuda a importar diferentes tipos de datos en matrices. <code class="docutils literal notranslate"><span class="pre">dtype=str</span></code> garantiza que todas las entradas se importen como cadenas</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;_data/50_Startups.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<p>Aunque <code class="docutils literal notranslate"><span class="pre">loadtxt</span></code> es útil para casos básicos. Si encuentra datos que no se pueden convertir al tipo especificado (por defecto, flotantes), generará un error, lo que puede detener el proceso de carga de datos.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>genfromtxt</strong>: Similar a <code class="docutils literal notranslate"><span class="pre">loadtxt</span></code>, pero más flexible para manejar datos mixtos. Además, cuando usamos <code class="docutils literal notranslate"><span class="pre">dtype=None</span></code> permite que NumPy adivine el tipo de datos para cada columna. Por ejemplo:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;_data/mnist.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicios</strong></p>
+<p>Del archivo <code class="docutils literal notranslate"><span class="pre">digitos.txt</span></code>, que tiene la primera fila con los nombres de las variables y está delimitado por tabulaciones. Importe solo las 3 primeras columnas del archivo plano. Imprime la primera fila</p>
+</div>
+</section>
+<section id="archivos-planos-con-pandas">
+<h3><strong>Archivos planos con Pandas</strong><a class="headerlink" href="#archivos-planos-con-pandas" title="Link to this heading">#</a></h3>
+<p>En la ciencia de datos, se requiere manejar <em>estructuras de datos etiquetadas bidimensionales con columnas de tipos potencialmente diferentes</em>, algo que las matrices <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> no pueden satisfacer completamente. Esta necesidad impulsó a <strong>Wes McKinney</strong> a desarrollar la biblioteca <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> para <code class="docutils literal notranslate"><span class="pre">Python</span></code>, que se ha convertido en una herramienta esencial para los científicos de datos.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> es una biblioteca de <code class="docutils literal notranslate"><span class="pre">Python</span></code> que permite llevar a cabo todo el flujo de trabajo de análisis de datos sin cambiar a otro lenguaje específico como <code class="docutils literal notranslate"><span class="pre">R</span></code>. La estructura de datos más relevante en <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> es el DataFrame, que es el análogo Pythonic del marco de datos en <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características claves de Pandas</strong></p>
+<ul class="simple">
+<li><p><strong>Importación de datos</strong>: <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> facilita la importación de archivos planos, bases de datos, archivos Excel, entre otros, como DataFrames.</p></li>
+<li><p><strong>Estructuras de datos etiquetadas</strong>: Los DataFrames permiten manipular y analizar datos con etiquetas en filas y columnas, lo que facilita el manejo de diferentes tipos de datos en un solo lugar.</p></li>
+<li><p><strong>Manipulación de datos</strong>: <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> ofrece funciones para cortar, remodelar, agrupar, unir y fusionar datos de manera eficiente.</p></li>
+<li><p><strong>Estadísticas y manejo de valores faltantes</strong>: Realiza cálculos estadísticos sin afectar los valores faltantes y proporciona herramientas para manejar series temporales.</p></li>
+</ul>
+</div>
+<p>Ahora importemos un archivo plano con <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Importar un archivo CSV como DataFrame</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;_data/winequality-red.csv&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># Ver las primeras 5 filas del DataFrame</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>También podemos convertir fácilmente el DataFrame en una matriz <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_array</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">data_array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> simplifica la manipulación y análisis de datos, permitiendo realizar operaciones complejas con un código conciso y legible.</p></li>
+<li><p>Es compatible con muchas fuentes de datos, lo que lo convierte en una herramienta versátil para diferentes flujos de trabajo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> tiene una comunidad activa y una documentación extensa, lo que facilita el aprendizaje y la resolución de problemas.</p></li>
+</ol>
+</div>
+<p>Para familiarizarte más con <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>, es recomendable experimentar importando archivos planos que presenten desafíos, como comentarios incrustados y cadenas que deben interpretarse como valores faltantes. Esto te permitirá dominar las herramientas de limpieza y preparación de datos que ofrece Pandas.</p>
+</section>
 </section>
 </section>
 
@@ -455,7 +707,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-desde-diferentes-formatos"><strong>2.1 Importación y exportación de datos desde diferentes formatos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-numpy-y-pandas"><strong>Archivos planos con Numpy y Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos"><strong>Archivos planos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-numpy"><strong>Archivos planos con Numpy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-pandas"><strong>Archivos planos con Pandas</strong></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
