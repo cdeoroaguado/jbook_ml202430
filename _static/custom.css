@@ -1,0 +1,12 @@
+body::after {
+    content: "DataInvest UniNorte";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 60px;
+    color: rgba(0, 0, 0, 0.1);  /* Color gris claro para la marca de agua */
+    z-index: -1;
+    pointer-events: none;
+    white-space: nowrap;
+}
