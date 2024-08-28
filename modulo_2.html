@@ -381,8 +381,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-numpy-y-pandas"><strong>Archivos planos con Numpy y Pandas</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos"><strong>Archivos planos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-numpy"><strong>Archivos planos con Numpy</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-pandas"><strong>Archivos planos con Pandas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-archivos-planos-con-numpy"><strong>Importación y exportación de archivos planos con Numpy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-archivos-planos-con-pandas"><strong>Importación y exportación de archivos planos con Pandas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-datos-de-otros-tipos-de-archivos"><strong>Importar datos de otros tipos de archivos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-serializados"><strong>Importación y exportación de datos serializados</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-en-excel"><strong>Importación y exportación de datos en Excel</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -502,8 +507,8 @@ document.write(`
 </ol>
 </div>
 </section>
-<section id="archivos-planos-con-numpy">
-<h3><strong>Archivos planos con Numpy</strong><a class="headerlink" href="#archivos-planos-con-numpy" title="Link to this heading">#</a></h3>
+<section id="importacion-y-exportacion-de-archivos-planos-con-numpy">
+<h3><strong>Importación y exportación de archivos planos con Numpy</strong><a class="headerlink" href="#importacion-y-exportacion-de-archivos-planos-con-numpy" title="Link to this heading">#</a></h3>
 <p>Ahora que sabes cómo usar la función incorporada <code class="docutils literal notranslate"><span class="pre">open</span></code> de Python para abrir archivos de texto, veamos cómo importar un archivo plano y asignarlo a una variable. Si todos los datos son numéricos, puedes usar el paquete NumPy para importarlos como una matriz NumPy. ¿Por qué querríamos hacer esto?</p>
 <div class="note admonition">
 <p class="admonition-title"><strong>Características de las matrices NumPy</strong></p>
@@ -602,9 +607,37 @@ document.write(`
 <p class="admonition-title"><strong>Ejercicios</strong></p>
 <p>Del archivo <code class="docutils literal notranslate"><span class="pre">digitos.txt</span></code>, que tiene la primera fila con los nombres de las variables y está delimitado por tabulaciones. Importe solo las 3 primeras columnas del archivo plano. Imprime la primera fila</p>
 </div>
+<p>Ahora, ara exportar archivos planos usando <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, puedes utilizar la función <code class="docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code>. Esta función es muy útil para guardar datos en un archivo de texto con un formato específico. Aquí te muestro un ejemplo básico:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una matriz NumPy</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+
+<span class="c1"># Guardar la matriz en un archivo de texto</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;_data/archivo.txt&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una breve explicación de los parámetros es la siguiente:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'archivo.txt'</span></code>: Nombre del archivo en el que se guardarán los datos.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: La matriz <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> que deseas guardar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fmt='%d'</span></code>: El formato en el que los datos se guardarán (en este caso, enteros). Puedes ajustar el formato según el tipo de datos que estás manejando (por ejemplo, %.2f para números de punto flotante con dos decimales).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delimiter=','</span></code>: El delimitador que separa los valores en el archivo. Aquí se usa una coma, pero puedes cambiarlo a otro carácter como un espacio <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> o un punto y coma <code class="docutils literal notranslate"><span class="pre">';'</span></code>.</p></li>
+</ul>
+<p>Si quieres agregar un encabezado al archivo, puedes hacerlo con el parámetro <code class="docutils literal notranslate"><span class="pre">header</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;_data/archivo.csv&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> 
+           <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;Columna1,Columna2,Columna3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="archivos-planos-con-pandas">
-<h3><strong>Archivos planos con Pandas</strong><a class="headerlink" href="#archivos-planos-con-pandas" title="Link to this heading">#</a></h3>
+<section id="importacion-y-exportacion-de-archivos-planos-con-pandas">
+<h3><strong>Importación y exportación de archivos planos con Pandas</strong><a class="headerlink" href="#importacion-y-exportacion-de-archivos-planos-con-pandas" title="Link to this heading">#</a></h3>
 <p>En la ciencia de datos, se requiere manejar <em>estructuras de datos etiquetadas bidimensionales con columnas de tipos potencialmente diferentes</em>, algo que las matrices <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> no pueden satisfacer completamente. Esta necesidad impulsó a <strong>Wes McKinney</strong> a desarrollar la biblioteca <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> para <code class="docutils literal notranslate"><span class="pre">Python</span></code>, que se ha convertido en una herramienta esencial para los científicos de datos.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> es una biblioteca de <code class="docutils literal notranslate"><span class="pre">Python</span></code> que permite llevar a cabo todo el flujo de trabajo de análisis de datos sin cambiar a otro lenguaje específico como <code class="docutils literal notranslate"><span class="pre">R</span></code>. La estructura de datos más relevante en <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> es el DataFrame, que es el análogo Pythonic del marco de datos en <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
 <div class="note admonition">
@@ -667,6 +700,315 @@ document.write(`
 
 <span class="c1"># Imprimir el tipo de dato de data_array en la consola</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">data_array</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Complete el código:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Asignar el nombre del archivo: file</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;titanic_corrupt.txt&#39;</span>
+
+<span class="c1"># Importar el archivo: data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">____</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">____</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="n">____</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las primeras filas del DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>donde</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sep=</span></code> es el delimitador que separa los campos en el archivo (en tu caso, debería ser <code class="docutils literal notranslate"><span class="pre">'\t'</span></code> o <code class="docutils literal notranslate"><span class="pre">','</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">comment=</span></code> especifica el carácter que indica el inicio de un comentario (en tu caso, debería ser <code class="docutils literal notranslate"><span class="pre">'#'</span></code> ).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">na_values=</span></code> define los valores que deben ser interpretados como valores faltantes (puedes usar `’NA’, 0 ‘NaN’ o ‘Nothing’).</p></li>
+</ul>
+</div>
+<p>Ahora, para exportar archivos planos usando <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, puedes utilizar la función <code class="docutils literal notranslate"><span class="pre">to_csv()</span></code> para guardar datos en formato CSV. Aquí te muestro cómo hacerlo para archivos CSV y otros formatos comunes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Columna1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="s1">&#39;Columna2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="s1">&#39;Columna3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Guardar el DataFrame en un archivo CSV</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;_data/archivo.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una breve explicación de los parámetros de <code class="docutils literal notranslate"><span class="pre">to_csv()</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'archivo.csv'</span></code>: Nombre del archivo CSV a generar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index=False</span></code>: Evita que se guarde la columna de índices del DataFrame en el archivo CSV.</p></li>
+</ul>
+<p>Puedes usar <code class="docutils literal notranslate"><span class="pre">to_csv()</span></code> con diferentes delimitadores para crear archivos de texto con otros formatos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;_data/archivo.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="importar-datos-de-otros-tipos-de-archivos">
+<h2><strong>Importar datos de otros tipos de archivos</strong><a class="headerlink" href="#importar-datos-de-otros-tipos-de-archivos" title="Link to this heading">#</a></h2>
+<p>Como científico de datos, es crucial saber cómo importar datos desde una variedad de tipos de archivo. En esta sección, exploraremos cómo importar datos en <code class="docutils literal notranslate"><span class="pre">Python</span></code> desde varios formatos importantes. Cubriremos:</p>
+<ul class="simple">
+<li><p><strong>Archivos serializados (Pickle)</strong>: Usados para almacenar datos de manera eficiente en <code class="docutils literal notranslate"><span class="pre">Python</span></code>. El concepto de serializados (Pickle)  un archivo está motivado por lo siguiente: si bien puede ser fácil guardar una matriz <code class="docutils literal notranslate"><span class="pre">numpy</span></code> o un <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> de <code class="docutils literal notranslate"><span class="pre">pandas</span></code> en un archivo plano, hay muchos otros tipos de datos, como diccionarios y listas, para los cuales no es obvio cómo almacenarlos.</p></li>
+<li><p><strong>Hojas de Cálculo Excel</strong>: Permiten integrar datos de análisis de hojas de cálculo comunes.</p></li>
+<li><p><strong>Archivos SAS y Stata</strong>: Formatoss utilizados en software de estadística y análisis de datos.</p></li>
+<li><p><strong>Archivos HDF5</strong>: Diseñados para manejar grandes volúmenes de datos numéricos, ideales para almacenamiento y acceso eficiente.</p></li>
+<li><p><strong>Archivos MATLAB</strong>: Utilizados en entornos de <code class="docutils literal notranslate"><span class="pre">MATLAB</span></code> para almacenar datos y variables.</p></li>
+</ul>
+<p>Aprenderás a manejar estos formatos para que puedas trabajar con una amplia gama de datos en tus proyectos de ciencia de datos.</p>
+<section id="importacion-y-exportacion-de-datos-serializados">
+<h3><strong>Importación y exportación de datos serializados</strong><a class="headerlink" href="#importacion-y-exportacion-de-datos-serializados" title="Link to this heading">#</a></h3>
+<p>Los <strong>datos serializados</strong> es el proceso de convertir los datos que han sido convertidos de su formato original (por ejemplo, un diccionario, una lista, un objeto de clase, etc.) a una secuencia de bytes. Este proceso se llama <strong>serialización</strong> o <strong>marshalling</strong>. La serialización permite que estos datos se almacenen en un archivo, se envíen a través de una red o se transmitan entre diferentes partes de un programa de manera eficiente. En <code class="docutils literal notranslate"><span class="pre">Python</span></code>, la serialización es manejada por el módulo <code class="docutils literal notranslate"><span class="pre">pickle</span></code>.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">¿Por qué serializar datos?</p>
+<ol class="arabic simple">
+<li><p><strong>Almacenamiento</strong> : Puedes guardar un objeto complejo (como un diccionario o un árbol binario) en un archivo y cargarlo más tarde sin perder su estructura.</p></li>
+<li><p><strong>Comunicación entre procesos</strong>: Los datos serializados pueden enviarse entre diferentes procesos de un programa o entre programas diferentes (por ejemplo, entre un cliente y un servidor en una aplicación web).</p></li>
+<li><p><strong>Persistencia de objetos</strong>: Los datos serializados permiten almacenar el estado de un objeto, de modo que pueda ser restaurado más tarde y seguir funcionando donde se dejó.</p></li>
+</ol>
+</div>
+<p>Por ejemplo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;_data/data_fruta.pkl&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-caracteristicas-de-un-archivo-pkl admonition">
+<p class="admonition-title"><strong>Características de un archivo <code class="docutils literal notranslate"><span class="pre">.pkl</span></code></strong>:</p>
+<p>Algunas característica son:</p>
+<ul class="simple">
+<li><p>Almacena una representación binaria de los objetos, lo que significa que el contenido del archivo no es legible por humanos. Solo se puede interpretar correctamente mediante deserialización utilizando <code class="docutils literal notranslate"><span class="pre">pickle</span></code> u otras herramientas compatibles con el formato.</p></li>
+<li><p>Es ideal para guardar estructuras de datos complejas, como diccionarios, listas, o incluso objetos personalizados en Python. Estos datos pueden ser restaurados más tarde a su estado original, lo que permite la persistencia de información entre sesiones de programación.</p></li>
+<li><p>Casi cualquier objeto de <code class="docutils literal notranslate"><span class="pre">Python</span></code> puede ser serializado a un archivo <code class="docutils literal notranslate"><span class="pre">.pkl</span></code>, incluyendo funciones y clases, lo que lo hace muy versátil.</p></li>
+</ul>
+</div>
+<p>Ahora, exportemos los datos a un archivo <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> usando <code class="docutils literal notranslate"><span class="pre">pickle</span></code> en <code class="docutils literal notranslate"><span class="pre">Python</span></code>, que es útil para serializar objetos de Python (como listas, diccionarios, o DataFrames). Aquí te muestro cómo hacerlo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un objeto (por ejemplo, un diccionario)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="c1"># Guardar el objeto en un archivo pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;_data/archivo.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="danger admonition">
+<p class="admonition-title"><strong>Consideraciones</strong></p>
+<p>1 <strong>No cargues archivos <code class="docutils literal notranslate"><span class="pre">pickle</span></code> de fuentes no confiables</strong>, ya que pueden ejecutar código malicioso durante la deserialización.</p>
+<ol class="arabic simple" start="2">
+<li><p>Archivos <code class="docutils literal notranslate"><span class="pre">pickle</span></code> son <strong>específicos de <code class="docutils literal notranslate"><span class="pre">Python</span></code></strong>, por lo que no se pueden leer fácilmente en otros lenguajes de programación sin soporte para <code class="docutils literal notranslate"><span class="pre">pickle</span></code>.</p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicios</strong></p>
+<ol class="arabic simple">
+<li><p>Complete el código:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar el paquete pickle </span>
+<span class="c1"># TU CÓDIGO</span>
+
+<span class="c1"># Abre el archivo pickle y carga los datos llamados data: d</span>
+<span class="c1"># TU CÓDIGO</span>
+
+<span class="c1"># Imprime y el tipo de dato de d</span>
+<span class="c1"># TU CÓDIGO</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="importacion-y-exportacion-de-datos-en-excel">
+<h3><strong>Importación y exportación de datos en Excel</strong><a class="headerlink" href="#importacion-y-exportacion-de-datos-en-excel" title="Link to this heading">#</a></h3>
+<p>Las hojas de cálculo de Excel son una herramienta universalmente conocida y ampliamente utilizada, especialmente en el ámbito del análisis de datos. Un archivo de Excel generalmente contiene múltiples hojas de cálculo, cada una de las cuales puede almacenar diferentes conjuntos de datos relacionados o independientes. En el contexto de la ciencia de datos, el manejo eficiente de estos archivos es fundamental, y la biblioteca <code class="docutils literal notranslate"><span class="pre">pandas</span></code> de <code class="docutils literal notranslate"><span class="pre">Python</span></code> se destaca como una herramienta poderosa para este propósito.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> permite importar archivos de Excel de manera sencilla y convertir sus hojas de cálculo en DataFrames, que son estructuras de datos optimizadas para el análisis y la manipulación de datos. La conversión de las hojas de Excel a DataFrames facilita enormemente el trabajo con los datos, ya que pandas proporciona una amplia gama de funciones para exploración, transformación y análisis.</p>
+<p>Para comenzar, se puede utilizar la función <code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code> de pandas para cargar un archivo de Excel en una variable, generalmente llamada data o algún nombre descriptivo. Este objeto <code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code> actúa como un contenedor del archivo de Excel, permitiendo el acceso a sus diferentes hojas sin necesidad de cargarlas todas en la memoria al mismo tiempo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Especifica el nombre del archivo de Excel</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;_data/urbanpop.xlsx&#39;</span> 
+
+<span class="c1"># Carga el archivo de Excel en un objeto ExcelFile</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="c1"># Imprime la lista de nombres de las hojas en el archivo</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">sheet_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1960-1966&#39;, &#39;1967-1974&#39;, &#39;1975-2011&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esto indica que el archivo contiene tres hojas de cálculo, cada una correspondiente a un rango de años diferente.</p>
+<p>Una vez que conoces los nombres de las hojas, puedes cargar cualquier hoja en particular como un DataFrame para empezar a analizar los datos. Para hacer esto, utilizas el método <code class="docutils literal notranslate"><span class="pre">parse</span></code> del objeto <code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code>. Este método acepta un argumento, que puede ser el nombre de la hoja como una cadena o su índice como un número entero (no como un <code class="docutils literal notranslate"><span class="pre">float</span></code>, ya que Python no acepta índices de hojas en forma de floats).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar una hoja usando su nombre</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;1960-1966&#39;</span><span class="p">)</span> 
+
+<span class="c1"># Cargar una hoja usando su índice (comienza en 0)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  
+
+<span class="c1"># imprimir las primeras filas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> es lo suficientemente inteligente para interpretar si le estás proporcionando un nombre de hoja o un índice, por lo que puedes utilizar cualquiera de los dos métodos según tu preferencia.</p>
+<p>El método <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> de <code class="docutils literal notranslate"><span class="pre">pandas</span></code> es una función muy útil y versátil para leer archivos de Excel directamente en un DataFrame. A diferencia de <code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code> y <code class="docutils literal notranslate"><span class="pre">parse()</span></code>, que se usan en conjunto cuando necesitas trabajar con múltiples hojas de un archivo de Excel, <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> es una función de uso directo que simplifica la lectura de una o más hojas de cálculo.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">¿Cuándo usar <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code>?</p>
+<ol class="arabic simple">
+<li><p><strong>Lectura directa de una hoja de Excel</strong>: Si solo necesitas cargar una hoja específica de un archivo Excel sin necesidad de explorar todas las hojas primero, <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> es la mejor opción.</p></li>
+<li><p><strong>Lectura de múltiples hojas</strong>: Puedes leer varias hojas al mismo tiempo especificando una lista de nombres o índices de hojas.</p></li>
+<li><p><strong>Simplicidad</strong>: <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> es más directa y menos verbosa que el uso combinado de <code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code> y <code class="docutils literal notranslate"><span class="pre">parse()</span></code>.</p></li>
+</ol>
+</div>
+<p>Algunos ejemplos del uso de la función <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code></p>
+<ol class="arabic simple">
+<li><p><strong>Leer una sola hoja de cálculo</strong>: Si sabes el nombre de la hoja que necesitas, puedes leerla directamente en un DataFrame:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lee la hoja &#39;1960–1966&#39; del archivo Excel y la carga en un DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;1960–1966&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>O si prefieres usar el índice de la hoja:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lee la primera hoja (índice 0) del archivo Excel</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Leer múltiples hojas al mismo tiempo</strong>: Si necesitas cargar varias hojas de un archivo de Excel, <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> puede hacerlo en una sola llamada y devolver un diccionario donde las llaves son los nombres de las hojas y los valores son los DataFrames correspondientes.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lee las hojas &#39;1960–1966&#39; y &#39;1975–2011&#39; del archivo Excel</span>
+<span class="n">sheets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1960–1966&#39;</span><span class="p">,</span> <span class="s1">&#39;1975–2011&#39;</span><span class="p">])</span>
+
+<span class="c1"># Accede a cada DataFrame por el nombre de la hoja</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">sheets</span><span class="p">[</span><span class="s1">&#39;1960–1966&#39;</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">sheets</span><span class="p">[</span><span class="s1">&#39;1975–2011&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Leer todas las hojas de un archivo de Excel</strong>: Si quieres leer todas las hojas del archivo de Excel sin tener que especificar sus nombres, puedes hacerlo pasando <code class="docutils literal notranslate"><span class="pre">None</span></code> al argumento <code class="docutils literal notranslate"><span class="pre">sheet_name</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lee todas las hojas del archivo Excel</span>
+<span class="n">all_sheets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> es ideal para situaciones en las que necesitas una solución rápida y directa para leer archivos de Excel en <code class="docutils literal notranslate"><span class="pre">Python</span></code>. Su simplicidad lo hace la primera opción para la mayoría de los casos de uso, mientras que <code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code> y <code class="docutils literal notranslate"><span class="pre">parse()</span></code> ofrecen más flexibilidad para tareas más complejas.</p>
+<p>Ahora, para exportar datos a un archivo Excel usando pandas, puedes utilizar el método <code class="docutils literal notranslate"><span class="pre">to_excel()</span></code> del DataFrame. Aquí te muestro cómo hacerlo, con opciones para personalizar la exportación. Por ejemplo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Columna1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="s1">&#39;Columna2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+    <span class="s1">&#39;Columna3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Guardar el DataFrame en un archivo Excel</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;_data/archivo_nuevo.xlsx&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si quieres exportar a múltiples hojas de un archivo excel, puedes guardar diferentes DataFrames en diferentes hojas del mismo archivo Excel usando un <code class="docutils literal notranslate"><span class="pre">ExcelWriter</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s1">&#39;_data/archivo_multihojas.xlsx&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]})</span>
+    
+    <span class="c1"># Guardar DataFrames en hojas diferentes</span>
+    <span class="n">df1</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Hoja1&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">df2</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Hoja2&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicios</strong></p>
+<ol class="arabic simple">
+<li><p>Complete el código:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Asigna el nombre del archivo de excel battledeath: file</span>
+<span class="c1"># TU CÓDIGO</span>
+
+<span class="c1"># Cargar hoja de cálculo: xls</span>
+<span class="c1"># TU CÓDIGO</span>
+
+<span class="c1"># Imprimir nombres de hojas</span>
+<span class="c1"># TU CÓDIGO</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Usando el punto anterior: Complete</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar una hoja en un DataFrame por nombre: df1</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las primeras filas del DataFrame df1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">)</span>
+
+<span class="c1"># Cargar una hoja en un DataFrame por índice: df2</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las primeras filas del DataFrame df2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Usando el punto anterior. Complete en código en python. Sugerencia: Los valores pasados a <code class="docutils literal notranslate"><span class="pre">skiprows</span></code> y names deben ser todos del tipo <code class="docutils literal notranslate"><span class="pre">list</span></code></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analizar la primera hoja y renombrar las columnas: df1</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las primeras filas del DataFrame df1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Analizar la primera columna de la segunda hoja y renombrar la columna: df2</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">xls</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">__TU</span> <span class="n">CÓDIGO__</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las primeras filas del DataFrame df2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
 </pre></div>
 </div>
@@ -732,8 +1074,13 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-numpy-y-pandas"><strong>Archivos planos con Numpy y Pandas</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos"><strong>Archivos planos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-numpy"><strong>Archivos planos con Numpy</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archivos-planos-con-pandas"><strong>Archivos planos con Pandas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-archivos-planos-con-numpy"><strong>Importación y exportación de archivos planos con Numpy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-archivos-planos-con-pandas"><strong>Importación y exportación de archivos planos con Pandas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-datos-de-otros-tipos-de-archivos"><strong>Importar datos de otros tipos de archivos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-serializados"><strong>Importación y exportación de datos serializados</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-en-excel"><strong>Importación y exportación de datos en Excel</strong></a></li>
 </ul>
 </li>
 </ul>
