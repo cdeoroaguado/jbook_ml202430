@@ -390,6 +390,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-en-excel"><strong>Importación y exportación de datos en Excel</strong></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas-y-stata-usando-pandas"><strong>Importación de Archivos SAS y Stata usando Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas"><strong>Importación de Archivos SAS</strong>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-stata"><strong>Importación de Archivos Stata</strong>.</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -607,7 +612,7 @@ document.write(`
 <p class="admonition-title"><strong>Ejercicios</strong></p>
 <p>Del archivo <code class="docutils literal notranslate"><span class="pre">digitos.txt</span></code>, que tiene la primera fila con los nombres de las variables y está delimitado por tabulaciones. Importe solo las 3 primeras columnas del archivo plano. Imprime la primera fila</p>
 </div>
-<p>Ahora, ara exportar archivos planos usando <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, puedes utilizar la función <code class="docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code>. Esta función es muy útil para guardar datos en un archivo de texto con un formato específico. Aquí te muestro un ejemplo básico:</p>
+<p>Ahora, para exportar archivos planos usando <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>, puedes utilizar la función <code class="docutils literal notranslate"><span class="pre">numpy.savetxt()</span></code>. Esta función es muy útil para guardar datos en un archivo de texto con un formato específico. Aquí te muestro un ejemplo básico:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una matriz NumPy</span>
@@ -761,8 +766,6 @@ document.write(`
 <li><p><strong>Archivos serializados (Pickle)</strong>: Usados para almacenar datos de manera eficiente en <code class="docutils literal notranslate"><span class="pre">Python</span></code>. El concepto de serializados (Pickle)  un archivo está motivado por lo siguiente: si bien puede ser fácil guardar una matriz <code class="docutils literal notranslate"><span class="pre">numpy</span></code> o un <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> de <code class="docutils literal notranslate"><span class="pre">pandas</span></code> en un archivo plano, hay muchos otros tipos de datos, como diccionarios y listas, para los cuales no es obvio cómo almacenarlos.</p></li>
 <li><p><strong>Hojas de Cálculo Excel</strong>: Permiten integrar datos de análisis de hojas de cálculo comunes.</p></li>
 <li><p><strong>Archivos SAS y Stata</strong>: Formatoss utilizados en software de estadística y análisis de datos.</p></li>
-<li><p><strong>Archivos HDF5</strong>: Diseñados para manejar grandes volúmenes de datos numéricos, ideales para almacenamiento y acceso eficiente.</p></li>
-<li><p><strong>Archivos MATLAB</strong>: Utilizados en entornos de <code class="docutils literal notranslate"><span class="pre">MATLAB</span></code> para almacenar datos y variables.</p></li>
 </ul>
 <p>Aprenderás a manejar estos formatos para que puedas trabajar con una amplia gama de datos en tus proyectos de ciencia de datos.</p>
 <section id="importacion-y-exportacion-de-datos-serializados">
@@ -1015,6 +1018,136 @@ document.write(`
 </div>
 </section>
 </section>
+<section id="importacion-de-archivos-sas-y-stata-usando-pandas">
+<h2><strong>Importación de Archivos SAS y Stata usando Pandas</strong><a class="headerlink" href="#importacion-de-archivos-sas-y-stata-usando-pandas" title="Link to this heading">#</a></h2>
+<p>Hay una amplia variedad de paquetes de software estadístico disponibles, y aunque no siempre necesites utilizarlos, como científico de datos es fundamental que puedas importar archivos de estos paquetes a tu entorno Python de manera efectiva. Esta habilidad te permitirá integrar y analizar datos de diversas fuentes, ampliando tu capacidad para realizar análisis más completos y profundos.</p>
+<section id="importacion-de-archivos-sas">
+<h3><strong>Importación de Archivos SAS</strong>.<a class="headerlink" href="#importacion-de-archivos-sas" title="Link to this heading">#</a></h3>
+<p><strong>SAS</strong>: Acrónimo de <em>Statistical Analysis System</em> (Sistema de Análisis Estadístico). Es un software popular en análisis de negocios y bioestadística. Los archivos SAS son formatos utilizados en el software SAS para realizar análisis avanzados, multivariados, inteligencia empresarial, gestión de datos, análisis predictivos y es un estándar para que los estadísticos realicen análisis computacionales. La extensión común es <code class="docutils literal notranslate"><span class="pre">.sas7bdat</span></code> que sirve para archivos de conjunto de datos.</p>
+<p>Miremos un ejemplo de la importación de estos archivos:</p>
+<p>Antes de usar el paquete <code class="docutils literal notranslate"><span class="pre">sas7bdat</span></code>, se debe instalar con <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sas7bdat</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># Importa la clase SAS7BDAT del paquete sas7bdat</span>
+<span class="kn">from</span> <span class="nn">sas7bdat</span> <span class="kn">import</span> <span class="n">SAS7BDAT</span> 
+
+<span class="c1"># Abre el archivo SAS usando un administrador de contexto</span>
+<span class="k">with</span> <span class="n">SAS7BDAT</span><span class="p">(</span><span class="s1">&#39;_data/sales.sas7bdat&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">df_sas</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">to_data_frame</span><span class="p">()</span>
+
+<span class="c1"># imprimir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">¿Por qué mportar archivos SAS:?</p>
+<p>SAS es un estándar en la industria para el análisis estadístico, especialmente en sectores como la bioestadística y análisis de negocios, por lo que la habilidad de importar y manejar estos archivos en Python es esencial para científicos de datos.</p>
+</div>
+<p>Para exportar directamente a <code class="docutils literal notranslate"><span class="pre">.sas7bdat</span></code>, <em>tendrás que usar herramientas externas o software como SAS</em> . Alternativamente, podrías buscar librerías específicas para manejar archivos SAS en lugar de intentar escribir directamente en ese formato desde pandas.</p>
+</section>
+<section id="importacion-de-archivos-stata">
+<h3><strong>Importación de Archivos Stata</strong>.<a class="headerlink" href="#importacion-de-archivos-stata" title="Link to this heading">#</a></h3>
+<p><strong>Stata</strong>: Un software de análisis estadístico y gestión de datos, especialmente valorado en investigación académica, incluyendo economía y epidemiología. Su área de uso es predominantemente utilizado en ciencias sociales y en investigación académica.</p>
+<p>Los archivos Stata tienen la extensión <code class="docutils literal notranslate"><span class="pre">.dta</span></code> y podemos importarlos usando <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. ¡Ni siquiera necesitamos inicializar un administrador de contexto en este caso! Simplemente pasamos el nombre del archivo a la función <code class="docutils literal notranslate"><span class="pre">read_stata</span></code> y lo asignamos a una variable, tal como se muestra a continuación:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leer el archivo Stata</span>
+<span class="n">df_stata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="s1">&#39;_data/disarea.dta&#39;</span><span class="p">)</span>
+<span class="n">df_stata</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora, para exportar archivos Stata (<code class="docutils literal notranslate"><span class="pre">.dta</span></code>) desde Python, puedes usar la biblioteca <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, que tiene soporte nativo para leer y escribir archivos en formato Stata.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un DataFrame de ejemplo</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;columna1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s1">&#39;columna2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Especifica el nombre del archivo de salida</span>
+<span class="n">archivo_stata</span> <span class="o">=</span> <span class="s1">&#39;_data/datos_exportados.dta&#39;</span>
+
+<span class="c1"># Exporta el DataFrame a un archivo Stata (.dta)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_stata</span><span class="p">(</span><span class="n">archivo_stata</span><span class="p">,</span> <span class="n">write_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este método te permite exportar tus datos desde un DataFrame de <code class="docutils literal notranslate"><span class="pre">pandas</span></code> a un archivo Stata (<code class="docutils literal notranslate"><span class="pre">.dta</span></code>) de manera sencilla y efectiva.</p>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicios</strong></p>
+<ol class="arabic simple">
+<li><p>Instala el paquete <code class="docutils literal notranslate"><span class="pre">h5py</span></code> y completa el código</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar paquetes de numpy y h5py</span>
+<span class="c1"># TU CODIGO</span>
+
+<span class="c1"># Asigna el nombre del archivo a la variable file y use L-L1_LOSC_4_V1-1126259446-32</span>
+<span class="c1"># TU CODIGO</span>
+
+<span class="c1"># Carga el archivo como sólo lectura en la variable data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">__</span><span class="c1"># TU CODIGO__, __# TU CODIGO__)</span>
+
+<span class="c1"># Imprime el tipo de dato de data</span>
+<span class="c1"># TU CODIGO</span>
+
+<span class="c1"># Imprime los nombres o claves grpde los grupos en el archivo</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">__</span><span class="c1"># TU CODIGO__:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">__</span><span class="c1"># TU CODIGO__)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Instale el paquete <code class="docutils literal notranslate"><span class="pre">sqlalchemy</span></code> y complete el siguiente código</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crea el engine</span>
+<span class="c1"># Importa la función create_engine, inspect del módulo sqlalchemy</span>
+<span class="c1"># TU CODIGO</span>
+
+<span class="c1"># un motor que se conecte a la base de datos SQLite</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///_data/Chinook.sqlite&#39;</span><span class="p">)</span>
+
+<span class="c1"># Usa el Inspector para obtener los nombres de las tablas</span>
+<span class="n">inspector</span> <span class="o">=</span> <span class="c1"># TU CODIGO</span>
+<span class="n">table_names</span> <span class="o">=</span> <span class="n">inspector</span><span class="o">.</span><span class="n">get_table_names</span><span class="p">()</span>
+
+<span class="c1"># Imprime los nombres de las tablas</span>
+<span class="c1"># TU CODIGO</span>
+</pre></div>
+</div>
+<p>Despues, veamos cómo hacer cada uno de estos pasos para obtener un DataFrame</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">text</span>
+
+<span class="c1"># Abre la conexión al engine</span>
+<span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+    <span class="c1"># Ejecutar la consulta usando text()</span>
+    <span class="n">rs</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM Album&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Convertir el resultado en un DataFrame de pandas</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+
+    <span class="c1"># Asignar los nombres de las columnas</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="c1"># Mostrar el DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Conectarse a los datos de album es más facil con <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecutar la consulta y almacenar los registros en un DataFrame: df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM Album&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+
+<span class="c1"># Imprimir las primeras filas del DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1081,6 +1214,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-datos-de-otros-tipos-de-archivos"><strong>Importar datos de otros tipos de archivos</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-serializados"><strong>Importación y exportación de datos serializados</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-en-excel"><strong>Importación y exportación de datos en Excel</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas-y-stata-usando-pandas"><strong>Importación de Archivos SAS y Stata usando Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas"><strong>Importación de Archivos SAS</strong>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-stata"><strong>Importación de Archivos Stata</strong>.</a></li>
 </ul>
 </li>
 </ul>
