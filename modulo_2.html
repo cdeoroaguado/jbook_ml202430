@@ -396,6 +396,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-ficheros-planos-desde-la-web"><strong>Importación de ficheros planos desde la web</strong></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos-con-pandas"><strong>Manipulación de datos con pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series"><strong>Series</strong></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -1151,11 +1155,12 @@ document.write(`
 <section id="importacion-de-ficheros-planos-desde-la-web">
 <h3><strong>Importación de ficheros planos desde la web</strong><a class="headerlink" href="#importacion-de-ficheros-planos-desde-la-web" title="Link to this heading">#</a></h3>
 <p>Ahora puedes importar datos en Python desde todo tipo de archivos planos como <code class="docutils literal notranslate"><span class="pre">.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">.csv</span></code>, otros tipos de archivos como archivos <code class="docutils literal notranslate"><span class="pre">pickled</span></code>, hojas de cálculo de Excel y archivos SAS y Stata. También has adquirido una valiosa experiencia en la consulta de bases de datos relacionales para importar datos de ellas mediante SQL. Sin embargo, <em>todas estas habilidades implican la importación de datos de archivos que tiene localmente</em>. Sin embargo, estas habilidades usualmente implican trabajar con archivos locales. En muchos casos, como científico de datos, necesitarás <strong>importar datos directamente desde la web</strong>.</p>
-<p>Por ejemplo, supongamos que necesitas obtener el conjunto de datos de calidad del vino desde el repositorio de GitHub de cdeoroaguado. Aunque puedes hacerlo manualmente usando un navegador, este método no es reproducible ni escalable. Es más eficiente y profesional utilizar código Python para automatizar la descarga e importación de estos datos.</p>
+<p>Por ejemplo, supongamos que necesitas obtener el conjunto de datos de unas campañas de marketing directo (llamadas telefónicas) de una institución bancaria portuguesa desde el repositorio de GitHub de cdeoroaguado. Aunque puedes hacerlo manualmente usando un navegador, este método no es reproducible ni escalable. Es más eficiente y profesional utilizar código Python para automatizar la descarga e importación de estos datos.</p>
 <p>Para hacer el proceso de importación desde la Web debemos tener algunos conceptos claros.</p>
 <p>El paquete <code class="docutils literal notranslate"><span class="pre">urllib</span></code> en Python proporciona una interfaz de alto nivel para obtener datos de la World Wide Web. En particular, la función <code class="docutils literal notranslate"><span class="pre">urlopen</span></code> es similar a la función integrada <code class="docutils literal notranslate"><span class="pre">open</span></code>, pero acepta URLs en lugar de nombres de archivo.</p>
 <div class="admonition-caracteristicas-de-urllib admonition">
 <p class="admonition-title"><strong>Características de <code class="docutils literal notranslate"><span class="pre">urllib</span></code></strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">urllib</span></code> tiene algunas funciones inmersas. Algunas son:</p>
 <ul class="simple">
 <li><p><strong>urlopen</strong>: Abre una URL y devuelve un objeto similar a un archivo.</p></li>
 <li><p><strong>urlretrieve</strong>: Descarga archivos directamente desde una URL y los guarda localmente.</p></li>
@@ -1177,42 +1182,349 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="c1"># Asignar la URL del archivo: url</span>
-<span class="n">url</span> <span class="o">=</span><span class="s1">&#39;https://raw.githubusercontent.com/cdeoroaguado/jbook_ml202430/main/data/winequality-red.csv&#39;</span>
+<span class="n">url</span> <span class="o">=</span><span class="s1">&#39;https://raw.githubusercontent.com/cdeoroaguado/jbook_ml202430/main/data/bank/bank.csv&#39;</span>
 
 <span class="c1"># Guardar el archivo localmente</span>
-<span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="s1">&#39;_data/winequality-red.csv&#39;</span><span class="p">)</span>
+<span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="s1">&#39;_data/bank.csv&#39;</span><span class="p">)</span>
 
 <span class="c1"># Leer el archivo en un DataFrame y mostrar sus primeras filas</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/winequality-red.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   fixed acidity  volatile acidity  citric acid  residual sugar  chlorides  \
-0            7.4              0.70         0.00             1.9      0.076   
-1            7.8              0.88         0.00             2.6      0.098   
-2            7.8              0.76         0.04             2.3      0.092   
-3           11.2              0.28         0.56             1.9      0.075   
-4            7.4              0.70         0.00             1.9      0.076   
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/bank.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
 
-   free sulfur dioxide  total sulfur dioxide  density    pH  sulphates  \
-0                 11.0                  34.0   0.9978  3.51       0.56   
-1                 25.0                  67.0   0.9968  3.20       0.68   
-2                 15.0                  54.0   0.9970  3.26       0.65   
-3                 17.0                  60.0   0.9980  3.16       0.58   
-4                 11.0                  34.0   0.9978  3.51       0.56   
-
-   alcohol  quality  
-0      9.4        5  
-1      9.8        5  
-2      9.8        5  
-3      9.8        6  
-4      9.4        5  
+<span class="c1"># Imprimir el encabezado del dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Tambíen, podias hacer la lectura de los datos, <em>sin descargalos</em>. Por ejemplo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Asignar la URL del archivo: url</span>
+<span class="n">url</span> <span class="o">=</span><span class="s1">&#39;https://raw.githubusercontent.com/cdeoroaguado/jbook_ml202430/main/data/bank/bank.csv&#39;</span>
+
+<span class="c1"># leer el archivo en u dataframe:df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Imprimir el encabezado del dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="manipulacion-de-datos-con-pandas">
+<h2><strong>Manipulación de datos con pandas</strong><a class="headerlink" href="#manipulacion-de-datos-con-pandas" title="Link to this heading">#</a></h2>
+<p>La librería <code class="docutils literal notranslate"><span class="pre">pandas</span></code> (cuyo nombre deriva de <em>panel data</em>, un término utilizado para describir conjuntos de datos estructurados y multidimensionales) ofrece potentes estructuras de datos y funciones de alto nivel que facilitan el trabajo con datos estructurados de manera eficiente y cómoda. Es una herramienta esencial en el análisis de datos, ampliamente utilizada por su versatilidad y funcionalidad.</p>
+<figure class="align-center" id="imagen-de-pandas">
+<a class="reference internal image-reference" href="_images/pandas.png"><img alt="_images/pandas.png" src="_images/pandas.png" style="width: 176.5px; height: 71.5px;" /></a>
+</figure>
+<p>Entre los principales objetos que proporciona pandas se encuentran el <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, una estructura tabular bidimensional, la <code class="docutils literal notranslate"><span class="pre">Serie</span></code>, ambos construidos sobre arrays multidimensionales de <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> y el <code class="docutils literal notranslate"><span class="pre">Panel</span></code>, que representa un cubo de datos tridimensional. Aunque <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> es excelente para el almacenamiento eficiente de datos con su estructura `ndarray, presenta ciertas limitaciones en análisis más complejos. Estas limitaciones incluyen la falta de flexibilidad para aplicar etiquetas a los datos, gestionar valores faltantes, realizar agrupaciones, entre otros. Pandas supera estas barreras con sus estructuras de datos avanzadas, proporcionando una mayor flexibilidad y funcionalidad.</p>
+<p>Para más información, puedes consultar la <a class="reference external" href="https://pandas.pydata.org/">documentación oficial de pandas</a>, donde encontrarás recursos y ejemplos detallados para aprovechar al máximo esta poderosa librería.</p>
+<p><strong>Recordemos algunas cosas de <code class="docutils literal notranslate"><span class="pre">pandas</span></code></strong></p>
+<p>Para iniciar el proceso de creación, manipulación, entre otras debemos instalar el ia en el terminal. <strong>Recuerde activar el ambiente</strong>.</p>
+<p><img alt="installpandas" src="_images/installpandas.png" /></p>
+<p>Importemos la libreria <code class="docutils literal notranslate"><span class="pre">numpy</span></code> y <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora, daremos los conceptos y ejemplos de una <code class="docutils literal notranslate"><span class="pre">series</span></code>.</p>
+<section id="series">
+<h3><strong>Series</strong><a class="headerlink" href="#series" title="Link to this heading">#</a></h3>
+<p>Las <code class="docutils literal notranslate"><span class="pre">series</span></code> son estructuras similares a los arrays unidimensionales que ya hemos visto, con la diferencia de que también son homogéneas. Esto significa que todos sus elementos deben ser del mismo tipo y que su tamaño es fijo, es decir, no se puede modificar una vez definido.</p>
+<p>Vamos a comenzar creando una serie a partir de una lista. Primero, necesitamos definir una lista con algunos datos. Por ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definimos una lista de trabajos</span>
+<span class="n">trabajos</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ingeniero de Software&quot;</span><span class="p">,</span> <span class="s2">&quot;Analista de Datos&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Diseñador UX&quot;</span><span class="p">,</span> <span class="s2">&quot;Gerente de Producto&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Científico de datos&quot;</span><span class="p">]</span>
+
+<span class="c1"># Creamos un índice personalizado para estos trabajos</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Empresa1&quot;</span><span class="p">,</span> <span class="s2">&quot;Empresa2&quot;</span><span class="p">,</span> <span class="s2">&quot;Empresa3&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;Empresa4&quot;</span><span class="p">,</span><span class="s2">&quot;Empresa5&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para crear la serie en Pandas usando estos datos y con indices personalizados, utilizamos el siguiente código:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creamos una serie con los trabajos</span>
+<span class="n">serie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">trabajos</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie</span><span class="p">)</span>
+
+<span class="c1"># Creamos una serie con el índice personalizado</span>
+<span class="n">serie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">trabajos</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora, vamos a crear una serie a partir de un diccionario</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definimos un diccionario con trabajos y sus respectivos salarios</span>
+<span class="n">diccionario</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Ingeniero de Software&quot;</span><span class="p">:</span> <span class="mi">70000</span><span class="p">,</span>
+    <span class="s2">&quot;Analista de Datos&quot;</span><span class="p">:</span> <span class="mi">60000</span><span class="p">,</span>
+    <span class="s2">&quot;Diseñador UX&quot;</span><span class="p">:</span> <span class="mi">65000</span><span class="p">,</span>
+    <span class="s2">&quot;Gerente de Producto&quot;</span><span class="p">:</span> <span class="mi">80000</span><span class="p">,</span>
+    <span class="s2">&quot;Científico de datos&quot;</span><span class="p">:</span> <span class="mi">65000</span>
+<span class="p">}</span>
+
+<span class="c1"># Creamos una serie a partir del diccionario</span>
+<span class="n">serie_diccionario</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">diccionario</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para explorar algunos atributos de la <code class="docutils literal notranslate"><span class="pre">serie</span></code>, puedes usar los siguientes métodos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tamaño de nuestra serie</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="c1"># imprimir la lista de los nombres de las filas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># imprimir el tipo de datos</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para acceder a los elementos de la <code class="docutils literal notranslate"><span class="pre">serie</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accedemos a un elemento específico usando su índice</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="p">[</span><span class="s2">&quot;Ingeniero de Software&quot;</span><span class="p">])</span>  
+
+<span class="c1"># Accedemos a un rango de valores</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>  
+
+<span class="c1"># Accedemos a múltiples elementos usando una lista de índices</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="p">[[</span><span class="s2">&quot;Diseñador UX&quot;</span><span class="p">,</span> <span class="s2">&quot;Analista de Datos&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>También puedes utilizar algunos métodos útiles para análisis, como:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usamos métodos para obtener estadísticas de la serie</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>  <span class="c1"># Conteo de elementos no nulos</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>  <span class="c1"># Suma de los valores</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">cumsum</span><span class="p">())</span>  <span class="c1"># Valores acumulados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>  <span class="c1"># Conteo de valores repetidos</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>  <span class="c1"># Valor mínimo</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>  <span class="c1"># Valor máximo</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># Media de los valores</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>  <span class="c1"># Desviación estándar</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>  <span class="c1"># Cuantil 1 (25%)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>  <span class="c1"># Cuantil 3 (75%)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serie_diccionario</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>  <span class="c1"># Resumen descriptivo de la serie</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Exploraremos cómo aplicar operaciones matemáticas y funciones a series de datos relacionadas con bancos, así como buscar información mediante condiciones, ordenar series y eliminar datos nulos o desconocidos.</p>
+<ol class="arabic simple">
+<li><p><strong>Operaciones Matemáticas Básicas</strong></p></li>
+</ol>
+<p>Primero, veremos cómo aplicar operaciones matemáticas a una serie que representa los saldos de las cuentas bancarias. A continuación, presentamos algunos ejemplos prácticos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Una serie con saldos de cuentas bancarias</span>
+
+<span class="n">saldos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">])</span>
+
+<span class="c1"># Aumentar en 100 cada saldo</span>
+<span class="n">saldos</span> <span class="o">=</span> <span class="n">saldos</span> <span class="o">+</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="p">)</span>
+
+<span class="c1"># Restar 200 a cada saldo</span>
+<span class="n">saldos</span> <span class="o">=</span> <span class="n">saldos</span> <span class="o">-</span> <span class="mi">200</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="p">)</span>
+
+<span class="c1"># Multiplicar cada saldo por 1.05 (aplicando un aumento del 5%)</span>
+<span class="n">saldos</span> <span class="o">=</span> <span class="n">saldos</span> <span class="o">*</span> <span class="mf">1.05</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="p">)</span>
+
+<span class="c1"># Dividir cada saldo por 2</span>
+<span class="n">saldos</span> <span class="o">=</span> <span class="n">saldos</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="p">)</span>
+
+<span class="c1"># Comprobar si los saldos son pares o impares</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Aplicar la función logaritmo a cada saldo</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos aplicar funciones matemáticas a los saldos usando el método <code class="docutils literal notranslate"><span class="pre">apply</span></code>.Para ello debe importar el paquete <code class="docutils literal notranslate"><span class="pre">math</span></code>. Por ejemplo, para calcular el seno de cada saldo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># Calcular el seno de los salarios</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Operaciones con Datos de Tipo String</strong></p></li>
+</ol>
+<p>Supongamos que tenemos una serie con nombres de bancos y queremos repetir cada nombre un número específico de veces:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una serie con nombres de bancos</span>
+<span class="n">bancos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;banco A&#39;</span><span class="p">,</span> <span class="s1">&#39;banco B&#39;</span><span class="p">,</span> <span class="s1">&#39;banco C&#39;</span><span class="p">])</span>
+
+<span class="c1"># Repetir cada nombre 3 veces</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Capitalizar el nombre de cada banco</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+
+<span class="c1"># Convertir todos los caracteres a minúsculas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+<span class="c1"># Convertir todos los caracteres a mayúsculas</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
+
+<span class="c1"># Eliminar espacios en blanco al principio y al final</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+<span class="c1"># Eliminar espacios en blanco al principio</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lstrip</span><span class="p">())</span>
+
+<span class="c1"># Eliminar espacios en blanco al final</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+
+<span class="c1"># Reemplazar &#39;Banco&#39; por &#39;Entidad&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;banco&#39;</span><span class="p">,</span> <span class="s1">&#39;entidad&#39;</span><span class="p">))</span>
+
+<span class="c1"># Dividir cadenas en una lista de substrings por un delimitador</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+
+<span class="c1"># Unir las cadenas en una sola con un delimitador</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">))</span>
+
+<span class="c1"># Encontrar la posición de &#39;Banco&#39; en cada cadena</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;banco&#39;</span><span class="p">))</span>
+
+<span class="c1"># Verificar si cada cadena contiene &#39;A&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+
+<span class="c1"># Extraer los primeros 4 caracteres de cada cadena</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="c1"># Contar el número de veces que aparece &#39;Banco&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;banco&#39;</span><span class="p">))</span>
+
+<span class="c1"># Verificar si cada cadena comienza con &#39;banco&#39;</span>
+<span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;banco&#39;</span><span class="p">)</span>
+
+<span class="c1"># Verificar si cada cadena termina con &#39;A&#39;</span>
+<span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+
+<span class="c1"># Reemplazar dígitos por &#39;X&#39;</span>
+<span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Obtener la longitud de cada cadena</span>
+<span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+
+<span class="c1"># Eliminar caracteres no alfabéticos</span>
+<span class="n">bancos</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^a-zA-Z\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Filtrado de Datos</strong></p></li>
+</ol>
+<p>El objetivo es seleccionar saldos que cumplan una condición. Por ejemplo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seleccionar saldos mayores o iguales a 3000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="p">[</span><span class="n">saldos</span> <span class="o">&gt;=</span> <span class="mi">3000</span><span class="p">])</span>
+
+<span class="c1"># Seleccionar saldos diferentes a 3000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="p">[</span><span class="n">saldos</span> <span class="o">!=</span> <span class="mi">3000</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Ordenar series</strong></p></li>
+</ol>
+<p>Para ordenar los saldos de manera ascendente o descendente:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ordenar los saldos de manera ascendente</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="c1"># Ordenar los saldos de manera descendente</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># Ordenar por índices de manera ascendente</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="c1"># Ordenar por índices de manera descendente</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>Eliminación de Datos Nulos y Desconocidos</strong></p></li>
+</ol>
+<p>Finalmente, para eliminar datos nulos o desconocidos en la serie de saldos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear valores nulos en la serie de saldos</span>
+<span class="n">saldos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1500</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3500</span><span class="p">])</span>
+
+<span class="c1"># Eliminar valores nulos</span>
+<span class="n">saldos_limpios</span> <span class="o">=</span> <span class="n">saldos</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">saldos_limpios</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con estos ejemplos, has aprendido cómo realizar diversas operaciones con series relacionadas con datos bancarios en Pandas. En la próximo sección, exploraremos cómo trabajar con DataFrames.</p>
+<p>Ahora carguemos el conjunto de datos de marketing del banco <code class="docutils literal notranslate"><span class="pre">bank-full</span></code>.</p>
+<p>Los datos están relacionados con <code class="docutils literal notranslate"><span class="pre">campañas</span> <span class="pre">de</span> <span class="pre">marketing</span> <span class="pre">directo</span></code> (llamadas telefónicas) de una institución bancaria portuguesa.</p>
+<p>El conjunto de datos tiene 4521 observaciones y 17 variables. Las variables son:</p>
+<ul class="simple">
+<li><p><strong>age:</strong> Edad del cliente.</p></li>
+<li><p><strong>job</strong>: Profesión del cliente (por ejemplo, desempleado, servicios, gestión).</p></li>
+<li><p><strong>marital</strong>: Estado civil del cliente (soltero, casado, divorciado).</p></li>
+<li><p>*<em>education</em>: Nivel educativo del cliente (primaria, secundaria, terciaria).</p></li>
+<li><p><strong>default</strong> : Indica si el cliente tiene crédito en incumplimiento (sí o no).</p></li>
+<li><p><strong>balance</strong>: Saldo promedio anual de la cuenta bancaria del cliente.</p></li>
+<li><p><strong>housing</strong>: Indica si el cliente tiene un préstamo hipotecario (sí o no).</p></li>
+<li><p><strong>loan</strong>: Indica si el cliente tiene un préstamo personal (sí o no).</p></li>
+<li><p><strong>contact</strong>: Tipo de comunicación de contacto (teléfono celular, teléfono fijo).</p></li>
+<li><p><strong>day</strong>: Día del mes en que se realizó el último contacto con el cliente.</p></li>
+<li><p><strong>month</strong>: Mes en que se realizó el último contacto con el cliente.</p></li>
+<li><p><strong>duration</strong>: Duración del último contacto en segundos.</p></li>
+<li><p><strong>campaign</strong>: Número de contactos realizados durante esta campaña de marketing.</p></li>
+<li><p><strong>pdays</strong>: Días que han pasado desde que el cliente fue contactado por última vez en una campaña anterior (valores -1 indican que el cliente no fue contactado previamente).
+previous: Número de contactos realizados antes de esta campaña.</p></li>
+<li><p><strong>poutcome</strong>: Resultado de una campaña de marketing anterior (éxito, fracaso, desconocido).</p></li>
+<li><p><strong>y</strong>: Resultado de la campaña actual (si el cliente suscribió o no un depósito a plazo fijo).</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -1287,6 +1599,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-ficheros-planos-desde-la-web"><strong>Importación de ficheros planos desde la web</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos-con-pandas"><strong>Manipulación de datos con pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series"><strong>Series</strong></a></li>
 </ul>
 </li>
 </ul>
