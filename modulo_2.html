@@ -385,14 +385,15 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-archivos-planos-con-pandas"><strong>Importación y exportación de archivos planos con Pandas</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-datos-de-otros-tipos-de-archivos"><strong>Importar datos de otros tipos de archivos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-e-exportacion-de-datos-de-otros-tipos-de-archivos"><strong>Importación e exportación de datos de otros tipos de archivos</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-serializados"><strong>Importación y exportación de datos serializados</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-en-excel"><strong>Importación y exportación de datos en Excel</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas-y-stata-usando-pandas"><strong>Importación de archivos SAS y Stata usando Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas"><strong>Importación de archivos SAS</strong>.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-stata"><strong>Importación de Archivos Stata</strong>.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas-y-stata-usando-pandas"><strong>Importación de Archivos SAS y Stata usando Pandas</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas"><strong>Importación de Archivos SAS</strong>.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-stata"><strong>Importación de Archivos Stata</strong>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-ficheros-planos-desde-la-web"><strong>Importación de ficheros planos desde la web</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -759,8 +760,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="importar-datos-de-otros-tipos-de-archivos">
-<h2><strong>Importar datos de otros tipos de archivos</strong><a class="headerlink" href="#importar-datos-de-otros-tipos-de-archivos" title="Link to this heading">#</a></h2>
+<section id="importacion-e-exportacion-de-datos-de-otros-tipos-de-archivos">
+<h2><strong>Importación e exportación de datos de otros tipos de archivos</strong><a class="headerlink" href="#importacion-e-exportacion-de-datos-de-otros-tipos-de-archivos" title="Link to this heading">#</a></h2>
 <p>Como científico de datos, es crucial saber cómo importar datos desde una variedad de tipos de archivo. En esta sección, exploraremos cómo importar datos en <code class="docutils literal notranslate"><span class="pre">Python</span></code> desde varios formatos importantes. Cubriremos:</p>
 <ul class="simple">
 <li><p><strong>Archivos serializados (Pickle)</strong>: Usados para almacenar datos de manera eficiente en <code class="docutils literal notranslate"><span class="pre">Python</span></code>. El concepto de serializados (Pickle)  un archivo está motivado por lo siguiente: si bien puede ser fácil guardar una matriz <code class="docutils literal notranslate"><span class="pre">numpy</span></code> o un <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> de <code class="docutils literal notranslate"><span class="pre">pandas</span></code> en un archivo plano, hay muchos otros tipos de datos, como diccionarios y listas, para los cuales no es obvio cómo almacenarlos.</p></li>
@@ -1017,12 +1018,11 @@ document.write(`
 </div>
 </div>
 </section>
-</section>
 <section id="importacion-de-archivos-sas-y-stata-usando-pandas">
-<h2><strong>Importación de Archivos SAS y Stata usando Pandas</strong><a class="headerlink" href="#importacion-de-archivos-sas-y-stata-usando-pandas" title="Link to this heading">#</a></h2>
+<h3><strong>Importación de archivos SAS y Stata usando Pandas</strong><a class="headerlink" href="#importacion-de-archivos-sas-y-stata-usando-pandas" title="Link to this heading">#</a></h3>
 <p>Hay una amplia variedad de paquetes de software estadístico disponibles, y aunque no siempre necesites utilizarlos, como científico de datos es fundamental que puedas importar archivos de estos paquetes a tu entorno Python de manera efectiva. Esta habilidad te permitirá integrar y analizar datos de diversas fuentes, ampliando tu capacidad para realizar análisis más completos y profundos.</p>
 <section id="importacion-de-archivos-sas">
-<h3><strong>Importación de Archivos SAS</strong>.<a class="headerlink" href="#importacion-de-archivos-sas" title="Link to this heading">#</a></h3>
+<h4><strong>Importación de archivos SAS</strong>.<a class="headerlink" href="#importacion-de-archivos-sas" title="Link to this heading">#</a></h4>
 <p><strong>SAS</strong>: Acrónimo de <em>Statistical Analysis System</em> (Sistema de Análisis Estadístico). Es un software popular en análisis de negocios y bioestadística. Los archivos SAS son formatos utilizados en el software SAS para realizar análisis avanzados, multivariados, inteligencia empresarial, gestión de datos, análisis predictivos y es un estándar para que los estadísticos realicen análisis computacionales. La extensión común es <code class="docutils literal notranslate"><span class="pre">.sas7bdat</span></code> que sirve para archivos de conjunto de datos.</p>
 <p>Miremos un ejemplo de la importación de estos archivos:</p>
 <p>Antes de usar el paquete <code class="docutils literal notranslate"><span class="pre">sas7bdat</span></code>, se debe instalar con <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sas7bdat</span></code></p>
@@ -1048,7 +1048,7 @@ document.write(`
 <p>Para exportar directamente a <code class="docutils literal notranslate"><span class="pre">.sas7bdat</span></code>, <em>tendrás que usar herramientas externas o software como SAS</em> . Alternativamente, podrías buscar librerías específicas para manejar archivos SAS en lugar de intentar escribir directamente en ese formato desde pandas.</p>
 </section>
 <section id="importacion-de-archivos-stata">
-<h3><strong>Importación de Archivos Stata</strong>.<a class="headerlink" href="#importacion-de-archivos-stata" title="Link to this heading">#</a></h3>
+<h4><strong>Importación de Archivos Stata</strong>.<a class="headerlink" href="#importacion-de-archivos-stata" title="Link to this heading">#</a></h4>
 <p><strong>Stata</strong>: Un software de análisis estadístico y gestión de datos, especialmente valorado en investigación académica, incluyendo economía y epidemiología. Su área de uso es predominantemente utilizado en ciencias sociales y en investigación académica.</p>
 <p>Los archivos Stata tienen la extensión <code class="docutils literal notranslate"><span class="pre">.dta</span></code> y podemos importarlos usando <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. ¡Ni siquiera necesitamos inicializar un administrador de contexto en este caso! Simplemente pasamos el nombre del archivo a la función <code class="docutils literal notranslate"><span class="pre">read_stata</span></code> y lo asignamos a una variable, tal como se muestra a continuación:</p>
 <div class="cell docutils container">
@@ -1148,6 +1148,73 @@ document.write(`
 </div>
 </section>
 </section>
+<section id="importacion-de-ficheros-planos-desde-la-web">
+<h3><strong>Importación de ficheros planos desde la web</strong><a class="headerlink" href="#importacion-de-ficheros-planos-desde-la-web" title="Link to this heading">#</a></h3>
+<p>Ahora puedes importar datos en Python desde todo tipo de archivos planos como <code class="docutils literal notranslate"><span class="pre">.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">.csv</span></code>, otros tipos de archivos como archivos <code class="docutils literal notranslate"><span class="pre">pickled</span></code>, hojas de cálculo de Excel y archivos SAS y Stata. También has adquirido una valiosa experiencia en la consulta de bases de datos relacionales para importar datos de ellas mediante SQL. Sin embargo, <em>todas estas habilidades implican la importación de datos de archivos que tiene localmente</em>. Sin embargo, estas habilidades usualmente implican trabajar con archivos locales. En muchos casos, como científico de datos, necesitarás <strong>importar datos directamente desde la web</strong>.</p>
+<p>Por ejemplo, supongamos que necesitas obtener el conjunto de datos de calidad del vino desde el repositorio de GitHub de cdeoroaguado. Aunque puedes hacerlo manualmente usando un navegador, este método no es reproducible ni escalable. Es más eficiente y profesional utilizar código Python para automatizar la descarga e importación de estos datos.</p>
+<p>Para hacer el proceso de importación desde la Web debemos tener algunos conceptos claros.</p>
+<p>El paquete <code class="docutils literal notranslate"><span class="pre">urllib</span></code> en Python proporciona una interfaz de alto nivel para obtener datos de la World Wide Web. En particular, la función <code class="docutils literal notranslate"><span class="pre">urlopen</span></code> es similar a la función integrada <code class="docutils literal notranslate"><span class="pre">open</span></code>, pero acepta URLs en lugar de nombres de archivo.</p>
+<div class="admonition-caracteristicas-de-urllib admonition">
+<p class="admonition-title"><strong>Características de <code class="docutils literal notranslate"><span class="pre">urllib</span></code></strong></p>
+<ul class="simple">
+<li><p><strong>urlopen</strong>: Abre una URL y devuelve un objeto similar a un archivo.</p></li>
+<li><p><strong>urlretrieve</strong>: Descarga archivos directamente desde una URL y los guarda localmente.</p></li>
+</ul>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<ul class="simple">
+<li><p>Es útil para tareas sencillas de importación de datos desde la web.</p></li>
+<li><p>Para tareas más complejas, podrías considerar el uso de <code class="docutils literal notranslate"><span class="pre">requests</span></code> junto con <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code>.</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar el paquete</span>
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+
+<span class="c1"># Importar pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Asignar la URL del archivo: url</span>
+<span class="n">url</span> <span class="o">=</span><span class="s1">&#39;https://raw.githubusercontent.com/cdeoroaguado/jbook_ml202430/main/data/winequality-red.csv&#39;</span>
+
+<span class="c1"># Guardar el archivo localmente</span>
+<span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="s1">&#39;_data/winequality-red.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Leer el archivo en un DataFrame y mostrar sus primeras filas</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/winequality-red.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   fixed acidity  volatile acidity  citric acid  residual sugar  chlorides  \
+0            7.4              0.70         0.00             1.9      0.076   
+1            7.8              0.88         0.00             2.6      0.098   
+2            7.8              0.76         0.04             2.3      0.092   
+3           11.2              0.28         0.56             1.9      0.075   
+4            7.4              0.70         0.00             1.9      0.076   
+
+   free sulfur dioxide  total sulfur dioxide  density    pH  sulphates  \
+0                 11.0                  34.0   0.9978  3.51       0.56   
+1                 25.0                  67.0   0.9968  3.20       0.68   
+2                 15.0                  54.0   0.9970  3.26       0.65   
+3                 17.0                  60.0   0.9980  3.16       0.58   
+4                 11.0                  34.0   0.9978  3.51       0.56   
+
+   alcohol  quality  
+0      9.4        5  
+1      9.8        5  
+2      9.8        5  
+3      9.8        6  
+4      9.4        5  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1211,14 +1278,15 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-archivos-planos-con-pandas"><strong>Importación y exportación de archivos planos con Pandas</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-datos-de-otros-tipos-de-archivos"><strong>Importar datos de otros tipos de archivos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-e-exportacion-de-datos-de-otros-tipos-de-archivos"><strong>Importación e exportación de datos de otros tipos de archivos</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-serializados"><strong>Importación y exportación de datos serializados</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-y-exportacion-de-datos-en-excel"><strong>Importación y exportación de datos en Excel</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas-y-stata-usando-pandas"><strong>Importación de archivos SAS y Stata usando Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas"><strong>Importación de archivos SAS</strong>.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-stata"><strong>Importación de Archivos Stata</strong>.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas-y-stata-usando-pandas"><strong>Importación de Archivos SAS y Stata usando Pandas</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-sas"><strong>Importación de Archivos SAS</strong>.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-archivos-stata"><strong>Importación de Archivos Stata</strong>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-ficheros-planos-desde-la-web"><strong>Importación de ficheros planos desde la web</strong></a></li>
 </ul>
 </li>
 </ul>
