@@ -398,6 +398,13 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos-con-pandas"><strong>Manipulación de datos con pandas</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series"><strong>Series</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas"><strong>Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-1-creacion-de-dataframes-a-partir-de-diccionarios"><strong>Método 1: Creación de DataFrames a partir de Diccionarios</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-2-creacion-de-dataframes-a-partir-de-listas-anidadas"><strong>Método 2: Creación de DataFrames a partir de Listas Anidadas</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-3-creacion-de-dataframes-a-partir-de-listas-de-diccionarios"><strong>Método 3: Creación de DataFrames a partir de Listas de Diccionarios</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion"><strong>Manipulación</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -1503,14 +1510,137 @@ document.write(`
 </div>
 </div>
 <p>Con estos ejemplos, has aprendido cómo realizar diversas operaciones con series relacionadas con datos bancarios en Pandas. En la próximo sección, exploraremos cómo trabajar con DataFrames.</p>
-<p>Ahora carguemos el conjunto de datos de marketing del banco <code class="docutils literal notranslate"><span class="pre">bank-full</span></code>.</p>
+</section>
+<section id="pandas">
+<h3><strong>Pandas</strong><a class="headerlink" href="#pandas" title="Link to this heading">#</a></h3>
+<p>En este módulo, profundizaremos en la creación de <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, una de las estructuras de datos más versátiles y poderosas para la manipulación de información financiera. Exploraremos tres métodos distintos para construir DataFrames, cada uno con aplicaciones específicas en la industria bancaria.</p>
+<p>Un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> es una estructura bidimensional, similar a una tabla, que nos permite organizar y manipular datos con facilidad. En el contexto bancario, los DataFrames son ideales para manejar información de clientes, transacciones, productos financieros, y otros tipos de datos críticos.</p>
+<section id="metodo-1-creacion-de-dataframes-a-partir-de-diccionarios">
+<h4><strong>Método 1: Creación de DataFrames a partir de Diccionarios</strong><a class="headerlink" href="#metodo-1-creacion-de-dataframes-a-partir-de-diccionarios" title="Link to this heading">#</a></h4>
+<p>En este primer enfoque, utilizaremos un diccionario para organizar los datos de clientes bancarios. Las claves del diccionario representarán las columnas del DataFrame, tales como <code class="docutils literal notranslate"><span class="pre">Nombre</span></code>, <code class="docutils literal notranslate"><span class="pre">Edad</span></code>, <code class="docutils literal notranslate"><span class="pre">Saldo</span></code>, y <code class="docutils literal notranslate"><span class="pre">Calificación_Crédito</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación de la librería pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Definición de los datos mediante un diccionario</span>
+<span class="n">clientes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;José&#39;</span><span class="p">,</span> <span class="s1">&#39;Rodolfo&#39;</span><span class="p">,</span> <span class="s1">&#39;María&#39;</span><span class="p">,</span> <span class="s1">&#39;Julieta&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Edad&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">29</span><span class="p">],</span>
+    <span class="s1">&#39;Saldo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">70000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">15000</span><span class="p">],</span>
+    <span class="s1">&#39;Calificación_Crédito&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">700</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span> <span class="mi">680</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Creación del DataFrame utilizando el diccionario</span>
+<span class="n">df_clientes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clientes</span><span class="p">)</span>
+
+<span class="c1"># Visualización del DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clientes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este enfoque es eficiente cuando se tiene un conjunto de datos bien estructurado, con columnas predefinidas y valores coherentes. Es comúnmente utilizado en situaciones donde los datos provienen de sistemas bancarios estructurados, como bases de datos relacionales.</p>
+</section>
+<section id="metodo-2-creacion-de-dataframes-a-partir-de-listas-anidadas">
+<h4><strong>Método 2: Creación de DataFrames a partir de Listas Anidadas</strong><a class="headerlink" href="#metodo-2-creacion-de-dataframes-a-partir-de-listas-anidadas" title="Link to this heading">#</a></h4>
+<p>El siguiente método consiste en utilizar listas de listas para estructurar los datos. Este enfoque puede ser útil cuando los datos provienen de una fuente menos estructurada, como archivos CSV o entrada manual.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definición de los datos mediante listas anidadas</span>
+<span class="n">datos_clientes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;José&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">700</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Rodolfo&#39;</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">70000</span><span class="p">,</span> <span class="mi">750</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;María&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">680</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Julieta&#39;</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">720</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># Definición de las columnas</span>
+<span class="n">columnas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad&#39;</span><span class="p">,</span> <span class="s1">&#39;Saldo&#39;</span><span class="p">,</span> <span class="s1">&#39;Calificación_Crédito&#39;</span><span class="p">]</span>
+
+<span class="c1"># Creación del DataFrame</span>
+<span class="n">df_clientes_lista</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">datos_clientes</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columnas</span><span class="p">)</span>
+
+<span class="c1"># Visualización del DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clientes_lista</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este método es particularmente útil cuando los datos no están previamente etiquetados y requieren un procesamiento adicional para ser organizados en un formato tabular. Es frecuente en la integración de datos desde múltiples fuentes no homogéneas, como encuestas o registros de transacciones.</p>
+</section>
+<section id="metodo-3-creacion-de-dataframes-a-partir-de-listas-de-diccionarios">
+<h4><strong>Método 3: Creación de DataFrames a partir de Listas de Diccionarios</strong><a class="headerlink" href="#metodo-3-creacion-de-dataframes-a-partir-de-listas-de-diccionarios" title="Link to this heading">#</a></h4>
+<p>Finalmente, exploraremos cómo crear un DataFrame a partir de una lista de diccionarios. Este método es flexible y permite manejar datos con campos opcionales o información incompleta, algo común en grandes bases de datos bancarias.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definición de los datos mediante una lista de diccionarios</span>
+<span class="n">clientes_dict</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;José&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;Saldo&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span> <span class="s1">&#39;Calificación_Crédito&#39;</span><span class="p">:</span> <span class="mi">700</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Rodolfo&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad&#39;</span><span class="p">:</span> <span class="mi">52</span><span class="p">,</span> <span class="s1">&#39;Saldo&#39;</span><span class="p">:</span> <span class="mi">70000</span><span class="p">,</span> <span class="s1">&#39;Calificación_Crédito&#39;</span><span class="p">:</span> <span class="mi">750</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;María&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad&#39;</span><span class="p">:</span> <span class="mi">34</span><span class="p">,</span> <span class="s1">&#39;Saldo&#39;</span><span class="p">:</span> <span class="mi">60000</span><span class="p">},</span>  <span class="c1"># Falta calificación de crédito</span>
+    <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Julieta&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad&#39;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span> <span class="s1">&#39;Calificación_Crédito&#39;</span><span class="p">:</span> <span class="mi">720</span><span class="p">},</span>  <span class="c1"># Falta saldo</span>
+    <span class="p">{</span><span class="s1">&#39;Edad&#39;</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="s1">&#39;Saldo&#39;</span><span class="p">:</span> <span class="mi">30000</span><span class="p">}</span>  <span class="c1"># Faltan nombre y calificación de crédito</span>
+<span class="p">]</span>
+
+<span class="c1"># Creación del DataFrame</span>
+<span class="n">df_clientes_dict</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clientes_dict</span><span class="p">)</span>
+
+<span class="c1"># Visualización del DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_clientes_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>La capacidad de manejar datos incompletos o parcialmente definidos es crucial en el análisis de datos bancarios, donde la información puede provenir de fuentes dispares y no siempre estará completa. Este método permite construir DataFrames robustos que pueden ser limpiados o completados en etapas posteriores del análisis.</p>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<p>Algunas diferencias clave entre una Serie (<code class="docutils literal notranslate"><span class="pre">Series</span></code>) y un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> en <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>:</p>
+<ol class="arabic simple">
+<li><p><strong>Dimensionalidad</strong>:</p>
+<ul class="simple">
+<li><p><strong>Serie</strong>: Es unidimensional, como una lista o columna única de datos.</p></li>
+<li><p><strong>DataFrame</strong>: Es bidimensional, similar a una tabla con múltiples filas y columnas.</p></li>
+</ul>
+</li>
+<li><p><strong>Estructura</strong>:</p>
+<ul class="simple">
+<li><p><strong>Serie</strong>: Contiene una sola columna de datos con un índice.</p></li>
+<li><p><strong>DataFrame</strong>: Contiene múltiples columnas, cada una de las cuales es una Serie.</p></li>
+</ul>
+</li>
+<li><p><strong>Uso</strong>:</p>
+<ul class="simple">
+<li><p><strong>Serie</strong>: Ideal para manejar una sola secuencia de datos.</p></li>
+<li><p><strong>DataFrame</strong>: Ideal para trabajar con datos tabulares que tienen múltiples variables o características.</p></li>
+</ul>
+</li>
+<li><p><strong>Etiquetas del Eje</strong>:</p>
+<ul class="simple">
+<li><p><strong>Serie</strong>: Tiene un único conjunto de etiquetas o índice asociado con los datos.</p></li>
+<li><p><strong>DataFrame</strong>: Tiene dos ejes de etiquetas: uno para las filas (índice) y otro para las columnas.</p></li>
+</ul>
+</li>
+</ol>
+<p>5: <strong>Operaciones de Agregación</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* **Serie**: Las operaciones de agregación, como la suma o el promedio, se aplican directamente a la secuencia de datos.
+* **DataFrame**: Puedes aplicar operaciones de agregación a lo largo de filas o columnas, permitiendo un análisis más detallado y comparativo.
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="manipulacion">
+<h3><strong>Manipulación</strong><a class="headerlink" href="#manipulacion" title="Link to this heading">#</a></h3>
+<p>La manipulación de datos con Pandas es una de las habilidades fundamentales en el análisis de datos. <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> es una biblioteca de Python que proporciona estructuras de datos fáciles de usar, como Series y DataFrames, que permiten realizar operaciones y transformaciones complejas de manera sencilla y eficiente.</p>
+<p>Ahora carguemos el conjunto de datos de <strong>marketing del banco</strong> <code class="docutils literal notranslate"><span class="pre">bank-full</span></code>.</p>
 <p>Los datos están relacionados con <code class="docutils literal notranslate"><span class="pre">campañas</span> <span class="pre">de</span> <span class="pre">marketing</span> <span class="pre">directo</span></code> (llamadas telefónicas) de una institución bancaria portuguesa.</p>
-<p>El conjunto de datos tiene 4521 observaciones y 17 variables. Las variables son:</p>
+<p>Este conjunto de datos tiene 4521 observaciones y 17 variables. Las variables son:</p>
 <ul class="simple">
 <li><p><strong>age:</strong> Edad del cliente.</p></li>
 <li><p><strong>job</strong>: Profesión del cliente (por ejemplo, desempleado, servicios, gestión).</p></li>
 <li><p><strong>marital</strong>: Estado civil del cliente (soltero, casado, divorciado).</p></li>
-<li><p>*<em>education</em>: Nivel educativo del cliente (primaria, secundaria, terciaria).</p></li>
+<li><p><strong>education</strong>: Nivel educativo del cliente (primaria, secundaria, terciaria).</p></li>
 <li><p><strong>default</strong> : Indica si el cliente tiene crédito en incumplimiento (sí o no).</p></li>
 <li><p><strong>balance</strong>: Saldo promedio anual de la cuenta bancaria del cliente.</p></li>
 <li><p><strong>housing</strong>: Indica si el cliente tiene un préstamo hipotecario (sí o no).</p></li>
@@ -1520,11 +1650,103 @@ document.write(`
 <li><p><strong>month</strong>: Mes en que se realizó el último contacto con el cliente.</p></li>
 <li><p><strong>duration</strong>: Duración del último contacto en segundos.</p></li>
 <li><p><strong>campaign</strong>: Número de contactos realizados durante esta campaña de marketing.</p></li>
-<li><p><strong>pdays</strong>: Días que han pasado desde que el cliente fue contactado por última vez en una campaña anterior (valores -1 indican que el cliente no fue contactado previamente).
-previous: Número de contactos realizados antes de esta campaña.</p></li>
+<li><p><strong>pdays</strong>: Días que han pasado desde que el cliente fue contactado por última vez en una campaña anterior (valores -1 indican que el cliente no fue contactado previamente).</p></li>
+<li><p><strong>previous</strong>: Número de contactos realizados antes de esta campaña.</p></li>
 <li><p><strong>poutcome</strong>: Resultado de una campaña de marketing anterior (éxito, fracaso, desconocido).</p></li>
 <li><p><strong>y</strong>: Resultado de la campaña actual (si el cliente suscribió o no un depósito a plazo fijo).</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar librerias</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Asignar la URL del archivo: url</span>
+<span class="n">url</span> <span class="o">=</span><span class="s1">&#39;https://raw.githubusercontent.com/cdeoroaguado/jbook_ml202430/main/data/bank/bank-full.csv&#39;</span>
+
+<span class="c1"># leer el archivo en u dataframe:df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Imprimir el encabezado del dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Mostrar las 5 ultimas filas de DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+
+<span class="c1"># Concatenar el encabezado y las últimas 5 filas del DataFrame</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Las dimensiones del dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener las dimensiones del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(45211, 17)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Información de la estructura del dataset de marketing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener información sobre la estructura del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>El atributo <code class="docutils literal notranslate"><span class="pre">df.size</span></code> en pandas devuelve el número total de elementos en un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. Esto se calcula multiplicando el número de filas por el número de columnas. Es útil para obtener una visión rápida del tamaño total del DataFrame en términos de elementos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># número total de elementos en el dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>768587
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora, el nombres de las variables, el indice, el tipo de dato del dataset de marketing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># nombre de las variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Obtener el índice del DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># tipo de dato</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<ol class="arabic simple">
+<li><p>Si quieres cambiar el nombre de las columnas o los indices. Usas <code class="docutils literal notranslate"><span class="pre">df.rename</span></code> de la siguiente forma</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{},</span><span class="n">index</span><span class="o">=</span><span class="p">{})</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Para reindexar un dataframe. Usa <code class="docutils literal notranslate"><span class="pre">df.reindex</span></code> de la siguiente manera</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="p">[],</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[],</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;)</span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -1603,6 +1825,13 @@ previous: Número de contactos realizados antes de esta campaña.</p></li>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion-de-datos-con-pandas"><strong>Manipulación de datos con pandas</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#series"><strong>Series</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas"><strong>Pandas</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-1-creacion-de-dataframes-a-partir-de-diccionarios"><strong>Método 1: Creación de DataFrames a partir de Diccionarios</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-2-creacion-de-dataframes-a-partir-de-listas-anidadas"><strong>Método 2: Creación de DataFrames a partir de Listas Anidadas</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-3-creacion-de-dataframes-a-partir-de-listas-de-diccionarios"><strong>Método 3: Creación de DataFrames a partir de Listas de Diccionarios</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion"><strong>Manipulación</strong></a></li>
 </ul>
 </li>
 </ul>
