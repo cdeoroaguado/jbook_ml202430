@@ -404,7 +404,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-3-creacion-de-dataframes-a-partir-de-listas-de-diccionarios"><strong>Método 3: Creación de DataFrames a partir de Listas de Diccionarios</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion"><strong>Manipulación</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion"><strong>Manipulación</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-la-manipulacion-de-datos"><strong>Introducción a la manipulación de datos</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-estadistica"><strong>Descripción estadística</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-univariado"><strong>Resumen estadístico univariado</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-bivariado"><strong>Resumen estadístico bivariado</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1621,18 +1629,21 @@ document.write(`
 <li><p><strong>DataFrame</strong>: Tiene dos ejes de etiquetas: uno para las filas (índice) y otro para las columnas.</p></li>
 </ul>
 </li>
+<li><p><strong>Operaciones de Agregación</strong>:</p>
+<ul class="simple">
+<li><p><strong>Serie</strong>: Las operaciones de agregación, como la suma o el promedio, se aplican directamente a la secuencia de datos.</p></li>
+<li><p><strong>DataFrame</strong>: Puedes aplicar operaciones de agregación a lo largo de filas o columnas, permitiendo un análisis más detallado y comparativo.</p></li>
+</ul>
+</li>
 </ol>
-<p>5: <strong>Operaciones de Agregación</strong>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* **Serie**: Las operaciones de agregación, como la suma o el promedio, se aplican directamente a la secuencia de datos.
-* **DataFrame**: Puedes aplicar operaciones de agregación a lo largo de filas o columnas, permitiendo un análisis más detallado y comparativo.
-</pre></div>
-</div>
 </div>
 </section>
 </section>
 <section id="manipulacion">
 <h3><strong>Manipulación</strong><a class="headerlink" href="#manipulacion" title="Link to this heading">#</a></h3>
 <p>La manipulación de datos con Pandas es una de las habilidades fundamentales en el análisis de datos. <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> es una biblioteca de Python que proporciona estructuras de datos fáciles de usar, como Series y DataFrames, que permiten realizar operaciones y transformaciones complejas de manera sencilla y eficiente.</p>
+<section id="introduccion-a-la-manipulacion-de-datos">
+<h4><strong>Introducción a la manipulación de datos</strong><a class="headerlink" href="#introduccion-a-la-manipulacion-de-datos" title="Link to this heading">#</a></h4>
 <p>Ahora carguemos el conjunto de datos de <strong>marketing del banco</strong> <code class="docutils literal notranslate"><span class="pre">bank-full</span></code>.</p>
 <p>Los datos están relacionados con <code class="docutils literal notranslate"><span class="pre">campañas</span> <span class="pre">de</span> <span class="pre">marketing</span> <span class="pre">directo</span></code> (llamadas telefónicas) de una institución bancaria portuguesa.</p>
 <p>Este conjunto de datos tiene 4521 observaciones y 17 variables. Las variables son:</p>
@@ -1676,6 +1687,9 @@ document.write(`
 <span class="c1"># Concatenar el encabezado y las últimas 5 filas del DataFrame</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Para ignorar el indice</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()],</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1685,11 +1699,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener las dimensiones del DataFrame</span>
 <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(45211, 17)
 </pre></div>
 </div>
 </div>
@@ -1711,11 +1720,46 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>768587
+</div>
+<p>Puede ocurrir que el conjunto de datos de marketing para la banca tenga duplicados. El método <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code> en pandas se utiliza para eliminar filas duplicadas de un DataFrame. Este método permite identificar y remover filas que contienen los mismos valores en las columnas seleccionadas, o en todas las columnas si no se especifica ninguna.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eliminar filas duplicadas</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<p>Si nuestro conjunto de datos de marketing en la banca contiene valores nulos, se utiliza el método <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> o. Este método te permite eliminar filas o columnas que contengan valores nulos (NaN). A continuación te muestro cómo hacerlo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Eliminar todas las filas que contengan al menos un valor nulo</span>
+<span class="n">df_sin_nulos</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Eliminar filas que contengan al menos un valor nulo</span>
+<span class="n">df_sin_nulos_filas</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Eliminar columnas que contengan al menos un valor nulo</span>
+<span class="n">df_sin_nulos_columnas</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Mostrar los DataFrames sin valores nulos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DataFrame sin valores nulos en filas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sin_nulos_filas</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DataFrame sin valores nulos en columnas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sin_nulos_columnas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="danger admonition">
+<p class="admonition-title"><strong>Consideraciones</strong></p>
+<p>El uso de <code class="docutils literal notranslate"><span class="pre">df.dropna()</span></code> puede resultar en la pérdida de datos importantes si una gran cantidad de valores nulos está presente. Antes de eliminar los valores nulos, considera las siguientes opciones:</p>
+<ul class="simple">
+<li><p><strong>Imputar Valores Nulos</strong>: Puedes reemplazar los valores nulos con valores específicos utilizando <code class="docutils literal notranslate"><span class="pre">df.fillna()</span></code>.</p></li>
+<li><p><strong>Revisar el Impacto</strong>: Evalúa cómo la eliminación de valores nulos afectará tu análisis y si es necesario ajustar tu enfoque para manejar los datos faltantes de manera más adecuada.</p></li>
+</ul>
 </div>
 <p>Ahora, el nombres de las variables, el indice, el tipo de dato del dataset de marketing</p>
 <div class="cell docutils container">
@@ -1741,12 +1785,334 @@ document.write(`
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Para reindexar un dataframe. Usa <code class="docutils literal notranslate"><span class="pre">df.reindex</span></code> de la siguiente manera</p></li>
+<li><p>Para reindexar un dataframe debemos usar<code class="docutils literal notranslate"><span class="pre">df.reindex</span></code> y los selecciona:</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="p">[],</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[],</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="p">[],</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[],</span><span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<p>Queremos saber los clientes menores de 20 años:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seleccionar solo las filas donde la condición es True</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">20</span>
+
+<span class="c1"># Mostrar los clientes menores de 20 años</span>
+<span class="n">dfm20</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="c1"># imprimir el dataframe las 5 primeras</span>
+<span class="n">dfm20</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Escojamos las columnas <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">marital</span></code>, <code class="docutils literal notranslate"><span class="pre">balance</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> de los clientes menores de 20</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># seleccionemos las columnas</span>
+<span class="n">new_dfm20</span> <span class="o">=</span> <span class="n">dfm20</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;marital&#39;</span><span class="p">,</span><span class="s1">&#39;balance&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]]</span>
+
+<span class="c1"># imprimir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_dfm20</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<p>Para agregar y eliminar columnas o filas</p>
+<ol class="arabic simple">
+<li><p>Puedes agregar una columna a un DataFrame en pandas usando una Serie (Series) de la siguiente manera:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una Serie con los datos que quieres agregar como nueva columna</span>
+<span class="n">nueva_columna</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">valor1</span><span class="p">,</span> <span class="n">valor2</span><span class="p">,</span> <span class="n">valor3</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># Agregar la Serie al DataFrame como una nueva columna</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre_nueva_columna&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nueva_columna</span>
+
+<span class="c1"># Mostrar el DataFrame con la nueva columna</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Para eliminar una, dos o más columnas de un DataFrame en pandas, puedes pasar una lista con los nombres de las columnas al método <code class="docutils literal notranslate"><span class="pre">drop()</span></code>. A continuación te muestro cómo hacerlo:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una lista con los nombres de las columnas que quieres eliminar</span>
+<span class="n">columnas_a_eliminar</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nombre_columna1&#39;</span><span class="p">,</span> <span class="s1">&#39;nombre_columna2&#39;</span><span class="p">]</span>
+
+<span class="c1"># Eliminar las columnas especificadas en la lista</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columnas_a_eliminar</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el DataFrame actualizado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Para agregar una nueva fila a un DataFrame en pandas, puedes seguir estos pasos generales:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una nueva fila como un diccionario</span>
+<span class="n">nueva_fila</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;columna1&#39;</span><span class="p">:</span> <span class="n">valor1</span><span class="p">,</span>
+    <span class="s1">&#39;columna2&#39;</span><span class="p">:</span> <span class="n">valor2</span><span class="p">,</span>
+    <span class="s1">&#39;columna3&#39;</span><span class="p">:</span> <span class="n">valor3</span><span class="p">,</span>
+    <span class="c1"># Agregar más columnas si es necesario</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir la nueva fila en un DataFrame</span>
+<span class="n">nueva_fila_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">nueva_fila</span><span class="p">])</span>
+
+<span class="c1"># Agregar la nueva fila al DataFrame original</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nueva_fila_df</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el DataFrame actualizado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Para eliminar una fila de un DataFrame en pandas, puedes seguir estos pasos generales:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Identificar el índice de la fila que deseas eliminar</span>
+<span class="n">indice_a_eliminar</span> <span class="o">=</span> <span class="mi">5</span> 
+
+<span class="c1"># Usar el método drop() para eliminar la fila</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">indice_a_eliminar</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># (Opcional) Resetear los índices si es necesario</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el DataFrame actualizado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<p>Para saber quien tiene mayor balance en la cuenta de los menores de 20, debo ordenarlo usando el método <code class="docutils literal notranslate"><span class="pre">sort_values</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ordenar</span>
+<span class="n">new_dfm20</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;balance&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Puedes aplicar una función personalizada a una columna específica del DataFrame usando el método <code class="docutils literal notranslate"><span class="pre">apply()</span></code> de <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Supongamos que deseas crear una nueva columna llamada <code class="docutils literal notranslate"><span class="pre">balance_category</span></code> que clasifique el balance de cada cliente en <code class="docutils literal notranslate"><span class="pre">&quot;Bajo&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Medio&quot;</span></code> o <code class="docutils literal notranslate"><span class="pre">&quot;Alto&quot;</span></code> según ciertos umbrales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir una función para categorizar el balance</span>
+<span class="k">def</span> <span class="nf">categorizar_balance</span><span class="p">(</span><span class="n">balance</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">balance</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Bajo&#39;</span>
+    <span class="k">elif</span> <span class="mi">500</span> <span class="o">&lt;=</span> <span class="n">balance</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Medio&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Alto&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aplicar la función &#39;categorizar_balance&#39; a la columna &#39;balance&#39;</span>
+<span class="c1"># y crear la nueva columna &#39;balance_category&#39;</span>
+<span class="n">new_dfm20</span><span class="p">[</span><span class="s1">&#39;balance_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_dfm20</span><span class="p">[</span><span class="s1">&#39;balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">categorizar_balance</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el DataFrame actualizado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_dfm20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora, debemos obtener los clientes menores de 20 que si se suscribieron. Ademas los que se suscribieron con balance bajo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># menores de 20 que se suscribieron</span>
+<span class="n">new_dfm20</span><span class="p">[</span><span class="n">new_dfm20</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;yes&#39;</span><span class="p">]</span>
+
+<span class="c1"># Otra forma de seleccionarlos</span>
+<span class="n">new_dfm20</span><span class="p">[</span><span class="n">new_dfm20</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;yes&quot;</span><span class="p">])]</span>
+
+<span class="c1"># menores de 20 que se suscribieron con balance bajo</span>
+<span class="n">new_dfm20</span><span class="p">[(</span><span class="n">new_dfm20</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">new_dfm20</span><span class="p">[</span><span class="s1">&#39;balance_category&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Bajo&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="descripcion-estadistica">
+<h4><strong>Descripción estadística</strong><a class="headerlink" href="#descripcion-estadistica" title="Link to this heading">#</a></h4>
+<p>Exploraremos cómo obtener estadísticas de resumen detalladas para columnas específicas de un DataFrame, así como cómo realizar análisis estadísticos avanzados mediante agrupaciones y tablas dinámicas. Comenzaremos con el cálculo de métricas descriptivas básicas, tales como medias, medianas, y desviaciones estándar, para evaluar la distribución y variabilidad de los datos. A continuación, abordaremos técnicas para aplicar estas estadísticas a subconjuntos de datos mediante agrupaciones, permitiendo un análisis más granular y enfocado.</p>
+<p>Finalmente, dominaremos el uso de tablas dinámicas para sintetizar, visualizar y resumir datos complejos, facilitando la extracción de insights clave y patrones significativos en grandes volúmenes de información. Este enfoque integral fortalecerá tu capacidad para extraer, interpretar y comunicar hallazgos estadísticos de manera efectiva en el análisis de datos.</p>
+<section id="resumen-estadistico-univariado">
+<h5><strong>Resumen estadístico univariado</strong><a class="headerlink" href="#resumen-estadistico-univariado" title="Link to this heading">#</a></h5>
+<p>Calculemos las medidas descriptivas fundamentales, incluyendo la media, mediana, moda, varianza, desviación estándar y cuartiles, para proporcionar una visión general de la distribución de los datos. Usaremos el conjunto de datos.</p>
+<ol class="arabic simple">
+<li><p>Si la variable es <em>numérica</em></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descriptivo de una sola variable numérica solo promedio</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+              
+<span class="c1"># Resumen descriptivo de una sola variable numérica</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">&#39;Promedio&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>                       <span class="c1"># Media</span>
+    <span class="s1">&#39;Desviacion_Estandar&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span>             <span class="c1"># Desv Estandar</span>
+    <span class="s1">&#39;Minimo&#39;</span><span class="p">:</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span>                          <span class="c1"># Mínimo</span>
+    <span class="s1">&#39;Maximo&#39;</span><span class="p">:</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>                          <span class="c1"># Máximo</span>
+    <span class="s1">&#39;Mediana&#39;</span><span class="p">:</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>                      <span class="c1"># Mediana</span>
+    <span class="s1">&#39;Cuantil 1&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>  <span class="c1"># Cuantil 25%</span>
+    <span class="s1">&#39;Cuantil 3&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>   <span class="c1"># Cuantil 75%</span>
+<span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40.93621021432837
+Promedio               40.936210
+Desviacion_Estandar    10.618762
+Minimo                 18.000000
+Maximo                 95.000000
+Mediana                39.000000
+Cuantil 1              33.000000
+Cuantil 3              48.000000
+Name: age, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descriptivo de una varias variable numérica solo promedio</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+              
+<span class="c1"># Resumen descriptivo de varias variable numérica</span>
+<span class="n">vars_num</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">&#39;mean&#39;</span><span class="p">,</span>                       <span class="c1"># Media</span>
+    <span class="s1">&#39;std&#39;</span><span class="p">,</span>                        <span class="c1"># Desviación estándar</span>
+    <span class="s1">&#39;min&#39;</span><span class="p">,</span>                        <span class="c1"># Mínimo</span>
+    <span class="s1">&#39;max&#39;</span><span class="p">,</span>                        <span class="c1"># Máximo</span>
+    <span class="s1">&#39;median&#39;</span><span class="p">,</span>                     <span class="c1"># Mediana</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>   <span class="c1"># Cuantil 25%</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>    <span class="c1"># Cuantil 75%</span>
+<span class="p">})</span>
+<span class="c1"># Renombrar las filas del DataFrame de resultados</span>
+<span class="n">vars_num</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Promedio&#39;</span><span class="p">,</span> <span class="s1">&#39;Desviacion_Estandar&#39;</span><span class="p">,</span> <span class="s1">&#39;Minimo&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximo&#39;</span><span class="p">,</span> <span class="s1">&#39;Mediana&#39;</span><span class="p">,</span> <span class="s1">&#39;Cuantil 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cuantil 3&#39;</span><span class="p">]</span>
+
+<span class="c1"># Mostrar los resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vars_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Si la variable es <em>catégorica</em></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descriptivo de una sola variable categórica solo conteo</span>
+<span class="n">conteo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conteo</span><span class="p">)</span>
+
+<span class="c1"># Descriptivo de una sola variable categórica solo proporcion</span>
+<span class="n">proporciones</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+
+<span class="c1"># Combinar los resultados en un solo DataFrame</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Conteo&#39;</span><span class="p">:</span> <span class="n">conteo</span><span class="p">,</span>
+    <span class="s1">&#39;Proporción&#39;</span><span class="p">:</span> <span class="n">proporciones</span>
+<span class="p">})</span>
+
+<span class="c1"># imprimir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descriptivo de varias variable categórica solo conteo</span>
+<span class="n">conteo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;job&#39;</span><span class="p">,</span><span class="s1">&#39;education&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conteo</span><span class="p">)</span>
+
+<span class="c1"># Descriptivo de una sola variable categórica solo proporcion</span>
+<span class="n">proporciones</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;job&#39;</span><span class="p">,</span><span class="s1">&#39;education&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+
+<span class="c1"># Combinar los resultados en un solo DataFrame</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Conteo&#39;</span><span class="p">:</span> <span class="n">conteo</span><span class="p">,</span>
+    <span class="s1">&#39;Proporción&#39;</span><span class="p">:</span> <span class="n">proporciones</span>
+<span class="p">})</span>
+
+<span class="c1"># imprimir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="resumen-estadistico-bivariado">
+<h5><strong>Resumen estadístico bivariado</strong><a class="headerlink" href="#resumen-estadistico-bivariado" title="Link to this heading">#</a></h5>
+<p>El resumen estadístico bivariado se refiere al estudio de dos variables simultáneamente para determinar si existe alguna relación o asociación entre ellas. Solo realizaremos las tablas para dicho análisis estadístico.</p>
+<ol class="arabic simple">
+<li><p><strong>Variable categórica vs variable numérica</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># descriptivo edad según la suscripcion solo una variable</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Resumen descriptivo  de edad según la suscripcion solo una variable</span>
+<span class="n">var_num_cat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span>
+    <span class="s1">&#39;mean&#39;</span><span class="p">,</span>                       <span class="c1"># Media</span>
+    <span class="s1">&#39;std&#39;</span><span class="p">,</span>                        <span class="c1"># Desviación estándar</span>
+    <span class="s1">&#39;min&#39;</span><span class="p">,</span>                        <span class="c1"># Mínimo</span>
+    <span class="s1">&#39;max&#39;</span><span class="p">,</span>                        <span class="c1"># Máximo</span>
+    <span class="s1">&#39;median&#39;</span><span class="p">,</span>                     <span class="c1"># Mediana</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>   <span class="c1"># Cuantil 25%</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>    <span class="c1"># Cuantil 75%</span>
+<span class="p">])</span>
+
+<span class="c1"># Renombrar las columnas resultantes</span>
+<span class="n">var_num_cat</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Promedio&#39;</span><span class="p">,</span> <span class="s1">&#39;Desviacion_Estandar&#39;</span><span class="p">,</span><span class="s1">&#39;Minimo&#39;</span><span class="p">,</span><span class="s1">&#39;Maximo&#39;</span><span class="p">,</span><span class="s1">&#39;Mediana&#39;</span><span class="p">,</span><span class="s1">&#39;Cuantil 1&#39;</span><span class="p">,</span><span class="s1">&#39;Cuantil 3&#39;</span><span class="p">]</span>
+
+<span class="c1"># imprimir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">var_num_cat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># descriptivo edad según la suscripcion varias variable</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Resumen descriptivo  de edad según la suscripcion solo una variable</span>
+<span class="n">var_num_cat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span>
+    <span class="s1">&#39;mean&#39;</span><span class="p">,</span>                       <span class="c1"># Media</span>
+    <span class="s1">&#39;std&#39;</span><span class="p">,</span>                        <span class="c1"># Desviación estándar</span>
+    <span class="s1">&#39;min&#39;</span><span class="p">,</span>                        <span class="c1"># Mínimo</span>
+    <span class="s1">&#39;max&#39;</span><span class="p">,</span>                        <span class="c1"># Máximo</span>
+    <span class="s1">&#39;median&#39;</span><span class="p">,</span>                     <span class="c1"># Mediana</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>   <span class="c1"># Cuantil 25%</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>    <span class="c1"># Cuantil 75%</span>
+<span class="p">])</span>
+
+<span class="c1"># Renombrar las columnas resultantes</span>
+<span class="n">var_num_cat</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Edad_Promedio&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad_Desviacion_Estandar&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad_Minimo&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad_Maximo&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad_Mediana&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad_Cuantil_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Edad_Cuantil_3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Balance_Promedio&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance_Desviacion_Estandar&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance_Minimo&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance_Maximo&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance_Mediana&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance_Cuantil_1&#39;</span><span class="p">,</span> <span class="s1">&#39;Balance_Cuantil_3&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># imprimir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">var_num_cat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 </section>
 </section>
@@ -1831,7 +2197,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-3-creacion-de-dataframes-a-partir-de-listas-de-diccionarios"><strong>Método 3: Creación de DataFrames a partir de Listas de Diccionarios</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion"><strong>Manipulación</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulacion"><strong>Manipulación</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion-a-la-manipulacion-de-datos"><strong>Introducción a la manipulación de datos</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-estadistica"><strong>Descripción estadística</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-univariado"><strong>Resumen estadístico univariado</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-bivariado"><strong>Resumen estadístico bivariado</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
