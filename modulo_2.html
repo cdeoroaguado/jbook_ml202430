@@ -409,8 +409,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-estadistica"><strong>Descripción estadística</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-univariado"><strong>Resumen estadístico univariado</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-bivariado"><strong>Resumen estadístico bivariado</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-con-tablas-dinamicas"><strong>Resumen estadístico con tablas dinámicas</strong></a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-explicitos"><strong>Indices explicitos</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -1242,6 +1244,13 @@ document.write(`
 <p>Importemos la libreria <code class="docutils literal notranslate"><span class="pre">numpy</span></code> y <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
@@ -1693,6 +1702,56 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       age           job   marital  education default  balance housing loan  \
+0       58    management   married   tertiary      no     2143     yes   no   
+1       44    technician    single  secondary      no       29     yes   no   
+2       33  entrepreneur   married  secondary      no        2     yes  yes   
+3       47   blue-collar   married    unknown      no     1506     yes   no   
+4       33       unknown    single    unknown      no        1      no   no   
+45206   51    technician   married   tertiary      no      825      no   no   
+45207   71       retired  divorced    primary      no     1729      no   no   
+45208   72       retired   married  secondary      no     5715      no   no   
+45209   57   blue-collar   married  secondary      no      668      no   no   
+45210   37  entrepreneur   married  secondary      no     2971      no   no   
+
+         contact  day month  duration  campaign  pdays  previous poutcome    y  
+0        unknown    5   may       261         1     -1         0  unknown   no  
+1        unknown    5   may       151         1     -1         0  unknown   no  
+2        unknown    5   may        76         1     -1         0  unknown   no  
+3        unknown    5   may        92         1     -1         0  unknown   no  
+4        unknown    5   may       198         1     -1         0  unknown   no  
+45206   cellular   17   nov       977         3     -1         0  unknown  yes  
+45207   cellular   17   nov       456         2     -1         0  unknown  yes  
+45208   cellular   17   nov      1127         5    184         3  success  yes  
+45209  telephone   17   nov       508         4     -1         0  unknown   no  
+45210   cellular   17   nov       361         2    188        11    other   no  
+   age           job   marital  education default  balance housing loan  \
+0   58    management   married   tertiary      no     2143     yes   no   
+1   44    technician    single  secondary      no       29     yes   no   
+2   33  entrepreneur   married  secondary      no        2     yes  yes   
+3   47   blue-collar   married    unknown      no     1506     yes   no   
+4   33       unknown    single    unknown      no        1      no   no   
+5   51    technician   married   tertiary      no      825      no   no   
+6   71       retired  divorced    primary      no     1729      no   no   
+7   72       retired   married  secondary      no     5715      no   no   
+8   57   blue-collar   married  secondary      no      668      no   no   
+9   37  entrepreneur   married  secondary      no     2971      no   no   
+
+     contact  day month  duration  campaign  pdays  previous poutcome    y  
+0    unknown    5   may       261         1     -1         0  unknown   no  
+1    unknown    5   may       151         1     -1         0  unknown   no  
+2    unknown    5   may        76         1     -1         0  unknown   no  
+3    unknown    5   may        92         1     -1         0  unknown   no  
+4    unknown    5   may       198         1     -1         0  unknown   no  
+5   cellular   17   nov       977         3     -1         0  unknown  yes  
+6   cellular   17   nov       456         2     -1         0  unknown  yes  
+7   cellular   17   nov      1127         5    184         3  success  yes  
+8  telephone   17   nov       508         4     -1         0  unknown   no  
+9   cellular   17   nov       361         2    188        11    other   no  
+</pre></div>
+</div>
+</div>
 </div>
 <p>Las dimensiones del dataset:</p>
 <div class="cell docutils container">
@@ -1959,23 +2018,10 @@ document.write(`
     <span class="s1">&#39;Desviacion_Estandar&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span>             <span class="c1"># Desv Estandar</span>
     <span class="s1">&#39;Minimo&#39;</span><span class="p">:</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span>                          <span class="c1"># Mínimo</span>
     <span class="s1">&#39;Maximo&#39;</span><span class="p">:</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>                          <span class="c1"># Máximo</span>
-    <span class="s1">&#39;Mediana&#39;</span><span class="p">:</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>                      <span class="c1"># Mediana</span>
+    <span class="s1">&#39;Mediana&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">,</span>                      <span class="c1"># Mediana</span>
     <span class="s1">&#39;Cuantil 1&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>  <span class="c1"># Cuantil 25%</span>
     <span class="s1">&#39;Cuantil 3&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>   <span class="c1"># Cuantil 75%</span>
 <span class="p">}))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40.93621021432837
-Promedio               40.936210
-Desviacion_Estandar    10.618762
-Minimo                 18.000000
-Maximo                 95.000000
-Mediana                39.000000
-Cuantil 1              33.000000
-Cuantil 3              48.000000
-Name: age, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1986,20 +2032,18 @@ Name: age, dtype: float64
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
               
 <span class="c1"># Resumen descriptivo de varias variable numérica</span>
-<span class="n">vars_num</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
-    <span class="s1">&#39;mean&#39;</span><span class="p">,</span>                       <span class="c1"># Media</span>
-    <span class="s1">&#39;std&#39;</span><span class="p">,</span>                        <span class="c1"># Desviación estándar</span>
-    <span class="s1">&#39;min&#39;</span><span class="p">,</span>                        <span class="c1"># Mínimo</span>
-    <span class="s1">&#39;max&#39;</span><span class="p">,</span>                        <span class="c1"># Máximo</span>
-    <span class="s1">&#39;median&#39;</span><span class="p">,</span>                     <span class="c1"># Mediana</span>
-    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>   <span class="c1"># Cuantil 25%</span>
-    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>    <span class="c1"># Cuantil 75%</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Promedio&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="s1">&#39;Desv. Estandar&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+    <span class="s1">&#39;minimo&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+    <span class="s1">&#39;maximo&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+    <span class="s1">&#39;mediana&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span>
+    <span class="s1">&#39;Cuantil 1&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>
+    <span class="s1">&#39;Cuantil 3&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;balance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
 <span class="p">})</span>
-<span class="c1"># Renombrar las filas del DataFrame de resultados</span>
-<span class="n">vars_num</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Promedio&#39;</span><span class="p">,</span> <span class="s1">&#39;Desviacion_Estandar&#39;</span><span class="p">,</span> <span class="s1">&#39;Minimo&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximo&#39;</span><span class="p">,</span> <span class="s1">&#39;Mediana&#39;</span><span class="p">,</span> <span class="s1">&#39;Cuantil 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Cuantil 3&#39;</span><span class="p">]</span>
 
 <span class="c1"># Mostrar los resultados</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vars_num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2033,11 +2077,11 @@ Name: age, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descriptivo de varias variable categórica solo conteo</span>
 <span class="n">conteo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;job&#39;</span><span class="p">,</span><span class="s1">&#39;education&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">conteo</span><span class="p">)</span>
+<span class="c1"># print(conteo)</span>
 
-<span class="c1"># Descriptivo de una sola variable categórica solo proporcion</span>
+<span class="c1"># Descriptivo de varias variable categórica solo proporcion</span>
 <span class="n">proporciones</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;job&#39;</span><span class="p">,</span><span class="s1">&#39;education&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+<span class="c1"># print(proporciones)</span>
 
 <span class="c1"># Combinar los resultados en un solo DataFrame</span>
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -2063,22 +2107,26 @@ Name: age, dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># descriptivo edad según la suscripcion solo una variable</span>
 <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="c1"># Resumen descriptivo  de edad según la suscripcion solo una variable</span>
 <span class="n">var_num_cat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span>
-    <span class="s1">&#39;mean&#39;</span><span class="p">,</span>                       <span class="c1"># Media</span>
-    <span class="s1">&#39;std&#39;</span><span class="p">,</span>                        <span class="c1"># Desviación estándar</span>
-    <span class="s1">&#39;min&#39;</span><span class="p">,</span>                        <span class="c1"># Mínimo</span>
-    <span class="s1">&#39;max&#39;</span><span class="p">,</span>                        <span class="c1"># Máximo</span>
-    <span class="s1">&#39;median&#39;</span><span class="p">,</span>                     <span class="c1"># Mediana</span>
-    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>   <span class="c1"># Cuantil 25%</span>
-    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>    <span class="c1"># Cuantil 75%</span>
+    <span class="p">(</span><span class="s1">&#39;Promedio&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">),</span>                       <span class="c1"># Media</span>
+    <span class="p">(</span><span class="s1">&#39;Desv Estandar&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">),</span>                         <span class="c1"># Desviación estándar</span>
+    <span class="p">(</span><span class="s1">&#39;Minimo&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">),</span>                         <span class="c1"># Mínimo</span>
+    <span class="p">(</span><span class="s1">&#39;Maximo&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">),</span>                         <span class="c1"># Máximo</span>
+    <span class="p">(</span><span class="s1">&#39;Mediana&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">),</span>                   <span class="c1"># Mediana</span>
+    <span class="p">(</span><span class="s1">&#39;Cuantil 1&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)),</span>   <span class="c1"># Cuantil 25%</span>
+    <span class="p">(</span><span class="s1">&#39;Cuantil 3&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">))</span>    <span class="c1"># Cuantil 75%</span>
 <span class="p">])</span>
 
-<span class="c1"># Renombrar las columnas resultantes</span>
-<span class="n">var_num_cat</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Promedio&#39;</span><span class="p">,</span> <span class="s1">&#39;Desviacion_Estandar&#39;</span><span class="p">,</span><span class="s1">&#39;Minimo&#39;</span><span class="p">,</span><span class="s1">&#39;Maximo&#39;</span><span class="p">,</span><span class="s1">&#39;Mediana&#39;</span><span class="p">,</span><span class="s1">&#39;Cuantil 1&#39;</span><span class="p">,</span><span class="s1">&#39;Cuantil 3&#39;</span><span class="p">]</span>
-
-<span class="c1"># imprimir</span>
+<span class="c1"># Mostrar los resultados</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">var_num_cat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Promedio  Desv Estandar  Minimo  Maximo  Mediana  Cuantil 1  Cuantil 3
+y                                                                           
+no   40.838986      10.172662      18      95     39.0       33.0       48.0
+yes  41.670070      13.497781      18      95     38.0       31.0       50.0
 </pre></div>
 </div>
 </div>
@@ -2112,6 +2160,520 @@ Name: age, dtype: float64
 </div>
 </div>
 </section>
+<section id="resumen-estadistico-con-tablas-dinamicas">
+<h5><strong>Resumen estadístico con tablas dinámicas</strong><a class="headerlink" href="#resumen-estadistico-con-tablas-dinamicas" title="Link to this heading">#</a></h5>
+<p>Las tablas dinámicas son otras formas de calcular estadística de resumen agrupada. Por ejemplo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># promedio de la edad según la suscripcion con pivot_table</span>
+<span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="c1"># descriptivo edad según la suscripcion con pivot_table</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;std&#39;</span><span class="p">,</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">,</span><span class="s1">&#39;median&#39;</span><span class="p">])</span>
+
+<span class="c1"># Agreaar los cuantiles 1 y 3</span>
+<span class="k">def</span> <span class="nf">q25</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">q75</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;std&#39;</span><span class="p">,</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">,</span><span class="s1">&#39;median&#39;</span><span class="p">,</span><span class="n">q25</span><span class="p">,</span><span class="n">q75</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora, usemos <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> para dos variables categóricas. Por ejemplo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Promedio de edad de la variable educación vs empleo</span>
+<span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;education&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;job&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para crear una <strong>tabla de contigencia</strong>, basta con tener dos variables categóricas. Por ejemplo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear la tabla pivote con conteo de personas</span>
+<span class="n">pivot_table</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="s1">&#39;education&#39;</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;job&#39;</span><span class="p">,</span>
+    <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;size&#39;</span>  <span class="c1"># Conteo de entradas</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pivot_table</span><span class="p">)</span>
+
+<span class="c1"># Otra forma de crear una tabla de contingencia</span>
+<span class="n">crosstab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;education&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">margins_name</span><span class="o">=</span><span class="s1">&#39;Total&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">crosstab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="indices-explicitos">
+<h4><strong>Indices explicitos</strong><a class="headerlink" href="#indices-explicitos" title="Link to this heading">#</a></h4>
+<p>En Python, los <strong>índices</strong> son utilizados para acceder a elementos en estructuras de datos como listas, tuplas, y matrices (arrays). Un índice explícito se refiere a la práctica de definir de manera específica el índice que se va a utilizar para acceder a un elemento, en lugar de depender de la indexación automática por la posición.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características de los Índices Explícitos</strong></p>
+<ul class="simple">
+<li><p><strong>Flexibilidad</strong>: Permiten el acceso a elementos específicos de una estructura de datos sin necesidad de recorrer secuencialmente todos los elementos.</p></li>
+<li><p><strong>Claridad</strong>: Facilitan la lectura y comprensión del código al hacer evidente qué elementos se están accediendo o modificando.</p></li>
+<li><p><strong>Manipulación de Datos</strong>: Hacen más sencillo realizar operaciones como reordenar elementos, filtrar,seleccionar, agrupar o acceder a subconjuntos de datos.</p></li>
+<li><p><strong>Compatibilidad con Pandas</strong>: En bibliotecas como pandas, los índices explícitos son fundamentales para trabajar con Series y DataFrames, permitiendo indexar tanto por números como por etiquetas.</p></li>
+<li><p><strong>Precisión</strong>: Al especificar el índice, reduces el riesgo de errores al manipular datos.</p></li>
+<li><p><strong>Eficiencia</strong>: Mejoran la eficiencia al permitir operaciones directas sobre los elementos deseados.</p></li>
+</ul>
+</div>
+<p>Visualicemos nuevamente el dataframe de marketing para la banca.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># marco de datos</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>job</th>
+      <th>marital</th>
+      <th>education</th>
+      <th>default</th>
+      <th>balance</th>
+      <th>housing</th>
+      <th>loan</th>
+      <th>contact</th>
+      <th>day</th>
+      <th>month</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>poutcome</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>58</td>
+      <td>management</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>2143</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>261</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>44</td>
+      <td>technician</td>
+      <td>single</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>29</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>151</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>33</td>
+      <td>entrepreneur</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>76</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>47</td>
+      <td>blue-collar</td>
+      <td>married</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1506</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>92</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>33</td>
+      <td>unknown</td>
+      <td>single</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1</td>
+      <td>no</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>198</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Analicemos algunas funciones utiles de la indexación explicita:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.set_index()</span></code>; Este método se usa para establecer una o más columnas del DataFrame como su índice.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Establecer la columna &#39;job&#39; como índice</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;job&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>marital</th>
+      <th>education</th>
+      <th>default</th>
+      <th>balance</th>
+      <th>housing</th>
+      <th>loan</th>
+      <th>contact</th>
+      <th>day</th>
+      <th>month</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>poutcome</th>
+      <th>y</th>
+    </tr>
+    <tr>
+      <th>job</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>management</th>
+      <td>58</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>2143</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>261</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>technician</th>
+      <td>44</td>
+      <td>single</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>29</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>151</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>entrepreneur</th>
+      <td>33</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>76</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>blue-collar</th>
+      <td>47</td>
+      <td>married</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1506</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>92</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>unknown</th>
+      <td>33</td>
+      <td>single</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1</td>
+      <td>no</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>198</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>technician</th>
+      <td>51</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>825</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>977</td>
+      <td>3</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>retired</th>
+      <td>71</td>
+      <td>divorced</td>
+      <td>primary</td>
+      <td>no</td>
+      <td>1729</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>456</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>retired</th>
+      <td>72</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>5715</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>1127</td>
+      <td>5</td>
+      <td>184</td>
+      <td>3</td>
+      <td>success</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>blue-collar</th>
+      <td>57</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>668</td>
+      <td>no</td>
+      <td>no</td>
+      <td>telephone</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>508</td>
+      <td>4</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>entrepreneur</th>
+      <td>37</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2971</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>361</td>
+      <td>2</td>
+      <td>188</td>
+      <td>11</td>
+      <td>other</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+<p>45211 rows × 16 columns</p>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.reset_index()</span></code>:Este método se usa para restablecer el índice del DataFrame, devolviendo los índices actuales a columnas y creando un nuevo índice numérico predeterminado. Si usas el parámetro <code class="docutils literal notranslate"><span class="pre">drop=True</span></code> indica que se debe eliminar la columna de índice original en lugar de moverla a una columna.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.sort_index()</span></code>: Este método ordena las filas del DataFrame en función del índice.</p></li>
+</ul>
+<p>En conclusión, el uso de índices explícitos en Python es una técnica poderosa que permite un control detallado sobre la manipulación de datos. Ya sea en estructuras simples como listas o en análisis más complejos utilizando pandas, el conocimiento y uso adecuado de índices explícitos puede mejorar significativamente la eficiencia y claridad de tu código.</p>
 </section>
 </section>
 </section>
@@ -2202,8 +2764,10 @@ Name: age, dtype: float64
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-estadistica"><strong>Descripción estadística</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-univariado"><strong>Resumen estadístico univariado</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-bivariado"><strong>Resumen estadístico bivariado</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-estadistico-con-tablas-dinamicas"><strong>Resumen estadístico con tablas dinámicas</strong></a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-explicitos"><strong>Indices explicitos</strong></a></li>
 </ul>
 </li>
 </ul>
