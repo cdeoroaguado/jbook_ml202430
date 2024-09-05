@@ -417,6 +417,18 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-sencilla-de-datos"><strong>Visualización sencilla de datos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histograma"><strong>Histograma</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cajas-y-bigotes"><strong>Cajas y bigotes</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barras"><strong>Barras</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circulares"><strong>Circulares</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lineas"><strong>Lineas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-scatter-plots"><strong>Dispersión (Scatter Plots)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas-con-variable-categorica"><strong>Histogramas con variable categórica</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cajas-y-bigotes-con-variable-categorica"><strong>Cajas y bigotes con variable categórica</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digrama-de-barras-con-variables-categoricas"><strong>Digrama de barras con variables categóricas</strong></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -483,6 +495,34 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 
+
+
+
+En el libro se afirmaba: &quot;La serpiente boa se traga su presa entera, sin masticarla. 
+Luego ya no puede moverse y duerme durante ios seis meses que dura su 
+digestión&quot;. 
+
+Reflexioné mucho en ese momento sobre las aventuras de la jungla y a mi vez 
+logré trazar con un lápiz de colores mi primer dibujo. Mi dibujo número 1 era de 
+esta manera: 
+
+
+
+
+Enseñé mi obra de arte a las personas mayores y les pregunté si mi dibujo les 
+daba miedo. 
+
+-¿por qué habría de asustar un sombrero? - me respondieron. 
+
+Mi dibujo no representaba un sombrero. Representaba una serpiente boa que 
+digiere un elefante. Dibujé entonces el interior de la serpiente boa a fin de que las 
+personas mayores pudieran comprender. Siempre estas personas tienen 
+necesidad de explicaciones. Mi dibujo número 2 era así: 
+</pre></div>
+</div>
+</div>
 </div>
 <div class="attention admonition">
 <p class="admonition-title"><strong>Observación</strong></p>
@@ -522,6 +562,34 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;_data/elprincipito.txt&#39;</span><span class="p">,</span><span class="n">mode</span> <span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 
+
+
+
+En el libro se afirmaba: &quot;La serpiente boa se traga su presa entera, sin masticarla. 
+Luego ya no puede moverse y duerme durante ios seis meses que dura su 
+digestión&quot;. 
+
+Reflexioné mucho en ese momento sobre las aventuras de la jungla y a mi vez 
+logré trazar con un lápiz de colores mi primer dibujo. Mi dibujo número 1 era de 
+esta manera: 
+
+
+
+
+Enseñé mi obra de arte a las personas mayores y les pregunté si mi dibujo les 
+daba miedo. 
+
+-¿por qué habría de asustar un sombrero? - me respondieron. 
+
+Mi dibujo no representaba un sombrero. Representaba una serpiente boa que 
+digiere un elefante. Dibujé entonces el interior de la serpiente boa a fin de que las 
+personas mayores pudieran comprender. Siempre estas personas tienen 
+necesidad de explicaciones. Mi dibujo número 2 era así: 
 </pre></div>
 </div>
 </div>
@@ -598,7 +666,7 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;_data/50_Startups.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;_data/Startups.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">dataset</span>
 </pre></div>
 </div>
@@ -609,7 +677,7 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;_data/50_Startups.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;_data/Startups.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">dataset</span>
 </pre></div>
 </div>
@@ -878,11 +946,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1960-1966&#39;, &#39;1967-1974&#39;, &#39;1975-2011&#39;]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Esto indica que el archivo contiene tres hojas de cálculo, cada una correspondiente a un rango de años diferente.</p>
 <p>Una vez que conoces los nombres de las hojas, puedes cargar cualquier hoja en particular como un DataFrame para empezar a analizar los datos. Para hacer esto, utilizas el método <code class="docutils literal notranslate"><span class="pre">parse</span></code> del objeto <code class="docutils literal notranslate"><span class="pre">ExcelFile</span></code>. Este método acepta un argumento, que puede ser el nombre de la hoja como una cadena o su índice como un número entero (no como un <code class="docutils literal notranslate"><span class="pre">float</span></code>, ya que Python no acepta índices de hojas en forma de floats).</p>
@@ -917,7 +980,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lee la hoja &#39;1960–1966&#39; del archivo Excel y la carga en un DataFrame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;1960–1966&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;_data/urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;1960-1966&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -926,7 +989,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lee la primera hoja (índice 0) del archivo Excel</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;_data/urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -937,11 +1000,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lee las hojas &#39;1960–1966&#39; y &#39;1975–2011&#39; del archivo Excel</span>
-<span class="n">sheets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1960–1966&#39;</span><span class="p">,</span> <span class="s1">&#39;1975–2011&#39;</span><span class="p">])</span>
+<span class="n">sheets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;_data/urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1960-1966&#39;</span><span class="p">,</span> <span class="s1">&#39;1975-2011&#39;</span><span class="p">])</span>
 
 <span class="c1"># Accede a cada DataFrame por el nombre de la hoja</span>
-<span class="n">df1</span> <span class="o">=</span> <span class="n">sheets</span><span class="p">[</span><span class="s1">&#39;1960–1966&#39;</span><span class="p">]</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">sheets</span><span class="p">[</span><span class="s1">&#39;1975–2011&#39;</span><span class="p">]</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">sheets</span><span class="p">[</span><span class="s1">&#39;1960-1966&#39;</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">sheets</span><span class="p">[</span><span class="s1">&#39;1975-2011&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -952,7 +1015,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lee todas las hojas del archivo Excel</span>
-<span class="n">all_sheets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">all_sheets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;_data/urbanpop.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1242,13 +1305,6 @@ document.write(`
 <p>Para iniciar el proceso de creación, manipulación, entre otras debemos instalar el ia en el terminal. <strong>Recuerde activar el ambiente</strong>.</p>
 <p><img alt="installpandas" src="_images/installpandas.png" /></p>
 <p>Importemos la libreria <code class="docutils literal notranslate"><span class="pre">numpy</span></code> y <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1761,12 +1817,45 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(45211, 17)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Información de la estructura del dataset de marketing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener información sobre la estructura del DataFrame</span>
 <span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 45211 entries, 0 to 45210
+Data columns (total 17 columns):
+ #   Column     Non-Null Count  Dtype 
+---  ------     --------------  ----- 
+ 0   age        45211 non-null  int64 
+ 1   job        45211 non-null  object
+ 2   marital    45211 non-null  object
+ 3   education  45211 non-null  object
+ 4   default    45211 non-null  object
+ 5   balance    45211 non-null  int64 
+ 6   housing    45211 non-null  object
+ 7   loan       45211 non-null  object
+ 8   contact    45211 non-null  object
+ 9   day        45211 non-null  int64 
+ 10  month      45211 non-null  object
+ 11  duration   45211 non-null  int64 
+ 12  campaign   45211 non-null  int64 
+ 13  pdays      45211 non-null  int64 
+ 14  previous   45211 non-null  int64 
+ 15  poutcome   45211 non-null  object
+ 16  y          45211 non-null  object
+dtypes: int64(7), object(10)
+memory usage: 5.9+ MB
 </pre></div>
 </div>
 </div>
@@ -1779,6 +1868,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>768587
+</pre></div>
+</div>
+</div>
 </div>
 <p>Puede ocurrir que el conjunto de datos de marketing para la banca tenga duplicados. El método <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code> en pandas se utiliza para eliminar filas duplicadas de un DataFrame. Este método permite identificar y remover filas que contienen los mismos valores en las columnas seleccionadas, o en todas las columnas si no se especifica ninguna.</p>
 <div class="cell docutils container">
@@ -1786,6 +1880,34 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eliminar filas duplicadas</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 45211 entries, 0 to 45210
+Data columns (total 17 columns):
+ #   Column     Non-Null Count  Dtype 
+---  ------     --------------  ----- 
+ 0   age        45211 non-null  int64 
+ 1   job        45211 non-null  object
+ 2   marital    45211 non-null  object
+ 3   education  45211 non-null  object
+ 4   default    45211 non-null  object
+ 5   balance    45211 non-null  int64 
+ 6   housing    45211 non-null  object
+ 7   loan       45211 non-null  object
+ 8   contact    45211 non-null  object
+ 9   day        45211 non-null  int64 
+ 10  month      45211 non-null  object
+ 11  duration   45211 non-null  int64 
+ 12  campaign   45211 non-null  int64 
+ 13  pdays      45211 non-null  int64 
+ 14  previous   45211 non-null  int64 
+ 15  poutcome   45211 non-null  object
+ 16  y          45211 non-null  object
+dtypes: int64(7), object(10)
+memory usage: 5.9+ MB
 </pre></div>
 </div>
 </div>
@@ -1834,6 +1956,33 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;age&#39;, &#39;job&#39;, &#39;marital&#39;, &#39;education&#39;, &#39;default&#39;, &#39;balance&#39;, &#39;housing&#39;,
+       &#39;loan&#39;, &#39;contact&#39;, &#39;day&#39;, &#39;month&#39;, &#39;duration&#39;, &#39;campaign&#39;, &#39;pdays&#39;,
+       &#39;previous&#39;, &#39;poutcome&#39;, &#39;y&#39;],
+      dtype=&#39;object&#39;)
+RangeIndex(start=0, stop=45211, step=1)
+age           int64
+job          object
+marital      object
+education    object
+default      object
+balance       int64
+housing      object
+loan         object
+contact      object
+day           int64
+month        object
+duration      int64
+campaign      int64
+pdays         int64
+previous      int64
+poutcome     object
+y            object
+dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 <div class="warning admonition">
 <p class="admonition-title"><strong>Observación</strong></p>
@@ -1864,6 +2013,148 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>job</th>
+      <th>marital</th>
+      <th>education</th>
+      <th>default</th>
+      <th>balance</th>
+      <th>housing</th>
+      <th>loan</th>
+      <th>contact</th>
+      <th>day</th>
+      <th>month</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>poutcome</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>30791</th>
+      <td>19</td>
+      <td>student</td>
+      <td>single</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1169</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>6</td>
+      <td>feb</td>
+      <td>463</td>
+      <td>18</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31041</th>
+      <td>19</td>
+      <td>student</td>
+      <td>single</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>0</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>11</td>
+      <td>feb</td>
+      <td>123</td>
+      <td>3</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31263</th>
+      <td>19</td>
+      <td>student</td>
+      <td>single</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>27</td>
+      <td>no</td>
+      <td>no</td>
+      <td>telephone</td>
+      <td>5</td>
+      <td>mar</td>
+      <td>86</td>
+      <td>12</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31304</th>
+      <td>19</td>
+      <td>student</td>
+      <td>single</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>1803</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>10</td>
+      <td>mar</td>
+      <td>59</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31432</th>
+      <td>19</td>
+      <td>student</td>
+      <td>single</td>
+      <td>primary</td>
+      <td>no</td>
+      <td>134</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>27</td>
+      <td>mar</td>
+      <td>271</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Escojamos las columnas <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">marital</span></code>, <code class="docutils literal notranslate"><span class="pre">balance</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> de los clientes menores de 20</p>
 <div class="cell docutils container">
@@ -1873,6 +2164,16 @@ document.write(`
 
 <span class="c1"># imprimir</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">new_dfm20</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       age marital  balance    y
+30791   19  single     1169   no
+31041   19  single        0   no
+31263   19  single       27   no
+31304   19  single     1803   no
+31432   19  single      134  yes
 </pre></div>
 </div>
 </div>
@@ -1953,6 +2254,364 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>marital</th>
+      <th>balance</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>34281</th>
+      <td>19</td>
+      <td>single</td>
+      <td>5368</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>40736</th>
+      <td>18</td>
+      <td>single</td>
+      <td>1944</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>40376</th>
+      <td>19</td>
+      <td>single</td>
+      <td>1803</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31304</th>
+      <td>19</td>
+      <td>single</td>
+      <td>1803</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>33774</th>
+      <td>19</td>
+      <td>single</td>
+      <td>1247</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>30791</th>
+      <td>19</td>
+      <td>single</td>
+      <td>1169</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31492</th>
+      <td>19</td>
+      <td>single</td>
+      <td>779</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>32169</th>
+      <td>19</td>
+      <td>single</td>
+      <td>626</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>43680</th>
+      <td>19</td>
+      <td>single</td>
+      <td>608</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>42274</th>
+      <td>18</td>
+      <td>single</td>
+      <td>608</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>40887</th>
+      <td>18</td>
+      <td>single</td>
+      <td>608</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>41446</th>
+      <td>19</td>
+      <td>single</td>
+      <td>527</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>42488</th>
+      <td>19</td>
+      <td>single</td>
+      <td>526</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>44058</th>
+      <td>19</td>
+      <td>single</td>
+      <td>526</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>44644</th>
+      <td>18</td>
+      <td>single</td>
+      <td>438</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>44042</th>
+      <td>19</td>
+      <td>single</td>
+      <td>424</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>43408</th>
+      <td>19</td>
+      <td>single</td>
+      <td>394</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>44110</th>
+      <td>19</td>
+      <td>single</td>
+      <td>372</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>43637</th>
+      <td>18</td>
+      <td>single</td>
+      <td>348</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>41930</th>
+      <td>19</td>
+      <td>single</td>
+      <td>329</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>43594</th>
+      <td>19</td>
+      <td>single</td>
+      <td>329</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>44211</th>
+      <td>19</td>
+      <td>single</td>
+      <td>302</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>34675</th>
+      <td>19</td>
+      <td>single</td>
+      <td>291</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>45170</th>
+      <td>19</td>
+      <td>single</td>
+      <td>245</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>41619</th>
+      <td>19</td>
+      <td>single</td>
+      <td>179</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>42146</th>
+      <td>18</td>
+      <td>single</td>
+      <td>156</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31432</th>
+      <td>19</td>
+      <td>single</td>
+      <td>134</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>44493</th>
+      <td>19</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>40744</th>
+      <td>18</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>41487</th>
+      <td>18</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>42954</th>
+      <td>18</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>43258</th>
+      <td>19</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>42705</th>
+      <td>19</td>
+      <td>single</td>
+      <td>103</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>40564</th>
+      <td>19</td>
+      <td>single</td>
+      <td>103</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>41830</th>
+      <td>19</td>
+      <td>single</td>
+      <td>103</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>33789</th>
+      <td>19</td>
+      <td>single</td>
+      <td>96</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>41500</th>
+      <td>19</td>
+      <td>single</td>
+      <td>88</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>41057</th>
+      <td>19</td>
+      <td>single</td>
+      <td>60</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>40927</th>
+      <td>19</td>
+      <td>single</td>
+      <td>56</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>41706</th>
+      <td>19</td>
+      <td>single</td>
+      <td>55</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>41222</th>
+      <td>18</td>
+      <td>single</td>
+      <td>35</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31263</th>
+      <td>19</td>
+      <td>single</td>
+      <td>27</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>41252</th>
+      <td>18</td>
+      <td>single</td>
+      <td>5</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>41402</th>
+      <td>19</td>
+      <td>single</td>
+      <td>4</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>41273</th>
+      <td>18</td>
+      <td>single</td>
+      <td>3</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>34288</th>
+      <td>19</td>
+      <td>single</td>
+      <td>0</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>31041</th>
+      <td>19</td>
+      <td>single</td>
+      <td>0</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Puedes aplicar una función personalizada a una columna específica del DataFrame usando el método <code class="docutils literal notranslate"><span class="pre">apply()</span></code> de <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Supongamos que deseas crear una nueva columna llamada <code class="docutils literal notranslate"><span class="pre">balance_category</span></code> que clasifique el balance de cada cliente en <code class="docutils literal notranslate"><span class="pre">&quot;Bajo&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Medio&quot;</span></code> o <code class="docutils literal notranslate"><span class="pre">&quot;Alto&quot;</span></code> según ciertos umbrales.</p>
 <div class="cell docutils container">
@@ -1973,10 +2632,62 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aplicar la función &#39;categorizar_balance&#39; a la columna &#39;balance&#39;</span>
 <span class="c1"># y crear la nueva columna &#39;balance_category&#39;</span>
-<span class="n">new_dfm20</span><span class="p">[</span><span class="s1">&#39;balance_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_dfm20</span><span class="p">[</span><span class="s1">&#39;balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">categorizar_balance</span><span class="p">)</span>
+<span class="n">new_dfm20</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;balance_category&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_dfm20</span><span class="p">[</span><span class="s1">&#39;balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">categorizar_balance</span><span class="p">)</span>
 
 <span class="c1"># Mostrar el DataFrame actualizado</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">new_dfm20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       age marital  balance    y balance_category
+30791   19  single     1169   no            Medio
+31041   19  single        0   no             Bajo
+31263   19  single       27   no             Bajo
+31304   19  single     1803   no             Alto
+31432   19  single      134  yes             Bajo
+31492   19  single      779  yes            Medio
+32169   19  single      626   no            Medio
+33774   19  single     1247   no            Medio
+33789   19  single       96   no             Bajo
+34281   19  single     5368   no             Alto
+34288   19  single        0   no             Bajo
+34675   19  single      291   no             Bajo
+40376   19  single     1803   no             Alto
+40564   19  single      103  yes             Bajo
+40736   18  single     1944   no             Alto
+40744   18  single      108  yes             Bajo
+40887   18  single      608  yes            Medio
+40927   19  single       56   no             Bajo
+41057   19  single       60   no             Bajo
+41222   18  single       35   no             Bajo
+41252   18  single        5   no             Bajo
+41273   18  single        3  yes             Bajo
+41402   19  single        4   no             Bajo
+41446   19  single      527   no            Medio
+41487   18  single      108  yes             Bajo
+41500   19  single       88   no             Bajo
+41619   19  single      179   no             Bajo
+41706   19  single       55   no             Bajo
+41830   19  single      103   no             Bajo
+41930   19  single      329  yes             Bajo
+42146   18  single      156   no             Bajo
+42274   18  single      608  yes            Medio
+42488   19  single      526   no            Medio
+42705   19  single      103   no             Bajo
+42954   18  single      108  yes             Bajo
+43258   19  single      108  yes             Bajo
+43408   19  single      394  yes             Bajo
+43594   19  single      329  yes             Bajo
+43637   18  single      348  yes             Bajo
+43680   19  single      608  yes            Medio
+44042   19  single      424   no             Bajo
+44058   19  single      526   no            Medio
+44110   19  single      372  yes             Bajo
+44211   19  single      302  yes             Bajo
+44493   19  single      108  yes             Bajo
+44644   18  single      438   no             Bajo
+45170   19  single      245   no             Bajo
 </pre></div>
 </div>
 </div>
@@ -1995,6 +2706,148 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>marital</th>
+      <th>balance</th>
+      <th>y</th>
+      <th>balance_category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>31432</th>
+      <td>19</td>
+      <td>single</td>
+      <td>134</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>40564</th>
+      <td>19</td>
+      <td>single</td>
+      <td>103</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>40744</th>
+      <td>18</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>41273</th>
+      <td>18</td>
+      <td>single</td>
+      <td>3</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>41487</th>
+      <td>18</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>41930</th>
+      <td>19</td>
+      <td>single</td>
+      <td>329</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>42954</th>
+      <td>18</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>43258</th>
+      <td>19</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>43408</th>
+      <td>19</td>
+      <td>single</td>
+      <td>394</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>43594</th>
+      <td>19</td>
+      <td>single</td>
+      <td>329</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>43637</th>
+      <td>18</td>
+      <td>single</td>
+      <td>348</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>44110</th>
+      <td>19</td>
+      <td>single</td>
+      <td>372</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>44211</th>
+      <td>19</td>
+      <td>single</td>
+      <td>302</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+    <tr>
+      <th>44493</th>
+      <td>19</td>
+      <td>single</td>
+      <td>108</td>
+      <td>yes</td>
+      <td>Bajo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="descripcion-estadistica">
@@ -2011,17 +2864,30 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descriptivo de una sola variable numérica solo promedio</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-              
+
 <span class="c1"># Resumen descriptivo de una sola variable numérica</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
     <span class="s1">&#39;Promedio&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>                       <span class="c1"># Media</span>
     <span class="s1">&#39;Desviacion_Estandar&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span>             <span class="c1"># Desv Estandar</span>
     <span class="s1">&#39;Minimo&#39;</span><span class="p">:</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span>                          <span class="c1"># Mínimo</span>
     <span class="s1">&#39;Maximo&#39;</span><span class="p">:</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>                          <span class="c1"># Máximo</span>
-    <span class="s1">&#39;Mediana&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">,</span>                      <span class="c1"># Mediana</span>
+    <span class="s1">&#39;Mediana&#39;</span><span class="p">:</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>                      <span class="c1"># Mediana usando &#39;median&#39; en lugar de np.median</span>
     <span class="s1">&#39;Cuantil 1&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>  <span class="c1"># Cuantil 25%</span>
     <span class="s1">&#39;Cuantil 3&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>   <span class="c1"># Cuantil 75%</span>
 <span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40.93621021432837
+Promedio               40.936210
+Desviacion_Estandar    10.618762
+Minimo                 18.000000
+Maximo                 95.000000
+Mediana                39.000000
+Cuantil 1              33.000000
+Cuantil 3              48.000000
+Name: age, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2044,6 +2910,21 @@ document.write(`
 
 <span class="c1"># Mostrar los resultados</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age          40.936210
+balance    1362.272058
+dtype: float64
+                      age        balance
+Promedio        40.936210    1362.272058
+Desv. Estandar  10.618762    3044.765829
+minimo          18.000000   -8019.000000
+maximo          95.000000  102127.000000
+mediana         39.000000     448.000000
+Cuantil 1       33.000000      72.000000
+Cuantil 3       48.000000    1428.000000
 </pre></div>
 </div>
 </div>
@@ -2072,6 +2953,52 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>job
+blue-collar      9732
+management       9458
+technician       7597
+admin.           5171
+services         4154
+retired          2264
+self-employed    1579
+entrepreneur     1487
+unemployed       1303
+housemaid        1240
+student           938
+unknown           288
+Name: count, dtype: int64
+job
+blue-collar      0.215257
+management       0.209197
+technician       0.168034
+admin.           0.114375
+services         0.091880
+retired          0.050076
+self-employed    0.034925
+entrepreneur     0.032890
+unemployed       0.028820
+housemaid        0.027427
+student          0.020747
+unknown          0.006370
+Name: proportion, dtype: float64
+               Conteo  Proporción
+job                              
+blue-collar      9732    0.215257
+management       9458    0.209197
+technician       7597    0.168034
+admin.           5171    0.114375
+services         4154    0.091880
+retired          2264    0.050076
+self-employed    1579    0.034925
+entrepreneur     1487    0.032890
+unemployed       1303    0.028820
+housemaid        1240    0.027427
+student           938    0.020747
+unknown           288    0.006370
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2091,6 +3018,60 @@ document.write(`
 
 <span class="c1"># imprimir</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                         Conteo  Proporción
+job           education                    
+management    tertiary     7801    0.172547
+blue-collar   secondary    5371    0.118799
+technician    secondary    5229    0.115658
+admin.        secondary    4219    0.093318
+blue-collar   primary      3758    0.083121
+services      secondary    3457    0.076464
+technician    tertiary     1968    0.043529
+management    secondary    1121    0.024795
+retired       secondary     984    0.021765
+self-employed tertiary      833    0.018425
+retired       primary       795    0.017584
+unemployed    secondary     728    0.016102
+entrepreneur  tertiary      686    0.015173
+housemaid     primary       627    0.013868
+self-employed secondary     577    0.012762
+admin.        tertiary      572    0.012652
+entrepreneur  secondary     542    0.011988
+student       secondary     508    0.011236
+blue-collar   unknown       454    0.010042
+housemaid     secondary     395    0.008737
+retired       tertiary      366    0.008095
+services      primary       345    0.007631
+management    primary       294    0.006503
+unemployed    tertiary      289    0.006392
+              primary       257    0.005684
+management    unknown       242    0.005353
+technician    unknown       242    0.005353
+student       tertiary      223    0.004932
+admin.        primary       209    0.004623
+services      tertiary      202    0.004468
+entrepreneur  primary       183    0.004048
+housemaid     tertiary      173    0.003827
+admin.        unknown       171    0.003782
+student       unknown       163    0.003605
+technician    primary       158    0.003495
+services      unknown       150    0.003318
+blue-collar   tertiary      149    0.003296
+self-employed primary       130    0.002875
+unknown       unknown       127    0.002809
+retired       unknown       119    0.002632
+entrepreneur  unknown        76    0.001681
+unknown       secondary      71    0.001570
+              primary        51    0.001128
+housemaid     unknown        45    0.000995
+student       primary        44    0.000973
+self-employed unknown        39    0.000863
+unknown       tertiary       39    0.000863
+unemployed    unknown        29    0.000641
 </pre></div>
 </div>
 </div>
@@ -2158,6 +3139,29 @@ yes  41.670070      13.497781      18      95     38.0       31.0       50.0
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Edad_Promedio  Edad_Desviacion_Estandar  Edad_Minimo  Edad_Maximo  \
+y                                                                        
+no       40.838986                 10.172662           18           95   
+yes      41.670070                 13.497781           18           95   
+
+     Edad_Mediana  Edad_Cuantil_1  Edad_Cuantil_3  Balance_Promedio  \
+y                                                                     
+no           39.0            33.0            48.0       1303.714969   
+yes          38.0            31.0            50.0       1804.267915   
+
+     Balance_Desviacion_Estandar  Balance_Minimo  Balance_Maximo  \
+y                                                                  
+no                   2974.195473           -8019          102127   
+yes                  3501.104777           -3058           81204   
+
+     Balance_Mediana  Balance_Cuantil_1  Balance_Cuantil_3  
+y                                                           
+no             417.0               58.0             1345.0  
+yes            733.0              210.0             2159.0  
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="resumen-estadistico-con-tablas-dinamicas">
@@ -2183,6 +3187,82 @@ yes  41.670070      13.497781      18      95     38.0       31.0       50.0
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+      <th>median</th>
+      <th>q25</th>
+      <th>q75</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>age</th>
+      <th>age</th>
+      <th>age</th>
+      <th>age</th>
+      <th>age</th>
+      <th>age</th>
+      <th>age</th>
+    </tr>
+    <tr>
+      <th>y</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>no</th>
+      <td>40.838986</td>
+      <td>10.172662</td>
+      <td>18</td>
+      <td>95</td>
+      <td>39.0</td>
+      <td>33.0</td>
+      <td>48.0</td>
+    </tr>
+    <tr>
+      <th>yes</th>
+      <td>41.670070</td>
+      <td>13.497781</td>
+      <td>18</td>
+      <td>95</td>
+      <td>38.0</td>
+      <td>31.0</td>
+      <td>50.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Ahora, usemos <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> para dos variables categóricas. Por ejemplo</p>
 <div class="cell docutils container">
@@ -2192,6 +3272,118 @@ yes  41.670070      13.497781      18      95     38.0       31.0       50.0
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>job</th>
+      <th>admin.</th>
+      <th>blue-collar</th>
+      <th>entrepreneur</th>
+      <th>housemaid</th>
+      <th>management</th>
+      <th>retired</th>
+      <th>self-employed</th>
+      <th>services</th>
+      <th>student</th>
+      <th>technician</th>
+      <th>unemployed</th>
+      <th>unknown</th>
+    </tr>
+    <tr>
+      <th>education</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>primary</th>
+      <td>46.100478</td>
+      <td>42.294838</td>
+      <td>44.360656</td>
+      <td>48.631579</td>
+      <td>48.605442</td>
+      <td>62.698113</td>
+      <td>45.276923</td>
+      <td>43.756522</td>
+      <td>22.636364</td>
+      <td>47.189873</td>
+      <td>43.073930</td>
+      <td>47.000000</td>
+    </tr>
+    <tr>
+      <th>secondary</th>
+      <td>39.276843</td>
+      <td>38.340160</td>
+      <td>41.583026</td>
+      <td>43.898734</td>
+      <td>42.051740</td>
+      <td>60.058943</td>
+      <td>41.537262</td>
+      <td>38.238068</td>
+      <td>25.779528</td>
+      <td>39.576975</td>
+      <td>41.409341</td>
+      <td>44.436620</td>
+    </tr>
+    <tr>
+      <th>tertiary</th>
+      <td>35.083916</td>
+      <td>36.664430</td>
+      <td>41.706997</td>
+      <td>42.450867</td>
+      <td>39.735931</td>
+      <td>62.090164</td>
+      <td>38.845138</td>
+      <td>36.227723</td>
+      <td>28.215247</td>
+      <td>37.458841</td>
+      <td>37.788927</td>
+      <td>47.076923</td>
+    </tr>
+    <tr>
+      <th>unknown</th>
+      <td>45.356725</td>
+      <td>42.680617</td>
+      <td>45.671053</td>
+      <td>52.866667</td>
+      <td>46.123967</td>
+      <td>66.008403</td>
+      <td>43.948718</td>
+      <td>42.160000</td>
+      <td>27.687117</td>
+      <td>43.595041</td>
+      <td>42.620690</td>
+      <td>49.755906</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Para crear una <strong>tabla de contigencia</strong>, basta con tener dos variables categóricas. Por ejemplo</p>
 <div class="cell docutils container">
@@ -2207,6 +3399,46 @@ yes  41.670070      13.497781      18      95     38.0       31.0       50.0
 <span class="c1"># Otra forma de crear una tabla de contingencia</span>
 <span class="n">crosstab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;education&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">margins_name</span><span class="o">=</span><span class="s1">&#39;Total&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">crosstab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>job        admin.  blue-collar  entrepreneur  housemaid  management  retired  \
+education                                                                      
+primary       209         3758           183        627         294      795   
+secondary    4219         5371           542        395        1121      984   
+tertiary      572          149           686        173        7801      366   
+unknown       171          454            76         45         242      119   
+
+job        self-employed  services  student  technician  unemployed  unknown  
+education                                                                     
+primary              130       345       44         158         257       51  
+secondary            577      3457      508        5229         728       71  
+tertiary             833       202      223        1968         289       39  
+unknown               39       150      163         242          29      127  
+job        admin.  blue-collar  entrepreneur  housemaid  management  retired  \
+education                                                                      
+primary       209         3758           183        627         294      795   
+secondary    4219         5371           542        395        1121      984   
+tertiary      572          149           686        173        7801      366   
+unknown       171          454            76         45         242      119   
+Total        5171         9732          1487       1240        9458     2264   
+
+job        self-employed  services  student  technician  unemployed  unknown  \
+education                                                                      
+primary              130       345       44         158         257       51   
+secondary            577      3457      508        5229         728       71   
+tertiary             833       202      223        1968         289       39   
+unknown               39       150      163         242          29      127   
+Total               1579      4154      938        7597        1303      288   
+
+job        Total  
+education         
+primary     6851  
+secondary  23202  
+tertiary   13301  
+unknown     1857  
+Total      45211  
 </pre></div>
 </div>
 </div>
@@ -2669,12 +3901,1317 @@ yes  41.670070      13.497781      18      95     38.0       31.0       50.0
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>job</th>
+      <th>marital</th>
+      <th>education</th>
+      <th>default</th>
+      <th>balance</th>
+      <th>housing</th>
+      <th>loan</th>
+      <th>contact</th>
+      <th>day</th>
+      <th>month</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>poutcome</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>58</td>
+      <td>management</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>2143</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>261</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>44</td>
+      <td>technician</td>
+      <td>single</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>29</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>151</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>33</td>
+      <td>entrepreneur</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>76</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>47</td>
+      <td>blue-collar</td>
+      <td>married</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1506</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>92</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>33</td>
+      <td>unknown</td>
+      <td>single</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1</td>
+      <td>no</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>198</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>45206</th>
+      <td>51</td>
+      <td>technician</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>825</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>977</td>
+      <td>3</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>45207</th>
+      <td>71</td>
+      <td>retired</td>
+      <td>divorced</td>
+      <td>primary</td>
+      <td>no</td>
+      <td>1729</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>456</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>45208</th>
+      <td>72</td>
+      <td>retired</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>5715</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>1127</td>
+      <td>5</td>
+      <td>184</td>
+      <td>3</td>
+      <td>success</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>45209</th>
+      <td>57</td>
+      <td>blue-collar</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>668</td>
+      <td>no</td>
+      <td>no</td>
+      <td>telephone</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>508</td>
+      <td>4</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>45210</th>
+      <td>37</td>
+      <td>entrepreneur</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2971</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>361</td>
+      <td>2</td>
+      <td>188</td>
+      <td>11</td>
+      <td>other</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+<p>45211 rows × 17 columns</p>
+</div></div></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">df.sort_index()</span></code>: Este método ordena las filas del DataFrame en función del índice.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># orden de los indices</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>job</th>
+      <th>marital</th>
+      <th>education</th>
+      <th>default</th>
+      <th>balance</th>
+      <th>housing</th>
+      <th>loan</th>
+      <th>contact</th>
+      <th>day</th>
+      <th>month</th>
+      <th>duration</th>
+      <th>campaign</th>
+      <th>pdays</th>
+      <th>previous</th>
+      <th>poutcome</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>45210</th>
+      <td>37</td>
+      <td>entrepreneur</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2971</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>361</td>
+      <td>2</td>
+      <td>188</td>
+      <td>11</td>
+      <td>other</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>45209</th>
+      <td>57</td>
+      <td>blue-collar</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>668</td>
+      <td>no</td>
+      <td>no</td>
+      <td>telephone</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>508</td>
+      <td>4</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>45208</th>
+      <td>72</td>
+      <td>retired</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>5715</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>1127</td>
+      <td>5</td>
+      <td>184</td>
+      <td>3</td>
+      <td>success</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>45207</th>
+      <td>71</td>
+      <td>retired</td>
+      <td>divorced</td>
+      <td>primary</td>
+      <td>no</td>
+      <td>1729</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>456</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>45206</th>
+      <td>51</td>
+      <td>technician</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>825</td>
+      <td>no</td>
+      <td>no</td>
+      <td>cellular</td>
+      <td>17</td>
+      <td>nov</td>
+      <td>977</td>
+      <td>3</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>33</td>
+      <td>unknown</td>
+      <td>single</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1</td>
+      <td>no</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>198</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>47</td>
+      <td>blue-collar</td>
+      <td>married</td>
+      <td>unknown</td>
+      <td>no</td>
+      <td>1506</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>92</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>33</td>
+      <td>entrepreneur</td>
+      <td>married</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>2</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>76</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>44</td>
+      <td>technician</td>
+      <td>single</td>
+      <td>secondary</td>
+      <td>no</td>
+      <td>29</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>151</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>58</td>
+      <td>management</td>
+      <td>married</td>
+      <td>tertiary</td>
+      <td>no</td>
+      <td>2143</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td>may</td>
+      <td>261</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>unknown</td>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+<p>45211 rows × 17 columns</p>
+</div></div></div>
+</div>
 <p>En conclusión, el uso de índices explícitos en Python es una técnica poderosa que permite un control detallado sobre la manipulación de datos. Ya sea en estructuras simples como listas o en análisis más complejos utilizando pandas, el conocimiento y uso adecuado de índices explícitos puede mejorar significativamente la eficiencia y claridad de tu código.</p>
 </section>
+</section>
+</section>
+<section id="visualizacion-sencilla-de-datos">
+<h2><strong>Visualización sencilla de datos</strong><a class="headerlink" href="#visualizacion-sencilla-de-datos" title="Link to this heading">#</a></h2>
+<p><strong>Matplotlib</strong> es una biblioteca de visualización de datos en Python ampliamente utilizada, especialmente en los campos de la ciencia de datos, la ingeniería y la investigación. Permite crear una amplia gama de gráficos, desde simples gráficos de líneas y dispersión hasta complejas visualizaciones tridimensionales y gráficos interactivos.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características principales de Matplotlib</strong></p>
+<ul class="simple">
+<li><p><strong>Flexibilidad</strong>: Matplotlib ofrece una amplia personalización en todos los aspectos del gráfico, como colores, tipos de línea, marcadores, etiquetas y leyendas.</p></li>
+<li><p><strong>Versatilidad</strong>: Puede generar gráficos estáticos, animados e interactivos en diferentes formatos de archivo, incluyendo PNG, PDF, SVG y más.</p></li>
+<li><p><strong>Compatibilidad</strong>: Se integra fácilmente con otras bibliotecas populares como NumPy, pandas y Seaborn, facilitando el análisis y visualización de datos.</p></li>
+<li><p><strong>API orientada a objetos</strong>: Matplotlib ofrece una API que permite un control detallado sobre la creación y personalización de gráficos.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas de Matplotlib</strong></p>
+<ul class="simple">
+<li><p><strong>Amplia documentación</strong>: Matplotlib tiene una documentación extensa y muchos ejemplos, lo que facilita su aprendizaje y uso.</p></li>
+<li><p><strong>Gran comunidad</strong>: Existe una gran comunidad de usuarios que contribuyen con ejemplos, tutoriales y soluciones a problemas comunes.</p></li>
+<li><p><strong>Personalización detallada</strong>: Permite ajustar prácticamente cualquier aspecto de los gráficos, desde los tamaños de las figuras hasta los estilos de línea y los colores.</p></li>
+</ul>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Desventajas de Matplotlib</strong></p>
+<ul class="simple">
+<li><p><strong>Curva de aprendizaje</strong>: Aunque poderosa, la flexibilidad de Matplotlib puede resultar intimidante para los principiantes, especialmente cuando se trata de personalizar gráficos complejos.</p></li>
+<li><p><strong>Estética básica</strong>: Los gráficos creados con Matplotlib, sin personalización adicional, pueden parecer básicos en comparación con otras bibliotecas como Seaborn o Plotly.</p></li>
+</ul>
+</div>
+<p>Para el desarrollo de las visualización trabajaremos con datos sobre los almacenes Walmart, que es un cadena de grande almacenes de Ewa.</p>
+<figure class="align-center" id="walmart">
+<a class="reference internal image-reference" href="_images/walmart.png"><img alt="_images/walmart.png" src="_images/walmart.png" style="width: 488.5px; height: 268.5px;" /></a>
+</figure>
+<p>El conjunto de datos completos lo puede encontrar este <a class="reference external" href="https://www.kaggle.com/datasets/yasserh/walmart-dataset/data">link</a>. Trabajaremos un subconjunto de datos contiene las ventas semanales en dolares, cada tienda tiene un número de identificación y un tipo de tienda específico, las ventas estan separadas por ID de departamento. Junto con las ventas hay variables como si fue de vacaciones o no, la temperatura media durante la semana en esa localidad, el tiempo medio del combustible en dolares por litro esa semana y la tasa de desempleo de esa semana</p>
+<p>Aquí tienes una explicación de las variables en el conjunto de datos de ventas proporcionado:</p>
+<ul class="simple">
+<li><p><strong>Unnamed</strong>: Columna de índice que parece haber sido incluida al guardar el archivo. No es una variable significativa.</p></li>
+<li><p><strong>store</strong>: Identificador del número de la tienda.</p></li>
+<li><p><strong>type</strong>: Tipo de tienda, representado por una letra (por ejemplo, “A”, “B”, etc.).</p></li>
+<li><p><strong>department</strong>: Identificador del número de departamento dentro de la tienda.</p></li>
+<li><p><strong>date</strong>: Fecha en la que se registró la venta.</p></li>
+<li><p><strong>weekly_sales</strong>: Ventas semanales en USD registradas en esa tienda y departamento específicos.</p></li>
+<li><p><strong>is_holiday</strong>: Variable booleana que indica si la fecha corresponde a un día festivo o no. Los valores son “True” o “False”.</p></li>
+<li><p><strong>temperature_c</strong>: Temperatura en grados Celsius en la fecha registrada.</p></li>
+<li><p><strong>fuel_price_usd_per_l</strong>: Precio del combustible en dólares estadounidenses por litro en la fecha registrada.</p></li>
+<li><p><strong>unemployment</strong>: Tasa de desempleo en la fecha registrada.</p></li>
+</ul>
+<p>Carguemos el conjunto de datos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/sales.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>store</th>
+      <th>type</th>
+      <th>department</th>
+      <th>date</th>
+      <th>weekly_sales</th>
+      <th>is_holiday</th>
+      <th>temperature_c</th>
+      <th>fuel_price_usd_per_l</th>
+      <th>unemployment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-02-05</td>
+      <td>24924.50</td>
+      <td>False</td>
+      <td>5.727778</td>
+      <td>0.679451</td>
+      <td>8.106</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-03-05</td>
+      <td>21827.90</td>
+      <td>False</td>
+      <td>8.055556</td>
+      <td>0.693452</td>
+      <td>8.106</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-04-02</td>
+      <td>57258.43</td>
+      <td>False</td>
+      <td>16.816667</td>
+      <td>0.718284</td>
+      <td>7.808</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-05-07</td>
+      <td>17413.94</td>
+      <td>False</td>
+      <td>22.527778</td>
+      <td>0.748928</td>
+      <td>7.808</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-06-04</td>
+      <td>17558.09</td>
+      <td>False</td>
+      <td>27.050000</td>
+      <td>0.714586</td>
+      <td>7.808</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Renombrar una columna</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>store</th>
+      <th>type</th>
+      <th>department</th>
+      <th>date</th>
+      <th>weekly_sales</th>
+      <th>is_holiday</th>
+      <th>temperature_c</th>
+      <th>fuel_price_usd_per_l</th>
+      <th>unemployment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-02-05</td>
+      <td>24924.50</td>
+      <td>False</td>
+      <td>5.727778</td>
+      <td>0.679451</td>
+      <td>8.106</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-03-05</td>
+      <td>21827.90</td>
+      <td>False</td>
+      <td>8.055556</td>
+      <td>0.693452</td>
+      <td>8.106</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-04-02</td>
+      <td>57258.43</td>
+      <td>False</td>
+      <td>16.816667</td>
+      <td>0.718284</td>
+      <td>7.808</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-05-07</td>
+      <td>17413.94</td>
+      <td>False</td>
+      <td>22.527778</td>
+      <td>0.748928</td>
+      <td>7.808</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>1</td>
+      <td>A</td>
+      <td>1</td>
+      <td>2010-06-04</td>
+      <td>17558.09</td>
+      <td>False</td>
+      <td>27.050000</td>
+      <td>0.714586</td>
+      <td>7.808</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Informacion del conjunto de datos</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 10774 entries, 0 to 10773
+Data columns (total 10 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   id                    10774 non-null  int64  
+ 1   store                 10774 non-null  int64  
+ 2   type                  10774 non-null  object 
+ 3   department            10774 non-null  int64  
+ 4   date                  10774 non-null  object 
+ 5   weekly_sales          10774 non-null  float64
+ 6   is_holiday            10774 non-null  bool   
+ 7   temperature_c         10774 non-null  float64
+ 8   fuel_price_usd_per_l  10774 non-null  float64
+ 9   unemployment          10774 non-null  float64
+dtypes: bool(1), float64(4), int64(3), object(2)
+memory usage: 768.2+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Matplotlib</strong> es especialmente útil cuando necesitas crear gráficos personalizados y detallados, y es una herramienta esencial para cualquier persona que trabaje con visualización de datos en Python. Haremos unas gráficas univariadas</p>
+<section id="histograma">
+<h3><strong>Histograma</strong><a class="headerlink" href="#histograma" title="Link to this heading">#</a></h3>
+<p>Un <strong>histograma</strong> es una representación gráfica que muestra la distribución de una variable continua. Se divide el rango de valores en intervalos (<code class="docutils literal notranslate"><span class="pre">bins</span></code>) y se cuenta cuántos valores caen en cada intervalo.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características del histograma</strong></p>
+<ul class="simple">
+<li><p>Ideal para visualizar la forma de la distribución de los datos.</p></li>
+<li><p>Ayuda a identificar la simetría, la dispersión, y la presencia de outliers.</p></li>
+<li><p>El número de <code class="docutils literal notranslate"><span class="pre">bins</span></code> afecta la interpretación; demasiados o muy pocos <code class="docutils literal notranslate"><span class="pre">bins</span></code> pueden ocultar patrones importantes.</p></li>
+<li><p>Permite una fácil visualización de la distribución de datos.</p></li>
+<li><p>Útil para identificar la presencia de sesgos en los datos.</p></li>
+<li><p>No es útil para datos categóricos.</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Histograma de las ventas semanales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fuel_price_usd_per_l&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1c9c907f037b105dd538d4c59cf8d5b2afc2db673d2ca6a9f6e04374f7ea6b37.png" src="_images/1c9c907f037b105dd538d4c59cf8d5b2afc2db673d2ca6a9f6e04374f7ea6b37.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Otra forma</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;weekly_sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06ce8a449db238af43e1a9ed2fc2c8bbbf1e33c9d6700cd132fc7140d5b6f98b.png" src="_images/06ce8a449db238af43e1a9ed2fc2c8bbbf1e33c9d6700cd132fc7140d5b6f98b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histograma del precio del combustible ajustando el bins = 20</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;fuel_price_usd_per_l&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9cfee98404a78f58c62037812ce006624b75e81fa63d1cfa3eb118c5e9e12ce7.png" src="_images/9cfee98404a78f58c62037812ce006624b75e81fa63d1cfa3eb118c5e9e12ce7.png" />
+</div>
+</div>
+</section>
+<section id="cajas-y-bigotes">
+<h3><strong>Cajas y bigotes</strong><a class="headerlink" href="#cajas-y-bigotes" title="Link to this heading">#</a></h3>
+<p>Un gráfico de cajas y bigotes visualiza la distribución de un conjunto de datos, mostrando la mediana y los cuartiles, así como los posibles outliers.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características de la cajas y bigotes</strong></p>
+<ul class="simple">
+<li><p><strong>Caja</strong>: Representa el rango intercuartil (IQR), es decir, el 50% central de los datos, entre el primer y el tercer cuartil (Q1 y Q3).</p></li>
+<li><p><strong>Línea dentro de la caja</strong>: Representa la mediana (Q2) de los datos.</p></li>
+<li><p><strong>Bigotes</strong>: Se extienden desde los cuartiles hasta el valor más pequeño y el más grande dentro de 1.5 veces el IQR. Los valores fuera de este rango se consideran outliers y se marcan como puntos individuales.</p></li>
+<li><p><strong>Outliers</strong>: Valores que caen fuera de los bigotes y son indicados por puntos individuales.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas</strong></p>
+<ul class="simple">
+<li><p><strong>Resúmenes concisos</strong>: Muestra un resumen estadístico claro en un formato gráfico compacto.</p></li>
+<li><p><strong>Detección de outliers</strong>: Facilita la identificación de valores atípicos o extremos.</p></li>
+<li><p><strong>Comparación entre grupos</strong>: Permite comparar la distribución de datos entre diferentes grupos o categorías de manera efectiva.</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># diagrama de cajas y bigotes de la temperatura</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;temperature_c&#39;</span><span class="p">])</span>
+
+<span class="c1"># Remover el nombre de la columna del eje X</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">])</span>  
+
+<span class="c1"># Agregar título y etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gráfico de Cajas y Bigotes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperatura (°F)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2c9eea89ec4ce1ff137af3aa4903515089b83e7d0ccef65fbb30b941c188bfac.png" src="_images/2c9eea89ec4ce1ff137af3aa4903515089b83e7d0ccef65fbb30b941c188bfac.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># otra forma</span>
+<span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;temperature_c&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remover el nombre de la columna del eje X</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">])</span>  
+
+<span class="c1"># Agregar título y etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gráfico de Cajas y Bigotes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperatura (°F)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/90c7b6b5926626b8a6995a47c2e7cfd3a3d54f712e0bec1b68a43f6b3bcdbfd9.png" src="_images/90c7b6b5926626b8a6995a47c2e7cfd3a3d54f712e0bec1b68a43f6b3bcdbfd9.png" />
+</div>
+</div>
+</section>
+<section id="barras">
+<h3><strong>Barras</strong><a class="headerlink" href="#barras" title="Link to this heading">#</a></h3>
+<p>Una gráfica de barras se utiliza para mostrar y comparar cantidades entre diferentes categorías. Cada barra representa una categoría, y su altura es proporcional al valor que representa.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características de las barras</strong></p>
+<ul class="simple">
+<li><p>Adecuada para datos categóricos.</p></li>
+<li><p>Las barras pueden organizarse horizontal o verticalmente.
+Fácil de interpretar y comparar diferentes categorías.</p></li>
+<li><p>Proporciona una clara visualización de las diferencias entre categorías.</p></li>
+<li><p>Fácil de leer e interpretar, incluso con muchas categorías.</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Contar el tipo de tienda</span>
+<span class="n">tipo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> 
+
+<span class="c1"># Graficar el conteo de tipos de tienda en un gráfico de barras verticales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">tipo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">tipo</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7f2b7a13ac2698bff57110462cc6290283c2236b504544ea29d02696ebead987.png" src="_images/7f2b7a13ac2698bff57110462cc6290283c2236b504544ea29d02696ebead987.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convertir is_holiday en categorica</span>
+<span class="n">festivo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_holiday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;Holiday&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;Non-Holiday&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+<span class="c1"># Contar el tipo de tienda</span>
+<span class="n">conteo_festivo</span> <span class="o">=</span> <span class="n">festivo</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> 
+
+<span class="c1">#Graficar el conteo de festivos en un gráfico de barras verticales</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">conteo_festivo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">conteo_festivo</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a59deb3126c42fe1cb857aaf8dc209f98046cc18e448e41919b080b3fe086af1.png" src="_images/a59deb3126c42fe1cb857aaf8dc209f98046cc18e448e41919b080b3fe086af1.png" />
+</div>
+</div>
+</section>
+<section id="circulares">
+<h3><strong>Circulares</strong><a class="headerlink" href="#circulares" title="Link to this heading">#</a></h3>
+<p>Un diagrama circular (o gráfico de pastel) es una representación gráfica que muestra la proporción de diferentes categorías dentro de un conjunto de datos como segmentos de un círculo. Cada segmento del círculo representa una categoría y su tamaño es proporcional a su frecuencia o porcentaje en relación con el total.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características del diagrama circular</strong></p>
+<ul class="simple">
+<li><p><strong>Segmentos</strong>: Cada porción del círculo corresponde a una categoría y muestra su proporción respecto al total.</p></li>
+<li><p><strong>Proporciones</strong>: La suma de todos los segmentos representa el 100% del conjunto de datos.</p></li>
+<li><p><strong>Etiquetas</strong>: A menudo se etiquetan los segmentos con nombres de categorías y porcentajes.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas</strong></p>
+<ul class="simple">
+<li><p><strong>Visualización clara</strong>: Facilita la comprensión de las proporciones de las categorías en un solo vistazo.</p></li>
+<li><p><strong>Comparación intuitiva</strong>: Permite comparar rápidamente las partes del total.</p></li>
+<li><p><strong>Atractivo visual</strong>: Los gráficos de pastel son visualmente atractivos y pueden ser útiles para presentaciones y informes.</p></li>
+</ul>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Desventaja</strong></p>
+<ul class="simple">
+<li><p><strong>Dificultad con muchas categorías</strong>: No es ideal para conjuntos de datos con muchas categorías, ya que los segmentos pueden volverse difíciles de distinguir.</p></li>
+</ul>
+</div>
+<p>Para crear un diagrama circular debemos tener en cuenta los siguientes parámetros:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">tipo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tipo</span><span class="p">))))</span> 
+</pre></div>
+</div>
+<p>genera el diagrama circular:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tipo</span></code> contiene los valores de conteo de cada categoría.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels=tipo.index</span></code> asigna etiquetas a cada segmento del gráfico.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autopct='%1.1f%%'</span></code> muestra los porcentajes en cada segmento.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">startangle=140</span></code> rota el gráfico para una mejor presentación.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">colors=plt.cm.Paired(range(len(tipo)))</span></code> usa un mapa de colores para diferenciar los segmentos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tipo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="c1"># Graficar el conteo de tipos de tienda en un diagrama circular</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">tipo</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tipo</span><span class="p">))))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de Tipos de Tienda&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/959db9b186aaf661256ab61cecd7df39ce953143814d901627319b1a22aec2fa.png" src="_images/959db9b186aaf661256ab61cecd7df39ce953143814d901627319b1a22aec2fa.png" />
+</div>
+</div>
+<p>Ahora haremos unas gráficas bivariadas.</p>
+</section>
+<section id="lineas">
+<h3><strong>Lineas</strong><a class="headerlink" href="#lineas" title="Link to this heading">#</a></h3>
+<p>Una gráfica de líneas conecta una serie de puntos de datos con líneas, generalmente utilizada para mostrar cambios o tendencias a lo largo del tiempo.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características del diagrama de lineas</strong></p>
+<ul class="simple">
+<li><p>Ideal para series temporales.</p></li>
+<li><p>Muestra la tendencia general de los datos.</p></li>
+<li><p>Puede incluir múltiples líneas para comparar diferentes series de datos.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas</strong></p>
+<ul class="simple">
+<li><p>Excelente para visualizar tendencias a lo largo del tiempo.</p></li>
+<li><p>Permite comparar fácilmente varias series de datos.</p></li>
+</ul>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Desventajas</strong></p>
+<ul class="simple">
+<li><p>Puede volverse confusa si se incluyen demasiadas líneas.</p></li>
+<li><p>No es adecuada para datos categóricos.</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convertir la columna date a formato de fecha</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+
+<span class="c1"># Agrupar las ventas por fecha, sumando las ventas semanales en las fechas repetidas</span>
+<span class="n">df_grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;weekly_sales&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">df_grouped</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>weekly_sales</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2010-02-05</td>
+      <td>22835369.84</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2010-02-12</td>
+      <td>644.77</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2010-02-19</td>
+      <td>15.39</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2010-02-26</td>
+      <td>10.47</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2010-03-05</td>
+      <td>20862754.07</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un gráfico de líneas con las fechas agrupadas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_grouped</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">df_grouped</span><span class="p">[</span><span class="s1">&#39;weekly_sales&#39;</span><span class="p">])</span>
+
+<span class="c1"># Rotar las etiquetas del eje X para que se muestren en vertical</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4b574e882107d64551e0f7527584a73ed6456364cc1b43dbefb4f1cd7fd7b8b4.png" src="_images/4b574e882107d64551e0f7527584a73ed6456364cc1b43dbefb4f1cd7fd7b8b4.png" />
+</div>
+</div>
+</section>
+<section id="dispersion-scatter-plots">
+<h3><strong>Dispersión (Scatter Plots)</strong><a class="headerlink" href="#dispersion-scatter-plots" title="Link to this heading">#</a></h3>
+<p>Una gráfica de dispersión muestra la relación entre dos variables numéricas mediante puntos dispersos en un plano cartesiano.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características del diagrama de dispersión</strong></p>
+<ul class="simple">
+<li><p>Muestra cómo se correlacionan dos variables.</p></li>
+<li><p>Los patrones de dispersión pueden indicar la relación entre las variables, como linealidad o agrupaciones.</p></li>
+<li><p>Cada punto representa una observación individual.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas</strong></p>
+<ul class="simple">
+<li><p>Ideal para identificar relaciones o correlaciones entre dos variables.</p></li>
+<li><p>Permite visualizar la distribución y posibles outliers.</p></li>
+</ul>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Desventajas</strong></p>
+<ul class="simple">
+<li><p>No es adecuada para más de dos variables sin técnicas adicionales.</p></li>
+<li><p>Si hay demasiados puntos, puede volverse difícil de interpretar.</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una gráfica de dispersión de wee</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;weekly_sales&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fuel_price_usd_per_l&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relación entre ventas semanales y precio de la gasolina&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Precio de ventas ($)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precio de la gasolina (kg)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9650841efc86b8a59d4d677b973111eb2dd1db6d12e7030612dcd15b3afac981.png" src="_images/9650841efc86b8a59d4d677b973111eb2dd1db6d12e7030612dcd15b3afac981.png" />
+</div>
+</div>
+</section>
+<section id="histogramas-con-variable-categorica">
+<h3><strong>Histogramas con variable categórica</strong><a class="headerlink" href="#histogramas-con-variable-categorica" title="Link to this heading">#</a></h3>
+<p>Para hacer estos histogramas debemos tener una variable numérica según una variable categórica</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una superposición de histogramas</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">][</span><span class="s1">&#39;weekly_sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">][</span><span class="s1">&#39;weekly_sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de las ventas semanales según el tipo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Precio ($)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f96d3177a07677ad7d9d989b5180e51fa6badd295f033b287517aa792c5a8f66.png" src="_images/f96d3177a07677ad7d9d989b5180e51fa6badd295f033b287517aa792c5a8f66.png" />
+</div>
+</div>
+</section>
+<section id="cajas-y-bigotes-con-variable-categorica">
+<h3><strong>Cajas y bigotes con variable categórica</strong><a class="headerlink" href="#cajas-y-bigotes-con-variable-categorica" title="Link to this heading">#</a></h3>
+<p>Para hacer estos diagramas de cajas y bigotes debemos tener una variable numérica según una variable categórica</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separar los datos por sexo</span>
+<span class="n">u_a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">][</span><span class="s1">&#39;unemployment&#39;</span><span class="p">]</span>
+<span class="n">u_b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">][</span><span class="s1">&#39;unemployment&#39;</span><span class="p">]</span>
+
+<span class="c1"># Crear un diagrama de cajas y bigotes para &#39;height_cm&#39; vs &#39;sex&#39; usando pandas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">u_a</span><span class="p">,</span> <span class="n">u_b</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+
+<span class="c1"># Agregar título y etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes: tasa de desempleo según el tipo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sexo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Altura (cm)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/49c121a19ce71e0be7fd809c52d6f63d4cb3dfd37fa4ea468dccd09dc38a3977.png" src="_images/49c121a19ce71e0be7fd809c52d6f63d4cb3dfd37fa4ea468dccd09dc38a3977.png" />
+</div>
+</div>
+</section>
+<section id="digrama-de-barras-con-variables-categoricas">
+<h3><strong>Digrama de barras con variables categóricas</strong><a class="headerlink" href="#digrama-de-barras-con-variables-categoricas" title="Link to this heading">#</a></h3>
+<p>Realizaremos un diagrama de barras con dos variables categóricas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convertimos &#39;is_holiday&#39; a categoría con valores &#39;Holiday&#39; y &#39;Non-Holiday&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_holiday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_holiday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;Holiday&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;Non-Holiday&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Contar la frecuencia de cada combinación de &#39;type&#39; y &#39;is_holiday&#39; y desapilamos</span>
+<span class="n">grouped_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;is_holiday&#39;</span><span class="p">],</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+<span class="c1"># Crear el gráfico de barras sin apilar</span>
+<span class="n">grouped_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Personalización del gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frecuencia de tipo en función de los dias feriados o no&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tipo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/eceed1b993c606548f421fe7da5904a88942d77fdf964f9e659f380a357b7db1.png" src="_images/eceed1b993c606548f421fe7da5904a88942d77fdf964f9e659f380a357b7db1.png" />
+</div>
+</div>
+<p>Para exportar las gráficas en formato png. Usamos <code class="docutils literal notranslate"><span class="pre">savefig</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Contar la frecuencia de cada combinación de &#39;type&#39; y &#39;is_holiday&#39; y desapilamos</span>
+<span class="n">grouped_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;is_holiday&#39;</span><span class="p">],</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+<span class="c1"># Crear el gráfico de barras sin apilar</span>
+<span class="n">grouped_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Personalización del gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frecuencia de tipo en función de los dias feriados o no&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tipo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># exportar la figura</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;_image/grafica_1.png&#39;</span><span class="p">,</span><span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># exportar la figura con transparencia</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;_image/grafica_2.png&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/eceed1b993c606548f421fe7da5904a88942d77fdf964f9e659f380a357b7db1.png" src="_images/eceed1b993c606548f421fe7da5904a88942d77fdf964f9e659f380a357b7db1.png" />
+</div>
+</div>
+<p>Este módulo ha proporcionado una base sólida en la importación, manipulación y visualización de datos en Python. Las habilidades adquiridas permitirán crear visualizaciones efectivas que faciliten la interpretación y comunicación de los datos, y la capacidad de manipular y preparar datos adecuadamente es esencial para realizar análisis significativos. La combinación de pandas para la manipulación de datos y Matplotlib para la visualización forma una potente herramienta en el análisis de datos y ciencia de datos.</p>
 </section>
 </section>
 </section>
@@ -2770,6 +5307,18 @@ yes  41.670070      13.497781      18      95     38.0       31.0       50.0
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-explicitos"><strong>Indices explicitos</strong></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-sencilla-de-datos"><strong>Visualización sencilla de datos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histograma"><strong>Histograma</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cajas-y-bigotes"><strong>Cajas y bigotes</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barras"><strong>Barras</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circulares"><strong>Circulares</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lineas"><strong>Lineas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-scatter-plots"><strong>Dispersión (Scatter Plots)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas-con-variable-categorica"><strong>Histogramas con variable categórica</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cajas-y-bigotes-con-variable-categorica"><strong>Cajas y bigotes con variable categórica</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digrama-de-barras-con-variables-categoricas"><strong>Digrama de barras con variables categóricas</strong></a></li>
 </ul>
 </li>
 </ul>
