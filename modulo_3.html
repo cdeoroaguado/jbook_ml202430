@@ -1,0 +1,1184 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Modulo 3: Análisis exploratorio de datos de la banca &#8212; Ciencia de datos aplicada a la banca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Módulo 4: Visualización de datos con Python" href="modulo_4.html" />
+    <link rel="prev" title="Módulo 2: Estructuración y manipulación de datos con Python" href="modulo_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Ciencia de datos aplicada a la banca
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="modulo_1.html"><strong>Módulo 1: Introducción a la ciencia de datos con Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_2.html"><strong>Módulo 2: Estructuración y manipulación de datos con Python</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Modulo 3: Análisis exploratorio de datos de la banca</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_4.html"><strong>Módulo 4: Visualización de datos con Python</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmodulo_3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/modulo_3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modulo 3: Análisis exploratorio de datos de la banca</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estadistica-descriptiva"><strong>Estadística descriptiva</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poblacion-y-muestra"><strong>Población y muestra</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos"><strong>Tipos de datos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos"><strong>Conceptos básicos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-tendencia-central"><strong>Medidas de tendencia central</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion"><strong>Medidas de dispersión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-posicion"><strong>Medidas de posición</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-3-analisis-exploratorio-de-datos-de-la-banca">
+<h1><strong>Modulo 3: Análisis exploratorio de datos de la banca</strong><a class="headerlink" href="#modulo-3-analisis-exploratorio-de-datos-de-la-banca" title="Permalink to this heading">#</a></h1>
+<p>La <strong>estadística descriptiva</strong> proporciona un marco para resumir y visualizar grandes volúmenes de datos financieros, como transacciones, historiales crediticios y comportamientos del mercado. Mediante el uso de medidas como la media, la mediana, la desviación estándar y los percentiles, los bancos pueden identificar patrones en el comportamiento de los clientes, como tendencias de gasto, ahorro y tasas de incumplimiento de crédito. Esta información es crucial para segmentar clientes, diseñar estrategias de marketing personalizadas y mejorar la gestión de carteras de productos financieros.</p>
+<p>Por otro lado, la <strong>estadística inferencial</strong> permite a los bancos realizar predicciones y tomar decisiones informadas bajo incertidumbre. A través de técnicas como pruebas de hipótesis, modelos de regresión y análisis de varianza (ANOVA), se puede inferir, por ejemplo, la probabilidad de que un cliente incumpla un préstamo o proyectar tendencias económicas como las tasas de interés e inflación. Estas inferencias son vitales para la gestión del riesgo crediticio y la planificación financiera a largo plazo.</p>
+<p>Complementando estos enfoques tradicionales, se encuentran técnicas avanzadas como el <strong>Análisis de Componentes Principales (PCA)</strong> y el <strong>Clustering</strong>, que ofrecen una perspectiva más profunda y efectiva en el manejo de datos complejos. El PCA es una técnica de reducción de dimensionalidad que permite simplificar conjuntos de datos de alta dimensión al identificar las variables más influyentes. En el sector bancario, PCA es fundamental para optimizar los modelos de puntuación crediticia, identificando los factores clave que afectan la solvencia de los clientes y mejorando así la precisión en la evaluación del riesgo.</p>
+<p>El <strong>Clustering</strong>, por su parte, es una técnica de aprendizaje no supervisado que agrupa datos en clusters o grupos de clientes con comportamientos similares. Esta técnica es ampliamente utilizada en la segmentación de clientes, ayudando a los bancos a personalizar sus ofertas de productos y servicios, mejorar las campañas de marketing, y aumentar la satisfacción del cliente. Además, el clustering es extremadamente útil en la detección de fraudes, al identificar transacciones que se desvían de los patrones normales de comportamiento, permitiendo a los bancos reaccionar de manera proactiva frente a posibles actividades fraudulentas.</p>
+<p>En conjunto, la combinación de estadística descriptiva e inferencial con técnicas avanzadas como PCA y Clustering ofrece a las instituciones bancarias un enfoque integral para analizar y aprovechar sus datos. Este módulo se centrará en cómo aplicar estas técnicas estadísticas y de aprendizaje automático en el análisis de datos bancarios, proporcionando a los participantes una comprensión sólida de cómo estas herramientas pueden ser utilizadas para enfrentar desafíos específicos en el sector financiero y potenciar la toma de decisiones basada en datos.</p>
+<section id="estadistica-descriptiva">
+<h2><strong>Estadística descriptiva</strong><a class="headerlink" href="#estadistica-descriptiva" title="Permalink to this heading">#</a></h2>
+<p>La estadística descriptiva es una rama de las matemáticas que se encarga de analizar, interpretar y presentar de manera estructurada los datos obtenidos a través de diferentes fuentes. Con Python y sus múltiples librerías de análisis de datos, podemos realizar de manera sencilla estadística descriptiva.</p>
+<section id="poblacion-y-muestra">
+<h3><strong>Población y muestra</strong><a class="headerlink" href="#poblacion-y-muestra" title="Permalink to this heading">#</a></h3>
+<p>La <strong>estadística</strong> es la ciencia de recolectar, organizar, analizar e interpretar información. Las
+estadísticas son números obtenidos de un conjunto o colección de datos.</p>
+<ul class="simple">
+<li><p>Una <strong>población</strong> es el total de la información o de los objetos de interés para un
+estadístico en una investigación particular.</p></li>
+<li><p>Una <strong>muestra</strong> es cualquier subconjunto de una población.</p></li>
+<li><p>Un <strong>dato</strong> es un número o denominaciones que podemos asignar a un individuo o
+elemento de la población.</p></li>
+</ul>
+<p>Una <strong>variable aleatoria</strong> son fenómenos o características medibles de los elementos de la población. Ejemplo: sexo, edad, peso, estatura, color de ojos, estado civil, temperatura, cantidad de nacimientos, presión, diámetro, etc, esta medición genera como resultado la obtención de <strong>datos</strong></p>
+<ul class="simple">
+<li><p>Un <strong>parámetro</strong> es cualquier característica numérica de una población.</p></li>
+<li><p>Un <strong>estadístico</strong> es cualquier caractrística numérica de una muestra.</p></li>
+</ul>
+</section>
+<section id="tipos-de-datos">
+<h3><strong>Tipos de datos</strong><a class="headerlink" href="#tipos-de-datos" title="Permalink to this heading">#</a></h3>
+<p>De forma general los datos se clasifican en cuantitativos o numéricos y cualitativos o categóricos, mismos que se subdividen tal como se indica en la siguiente figura:</p>
+<p><img alt="tipo" src="_images/tipo.png" /></p>
+<p>Analicemos el siguiente conjunto de datos:</p>
+<p><strong>Contexto empresarial</strong>. Los préstamos entre pares (P2P) en línea han facilitado la práctica de pedir y prestar dinero. En esta forma de préstamo, no hay una entrevista en persona y el prestatario puede simplemente completar un formulario en línea y obtener la aprobación del préstamo. La información proporcionada únicamente por el prestatario es propensa a exageraciones y distorsiones, especialmente cuando se trata de ingresos. Todas las empresas de préstamos entre pares se basan en un procedimiento bien diseñado que rechaza a los prestatarios con una alta probabilidad de no pagar sus deudas.</p>
+<p>Rechazar a cualquier persona que no tenga una fuente de ingresos verificada es una política relevante que las plataformas de préstamos pueden implementar para ayudar a reducir la tasa de préstamos incobrables. Es natural sospechar que si no se puede verificar la fuente de ingresos de una persona, es posible que no pueda pagar el préstamo. Sin embargo, desde la perspectiva de un prestatario, el proceso de verificación puede ser engorroso y llevar mucho tiempo, y es posible que simplemente cambie de plataforma debido a este inconveniente.</p>
+<p><strong>Problema empresarial</strong>. Como científico de datos de una empresa emergente de préstamos P2P, debe responder a la siguiente pregunta: “¿Debería la empresa verificar la fuente de ingresos de un solicitante de préstamo en línea antes de aprobar su préstamo?”</p>
+<p><strong>Contexto analítico</strong>. Los datos son de <a class="reference external" href="https://www.lendingclub.com/info/download-data.action">LendingClub (LC) Statistics</a> y contienen todos los préstamos emitidos entre 2007 y 2012 junto con su estado actual (pagados en su totalidad o cancelados). Hay aproximadamente 50 variables que describen a los prestatarios y los préstamos; con el fin de reducir la complejidad, la empresa ya ha realizado una preselección de estas variables en función de los análisis existentes de LendingClub para seleccionar nueve variables relevantes, como los ingresos anuales, la calificación crediticia de LendingClub, la propiedad de la vivienda, etc. Utilizaremos una nueva técnica, la regresión logística , para responder a nuestra pregunta en cuestión.</p>
+<p>Echemos un vistazo a los datos que tenemos a nuestra disposición:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar paquetes</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/datadescrip/Lending_club_cleaned_2.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>loan_status</th>
+      <th>annual_inc</th>
+      <th>verification_status</th>
+      <th>emp_length</th>
+      <th>home_ownership</th>
+      <th>int_rate</th>
+      <th>loan_amnt</th>
+      <th>purpose</th>
+      <th>term</th>
+      <th>grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Fully Paid</td>
+      <td>24000.0</td>
+      <td>Verified</td>
+      <td>10+ years</td>
+      <td>RENT</td>
+      <td>10.65%</td>
+      <td>5000</td>
+      <td>credit_card</td>
+      <td>36 months</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Charged Off</td>
+      <td>30000.0</td>
+      <td>Source Verified</td>
+      <td>&lt; 1 year</td>
+      <td>RENT</td>
+      <td>15.27%</td>
+      <td>2500</td>
+      <td>car</td>
+      <td>60 months</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Fully Paid</td>
+      <td>12252.0</td>
+      <td>Not Verified</td>
+      <td>10+ years</td>
+      <td>RENT</td>
+      <td>15.96%</td>
+      <td>2400</td>
+      <td>small_business</td>
+      <td>36 months</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Fully Paid</td>
+      <td>49200.0</td>
+      <td>Source Verified</td>
+      <td>10+ years</td>
+      <td>RENT</td>
+      <td>13.49%</td>
+      <td>10000</td>
+      <td>other</td>
+      <td>36 months</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Fully Paid</td>
+      <td>80000.0</td>
+      <td>Source Verified</td>
+      <td>1 year</td>
+      <td>RENT</td>
+      <td>12.69%</td>
+      <td>3000</td>
+      <td>other</td>
+      <td>60 months</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Esta es la descripción de las variables</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Variable</p></th>
+<th class="head text-left"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>loan_status</p></td>
+<td class="text-left"><p>La primera columna indica si el prestatario pagó el préstamo (pagado en su totalidad Fully Paid) o no (dañó el préstamo Charged Off).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>annual_inc</p></td>
+<td class="text-left"><p>El ingreso anual autodeclarado proporcionado por el prestatario durante el registro.</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>verification_status</p></td>
+<td class="text-left"><p>Indica si el ingreso fue verificado por LC, no verificado, o si la fuente de ingresos fue verificada.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>emp_length</p></td>
+<td class="text-left"><p>La duración del empleo en años. Los valores posibles están entre 0 y 10, donde 0 significa menos de un año y 10 significa diez o más años.</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>home_ownership</p></td>
+<td class="text-left"><p>El estado de propiedad de la vivienda proporcionado por el prestatario durante el registro u obtenido del informe crediticio. Los valores son: RENT, OWN, MORTGAGE, OTHER.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>int_rate</p></td>
+<td class="text-left"><p>Tasa de interés del préstamo.</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>loan_amnt</p></td>
+<td class="text-left"><p>El monto listado del préstamo solicitado por el prestatario. Si en algún momento el departamento de crédito reduce el monto del préstamo, se reflejará en este valor.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>purpose</p></td>
+<td class="text-left"><p>Una categoría proporcionada por el prestatario para la solicitud de préstamo.</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>term</p></td>
+<td class="text-left"><p>El número de pagos del préstamo. Los valores están en meses y pueden ser 36 o 60.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>grade</p></td>
+<td class="text-left"><p>Calificación del préstamo asignada por LC.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 38705 entries, 0 to 38704
+Data columns (total 10 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   loan_status          38705 non-null  object 
+ 1   annual_inc           38705 non-null  float64
+ 2   verification_status  38705 non-null  object 
+ 3   emp_length           38705 non-null  object 
+ 4   home_ownership       38705 non-null  object 
+ 5   int_rate             38705 non-null  object 
+ 6   loan_amnt            38705 non-null  int64  
+ 7   purpose              38705 non-null  object 
+ 8   term                 38705 non-null  object 
+ 9   grade                38705 non-null  object 
+dtypes: float64(1), int64(1), object(8)
+memory usage: 3.0+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Realicemos una limpieza de los datos para realizar el análisis exploratorio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Cambiar loan_status, verification_status, emp_length, term y grade al tipo categórico </span>
+<span class="n">df</span><span class="o">.</span><span class="n">loan_status</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loan_status</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Charged Off&#39;</span><span class="p">,</span> <span class="s1">&#39;Fully Paid&#39;</span><span class="p">]))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">verification_status</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">verification_status</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Not Verified&#39;</span><span class="p">,</span> <span class="s1">&#39;Source Verified&#39;</span><span class="p">,</span> <span class="s1">&#39;Verified&#39;</span><span class="p">]))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">emp_length</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">emp_length</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&lt; 1 year&#39;</span><span class="p">,</span> <span class="s1">&#39;1 year&#39;</span><span class="p">,</span> <span class="s1">&#39;2 years&#39;</span><span class="p">,</span> <span class="s1">&#39;3 years&#39;</span><span class="p">,</span> <span class="s1">&#39;4 years&#39;</span><span class="p">,</span> \
+                                                             <span class="s1">&#39;5 years&#39;</span><span class="p">,</span> <span class="s1">&#39;6 years&#39;</span><span class="p">,</span> <span class="s1">&#39;7 years&#39;</span><span class="p">,</span> <span class="s1">&#39;8 years&#39;</span><span class="p">,</span> <span class="s1">&#39;9 years&#39;</span><span class="p">,</span> \
+                                                             <span class="s1">&#39;10+ years&#39;</span><span class="p">]))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">home_ownership</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">home_ownership</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RENT&#39;</span><span class="p">,</span><span class="s1">&#39;MORTGAGE&#39;</span><span class="p">,</span><span class="s1">&#39;OWN&#39;</span><span class="p">,</span><span class="s1">&#39;OTHER&#39;</span><span class="p">]))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">term</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">term</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39; 36 months&#39;</span><span class="p">,</span> <span class="s1">&#39; 60 months&#39;</span><span class="p">]))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">grade</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">grade</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">,</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="s1">&#39;G&#39;</span><span class="p">]))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">purpose</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">purpose</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;debt_consolidation&#39;</span><span class="p">,</span> <span class="s1">&#39;credit_card&#39;</span><span class="p">,</span> <span class="s1">&#39;other&#39;</span><span class="p">,</span> <span class="s1">&#39;home_improvement&#39;</span><span class="p">,</span>
+                                                                         <span class="s1">&#39;major_purchase&#39;</span><span class="p">,</span> <span class="s1">&#39;small_business&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;wedding&#39;</span><span class="p">,</span> <span class="s1">&#39;medical&#39;</span><span class="p">,</span>
+                                                                         <span class="s1">&#39;moving&#39;</span><span class="p">,</span> <span class="s1">&#39;house&#39;</span><span class="p">,</span> <span class="s1">&#39;vacation&#39;</span><span class="p">,</span> <span class="s1">&#39;educational&#39;</span><span class="p">,</span> <span class="s1">&#39;renewable_energy&#39;</span><span class="p">]))</span>
+
+<span class="c1">#Además, los datos originales en int_rate contienen cadenas en la forma &#39;x.xx%&#39;, </span>
+<span class="c1">#eliminamos el % y cambiamos los valores a tipo float:</span>
+<span class="n">df</span><span class="o">.</span><span class="n">int_rate</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">int_rate</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>loan_status</th>
+      <th>annual_inc</th>
+      <th>verification_status</th>
+      <th>emp_length</th>
+      <th>home_ownership</th>
+      <th>int_rate</th>
+      <th>loan_amnt</th>
+      <th>purpose</th>
+      <th>term</th>
+      <th>grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Fully Paid</td>
+      <td>24000.0</td>
+      <td>Verified</td>
+      <td>10+ years</td>
+      <td>RENT</td>
+      <td>10.65</td>
+      <td>5000</td>
+      <td>credit_card</td>
+      <td>36 months</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Charged Off</td>
+      <td>30000.0</td>
+      <td>Source Verified</td>
+      <td>&lt; 1 year</td>
+      <td>RENT</td>
+      <td>15.27</td>
+      <td>2500</td>
+      <td>car</td>
+      <td>60 months</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Fully Paid</td>
+      <td>12252.0</td>
+      <td>Not Verified</td>
+      <td>10+ years</td>
+      <td>RENT</td>
+      <td>15.96</td>
+      <td>2400</td>
+      <td>small_business</td>
+      <td>36 months</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Fully Paid</td>
+      <td>49200.0</td>
+      <td>Source Verified</td>
+      <td>10+ years</td>
+      <td>RENT</td>
+      <td>13.49</td>
+      <td>10000</td>
+      <td>other</td>
+      <td>36 months</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Fully Paid</td>
+      <td>80000.0</td>
+      <td>Source Verified</td>
+      <td>1 year</td>
+      <td>RENT</td>
+      <td>12.69</td>
+      <td>3000</td>
+      <td>other</td>
+      <td>60 months</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 38705 entries, 0 to 38704
+Data columns (total 10 columns):
+ #   Column               Non-Null Count  Dtype   
+---  ------               --------------  -----   
+ 0   loan_status          38705 non-null  category
+ 1   annual_inc           38705 non-null  float64 
+ 2   verification_status  38705 non-null  category
+ 3   emp_length           38705 non-null  category
+ 4   home_ownership       38705 non-null  category
+ 5   int_rate             38705 non-null  float64 
+ 6   loan_amnt            38705 non-null  int64   
+ 7   purpose              38705 non-null  category
+ 8   term                 38705 non-null  category
+ 9   grade                38705 non-null  category
+dtypes: category(7), float64(2), int64(1)
+memory usage: 1.1 MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conceptos-basicos">
+<h3><strong>Conceptos básicos</strong><a class="headerlink" href="#conceptos-basicos" title="Permalink to this heading">#</a></h3>
+<section id="medidas-de-tendencia-central">
+<h4><strong>Medidas de tendencia central</strong><a class="headerlink" href="#medidas-de-tendencia-central" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Media aritmética o promedio</strong>: Para un conjunto de <span class="math notranslate nohighlight">\(n\)</span> valores <span class="math notranslate nohighlight">\(x_{1},x_{2},\dots,x_{n}\)</span> que representan una muestra, la
+$<span class="math notranslate nohighlight">\(
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_{i}=\frac{1}{n}(x_{1}+x_{2}+\cdots+x_{n})
+\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Mediana</strong>:	Se denotará como <span class="math notranslate nohighlight">\(\tilde{x}\)</span> para la muestra. Para un
+conjunto de valores ordenados se tiene:
+$<span class="math notranslate nohighlight">\(
+\tilde{x}=\begin{cases}
+x_{\frac{n+1}{2}}, &amp; \text{si }  n  \text{ es impar}\\
+\frac{x_{\frac{n}{2}}+x_{\frac{n}{2}+1}}{2}, &amp; \text{si } n  \text{ es par}
+\end{cases}
+\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Moda</strong>: Se denotapor <span class="math notranslate nohighlight">\(\hat{x}\)</span>, es el dato u observación que más se repite. Los conjuntos pueden ser unimodales, bimodales o multimodales. Se puede calcular para datos cualitativos y cuantitativos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcula la moda y su frecuencia</span>
+<span class="n">mode_value</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">mode_value</span><span class="p">]</span>
+
+<span class="c1"># Imprime la moda y la frecuencia</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moda: &quot;</span><span class="p">,</span> <span class="n">mode_value</span><span class="p">,</span> <span class="s2">&quot; Frecuencia: &quot;</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Moda:  60000.0  Frecuencia:  1474
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas</strong></p>
+<ul class="simple">
+<li><p>La media siempre se puede calcular.</p></li>
+<li><p>La mediana no se afecta por valores extremos</p></li>
+<li><p>La moda no se afecta por valores extremos. Única medida de tendencia central para datos categóricos.</p></li>
+</ul>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Desventajas</strong></p>
+<ul class="simple">
+<li><p>La media se ve afectada por valores extremos</p></li>
+<li><p>Cuando la cantidad de datos es mucha, no es fácilmente de forma manual calcular la mediana.</p></li>
+<li><p>No siempre hay moda. A veces puede existir, pero no ser única.</p></li>
+</ul>
+</div>
+</section>
+<section id="medidas-de-dispersion">
+<h4><strong>Medidas de dispersión</strong><a class="headerlink" href="#medidas-de-dispersion" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>La <strong>varianza</strong> <span class="math notranslate nohighlight">\(s^2\)</span> de una muestra con valores <span class="math notranslate nohighlight">\(x_1,\ldots,x_n\)</span> se define por</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+s^2 = \frac{(x_1 - \overline{x})^2+\cdots+(x_n - \overline{x})^2}{n-1},
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\overline{x}\)</span> es la media de <span class="math notranslate nohighlight">\(x_1,\ldots,x_n\)</span>.</p>
+<ul class="simple">
+<li><p>La <strong>desviación estándar</strong> <span class="math notranslate nohighlight">\(s\)</span> muestral de un conjunto de datos
+<span class="math notranslate nohighlight">\(x_1,\ldots,x_n\)</span> se define por</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+s = \sqrt{s^2}.
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>64222.95377876642
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>coeficiente de variación de Pearson</strong> <span class="math notranslate nohighlight">\(CV\)</span> de un conjunto de datos se define por</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+CV = \left( \frac{s}{\overline{x}}  \right)*100\%,
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(s\)</span> y <span class="math notranslate nohighlight">\(\overline{x}\)</span> son la desviación estándar de los datos y la media aritmética de los datos,
+respectivamente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular la media y la desviación estándar</span>
+<span class="n">media</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">desviacion_estandar</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># Calcular el coeficiente de variación (CV)</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">(</span><span class="n">desviacion_estandar</span> <span class="o">/</span> <span class="n">media</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;El coeficiente de variación es: </span><span class="si">{</span><span class="n">cv</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="medidas-de-posicion">
+<h4><strong>Medidas de posición</strong><a class="headerlink" href="#medidas-de-posicion" title="Permalink to this heading">#</a></h4>
+<p>El <strong><span class="math notranslate nohighlight">\(p\)</span>-ésimo (punto) percentil</strong> es un valor tal que a lo más un <span class="math notranslate nohighlight">\(p\%\)</span> de los datos tienen dicho valor o menos.</p>
+<p>Los <strong>cuartiles</strong> son las medidas de posición relativa correspondientes a un conjunto de datos divididos en cuatro partes iguales. Se definen así:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q_{1}\)</span>: Primer cuartil (25-ésimo percentil)</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q_{2}\)</span>: Segundo cuartil (50-ésimo percentil o <em>mediana</em>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q_{3}\)</span>: Tercer cuartil (75-ésimo percentil)</p></li>
+</ul>
+<p>El proceso para calcular un cuartil es:</p>
+<ol class="arabic">
+<li><p><strong>Ordenar</strong> los <span class="math notranslate nohighlight">\(n\)</span> datos de menor a mayor.</p></li>
+<li><p><strong>Calcular un índice <span class="math notranslate nohighlight">\(i\)</span></strong> a través de la fórmula:</p>
+<div class="math notranslate nohighlight">
+\[
+   i = \frac{n \cdot k}{4}
+   \]</div>
+<p>siendo <span class="math notranslate nohighlight">\(n\)</span> la cantidad de datos y <span class="math notranslate nohighlight">\(k = 1, 2, 3\)</span>.</p>
+</li>
+<li><p>El cálculo del <span class="math notranslate nohighlight">\(k\)</span>-ésimo cuartil depende de si <span class="math notranslate nohighlight">\(i\)</span> es entero o no:</p>
+<ul class="simple">
+<li><p><strong>Si <span class="math notranslate nohighlight">\(i\)</span> no es entero</strong>: Se redondea al entero siguiente. Esta aproximación indica la <strong>posición</strong> del <span class="math notranslate nohighlight">\(k\)</span>-ésimo cuartil.</p></li>
+<li><p><strong>Si <span class="math notranslate nohighlight">\(i\)</span> es entero</strong>: El <span class="math notranslate nohighlight">\(k\)</span>-ésimo cuartil es el promedio de los valores de los datos ubicados en las <strong>posiciones</strong> <span class="math notranslate nohighlight">\(i\)</span> y <span class="math notranslate nohighlight">\(i+1\)</span>.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular los cuartiles</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">q2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.50</span><span class="p">)</span>  <span class="c1"># Este es la mediana</span>
+<span class="n">q3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Primer cuartil (Q1): </span><span class="si">{</span><span class="n">q1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Segundo cuartil (Q2 o Mediana): </span><span class="si">{</span><span class="n">q2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tercer cuartil (Q3): </span><span class="si">{</span><span class="n">q3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Primer cuartil (Q1): 41496.0
+Segundo cuartil (Q2 o Mediana): 60000.0
+Tercer cuartil (Q3): 83200.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una distribución es <strong>simétrica</strong> cuando la moda, la mediana y la media son aproximadamente iguales. En términos más coloquiales, las mitades izquierda y derecha de la distribución se ven idénticas, y ambas mitades comienzan con picos altos y se desvanecen a medida que uno se mueve hacia las “colas”.</p>
+<p><img alt="distribución" src="_images/6sigma.png" /></p>
+<p>Una distribución tiene sesgo a la derecha - Sesgo positivo si la “cola” a la derecha de la media es más larga que la de la izquierda. De la misma manera, una distribución tiene sesgo a la izquierda - Sesgo negativo si la “cola” a la izquierda de la media es más larga que la de la derecha. Estos son ejemplos de distribuciones asimétricas.</p>
+<p><img alt="sesgo" src="_images/skewness.png" /></p>
+<p><img alt="pearson" src="https://www.statisticshowto.com/wp-content/uploads/2014/02/pearson-mode-skewness.jpg" /></p>
+<p>Las distribuciones asimétricas suelen ser problemáticas, ya que la mayoría de los métodos estadísticos están desarrollados para distribuciones normales, que son simétricas. Para superar estos problemas, generalmente se realizan transformaciones en los datos para que se asemejen más a una distribución normal. Esto se discutirá con mayor profundidad más adelante.</p>
+<p>El coeficiente de asimetría (skewness) se calcula con la siguiente fórmula:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Skewness} = \frac{n}{(n-1)(n-2)} \sum \left(\frac{x_i - \bar{x}}{s}\right)^3
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( n \)</span> es el número de observaciones.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_i \)</span> es el valor individual.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{x}\)</span> es la media de los valores.</p></li>
+<li><p><span class="math notranslate nohighlight">\( s\)</span> es la desviación estándar.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">skew</span>
+<span class="n">skewness</span> <span class="o">=</span> <span class="n">skew</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Coeficiente de asimetría: </span><span class="si">{</span><span class="n">skewness</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coeficiente de asimetría: 31.072660663606374
+</pre></div>
+</div>
+</div>
+</div>
+<p>Un coeficiente de asimetría de <span class="math notranslate nohighlight">\(31.07\)</span> es extremadamente alto y sugiere que la distribución de los datos en la columna annual_inc tiene una asimetría significativa hacia la derecha (sesgo positivo). Esto significa que la mayoría de los datos están concentrados en el lado izquierdo de la distribución, con una cola larga hacia la derecha.</p>
+<p>Otra medida es la <strong>curtosis</strong>:</p>
+<p>Curtosis en exceso se define generalmente como curt – 3, una medida de la “puntiagudez” de la distribución de probabilidad de una variable aleatoria con valores reales.</p>
+<p>La curtosis en exceso para una distribución normal es 0 (es decir, 3 - 3 = 0).
+Un exceso negativo implica colas más ligeras que una distribución normal.
+Un exceso positivo implica colas más pesadas que una distribución normal.</p>
+<p><img alt="kurtosis" src="_images/kurtosis.png" /></p>
+<p><img alt="kurtosis1" src="_images/kurtosis1.png" /></p>
+<p>La curtosis (kurtosis) se calcula con la siguiente fórmula:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Curtosis} = \frac{n(n+1)}{(n-1)(n-2)(n-3)} \sum \left(\frac{x_i - \bar{x}}{s}\right)^4 - \frac{3(n-1)^2}{(n-2)(n-3)}
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número de observaciones.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> es el valor individual.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{x}\)</span> es la media de los valores.</p></li>
+<li><p><span class="math notranslate nohighlight">\(s\)</span> es la desviación estándar.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kurtosis</span>
+
+<span class="c1"># Calcular la curtosis</span>
+<span class="n">curtosis</span> <span class="o">=</span> <span class="n">kurtosis</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">],</span> <span class="n">fisher</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Imprimir el resultado</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Curtosis en exceso: </span><span class="si">{</span><span class="n">curtosis</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Curtosis en exceso: 2298.548701935856
+</pre></div>
+</div>
+</div>
+</div>
+<p>Un valor de <span class="math notranslate nohighlight">\(2298.55\)</span> para la curtosis en exceso es extremadamente alto. Esto indica que la distribución de los datos en la columna annual_inc es muy puntiaguda y tiene colas muy pesadas en comparación con una distribución normal.</p>
+<ul class="simple">
+<li><p>El <strong>rango intercuartil</strong>, <span class="math notranslate nohighlight">\(RI\)</span>, es la distancia entre el primer y el tercer cuartil:
+$<span class="math notranslate nohighlight">\(RI = Q_3 - Q_1\)</span>$</p></li>
+<li><p><strong>Valor atípico</strong>: Todo valor que está a más de <span class="math notranslate nohighlight">\(1.5RI\)</span> de distancia del cuartil más cercano se dice que es
+atípico.Todo datos que se salga de este intervalo <span class="math notranslate nohighlight">\((Q_1-1.5RI,Q_3+1.5RI)\)</span> es un valor atípico.</p></li>
+</ul>
+<p>Despues de haber visto los conceptos básicos de estadística descriptiva. Instalemos el paquete <code class="docutils literal notranslate"><span class="pre">pandas_profiling</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gráfico de Cajas y Bigotes de annual_inc&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0600353e9fe8623f75778e45b007a67c303336ebe92e7b4b12d08c0bddf91e4c.png" src="_images/0600353e9fe8623f75778e45b007a67c303336ebe92e7b4b12d08c0bddf91e4c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_profiling</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">profile_report</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modulo_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Módulo 2: Estructuración y manipulación de datos con Python</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="modulo_4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Módulo 4: Visualización de datos con Python</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estadistica-descriptiva"><strong>Estadística descriptiva</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poblacion-y-muestra"><strong>Población y muestra</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos"><strong>Tipos de datos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos"><strong>Conceptos básicos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-tendencia-central"><strong>Medidas de tendencia central</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion"><strong>Medidas de dispersión</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-posicion"><strong>Medidas de posición</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Centro de Estudios e Investigación en Análisis y Ciencia de datos - Data Invest -
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
