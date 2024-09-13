@@ -362,10 +362,36 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estadistica-descriptiva"><strong>Estadística descriptiva</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poblacion-y-muestra"><strong>Población y muestra</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos"><strong>Tipos de datos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos"><strong>Conceptos básicos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-univariado"><strong>Análisis univariado</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-conteo-y-proporciones"><strong>Medidas de conteo y proporciones</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-tendencia-central"><strong>Medidas de tendencia central</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion"><strong>Medidas de dispersión</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-posicion"><strong>Medidas de posición</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones"><strong>Distribuciones</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-normal"><strong>Distribución normal</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-gamma"><strong>Distribución Gamma</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado"><strong>Análisis bivariado</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion"><strong>Correlación</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia-estadistica"><strong>Inferencia estadística</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruebas-de-hipotesis"><strong>Pruebas de hipótesis</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-2-grupos-poblacionales-independientes-parametrica"><strong>Comparación de 2 grupos poblacionales independientes paramétrica</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#igualdad-de-varianzas"><strong>Igualdad de varianzas</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#varianzas-distintas"><strong>Varianzas distintas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-2-grupos-poblacionales-dependientes-parametrica-pareadas"><strong>Comparación de 2 grupos poblacionales dependientes paramétrica (pareadas)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-2-grupos-poblacionales-independientes-no-parametrica"><strong>Comparación de 2 grupos poblacionales independientes no paramétrica</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-2-grupos-poblacionales-dependientes-no-parametrica-pareadas"><strong>Comparación de 2 grupos poblacionales dependientes no paramétrica (pareadas)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#anova-para-mas-de-2-grupos-parametricas"><strong>ANOVA para mas de 2 grupos paramétricas</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kw-para-mas-de-2-grupos-no-parametrica"><strong>KW para mas de 2 grupos no parametrica</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -390,7 +416,7 @@ document.write(`
 <p>En conjunto, la combinación de estadística descriptiva e inferencial con técnicas avanzadas como PCA y Clustering ofrece a las instituciones bancarias un enfoque integral para analizar y aprovechar sus datos. Este módulo se centrará en cómo aplicar estas técnicas estadísticas y de aprendizaje automático en el análisis de datos bancarios, proporcionando a los participantes una comprensión sólida de cómo estas herramientas pueden ser utilizadas para enfrentar desafíos específicos en el sector financiero y potenciar la toma de decisiones basada en datos.</p>
 <section id="estadistica-descriptiva">
 <h2><strong>Estadística descriptiva</strong><a class="headerlink" href="#estadistica-descriptiva" title="Permalink to this heading">#</a></h2>
-<p>La estadística descriptiva es una rama de las matemáticas que se encarga de analizar, interpretar y presentar de manera estructurada los datos obtenidos a través de diferentes fuentes. Con Python y sus múltiples librerías de análisis de datos, podemos realizar de manera sencilla estadística descriptiva.</p>
+<p>La estadística descriptiva es una rama de las matemáticas que se encarga de analizar, interpretar y presentar de manera estructurada los datos obtenidos a través de diferentes fuentes. Con Python y sus múltiples librerías de análisis de datos, podemos realizar de manera sencilla estadística descriptiva. Para el desarrollo óptimo de la parte estadística debemos conocer las funciones implementadas en python <a class="reference external" href="https://docs.scipy.org/doc/scipy/tutorial/stats.html">Enlace</a></p>
 <section id="poblacion-y-muestra">
 <h3><strong>Población y muestra</strong><a class="headerlink" href="#poblacion-y-muestra" title="Permalink to this heading">#</a></h3>
 <p>La <strong>estadística</strong> es la ciencia de recolectar, organizar, analizar e interpretar información. Las
@@ -418,6 +444,14 @@ elemento de la población.</p></li>
 <p><strong>Problema empresarial</strong>. Como científico de datos de una empresa emergente de préstamos P2P, debe responder a la siguiente pregunta: “¿Debería la empresa verificar la fuente de ingresos de un solicitante de préstamo en línea antes de aprobar su préstamo?”</p>
 <p><strong>Contexto analítico</strong>. Los datos son de <a class="reference external" href="https://www.lendingclub.com/info/download-data.action">LendingClub (LC) Statistics</a> y contienen todos los préstamos emitidos entre 2007 y 2012 junto con su estado actual (pagados en su totalidad o cancelados). Hay aproximadamente 50 variables que describen a los prestatarios y los préstamos; con el fin de reducir la complejidad, la empresa ya ha realizado una preselección de estas variables en función de los análisis existentes de LendingClub para seleccionar nueve variables relevantes, como los ingresos anuales, la calificación crediticia de LendingClub, la propiedad de la vivienda, etc. Utilizaremos una nueva técnica, la regresión logística , para responder a nuestra pregunta en cuestión.</p>
 <p>Echemos un vistazo a los datos que tenemos a nuestra disposición:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar paquetes</span>
@@ -763,8 +797,91 @@ memory usage: 1.1 MB
 </div>
 </div>
 </section>
-<section id="conceptos-basicos">
-<h3><strong>Conceptos básicos</strong><a class="headerlink" href="#conceptos-basicos" title="Permalink to this heading">#</a></h3>
+<section id="analisis-univariado">
+<h3><strong>Análisis univariado</strong><a class="headerlink" href="#analisis-univariado" title="Permalink to this heading">#</a></h3>
+<p>Si la variable es categórica.</p>
+<section id="medidas-de-conteo-y-proporciones">
+<h4><strong>Medidas de conteo y proporciones</strong><a class="headerlink" href="#medidas-de-conteo-y-proporciones" title="Permalink to this heading">#</a></h4>
+<p>El análisis de frecuencia es una técnica estadística que se utiliza para contar la cantidad de veces que ocurre cada categoría o valor dentro de una variable, generalmente en variables categóricas o discretas. Este tipo de análisis ayudar a identificar patrones 0 valores más comunes.</p>
+<p><strong>Componentes clave del análisis de frecuencia</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Frecuencia Absoluta o conteo</strong>: El número de veces que un valor o categoría específico aparece en el conjunto de datos.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># conteo</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;loan_status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Frecuencia Relativa o proporciones</strong>: Es la proporción o porcentaje de veces que ocurre un valor o categoría en relación con el total de observaciones.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proporciones</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;loan_status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Veamos otra variable categórica</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descriptivo de una sola variable categórica solo conteo</span>
+<span class="n">conteo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;grade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conteo</span><span class="p">)</span>
+
+<span class="c1"># Descriptivo de una sola variable categórica solo proporcion</span>
+<span class="n">proporciones</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;grade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proporciones</span><span class="p">)</span>
+
+<span class="c1"># Combinar los resultados en un solo DataFrame</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Conteo&#39;</span><span class="p">:</span> <span class="n">conteo</span><span class="p">,</span>
+    <span class="s1">&#39;Proporción&#39;</span><span class="p">:</span> <span class="n">proporciones</span>
+<span class="p">})</span>
+
+<span class="c1"># imprimir</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grade
+B    11697
+A     9694
+C     7938
+D     5213
+E     2811
+F     1035
+G      317
+Name: count, dtype: int64
+grade
+B    0.302209
+A    0.250459
+C    0.205090
+D    0.134685
+E    0.072626
+F    0.026741
+G    0.008190
+Name: proportion, dtype: float64
+       Conteo  Proporción
+grade                    
+B       11697    0.302209
+A        9694    0.250459
+C        7938    0.205090
+D        5213    0.134685
+E        2811    0.072626
+F        1035    0.026741
+G         317    0.008190
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si nuestra variable es <em>numérica</em>.</p>
+</section>
 <section id="medidas-de-tendencia-central">
 <h4><strong>Medidas de tendencia central</strong><a class="headerlink" href="#medidas-de-tendencia-central" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
@@ -1008,12 +1125,14 @@ Un exceso positivo implica colas más pesadas que una distribución normal.</p>
 </div>
 <p>Un valor de <span class="math notranslate nohighlight">\(2298.55\)</span> para la curtosis en exceso es extremadamente alto. Esto indica que la distribución de los datos en la columna annual_inc es muy puntiaguda y tiene colas muy pesadas en comparación con una distribución normal.</p>
 <ul class="simple">
-<li><p>El <strong>rango intercuartil</strong>, <span class="math notranslate nohighlight">\(RI\)</span>, es la distancia entre el primer y el tercer cuartil:
-$<span class="math notranslate nohighlight">\(RI = Q_3 - Q_1\)</span>$</p></li>
+<li><p>El <strong>rango intercuartil</strong>, <span class="math notranslate nohighlight">\(RI\)</span>, es la distancia entre el primer y el tercer cuartil:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[RI = Q_3 - Q_1\]</div>
+<ul class="simple">
 <li><p><strong>Valor atípico</strong>: Todo valor que está a más de <span class="math notranslate nohighlight">\(1.5RI\)</span> de distancia del cuartil más cercano se dice que es
 atípico.Todo datos que se salga de este intervalo <span class="math notranslate nohighlight">\((Q_1-1.5RI,Q_3+1.5RI)\)</span> es un valor atípico.</p></li>
 </ul>
-<p>Despues de haber visto los conceptos básicos de estadística descriptiva. Instalemos el paquete <code class="docutils literal notranslate"><span class="pre">pandas_profiling</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -1031,20 +1150,1659 @@ atípico.Todo datos que se salga de este intervalo <span class="math notranslate
 <img alt="_images/0600353e9fe8623f75778e45b007a67c303336ebe92e7b4b12d08c0bddf91e4c.png" src="_images/0600353e9fe8623f75778e45b007a67c303336ebe92e7b4b12d08c0bddf91e4c.png" />
 </div>
 </div>
+<p>Realicemos todo en una sola celda</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_profiling</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">skew</span><span class="p">,</span> <span class="n">kurtosis</span>
+
+<span class="c1"># Agregaciones estándar con pandas</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">&#39;Promedio&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>                       <span class="c1"># Media</span>
+    <span class="s1">&#39;Desviacion_Estandar&#39;</span><span class="p">:</span> <span class="s1">&#39;std&#39;</span><span class="p">,</span>             <span class="c1"># Desviación Estándar</span>
+    <span class="s1">&#39;Minimo&#39;</span><span class="p">:</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span>                          <span class="c1"># Mínimo</span>
+    <span class="s1">&#39;Maximo&#39;</span><span class="p">:</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>                          <span class="c1"># Máximo</span>
+    <span class="s1">&#39;Mediana&#39;</span><span class="p">:</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>                      <span class="c1"># Mediana</span>
+    <span class="s1">&#39;Cuantil 1&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>  <span class="c1"># Cuantil 25%</span>
+    <span class="s1">&#39;Cuantil 3&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>   <span class="c1"># Cuantil 75%</span>
+<span class="p">})</span>
+
+<span class="c1"># Agregar funciones personalizadas</span>
+<span class="n">resumen</span><span class="p">[</span><span class="s1">&#39;Asimetría&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">skew</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<span class="n">resumen</span><span class="p">[</span><span class="s1">&#39;Curtosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kurtosis</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+
+<span class="c1"># Mostrar el resultado</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resumen</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       annual_inc
+Promedio             6.961750e+04
+Desviacion_Estandar  6.422378e+04
+Minimo               4.000000e+03
+Maximo               6.000000e+06
+Mediana              6.000000e+04
+Cuantil 1            4.149600e+04
+Cuantil 3            8.320000e+04
+Asimetría            3.107266e+01
+Curtosis             2.298549e+03
+</pre></div>
+</div>
+</div>
+</div>
+<p>La biblioteca <code class="docutils literal notranslate"><span class="pre">ydata-profiling</span></code> es la evolución de lo que anteriormente se conocía como <code class="docutils literal notranslate"><span class="pre">pandas_profiling</span></code>. Es una herramienta que genera <strong>perfiles exploratorios detallados de los datos</strong> en un DataFrame de pandas de forma automática, facilitando el <strong>análisis inicial de los datos</strong> con resúmenes estadísticos, gráficos y observaciones.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características principales</strong></p>
+<ul class="simple">
+<li><p><strong>Resúmenes de variables</strong>: Te proporciona un resumen de cada columna, incluyendo estadísticas clave como media
+mediana, varianza, y distribuciones.</p></li>
+<li><p><strong>Valores faltantes</strong>: Identifica la cantidad de valores faltantes por columna y su distribución.</p></li>
+<li><p><strong>Correlaciones</strong>: Presenta una matriz de correlaciones entre variables numéricas.</p></li>
+<li><p><strong>Interacciones</strong>: Muestra relaciones significativas entre dos variables.</p></li>
+<li><p><strong>Distribuciones</strong>: Genera histogramas y gráficos de densidad para las variables numéricas y categóricas.</p></li>
+<li><p><strong>Alertas</strong>: Te notifica sobre datos problemáticos como valores altamente correlacionados, duplicados o valores constantes.</p></li>
+</ul>
+</div>
+<p>Con esta herramienta, puedes automatizar gran parte del análisis exploratorio de datos (EDA) y obtener insights rápidos sobre tus datos.</p>
+<p>Para usar <code class="docutils literal notranslate"><span class="pre">ydata_profiling</span></code>, primero necesitas instalarlo.</p>
+<p>Luego, en tu script de Python, puedes usarlo de esta manera:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">ydata_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
+
+<span class="c1"># Generar informe de perfilado</span>
+<span class="n">profile</span> <span class="o">=</span> <span class="n">ProfileReport</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Profiling Report&quot;</span><span class="p">,</span>
+    <span class="n">explorative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Modo explorativo para incluir más visualizaciones</span>
+    <span class="n">correlations</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;pearson&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;calculate&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+        <span class="s2">&quot;spearman&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;calculate&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+        <span class="s2">&quot;kendall&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;calculate&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+        <span class="s2">&quot;phi_k&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;calculate&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+        <span class="s2">&quot;cramers&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;calculate&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+    <span class="p">},</span>
+    <span class="n">plot</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;histogram&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>  <span class="c1"># Ajustar número de bins para histogramas</span>
+        <span class="s2">&quot;scatter_threshold&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>  <span class="c1"># Limitar número de puntos en scatter plots</span>
+        <span class="s2">&quot;boxplot&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>  <span class="c1"># Asegurarse de que los boxplots estén habilitados</span>
+    <span class="p">},</span>
+    <span class="n">missing_diagrams</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;heatmap&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Incluye heatmap de valores faltantes</span>
+        <span class="s2">&quot;dendrogram&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Incluye dendrograma de valores faltantes</span>
+    <span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">profile_report</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;_image/dashboard.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summarize dataset: 100%|██████████| 30/30 [00:02&lt;00:00, 14.22it/s, Completed]                           
+Generate report structure: 100%|██████████| 1/1 [00:02&lt;00:00,  2.52s/it]
+Render HTML: 100%|██████████| 1/1 [00:00&lt;00:00,  1.60it/s]
+Export report to file: 100%|██████████| 1/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="distribuciones">
+<h3><strong>Distribuciones</strong><a class="headerlink" href="#distribuciones" title="Permalink to this heading">#</a></h3>
+<p>Un <strong>histograma</strong> muestra la frecuencia de ocurrencias de datos en un gráfico de barras. Más específicamente, indica con qué frecuencia ocurre cada valor distinto en el conjunto de datos. El eje horizontal representa los valores del conjunto de datos y el eje vertical representa el número de veces que ocurren esos valores.</p>
+<p>Un histograma es un ejemplo específico de una <strong>distribución</strong>.</p>
+<p>Las <strong>distribuciones continuas</strong> permiten que <em>los datos tomen un número infinito de valores posibles</em>. Algunos ejemplos incluyen:</p>
+<ul class="simple">
+<li><p>Normal</p></li>
+<li><p>Gamma</p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi\)</span>-cuadrada</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> de Student</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>Por otro lado, las <strong>distribuciones discretas</strong> son aquellas en las que <em>los datos solo pueden ser uno de un conjunto finito de valores</em>. Los histogramas son distribuciones discretas porque los valores posibles deben provenir directamente del conjunto de datos del que se crean, que por definición debe ser un conjunto finito. Otros ejemplos de distribuciones discretas incluyen:</p>
+<ul class="simple">
+<li><p>Poisson</p></li>
+<li><p>Binomial</p></li>
+<li><p>Hipergeométrica</p></li>
+<li><p>Bernoulli</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p><img alt="Distribuciones" src="_images/Distributions.png" /></p>
+<p>Más información sobre distribuciones <a class="reference external" href="https://github.com/rasmusab/distribution_diagrams">aquí</a></p>
+<section id="distribucion-normal">
+<h4><strong>Distribución normal</strong><a class="headerlink" href="#distribucion-normal" title="Permalink to this heading">#</a></h4>
+<p>La <strong>distribución normal</strong> es una de las distribuciones más importantes, ya que es la que con mayor frecuencia aproxima fenómenos del mundo real. Tiene una forma “campana” y es simétrica:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># importando matplotlib</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1"># importando seaborn</span>
+
+<span class="c1"># parametros esteticos de seaborn</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">&quot;deep&quot;</span><span class="p">,</span> <span class="n">desat</span><span class="o">=</span><span class="mf">.6</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)})</span>
+
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span> <span class="c1"># promedio y desviación estandar</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1"># creacion de datos N(mu,sd)</span>
+
+<span class="c1"># histograma</span>
+<span class="n">count</span><span class="p">,</span> <span class="n">box</span><span class="p">,</span> <span class="n">omit</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">normal</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">box</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span>
+         <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span> <span class="p">(</span><span class="n">box</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">),</span>
+         <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e53c80b6fef1c83a041b99cd210150d8fc9a50664a1715b4707a3c57423c49d9.png" src="_images/e53c80b6fef1c83a041b99cd210150d8fc9a50664a1715b4707a3c57423c49d9.png" />
+</div>
+</div>
+</section>
+<section id="distribucion-gamma">
+<h4><strong>Distribución Gamma</strong><a class="headerlink" href="#distribucion-gamma" title="Permalink to this heading">#</a></h4>
+<p>La distribución Gamma es una distribución continua que se utiliza frecuentemente para modelar tiempos de espera o eventos que ocurren de manera continua y aleatoria. Esta distribución es asimétrica y, a diferencia de la distribución normal, puede tomar diferentes formas dependiendo de los parámetros que se utilicen.</p>
+<p>Es comúnmente usada en el análisis de la vida de productos, modelos de riesgo, y en muchos otros contextos donde se desea modelar el tiempo entre eventos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>  <span class="c1"># importando scipy.stats para la gamma</span>
+
+<span class="c1"># parámetros estéticos de seaborn</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">&quot;deep&quot;</span><span class="p">,</span> <span class="n">desat</span><span class="o">=</span><span class="mf">.6</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)})</span>
+
+<span class="c1"># Generación de datos de la distribución Gamma</span>
+<span class="n">shape_param</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">shape_param</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>  <span class="c1"># gamma(3) con 5000 muestras</span>
+
+<span class="c1"># Histograma</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;stepfilled&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Crear una curva de densidad (PDF) de la distribución Gamma</span>
+<span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()</span>
+<span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">pdf_vals</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">shape_param</span><span class="p">)</span>
+
+<span class="c1"># Graficar la función de densidad</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">pdf_vals</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución Gamma con función de densidad&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Densidad&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/06229a8f6af27c7050f3132037cfdca7b701c8ea099d94a08e1f75fb1085e208.png" src="_images/06229a8f6af27c7050f3132037cfdca7b701c8ea099d94a08e1f75fb1085e208.png" />
+</div>
+</div>
+<p>Ahora, usemos los datos son de <em>LendingClub (LC) Statistics</em>, exactamente la variable <code class="docutils literal notranslate"><span class="pre">int_rate</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar seaborn</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Histograma de las ventas semanales con Seaborn</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;int_rate&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># kde=True si quieres agregar la densidad</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e7dd280dde8fa7d4062766274fc877e9cbcc011157edd744cee4839f05445776.png" src="_images/e7dd280dde8fa7d4062766274fc877e9cbcc011157edd744cee4839f05445776.png" />
+</div>
+</div>
+<p>Debemos mirar graficamente que distribución es:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ajustar distribuciones (Normal, Gamma, Exponencial)</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">expon</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;int_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Ajuste de distribución normal</span>
+<span class="n">params_norm</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">pdf_norm</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="o">*</span><span class="n">params_norm</span><span class="p">)</span>
+
+<span class="c1"># Ajuste de distribución gamma</span>
+<span class="n">params_gamma</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">pdf_gamma</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="o">*</span><span class="n">params_gamma</span><span class="p">)</span>
+
+<span class="c1"># Ajuste de distribución exponencial</span>
+<span class="n">params_expon</span> <span class="o">=</span> <span class="n">expon</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">pdf_expon</span> <span class="o">=</span> <span class="n">expon</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="o">*</span><span class="n">params_expon</span><span class="p">)</span>
+
+<span class="c1"># Graficar histogramas con distribuciones ajustadas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Histogram&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="n">pdf_norm</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normal Distribution Fit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="n">pdf_gamma</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gamma Distribution Fit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="n">pdf_expon</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exponential Distribution Fit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Interest Rate (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution Fitting for Interest Rates&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a2ebcd7344ac7f4862215faca417c5e31a2e814d0adc6593c5d0f5fdf83b5028.png" src="_images/a2ebcd7344ac7f4862215faca417c5e31a2e814d0adc6593c5d0f5fdf83b5028.png" />
+</div>
+</div>
+<p>Ahora, realizaremos una prueba no paramétrica para ver si sigue o no una distribución normal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kstest</span><span class="p">,</span> <span class="n">shapiro</span><span class="p">,</span> <span class="n">anderson</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.diagnostic</span> <span class="kn">import</span> <span class="n">lilliefors</span>
+
+<span class="c1"># Prueba de Kolmogorov-Smirnov para la distribución Normal</span>
+<span class="n">ks_norm</span> <span class="o">=</span> <span class="n">kstest</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params_norm</span><span class="p">)</span>
+
+<span class="c1"># Prueba de Lilliefors (similar al KS test pero ajustado para normalidad)</span>
+<span class="n">lillie_result</span> <span class="o">=</span> <span class="n">lilliefors</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+
+<span class="c1"># Prueba de Shapiro-Wilk para normalidad</span>
+<span class="n">shapiro_result</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Prueba de Anderson-Darling para la distribución Normal</span>
+<span class="n">anderson_result</span> <span class="o">=</span> <span class="n">anderson</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados</span>
+<span class="n">ks_norm_result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Kolmogorov-Smirnov Test (Normal): Statistic=</span><span class="si">{</span><span class="n">ks_norm</span><span class="o">.</span><span class="n">statistic</span><span class="si">}</span><span class="s2">, p-value=</span><span class="si">{</span><span class="n">ks_norm</span><span class="o">.</span><span class="n">pvalue</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">lillie_result_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Lilliefors Test (Normal): Statistic=</span><span class="si">{</span><span class="n">lillie_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, p-value=</span><span class="si">{</span><span class="n">lillie_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">shapiro_result_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Shapiro-Wilk Test (Normal): Statistic=</span><span class="si">{</span><span class="n">shapiro_result</span><span class="o">.</span><span class="n">statistic</span><span class="si">}</span><span class="s2">, p-value=</span><span class="si">{</span><span class="n">shapiro_result</span><span class="o">.</span><span class="n">pvalue</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">anderson_result_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Anderson-Darling Test (Normal): Statistic=</span><span class="si">{</span><span class="n">anderson_result</span><span class="o">.</span><span class="n">statistic</span><span class="si">}</span><span class="s2">, Critical Values=</span><span class="si">{</span><span class="n">anderson_result</span><span class="o">.</span><span class="n">critical_values</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="p">(</span><span class="n">ks_norm_result</span><span class="p">,</span> <span class="n">lillie_result_text</span><span class="p">,</span> <span class="n">shapiro_result_text</span><span class="p">,</span> <span class="n">anderson_result_text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\scipy\stats\_morestats.py:1882: UserWarning: p-value may not be accurate for N &gt; 5000.
+  warnings.warn(&quot;p-value may not be accurate for N &gt; 5000.&quot;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Kolmogorov-Smirnov Test (Normal): Statistic=0.06644862202022367, p-value=4.963707453536677e-149&#39;,
+ &#39;Lilliefors Test (Normal): Statistic=0.06644553802790248, p-value=0.0009999999999998899&#39;,
+ &#39;Shapiro-Wilk Test (Normal): Statistic=0.9820662140846252, p-value=0.0&#39;,
+ &#39;Anderson-Darling Test (Normal): Statistic=129.76184121534607, Critical Values=[0.576 0.656 0.787 0.918 1.092]&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="analisis-bivariado">
+<h3><strong>Análisis bivariado</strong><a class="headerlink" href="#analisis-bivariado" title="Permalink to this heading">#</a></h3>
+<section id="correlacion">
+<h4><strong>Correlación</strong><a class="headerlink" href="#correlacion" title="Permalink to this heading">#</a></h4>
+<p>La <strong>correlación</strong> es una medida estadística que describe el grado de relación entre dos variables. Específicamente, indica la fuerza y la dirección de la asociación lineal entre las variables. Los valores de correlación varían entre -1 y 1:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(+1\)</span> indica una correlación positiva perfecta (a medida que una variable aumenta, la otra también lo hace).</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> indica una correlación negativa perfecta (a medida que una variable aumenta, la otra disminuye).</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span> indica que no hay correlación lineal entre las variables.
+Fórmula de la correlación de Pearson
+La correlación de Pearson (<span class="math notranslate nohighlight">\(𝑟\)</span>r) es la más utilizada cuando las variables son continuas y tienen una relación lineal. Se calcula como:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}}
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> y <span class="math notranslate nohighlight">\(y_i\)</span> son los valores de las variables <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{x}\)</span> y <span class="math notranslate nohighlight">\(\bar{y}\)</span> son las medias de las variables <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title"><strong>Características de la correlación</strong></p>
+<ul class="simple">
+<li><p>Puede ser positiva o negativa.</p></li>
+<li><p>El valor absoluto indica la fuerza de la relación (más cercano a 1 indica una relación más fuerte).</p></li>
+<li><p>La correlación de Pearson mide solo relaciones lineales.</p></li>
+<li><p>Los valores extremos pueden afectar significativamente la correlación.</p></li>
+<li><p>La correlación es una medida adimensional, no depende de las unidades de las variables.</p></li>
+</ul>
+</div>
+<p>Las correlaciones que se usan comúnmente son la correlación de Pearson y la Spearman. Cuándo usar cada una.</p>
+<ul class="simple">
+<li><p><strong>Pearson</strong>: Usar cuando las variables son continuas, tienen una distribución normal, y se espera una relación lineal.</p></li>
+<li><p><strong>Spearman</strong>: Usar cuando las variables no son normales, son ordinales o tienen una relación monotónica pero no necesariamente lineal.</p></li>
+</ul>
+<p>Veamos si las varriables numéricas de LendingClub (LC) Statistics estan correlacionadas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importemos</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">spearmanr</span>
+
+<span class="c1"># Seleccionemos las variables numéricas</span>
+<span class="n">df_num</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">,</span><span class="s1">&#39;int_rate&#39;</span><span class="p">,</span><span class="s1">&#39;loan_amnt&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Calcular la correlación de Spearman para cada par de columnas</span>
+<span class="n">spearman_corr</span> <span class="o">=</span> <span class="n">df_num</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar la matriz de correlación de Spearman</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriz de correlación de Spearman:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spearman_corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriz de correlación de Spearman:
+            annual_inc  int_rate  loan_amnt
+annual_inc    1.000000   0.05583   0.425268
+int_rate      0.055830   1.00000   0.253590
+loan_amnt     0.425268   0.25359   1.000000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Crear un heatmap para la matriz de correlación</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">spearman_corr</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Matriz de Correlación de Spearman&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/82559b8dbc49a7543e8d3d1809e523139d8f350974bbc3e4316628e38060dbc8.png" src="_images/82559b8dbc49a7543e8d3d1809e523139d8f350974bbc3e4316628e38060dbc8.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="inferencia-estadistica">
+<h2><strong>Inferencia estadística</strong><a class="headerlink" href="#inferencia-estadistica" title="Permalink to this heading">#</a></h2>
+<section id="pruebas-de-hipotesis">
+<h3><strong>Pruebas de hipótesis</strong><a class="headerlink" href="#pruebas-de-hipotesis" title="Permalink to this heading">#</a></h3>
+<p><strong>Las pruebas de hipótesis</strong> son un procedimiento esencial en estadística. Una prueba de hipótesis evalúa dos declaraciones mutuamente excluyentes sobre una población para determinar cuál de ellas está mejor respaldada por los datos de la muestra. Cuando decimos que un hallazgo es <em>estadísticamente significativo</em>, es gracias a una prueba de hipótesis.</p>
+<p>La primera hipótesis se denomina generalmente <strong>hipótesis nula</strong> y es una declaración general o punto de vista predeterminado que indica que no hay relación entre dos fenómenos medidos o ninguna asociación entre grupos. Se puede considerar como una suposición del statu quo. Por ejemplo, “La producción de la Empresa X es igual a 50 unidades por día”.</p>
+<p>La <strong>hipótesis alternativa</strong> es la segunda hipótesis, y se establece en oposición a la hipótesis nula. Por lo general, se toma como la afirmación de que los fenómenos observados en los datos son el resultado de un efecto real y no aleatorio. Por ejemplo, “La producción de la Empresa X no es igual a 50 unidades por día”.</p>
+<p><img alt="" src="_images/hypothesis.png" /></p>
+<p>Para evaluar estas dos hipótesis, necesitamos indicar un umbral de <strong>nivel de significancia</strong>. Este es el valor que representa la probabilidad de que los resultados observados se deban realmente al azar, suponiendo que la hipótesis nula sea verdadera. Como no podemos probar al 100% que la hipótesis nula es falsa, debemos seleccionar un nivel de significancia que sea pequeño pero diferente de cero. Generalmente, se utiliza el 5% (aunque en teoría se puede establecer cualquier nivel deseado). Así, si la probabilidad calculada de que los resultados observados se deban al azar es inferior al 5%, rechazamos la hipótesis nula y proponemos la hipótesis alternativa; de lo contrario, no lo hacemos.</p>
+<p>Hay dos tipos de errores que podemos cometer al hacer esto:</p>
+<ol class="arabic simple">
+<li><p><strong>Error Tipo I:</strong> Rechazar la hipótesis nula cuando no deberíamos. La probabilidad de cometer un error de Tipo I se denota con <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p><strong>Error Tipo II:</strong> No rechazar la hipótesis nula cuando deberíamos. La probabilidad de cometer un error de Tipo II se denota con <span class="math notranslate nohighlight">\(\beta\)</span>.</p></li>
+</ol>
+<p>Finalmente, llegamos al <strong>valor <span class="math notranslate nohighlight">\(p\)</span></strong>, que es nuestra probabilidad calculada de observar los resultados que tenemos, suponiendo que la hipótesis nula sea verdadera. Como se mencionó anteriormente, si este valor está por debajo del nivel de significancia (generalmente 5%), entonces se puede afirmar que se tiene evidencia razonable para rechazar la hipótesis nula. Sin embargo, esto NO implica automáticamente un hallazgo “significativo” o “importante”, eso es algo que se debe decidir al considerar la relevancia del resultado en el mundo real.</p>
+<section id="comparacion-de-2-grupos-poblacionales-independientes-parametrica">
+<h4><strong>Comparación de 2 grupos poblacionales independientes paramétrica</strong><a class="headerlink" href="#comparacion-de-2-grupos-poblacionales-independientes-parametrica" title="Permalink to this heading">#</a></h4>
+<section id="igualdad-de-varianzas">
+<h5><strong>Igualdad de varianzas</strong><a class="headerlink" href="#igualdad-de-varianzas" title="Permalink to this heading">#</a></h5>
+<p>Importemos el siguiente conjunto de datos <code class="docutils literal notranslate"><span class="pre">data_bancos</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ks_1samp</span><span class="p">,</span> <span class="n">shapiro</span><span class="p">,</span> <span class="n">bartlett</span><span class="p">,</span> <span class="n">levene</span><span class="p">,</span> <span class="n">fligner</span><span class="p">,</span> <span class="n">ttest_ind</span><span class="p">,</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.gofplots</span> <span class="kn">import</span> <span class="n">qqplot</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.weightstats</span> <span class="kn">import</span> <span class="n">DescrStatsW</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar el archivo de Excel</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;_data/datadescrip/datos_banca_norm.csv&#39;</span>
+<span class="n">df_bank</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># Mostrar las primeras filas para entender la estructura</span>
+<span class="n">df_bank</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tipo</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>InteresPrestamo</td>
+      <td>5.496714</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>InteresPrestamo</td>
+      <td>4.861736</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>InteresPrestamo</td>
+      <td>5.647689</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>InteresPrestamo</td>
+      <td>6.523030</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>InteresPrestamo</td>
+      <td>4.765847</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_bank</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 200 entries, 0 to 199
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   Tipo    200 non-null    object 
+ 1   Valor   200 non-null    float64
+dtypes: float64(1), object(1)
+memory usage: 3.2+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Realicemos un diagrama de cajas y bigotes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generar diagrama de cajas y bigotes para los datos de df_bank</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Tipo&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Valor&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_bank</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes para Interés de Préstamo y Depósito&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tipo de Interés&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9fd906e767f23aff3c009946fe8b55bd967e1899f037d8423ca7b7d4fe3dcee5.png" src="_images/9fd906e767f23aff3c009946fe8b55bd967e1899f037d8423ca7b7d4fe3dcee5.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Probemos el primer supuesto. Los datos deben tener comportamiento de una distribución normal.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separar los datos por tipo de interés</span>
+<span class="n">interes_prestamo</span> <span class="o">=</span> <span class="n">df_bank</span><span class="p">[</span><span class="n">df_bank</span><span class="p">[</span><span class="s1">&#39;Tipo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;InteresPrestamo&#39;</span><span class="p">][</span><span class="s1">&#39;Valor&#39;</span><span class="p">]</span>
+<span class="n">interes_deposito</span> <span class="o">=</span> <span class="n">df_bank</span><span class="p">[</span><span class="n">df_bank</span><span class="p">[</span><span class="s1">&#39;Tipo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;InteresDeposito&#39;</span><span class="p">][</span><span class="s1">&#39;Valor&#39;</span><span class="p">]</span>
+
+<span class="c1"># Normalidad: Prueba de Kolmogorov-Smirnov </span>
+<span class="n">ks_prestamo</span> <span class="o">=</span> <span class="n">ks_1samp</span><span class="p">((</span><span class="n">interes_prestamo</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">interes_prestamo</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">interes_prestamo</span><span class="p">),</span> <span class="n">cdf</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">)</span>
+<span class="n">ks_deposito</span> <span class="o">=</span> <span class="n">ks_1samp</span><span class="p">((</span><span class="n">interes_deposito</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">interes_deposito</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">interes_deposito</span><span class="p">),</span> <span class="n">cdf</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">)</span>
+
+<span class="c1"># Normalidad: Prueba de Shapiro-Wilk</span>
+<span class="n">shapiro_prestamo</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">interes_prestamo</span><span class="p">)</span>
+<span class="n">shapiro_deposito</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">interes_deposito</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de normalidad</span>
+<span class="n">normalidad_resultados_banca</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Interés&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Préstamo&#39;</span><span class="p">,</span> <span class="s1">&#39;Depósito&#39;</span><span class="p">,</span> <span class="s1">&#39;Préstamo&#39;</span><span class="p">,</span> <span class="s1">&#39;Depósito&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ks_prestamo</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">ks_deposito</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_prestamo</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_deposito</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ks_prestamo</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">ks_deposito</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_prestamo</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_deposito</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">normalidad_df_banca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalidad_resultados_banca</span><span class="p">)</span>
+<span class="n">normalidad_df_banca</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Interés</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Kolmogorov-Smirnov</td>
+      <td>Préstamo</td>
+      <td>0.050829</td>
+      <td>0.946707</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Kolmogorov-Smirnov</td>
+      <td>Depósito</td>
+      <td>0.073276</td>
+      <td>0.629350</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Shapiro-Wilk</td>
+      <td>Préstamo</td>
+      <td>0.989883</td>
+      <td>0.655152</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Shapiro-Wilk</td>
+      <td>Depósito</td>
+      <td>0.977534</td>
+      <td>0.085255</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Miremos la grafica QQ-Plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráfica de QQ-plot para Interés de Préstamo</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">qqplot</span><span class="p">(</span><span class="n">interes_prestamo</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;QQ-Plot para Interés de Préstamo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cuantiles Teóricos&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cuantiles de la Muestra&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Gráfica de QQ-plot para Interés de Depósito</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">qqplot</span><span class="p">(</span><span class="n">interes_deposito</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;QQ-Plot para Interés de Depósito&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cuantiles Teóricos&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cuantiles de la Muestra&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/772258f5e2fd13d891b13c20ef301cf0739b2eaeb1692281c6692fdfbb02bb10.png" src="_images/772258f5e2fd13d891b13c20ef301cf0739b2eaeb1692281c6692fdfbb02bb10.png" />
+<img alt="_images/1ddf956639d4bb5efc834c238cdf074cc959b96d20960cc43cf0a53e40af9a72.png" src="_images/1ddf956639d4bb5efc834c238cdf074cc959b96d20960cc43cf0a53e40af9a72.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Probemos el 2do supuesto, que es la igualdad de varianza o la homocedasticidad</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preparación de los datos para pruebas de igualdad de varianzas para df_bank</span>
+<span class="n">data_gather_banca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Grupo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;InteresPrestamo&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">interes_prestamo</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;InteresDeposito&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">interes_deposito</span><span class="p">),</span>
+    <span class="s1">&#39;Valor&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">interes_prestamo</span><span class="p">,</span> <span class="n">interes_deposito</span><span class="p">])</span>
+<span class="p">})</span>
+
+<span class="c1"># Prueba de Bartlett</span>
+<span class="n">bartlett_test_banca</span> <span class="o">=</span> <span class="n">bartlett</span><span class="p">(</span><span class="n">interes_prestamo</span><span class="p">,</span> <span class="n">interes_deposito</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de las pruebas de igualdad de varianza</span>
+<span class="n">igualdad_varianzas_resultados_banca</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Bartlett&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">bartlett_test_banca</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">bartlett_test_banca</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">igualdad_varianzas_df_banca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">igualdad_varianzas_resultados_banca</span><span class="p">)</span>
+<span class="n">igualdad_varianzas_df_banca</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bartlett</td>
+      <td>0.235319</td>
+      <td>0.627608</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Ahora, veamos si hay o no diferencias estadísticamente significativas entre el interes del prestamo con el interes de deposito</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba de diferencia de medias (t-test) para los datos bancarios</span>
+<span class="n">t_test_result_banca</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">interes_prestamo</span><span class="p">,</span> <span class="n">interes_deposito</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de diferencia de medias y tamaño del efecto</span>
+<span class="n">diferencia_medias_resultados_banca</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;t-test&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">t_test_result_banca</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">t_test_result_banca</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">diferencia_medias_df_banca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">diferencia_medias_resultados_banca</span><span class="p">)</span>
+<span class="n">diferencia_medias_df_banca</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico o Tamaño del Efecto</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>t-test</td>
+      <td>-0.957932</td>
+      <td>0.339265</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>El p-valor de 0.339 es mayor que el nivel de significancia comúnmente utilizado de 0.05. Esto indica que no hay suficiente evidencia para rechazar la hipótesis nula de que las medias de los intereses de préstamo y depósito son iguales. En otras palabras, no hay una diferencia estadísticamente significativa entre las medias de los intereses de préstamo y depósito en los datos proporcionados.</p>
+</section>
+<section id="varianzas-distintas">
+<h5><strong>Varianzas distintas</strong><a class="headerlink" href="#varianzas-distintas" title="Permalink to this heading">#</a></h5>
+<p>Importemos el siguiente conjunto de datos <code class="docutils literal notranslate"><span class="pre">data_tasas_interes</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar el archivo de Excel</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;_data/datadescrip/datos_tasas_interes.csv&#39;</span>
+<span class="n">df_tasa</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># Ponerlo categórico</span>
+<span class="n">df_tasa</span><span class="p">[</span><span class="s1">&#39;Tipo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_tasa</span><span class="o">.</span><span class="n">Tipo</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;InteresCreditoPersonal&#39;</span><span class="p">,</span>
+                                                                              <span class="s1">&#39;InteresCreditoHipotecario&#39;</span><span class="p">]))</span>
+
+<span class="c1"># Mostrar las primeras filas para entender la estructura</span>
+<span class="n">df_tasa</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tipo</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>InteresCreditoPersonal</td>
+      <td>13.241785</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>InteresCreditoPersonal</td>
+      <td>11.654339</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>InteresCreditoPersonal</td>
+      <td>13.619221</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>InteresCreditoPersonal</td>
+      <td>15.807575</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>InteresCreditoPersonal</td>
+      <td>11.414617</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tasa</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 200 entries, 0 to 199
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype   
+---  ------  --------------  -----   
+ 0   Tipo    200 non-null    category
+ 1   Valor   200 non-null    float64 
+dtypes: category(1), float64(1)
+memory usage: 2.0 KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Realicemos un diagrama de cajas y bigotes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generar diagrama de cajas y bigotes para los datos de tasas de interés</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Tipo&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Valor&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_tasa</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes para Tasas de Interés de Créditos Personales e Hipotecarios&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tipo de Crédito&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tasa de Interés (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a5250e0d4833c1e4a124d06c29ed4218e43ca2331cd0b933d42ae10f38b54e42.png" src="_images/a5250e0d4833c1e4a124d06c29ed4218e43ca2331cd0b933d42ae10f38b54e42.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Probemos el 1er supuesto. Veamos si los datos tienen o no comportamiento normal</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separar los datos por tipo de interés de los datos generados</span>
+<span class="n">interes_credito_personal</span> <span class="o">=</span> <span class="n">df_tasa</span><span class="p">[</span><span class="n">df_tasa</span><span class="p">[</span><span class="s1">&#39;Tipo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;InteresCreditoPersonal&#39;</span><span class="p">][</span><span class="s1">&#39;Valor&#39;</span><span class="p">]</span>
+<span class="n">interes_credito_hipotecario</span> <span class="o">=</span> <span class="n">df_tasa</span><span class="p">[</span><span class="n">df_tasa</span><span class="p">[</span><span class="s1">&#39;Tipo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;InteresCreditoHipotecario&#39;</span><span class="p">][</span><span class="s1">&#39;Valor&#39;</span><span class="p">]</span>
+
+<span class="c1"># Normalidad: Prueba de Kolmogorov-Smirnov</span>
+<span class="n">ks_credito_personal</span> <span class="o">=</span> <span class="n">ks_1samp</span><span class="p">((</span><span class="n">interes_credito_personal</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">interes_credito_personal</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">interes_credito_personal</span><span class="p">),</span> <span class="n">cdf</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">)</span>
+<span class="n">ks_credito_hipotecario</span> <span class="o">=</span> <span class="n">ks_1samp</span><span class="p">((</span><span class="n">interes_credito_hipotecario</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">interes_credito_hipotecario</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">interes_credito_hipotecario</span><span class="p">),</span> <span class="n">cdf</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">)</span>
+
+<span class="c1"># Normalidad: Prueba de Shapiro-Wilk</span>
+<span class="n">shapiro_credito_personal</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">interes_credito_personal</span><span class="p">)</span>
+<span class="n">shapiro_credito_hipotecario</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">interes_credito_hipotecario</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de normalidad</span>
+<span class="n">normalidad_resultados_interes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Tipo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Credito Personal&#39;</span><span class="p">,</span> <span class="s1">&#39;Credito Hipotecario&#39;</span><span class="p">,</span> <span class="s1">&#39;Credito Personal&#39;</span><span class="p">,</span> <span class="s1">&#39;Credito Hipotecario&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ks_credito_personal</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">ks_credito_hipotecario</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_credito_personal</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_credito_hipotecario</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ks_credito_personal</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">ks_credito_hipotecario</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_credito_personal</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_credito_hipotecario</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">normalidad_df_interes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalidad_resultados_interes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalidad_df_interes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               Prueba                 Tipo  Estadístico   p-valor
+0  Kolmogorov-Smirnov     Credito Personal     0.050829  0.946707
+1  Kolmogorov-Smirnov  Credito Hipotecario     0.073276  0.629350
+2        Shapiro-Wilk     Credito Personal     0.989883  0.655133
+3        Shapiro-Wilk  Credito Hipotecario     0.977534  0.085255
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Probemos el 2do supuesto, que es la igualdad de varianza o la homocedasticidad</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preparación de los datos para pruebas de igualdad de varianzas para las tasas de interés</span>
+<span class="n">data_gather_interes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Grupo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;InteresCreditoPersonal&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">interes_credito_personal</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;InteresCreditoHipotecario&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">interes_credito_hipotecario</span><span class="p">),</span>
+    <span class="s1">&#39;Valor&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">interes_credito_personal</span><span class="p">,</span> <span class="n">interes_credito_hipotecario</span><span class="p">])</span>
+<span class="p">})</span>
+
+<span class="c1"># Prueba de Bartlett para igualdad de varianza entre las tasas de interés</span>
+<span class="n">bartlett_test_interes</span> <span class="o">=</span> <span class="n">bartlett</span><span class="p">(</span><span class="n">interes_credito_personal</span><span class="p">,</span> <span class="n">interes_credito_hipotecario</span><span class="p">)</span>
+
+<span class="c1"># Prueba de Levene (usando la mediana)</span>
+<span class="n">levene_test</span> <span class="o">=</span> <span class="n">levene</span><span class="p">(</span><span class="n">interes_credito_personal</span><span class="p">,</span> <span class="n">interes_credito_hipotecario</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de las pruebas de igualdad de varianza</span>
+<span class="n">igualdad_varianzas_resultados_interes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Bartlett&#39;</span><span class="p">,</span><span class="s1">&#39;Levene&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">bartlett_test_interes</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span><span class="n">levene_test</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">bartlett_test_interes</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span><span class="n">levene_test</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">igualdad_varianzas_df_interes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">igualdad_varianzas_resultados_interes</span><span class="p">)</span>
+<span class="n">igualdad_varianzas_df_interes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bartlett</td>
+      <td>43.011235</td>
+      <td>5.442642e-11</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Levene</td>
+      <td>33.256190</td>
+      <td>3.066820e-08</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Veamos si hay o no diferencias estadisticamente significativas entre el interes del prestamo y el interes de deposito</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba de diferencia de medias (t-test) para las tasas de interés de créditos personales e hipotecarios</span>
+<span class="n">t_test_result_interes</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">interes_credito_personal</span><span class="p">,</span> <span class="n">interes_credito_hipotecario</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de diferencia de medias y tamaño del efecto</span>
+<span class="n">diferencia_medias_resultados_interes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;t-test&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">t_test_result_interes</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">t_test_result_interes</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">diferencia_medias_df_interes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">diferencia_medias_resultados_interes</span><span class="p">)</span>
+<span class="n">diferencia_medias_df_interes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>t-test</td>
+      <td>16.572527</td>
+      <td>2.182955e-35</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Dado el p-valor extremadamente bajo (2.18e-35), podemos concluir que existe una diferencia estadísticamente significativa entre las tasas de interés de los créditos personales y los créditos hipotecarios.</p>
+</section>
+</section>
+<section id="comparacion-de-2-grupos-poblacionales-dependientes-parametrica-pareadas">
+<h4><strong>Comparación de 2 grupos poblacionales dependientes paramétrica (pareadas)</strong><a class="headerlink" href="#comparacion-de-2-grupos-poblacionales-dependientes-parametrica-pareadas" title="Permalink to this heading">#</a></h4>
+<p>En el contexto de marketing para la banca, este análisis podría utilizarse para evaluar la efectividad de una nueva campaña de marketing o estrategia de promoción. Por ejemplo:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">antes</span></code>: Representa la tasa de conversión de clientes antes de implementar una nueva campaña de marketing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">despues</span></code>: Representar la tasa de conversión de los mismos clientes después de la campaña.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Datos de ejemplo: tasa de conversión de clientes antes y después de una campaña de marketing</span>
+<span class="n">data_marketing</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;cliente&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+    <span class="s1">&#39;conversion_antes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">12.9</span><span class="p">,</span> <span class="mf">13.5</span><span class="p">,</span> <span class="mf">12.8</span><span class="p">,</span> <span class="mf">15.6</span><span class="p">,</span> <span class="mf">17.2</span><span class="p">,</span> <span class="mf">19.2</span><span class="p">,</span> <span class="mf">12.6</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">,</span> <span class="mf">14.4</span><span class="p">,</span> <span class="mf">11.3</span><span class="p">],</span>  <span class="c1"># Tasa de conversión antes de la campaña</span>
+    <span class="s1">&#39;conversion_despues&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">12.7</span><span class="p">,</span> <span class="mf">13.6</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">15.2</span><span class="p">,</span> <span class="mf">16.8</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">15.9</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">11.1</span><span class="p">]</span>  <span class="c1"># Tasa de conversión después de la campaña</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear el DataFrame</span>
+<span class="n">df_marketing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_marketing</span><span class="p">)</span>
+
+<span class="n">df_marketing</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cliente</th>
+      <th>conversion_antes</th>
+      <th>conversion_despues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>12.9</td>
+      <td>12.7</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>13.5</td>
+      <td>13.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>12.8</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>15.6</td>
+      <td>15.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>17.2</td>
+      <td>16.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Realicemos el diagrama de cajas y bigotes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un DataFrame largo para facilitar la visualización con Seaborn</span>
+<span class="n">df_long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df_marketing</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cliente&#39;</span><span class="p">],</span> <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;conversion_antes&#39;</span><span class="p">,</span> <span class="s1">&#39;conversion_despues&#39;</span><span class="p">],</span>
+                  <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;Etapa&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;Tasa de Conversión&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generar el diagrama de cajas y bigotes para los datos de tasas de conversión</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Etapa&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Tasa de Conversión&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_long</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes para la Tasa de Conversión de Clientes Antes y Después de la Campaña de Marketing&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Etapa de la Campaña&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tasa de Conversión (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a1a6092fd8a052f7e2bc26d4798e517c805dd2ac8d6431506151d9c41c880204.png" src="_images/a1a6092fd8a052f7e2bc26d4798e517c805dd2ac8d6431506151d9c41c880204.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Probemos la normalidad de los datos</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba de normalidad usando Shapiro-Wilk para &quot;antes&quot; y &quot;después&quot;</span>
+<span class="n">shapiro_antes</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">df_marketing</span><span class="p">[</span><span class="s1">&#39;conversion_antes&#39;</span><span class="p">])</span>
+<span class="n">shapiro_despues</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">df_marketing</span><span class="p">[</span><span class="s1">&#39;conversion_despues&#39;</span><span class="p">])</span>
+
+<span class="c1"># Mostrar resultados de normalidad</span>
+<span class="n">normalidad_resultados_interes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Tipo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;conversion_antes&#39;</span><span class="p">,</span> <span class="s1">&#39;conversion_despues&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">shapiro_antes</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_despues</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">shapiro_antes</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_despues</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">normalidad_df_interes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalidad_resultados_interes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalidad_df_interes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Prueba                Tipo  Estadístico   p-valor
+0  Shapiro-Wilk    conversion_antes     0.944436  0.603337
+1  Shapiro-Wilk  conversion_despues     0.936383  0.513510
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Veamos si hay diferencias estadísticamente significativas o no</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar para prueba pareada</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_rel</span>
+
+<span class="c1"># Prueba t para datos pareados (diferencias antes y después)</span>
+<span class="n">t_test_result</span> <span class="o">=</span> <span class="n">ttest_rel</span><span class="p">(</span><span class="n">df_marketing</span><span class="p">[</span><span class="s1">&#39;conversion_despues&#39;</span><span class="p">],</span> <span class="n">df_marketing</span><span class="p">[</span><span class="s1">&#39;conversion_antes&#39;</span><span class="p">],</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">&#39;two-sided&#39;</span><span class="p">)</span>
+
+<span class="n">resultado_analisis</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba t pareada&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Estadístico t&#39;</span><span class="p">:</span> <span class="n">t_test_result</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="n">t_test_result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">resultado_analisis</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultado_analisis</span><span class="p">)</span>
+
+<span class="c1"># Mostrar los resultados</span>
+<span class="n">resultado_analisis</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba t pareada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Estadístico t</th>
+      <td>0.213308</td>
+    </tr>
+    <tr>
+      <th>p-valor</th>
+      <td>0.835840</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>El p-valor de 0.836 es mucho mayor que el nivel de significancia comúnmente utilizado (por ejemplo, 0.05). Esto indica que no hay suficiente evidencia para rechazar la hipótesis nula de que no hay diferencia en las medias de las tasas de conversión antes y después de la campaña de marketing.</p>
+</section>
+<section id="comparacion-de-2-grupos-poblacionales-independientes-no-parametrica">
+<h4><strong>Comparación de 2 grupos poblacionales independientes no paramétrica</strong><a class="headerlink" href="#comparacion-de-2-grupos-poblacionales-independientes-no-parametrica" title="Permalink to this heading">#</a></h4>
+<p>Para nuestra prueba estadística no paramétrica usaremos los datos de <strong>LendingClub (LC) Statistics</strong>. Veamos si hay diferencias estadísticamente significativas de la tasa de interes según el pago o no.</p>
+<p>Realicemos un diagrama de cajas y bigotes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diagrama de cajas y bigotes para &#39;unemployment&#39; vs &#39;type&#39; usando Seaborn</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Ajustar el tamaño del gráfico</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;loan_status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;int_rate&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Agregar título y etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes: Tasa de interes según el estatus&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Estatus&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tasa de interes&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/40f63ff686e63a33af3aab8a381ac8d055149ac9672c32fc4789ee3868171073.png" src="_images/40f63ff686e63a33af3aab8a381ac8d055149ac9672c32fc4789ee3868171073.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Veamos si hay normalidad en los datos</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separar los datos por tipo de interés</span>
+<span class="n">interes_Fully_Paid</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;loan_status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Fully Paid&#39;</span><span class="p">][</span><span class="s1">&#39;int_rate&#39;</span><span class="p">]</span>
+<span class="n">interes_Charged_Off</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;loan_status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Charged Off&#39;</span><span class="p">][</span><span class="s1">&#39;int_rate&#39;</span><span class="p">]</span>
+
+<span class="c1"># Normalidad: Prueba de Kolmogorov-Smirnov</span>
+<span class="n">ks_Fully_Paid</span> <span class="o">=</span> <span class="n">ks_1samp</span><span class="p">((</span><span class="n">interes_Fully_Paid</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">interes_Fully_Paid</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">interes_Fully_Paid</span><span class="p">),</span> <span class="n">cdf</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">)</span>
+<span class="n">ks_Charged_Off</span> <span class="o">=</span> <span class="n">ks_1samp</span><span class="p">((</span><span class="n">interes_Charged_Off</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">interes_Charged_Off</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">interes_Charged_Off</span><span class="p">),</span> <span class="n">cdf</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">)</span>
+
+<span class="c1"># Prueba de lilliefors para la distribución Normal</span>
+<span class="n">lilliefors_Fully_Paid</span> <span class="o">=</span> <span class="n">lilliefors</span><span class="p">(</span><span class="n">interes_Fully_Paid</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+<span class="n">lilliefors_Charged_Off</span> <span class="o">=</span> <span class="n">lilliefors</span><span class="p">(</span><span class="n">interes_Charged_Off</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de normalidad</span>
+<span class="n">normalidad_resultados_banca</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;lilliefors&#39;</span><span class="p">,</span> <span class="s1">&#39;lilliefors&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Interés&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Fully Paid&#39;</span><span class="p">,</span> <span class="s1">&#39;Charged Off&#39;</span><span class="p">,</span> <span class="s1">&#39;Fully Paid&#39;</span><span class="p">,</span> <span class="s1">&#39;Charged Off&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ks_Fully_Paid</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">ks_Charged_Off</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">lilliefors_Fully_Paid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lilliefors_Charged_Off</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ks_Fully_Paid</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">ks_Charged_Off</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">lilliefors_Fully_Paid</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lilliefors_Charged_Off</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">normalidad_df_banca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalidad_resultados_banca</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalidad_df_banca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               Prueba      Interés  Estadístico        p-valor
+0  Kolmogorov-Smirnov   Fully Paid     0.073990  8.141216e-159
+1  Kolmogorov-Smirnov  Charged Off     0.033266   1.151589e-05
+2          lilliefors   Fully Paid     0.073986   1.000000e-03
+3          lilliefors  Charged Off     0.033262   1.000000e-03
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Probemos la homocedasticidad</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba de Levene centrada en la mediana para igualdad de varianzas entre las tasas de interés de &quot;Fully Paid&quot; y &quot;Charged Off&quot;</span>
+<span class="n">levene_test_banca</span> <span class="o">=</span> <span class="n">levene</span><span class="p">(</span><span class="n">interes_Fully_Paid</span><span class="p">,</span> <span class="n">interes_Charged_Off</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de la prueba de Levene</span>
+<span class="n">igualdad_varianzas_levene_resultados</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Levene (mediana)&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">levene_test_banca</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">levene_test_banca</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">igualdad_varianzas_levene_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">igualdad_varianzas_levene_resultados</span><span class="p">)</span>
+<span class="n">igualdad_varianzas_levene_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Levene (mediana)</td>
+      <td>0.308287</td>
+      <td>0.578736</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Usemos una prueba no paramétrica para ver si hay diferencias significativas entre los dos grupos</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">mannwhitneyu</span>
+
+<span class="c1"># Prueba de Mann-Whitney U para comparar las medianas de las tasas de interés de &quot;Fully Paid&quot; y &quot;Charged Off&quot;</span>
+<span class="n">mannwhitney_test_banca</span> <span class="o">=</span> <span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">interes_Fully_Paid</span><span class="p">,</span> <span class="n">interes_Charged_Off</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">&#39;two-sided&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de la prueba de Mann-Whitney U</span>
+<span class="n">mannwhitney_resultados</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Mann-Whitney U&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mannwhitney_test_banca</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">mannwhitney_test_banca</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">mannwhitney_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mannwhitney_resultados</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mannwhitney_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Prueba  Estadístico  p-valor
+0  Mann-Whitney U   61292227.5      0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los resultados sugieren que las tasas de interés para los préstamos que han sido <code class="docutils literal notranslate"><span class="pre">Fully</span> <span class="pre">Paid</span></code> y aquellos que han sido <code class="docutils literal notranslate"><span class="pre">Charged</span> <span class="pre">Off</span></code> son significativamente diferentes. Esto podría implicar que los préstamos con mayores tasas de interés tienden a tener un mayor riesgo de no ser pagados en su totalidad (es decir, ser <code class="docutils literal notranslate"><span class="pre">Charged</span> <span class="pre">Off</span></code>)</p>
+</section>
+<section id="comparacion-de-2-grupos-poblacionales-dependientes-no-parametrica-pareadas">
+<h4><strong>Comparación de 2 grupos poblacionales dependientes no paramétrica (pareadas)</strong><a class="headerlink" href="#comparacion-de-2-grupos-poblacionales-dependientes-no-parametrica-pareadas" title="Permalink to this heading">#</a></h4>
+<p>El contexto de los datos es la rotación de puestos en la banca, supongamos que estamos comparando dos periodos (pretest y posttest) para evaluar si hubo un cambio significativo en el puntaje de satisfacción del personal antes y después de un programa de intervención en la empresa bancaria.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar el archivo de Excel</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;_data/datadescrip/rotacion_puesto_banca.csv&#39;</span>
+<span class="n">df_rot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="c1"># Mostrar las primeras filas para entender la estructura</span>
+<span class="n">df_rot</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Experimento</th>
+      <th>Q1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Pretest</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Pretest</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pretest</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pretest</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pretest</td>
+      <td>12.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_rot</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 60 entries, 0 to 59
+Data columns (total 2 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   Experimento  60 non-null     object 
+ 1   Q1           60 non-null     float64
+dtypes: float64(1), object(1)
+memory usage: 1.1+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hagamos un diagrama de cajas y bigotes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diagrama de cajas y bigotes para &#39;Q1&#39; vs &#39;Experimento&#39; usando Seaborn en el contexto de rotación de la banca</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Ajustar el tamaño del gráfico</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Experimento&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Q1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Agregar título y etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes: Satisfacción del personal según el experimento&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Experimento (Pretest vs. Posttest)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Puntaje de Satisfacción del Personal (Q1)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b17c9d00823683c04b8373e224d3622e3d430576da1f4567f1567693ab5e332b.png" src="_images/b17c9d00823683c04b8373e224d3622e3d430576da1f4567f1567693ab5e332b.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Veamos la distribución de los datos</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separar los datos por experimento en el contexto de rotación de la banca</span>
+<span class="n">satisfaccion_Pretest</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Experimento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Pretest&#39;</span><span class="p">][</span><span class="s1">&#39;Q1&#39;</span><span class="p">]</span>
+<span class="n">satisfaccion_Posttest</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Experimento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Posttest&#39;</span><span class="p">][</span><span class="s1">&#39;Q1&#39;</span><span class="p">]</span>
+
+<span class="c1"># Prueba de Lilliefors para la distribución Normal</span>
+<span class="n">lilliefors_Pretest</span> <span class="o">=</span> <span class="n">lilliefors</span><span class="p">(</span><span class="n">satisfaccion_Pretest</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+<span class="n">lilliefors_Posttest</span> <span class="o">=</span> <span class="n">lilliefors</span><span class="p">(</span><span class="n">satisfaccion_Posttest</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+
+<span class="c1"># Prueba de Shapiro-Wilk</span>
+<span class="n">shapiro_Pretest</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">satisfaccion_Pretest</span><span class="p">)</span>
+<span class="n">shapiro_Posttest</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">satisfaccion_Posttest</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de normalidad</span>
+<span class="n">normalidad_resultados_rotacion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Lilliefors&#39;</span><span class="p">,</span> <span class="s1">&#39;Lilliefors&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Experimento&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Pretest&#39;</span><span class="p">,</span> <span class="s1">&#39;Posttest&#39;</span><span class="p">,</span> <span class="s1">&#39;Pretest&#39;</span><span class="p">,</span> <span class="s1">&#39;Posttest&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">lilliefors_Pretest</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lilliefors_Posttest</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">shapiro_Pretest</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_Posttest</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="n">lilliefors_Pretest</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lilliefors_Posttest</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">shapiro_Pretest</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_Posttest</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">normalidad_df_rotacion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalidad_resultados_rotacion</span><span class="p">)</span>
+<span class="n">normalidad_df_rotacion</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Experimento</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Lilliefors</td>
+      <td>Pretest</td>
+      <td>0.200947</td>
+      <td>0.003294</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Lilliefors</td>
+      <td>Posttest</td>
+      <td>0.185819</td>
+      <td>0.009551</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Shapiro-Wilk</td>
+      <td>Pretest</td>
+      <td>0.795257</td>
+      <td>0.000054</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Shapiro-Wilk</td>
+      <td>Posttest</td>
+      <td>0.838003</td>
+      <td>0.000351</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Veamos si hay diferencias entre el antes y despues.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">wilcoxon</span>
+
+<span class="c1"># Prueba de Wilcoxon para datos pareados (no paramétrica) para comparar Pretest y Posttest</span>
+<span class="n">wilcoxon_test_rotacion</span> <span class="o">=</span> <span class="n">wilcoxon</span><span class="p">(</span><span class="n">satisfaccion_Pretest</span><span class="p">,</span> <span class="n">satisfaccion_Posttest</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">&#39;two-sided&#39;</span><span class="p">,</span>
+                                  <span class="n">correction</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de la prueba de Wilcoxon</span>
+<span class="n">wilcoxon_resultados</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Wilcoxon (pareada)&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">wilcoxon_test_rotacion</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">wilcoxon_test_rotacion</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">wilcoxon_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">wilcoxon_resultados</span><span class="p">)</span>
+<span class="n">wilcoxon_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Wilcoxon (pareada)</td>
+      <td>132.0</td>
+      <td>0.038418</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Los resultados sugieren que la intervención realizada en la empresa bancaria (por ejemplo, una política o programa de rotación de puestos) tuvo un impacto significativo en la satisfacción del personal.</p>
+</section>
+<section id="anova-para-mas-de-2-grupos-parametricas">
+<h4><strong>ANOVA para mas de 2 grupos paramétricas</strong><a class="headerlink" href="#anova-para-mas-de-2-grupos-parametricas" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="kw-para-mas-de-2-grupos-no-parametrica">
+<h4><strong>KW para mas de 2 grupos no parametrica</strong><a class="headerlink" href="#kw-para-mas-de-2-grupos-no-parametrica" title="Permalink to this heading">#</a></h4>
 </section>
 </section>
 </section>
@@ -1120,10 +2878,36 @@ atípico.Todo datos que se salga de este intervalo <span class="math notranslate
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estadistica-descriptiva"><strong>Estadística descriptiva</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poblacion-y-muestra"><strong>Población y muestra</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-datos"><strong>Tipos de datos</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-basicos"><strong>Conceptos básicos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-univariado"><strong>Análisis univariado</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-conteo-y-proporciones"><strong>Medidas de conteo y proporciones</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-tendencia-central"><strong>Medidas de tendencia central</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-dispersion"><strong>Medidas de dispersión</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-posicion"><strong>Medidas de posición</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribuciones"><strong>Distribuciones</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-normal"><strong>Distribución normal</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-gamma"><strong>Distribución Gamma</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-bivariado"><strong>Análisis bivariado</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#correlacion"><strong>Correlación</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencia-estadistica"><strong>Inferencia estadística</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruebas-de-hipotesis"><strong>Pruebas de hipótesis</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-2-grupos-poblacionales-independientes-parametrica"><strong>Comparación de 2 grupos poblacionales independientes paramétrica</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#igualdad-de-varianzas"><strong>Igualdad de varianzas</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#varianzas-distintas"><strong>Varianzas distintas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-2-grupos-poblacionales-dependientes-parametrica-pareadas"><strong>Comparación de 2 grupos poblacionales dependientes paramétrica (pareadas)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-2-grupos-poblacionales-independientes-no-parametrica"><strong>Comparación de 2 grupos poblacionales independientes no paramétrica</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-de-2-grupos-poblacionales-dependientes-no-parametrica-pareadas"><strong>Comparación de 2 grupos poblacionales dependientes no paramétrica (pareadas)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#anova-para-mas-de-2-grupos-parametricas"><strong>ANOVA para mas de 2 grupos paramétricas</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kw-para-mas-de-2-grupos-no-parametrica"><strong>KW para mas de 2 grupos no parametrica</strong></a></li>
 </ul>
 </li>
 </ul>
