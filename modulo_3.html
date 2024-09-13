@@ -885,11 +885,12 @@ G         317    0.008190
 <section id="medidas-de-tendencia-central">
 <h4><strong>Medidas de tendencia central</strong><a class="headerlink" href="#medidas-de-tendencia-central" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
-<li><p><strong>Media aritmética o promedio</strong>: Para un conjunto de <span class="math notranslate nohighlight">\(n\)</span> valores <span class="math notranslate nohighlight">\(x_{1},x_{2},\dots,x_{n}\)</span> que representan una muestra, la
-$<span class="math notranslate nohighlight">\(
-\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_{i}=\frac{1}{n}(x_{1}+x_{2}+\cdots+x_{n})
-\)</span>$</p></li>
+<li><p><strong>Media aritmética o promedio</strong>: Para un conjunto de <span class="math notranslate nohighlight">\(n\)</span> valores <span class="math notranslate nohighlight">\(x_{1},x_{2},\dots,x_{n}\)</span> que representan una muestra, la</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_{i}=\frac{1}{n}(x_{1}+x_{2}+\cdots+x_{n})
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -899,14 +900,15 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <ul class="simple">
 <li><p><strong>Mediana</strong>:	Se denotará como <span class="math notranslate nohighlight">\(\tilde{x}\)</span> para la muestra. Para un
-conjunto de valores ordenados se tiene:
-$<span class="math notranslate nohighlight">\(
+conjunto de valores ordenados se tiene:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \tilde{x}=\begin{cases}
 x_{\frac{n+1}{2}}, &amp; \text{si }  n  \text{ es impar}\\
 \frac{x_{\frac{n}{2}}+x_{\frac{n}{2}+1}}{2}, &amp; \text{si } n  \text{ es par}
 \end{cases}
-\)</span>$</p></li>
-</ul>
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
