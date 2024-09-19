@@ -396,6 +396,13 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-no-supervisado"><strong>Machine learning no supervisado</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-aprendizaje-no-supervisado">Tipos de aprendizaje no supervisado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desafios-del-aprendizaje-no-supervisado"><strong>Desafíos del aprendizaje no supervisado</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento-y-escalado"><strong>Preprocesamiento y escalado</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-componentes-principales-reduccion-de-dimensiones"><strong>Análisis de componentes principales (reducción de dimensiones)</strong></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -1545,6 +1552,25 @@ loan_amnt     0.425268   0.25359   1.000000
 <li><p><strong>Error Tipo I:</strong> Rechazar la hipótesis nula cuando no deberíamos. La probabilidad de cometer un error de Tipo I se denota con <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
 <li><p><strong>Error Tipo II:</strong> No rechazar la hipótesis nula cuando deberíamos. La probabilidad de cometer un error de Tipo II se denota con <span class="math notranslate nohighlight">\(\beta\)</span>.</p></li>
 </ol>
+<p><strong>Veamos el siguiente ejemplo</strong>:</p>
+<p>Supongamos que un banco está evaluando si aprobar o rechazar solicitudes de préstamo de clientes. La hipótesis nula (<span class="math notranslate nohighlight">\(H_0\)</span>) es que el cliente no es solvente (es decir, no puede pagar el préstamo). La hipótesis alternativa (<span class="math notranslate nohighlight">\(H_1\)</span>) es que el cliente sí es solvente (puede pagar el préstamo).</p>
+<ul class="simple">
+<li><p><strong>Error Tipo I (Falso positivo)</strong>
+Este error ocurre cuando rechazas la hipótesis nula (<span class="math notranslate nohighlight">\(H_0\)</span>) cuando en realidad es verdadera.</p></li>
+</ul>
+<p>Entonces si el cliente en realidad no es solvente (no puede pagar el préstamo), pero el banco aprueba el préstamo.
+Por consecuencia el banco comete un error tipo I al aprobar un préstamo a alguien que no podrá devolverlo, lo que puede generar pérdidas financieras por incumplimiento de pagos.</p>
+<ul class="simple">
+<li><p><strong>Error Tipo II (Falso negativo)</strong>
+Este error ocurre cuando no rechazas la hipótesis nula (<span class="math notranslate nohighlight">\(H_0\)</span>) cuando en realidad es falsa.</p></li>
+</ul>
+<p>Entonces si el cliente en realidad es solvente (puede pagar el préstamo), pero el banco rechaza su solicitud.
+Por consecuencia el banco comete un error tipo II al perder la oportunidad de otorgar un préstamo a un cliente confiable, lo que implica una pérdida de posibles ingresos por intereses.</p>
+<p>En resumen:</p>
+<ul class="simple">
+<li><p><strong>Error Tipo I</strong>: El banco aprueba un préstamo a un cliente que no es solvente. Riesgo: Pérdida financiera por incumplimiento.</p></li>
+<li><p><strong>Error Tipo II</strong>: El banco rechaza un préstamo a un cliente solvente. Riesgo: Pérdida de ingresos por no otorgar un préstamo rentable.</p></li>
+</ul>
 <p>Finalmente, llegamos al <strong>valor <span class="math notranslate nohighlight">\(p\)</span></strong>, que es nuestra probabilidad calculada de observar los resultados que tenemos, suponiendo que la hipótesis nula sea verdadera. Como se mencionó anteriormente, si este valor está por debajo del nivel de significancia (generalmente 5%), entonces se puede afirmar que se tiene evidencia razonable para rechazar la hipótesis nula. Sin embargo, esto NO implica automáticamente un hallazgo “significativo” o “importante”, eso es algo que se debe decidir al considerar la relevancia del resultado en el mundo real.</p>
 <section id="comparacion-de-2-grupos-poblacionales-independientes-parametrica">
 <h4><strong>Comparación de 2 grupos poblacionales independientes paramétrica</strong><a class="headerlink" href="#comparacion-de-2-grupos-poblacionales-independientes-parametrica" title="Permalink to this heading">#</a></h4>
@@ -2802,10 +2828,798 @@ memory usage: 1.1+ KB
 </section>
 <section id="anova-para-mas-de-2-grupos-parametricas">
 <h4><strong>ANOVA para mas de 2 grupos paramétricas</strong><a class="headerlink" href="#anova-para-mas-de-2-grupos-parametricas" title="Permalink to this heading">#</a></h4>
+<p>El <strong>ANOVA (Análisis de Varianza)</strong> es una técnica estadística que permite comparar las medias de tres o más grupos para determinar si existen diferencias significativas entre ellos. El objetivo es analizar si la variabilidad entre los grupos es mayor que la variabilidad dentro de cada grupo, lo cual indicaría que al menos uno de los grupos tiene una media diferente.</p>
+<p>Este análisis es útil en contextos bancarios, como por ejemplo, para evaluar si la satisfacción del cliente, el nivel de ingresos o las tasas de interés varían significativamente entre diferentes segmentos o categorías de clientes.</p>
+<p>A continuación, te proporciono un ejemplo de datos para un banco con tres grupos de clientes (Clientes A, Clientes B, Clientes C), y la columna satisfaction_score representando un score de satisfacción. Inicialmente importemos los paquetes a usar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.multicomp</span> <span class="kn">import</span> <span class="n">pairwise_tukeyhsd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Importemos los datos con <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar los datos</span>
+<span class="n">df_satisf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/datadescrip/banca_satisfaccion.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Poner la columna &#39;Grupo&#39; como categórica</span>
+<span class="n">df_satisf</span><span class="p">[</span><span class="s1">&#39;Grupo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_satisf</span><span class="p">[</span><span class="s1">&#39;Grupo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">CategoricalDtype</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]))</span>
+
+<span class="c1"># mostrar la informacion</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_satisf</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+
+<span class="c1"># imprimir las 5 primeras filas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_satisf</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 30 entries, 0 to 29
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype   
+---  ------  --------------  -----   
+ 0   Grupo   30 non-null     category
+ 1   Score   30 non-null     int64   
+dtypes: category(1), int64(1)
+memory usage: 530.0 bytes
+None
+  Grupo  Score
+0     A     75
+1     A     78
+2     A     80
+3     A     82
+4     A     85
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Hagamos un diagrama de cajas y bigotes</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diagrama de cajas y bigotes para &#39;Q1&#39; vs &#39;Experimento&#39; usando Seaborn en el contexto de rotación de la banca</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Ajustar el tamaño del gráfico</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Grupo&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Score&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_satisf</span><span class="p">)</span>
+
+<span class="c1"># Agregar título y etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes: Score del personal según el grupo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Grupo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Puntaje de Score de satisfacción &#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\seaborn\_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\seaborn\categorical.py:641: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  grouped_vals = vals.groupby(grouper)
+</pre></div>
+</div>
+<img alt="_images/55ecbbdaf595d8defa7551d3f3f4147c2c15a61ecec0043d90c9cf7092f13ea8.png" src="_images/55ecbbdaf595d8defa7551d3f3f4147c2c15a61ecec0043d90c9cf7092f13ea8.png" />
+</div>
+</div>
+<p>Veamos el comportamiento de los datos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separar los datos por grupo </span>
+<span class="n">grupo_a</span> <span class="o">=</span> <span class="n">df_satisf</span><span class="p">[</span><span class="n">df_satisf</span><span class="p">[</span><span class="s1">&#39;Grupo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">][</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span>
+<span class="n">grupo_b</span> <span class="o">=</span> <span class="n">df_satisf</span><span class="p">[</span><span class="n">df_satisf</span><span class="p">[</span><span class="s1">&#39;Grupo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">][</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span>
+<span class="n">grupo_c</span> <span class="o">=</span> <span class="n">df_satisf</span><span class="p">[</span><span class="n">df_satisf</span><span class="p">[</span><span class="s1">&#39;Grupo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">][</span><span class="s1">&#39;Score&#39;</span><span class="p">]</span>
+
+<span class="c1"># Prueba de Shapiro-Wilk</span>
+<span class="n">shapiro_grupo_a</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">grupo_a</span><span class="p">)</span>
+<span class="n">shapiro_grupo_b</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">grupo_b</span><span class="p">)</span>
+<span class="n">shapiro_grupo_c</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">grupo_c</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de normalidad</span>
+<span class="n">normalidad_resultados_satisfaccion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Experimento&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">shapiro_grupo_a</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_grupo_b</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span><span class="n">shapiro_grupo_c</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">shapiro_grupo_a</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_grupo_b</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span><span class="n">shapiro_grupo_c</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">normalidad_df_satisfaccion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalidad_resultados_satisfaccion</span><span class="p">)</span>
+<span class="n">normalidad_df_satisfaccion</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Experimento</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Shapiro-Wilk</td>
+      <td>A</td>
+      <td>0.973892</td>
+      <td>0.924396</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Shapiro-Wilk</td>
+      <td>B</td>
+      <td>0.970165</td>
+      <td>0.892368</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Shapiro-Wilk</td>
+      <td>C</td>
+      <td>0.970165</td>
+      <td>0.892368</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Realicemos la igualdad de varianza</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba de Levene centrada en la mediana para igualdad de varianzas entre las tasas de interés de &quot;Fully Paid&quot; y &quot;Charged Off&quot;</span>
+<span class="n">bartlett_test</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">bartlett</span><span class="p">(</span><span class="n">grupo_a</span><span class="p">,</span><span class="n">grupo_b</span><span class="p">,</span><span class="n">grupo_c</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de la prueba de Levene</span>
+<span class="n">igualdad_varianzas_bartless_resultados</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Bartless&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">bartlett_test</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">bartlett_test</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">igualdad_varianzas_bartlett_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">igualdad_varianzas_bartless_resultados</span><span class="p">)</span>
+<span class="n">igualdad_varianzas_bartlett_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bartless</td>
+      <td>1.376344</td>
+      <td>0.502494</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Desarrollemos la prueba ANOVA:</p></li>
+</ul>
+<p>El método <code class="docutils literal notranslate"><span class="pre">sm.stats.anova_lm()</span></code> pertenece al paquete <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> y se usa para realizar el análisis de varianza (ANOVA) a partir de un modelo de regresión ajustado. Ahora te explicaré los parámetros que estás utilizando, específicamente <code class="docutils literal notranslate"><span class="pre">modelo</span></code> y <code class="docutils literal notranslate"><span class="pre">typ=2</span></code>:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">modelo</span></code>: este es el <strong>modelo de regresión ajustado</strong> que se pasa a la función para realizar el análisis ANOVA. El modelo se ajusta previamente usando una fórmula con <code class="docutils literal notranslate"><span class="pre">ols()</span></code>, como en el caso de:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear el modelo de regresión usando Ordinary Least Squares (OLS)</span>
+<span class="n">modelo</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="s1">&#39;Score ~ Grupo&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_satisf</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><code class="docutils literal notranslate"><span class="pre">typ</span></code> especifica el tipo de suma de cuadrados (Sum of Squares) que se utiliza en el ANOVA. Hay tres tipos principales:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">typ=1</span></code> (Suma de cuadrados tipo I): Este tipo calcula las sumas de cuadrados de acuerdo al orden en que las variables aparecen en el modelo. Se usa para modelos con diseño jerárquico o cuando el orden de las variables es importante. El principal inconveniente es que puede dar resultados engañosos si las variables están correlacionadas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">typ=2</span></code> (Suma de cuadrados tipo II): Este tipo ajusta cada variable ignorando la interacción entre las variables explicativas. Es adecuado para modelos balanceados (donde el tamaño de muestra es igual en cada grupo) y es más robusto cuando las variables no están correlacionadas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">typ=3</span></code> (Suma de cuadrados tipo III): Se usa para modelos no balanceados o cuando hay interacción entre las variables explicativas. Ajusta cada variable después de tener en cuenta todas las demás. Este tipo es adecuado cuando los factores están correlacionados.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Realizar el ANOVA de tipo II</span>
+<span class="n">anova_resultado</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova_lm</span><span class="p">(</span><span class="n">modelo</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Mostrar los resultados del ANOVA</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anova_resultado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               sum_sq    df         F    PR(&gt;F)
+Grupo      875.266667   2.0  7.428706  0.002688
+Residual  1590.600000  27.0       NaN       NaN
+</pre></div>
+</div>
+</div>
+</div>
+<p>En otras palabras, hay evidencia suficiente para afirmar que <strong>existe una diferencia estadisticamente significativa en los score de satisfacción entre al menos uno de los grupos (A, B o C)</strong>.</p>
+<p>Si queremos ver cuales son diferentes podemos aplicar una <strong>prueba posthoc (como tukeyHSD)</strong> para identificar específicamente qué grupos son significativamente diferentes entre sí.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebas post hoc (Tukey HSD)</span>
+<span class="n">tukey</span> <span class="o">=</span> <span class="n">pairwise_tukeyhsd</span><span class="p">(</span><span class="n">endog</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Score&#39;</span><span class="p">],</span>
+                          <span class="n">groups</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Grupo&#39;</span><span class="p">],</span>
+                          <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tukey</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Multiple Comparison of Means - Tukey HSD, FWER=0.05 
+=====================================================
+group1 group2 meandiff p-adj   lower    upper  reject
+-----------------------------------------------------
+     A      B     -9.3 0.0301 -17.8107 -0.7893   True
+     A      C    -12.8 0.0025 -21.3107 -4.2893   True
+     B      C     -3.5 0.5711 -12.0107  5.0107  False
+-----------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="kw-para-mas-de-2-grupos-no-parametrica">
 <h4><strong>KW para mas de 2 grupos no parametrica</strong><a class="headerlink" href="#kw-para-mas-de-2-grupos-no-parametrica" title="Permalink to this heading">#</a></h4>
+<p>El test de <strong>Kruskal-Wallis</strong> es una prueba estadística no paramétrica que se utiliza para determinar si existen diferencias significativas en la mediana entre tres o más grupos independientes. A diferencia de la <strong>ANOVA</strong>, que asume normalidad y homogeneidad de varianzas, el test de <strong>Kruskal-Wallis</strong> no requiere estas suposiciones. Es útil cuando los datos no cumplen con las condiciones necesarias para realizar una <strong>ANOVA</strong>.</p>
+<p>Aquí te muestro cómo puedes realizar el análisis de <strong>Kruskal-Wallis</strong> y las pruebas post-hoc en Python usando <code class="docutils literal notranslate"><span class="pre">scipy</span></code> y <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code>.</p>
+<p>Para <strong>Kruskal-Wallis</strong>, usaremos el conjunto de datos <strong>LendingClub (LC) Statistics</strong>.</p>
+<ul class="simple">
+<li><p>Importemos los paquetes necesarios:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.multitest</span> <span class="kn">import</span> <span class="n">multipletests</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.diagnostic</span> <span class="kn">import</span> <span class="n">lilliefors</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Tomaremos las variables <code class="docutils literal notranslate"><span class="pre">annual_inc</span></code> y <code class="docutils literal notranslate"><span class="pre">verification_status</span></code>, para ver si hay diferencias entre los grupos de verificación de status por el ingreso anual.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subconjunto de datos</span>
+<span class="n">df_status</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">,</span><span class="s1">&#39;verification_status&#39;</span><span class="p">]]</span>
+
+<span class="c1"># imprimir las 5 primeras filas</span>
+<span class="n">df_status</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>annual_inc</th>
+      <th>verification_status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>24000.0</td>
+      <td>Verified</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>30000.0</td>
+      <td>Source Verified</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12252.0</td>
+      <td>Not Verified</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>49200.0</td>
+      <td>Source Verified</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>80000.0</td>
+      <td>Source Verified</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Hagamos un diagrama de cajas y bigotes</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un diagrama de cajas y bigotes para &#39;Q1&#39; vs &#39;Experimento&#39; usando Seaborn en el contexto de rotación de la banca</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Ajustar el tamaño del gráfico</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;verification_status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_status</span><span class="p">)</span>
+
+<span class="c1"># Agregar título y etiquetas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes: ingresos anuales según el status&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Verificación de status&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Ingresos anuales&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a9119438f6b679765a6964b6bd6c78b77c8987c9224f3304e36b37e77a134708.png" src="_images/a9119438f6b679765a6964b6bd6c78b77c8987c9224f3304e36b37e77a134708.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Veamos el comportamiento de los datos por status</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separar los datos por grupo</span>
+<span class="n">grupo_no_ver</span> <span class="o">=</span> <span class="n">df_status</span><span class="p">[</span><span class="n">df_status</span><span class="p">[</span><span class="s1">&#39;verification_status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Not Verified&#39;</span><span class="p">][</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span>
+<span class="n">grupo_s_ver</span> <span class="o">=</span> <span class="n">df_status</span><span class="p">[</span><span class="n">df_status</span><span class="p">[</span><span class="s1">&#39;verification_status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Source Verified&#39;</span><span class="p">][</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span>
+<span class="n">grupo_ver</span> <span class="o">=</span> <span class="n">df_status</span><span class="p">[</span><span class="n">df_status</span><span class="p">[</span><span class="s1">&#39;verification_status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Verified&#39;</span><span class="p">][</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">]</span>
+
+<span class="c1"># Prueba de Shapiro-Wilk</span>
+<span class="n">shapiro_grupo_no_ver</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">grupo_no_ver</span><span class="p">)</span>
+<span class="n">shapiro_grupo_s_ver</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">grupo_s_ver</span><span class="p">)</span>
+<span class="n">shapiro_grupo_ver</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">grupo_ver</span><span class="p">)</span>
+
+<span class="c1"># Prueba de Kolmogorov-Smirnov (usando una aproximación con stats.kstest)</span>
+<span class="n">ks_grupo_no_ver</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">grupo_no_ver</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">grupo_no_ver</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">grupo_no_ver</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+<span class="n">ks_grupo_s_ver</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">grupo_s_ver</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">grupo_s_ver</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">grupo_s_ver</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+<span class="n">ks_grupo_ver</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">grupo_ver</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">grupo_ver</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">grupo_ver</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+
+<span class="c1"># Prueba de Lilliefors (similar al KS test pero ajustado para normalidad)</span>
+<span class="n">lillie_grupo_no_ver</span> <span class="o">=</span> <span class="n">lilliefors</span><span class="p">(</span><span class="n">grupo_no_ver</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+<span class="n">lillie_grupo_s_ver</span> <span class="o">=</span> <span class="n">lilliefors</span><span class="p">(</span><span class="n">grupo_s_ver</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+<span class="n">lillie_grupo_ver</span> <span class="o">=</span> <span class="n">lilliefors</span><span class="p">(</span><span class="n">grupo_ver</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de normalidad</span>
+<span class="n">normalidad_resultados_status</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> <span class="s1">&#39;Shapiro-Wilk&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;Kolmogorov-Smirnov&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;lilliefors&#39;</span><span class="p">,</span><span class="s1">&#39;lilliefors&#39;</span><span class="p">,</span><span class="s1">&#39;lilliefors&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Grupo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Not Verified&#39;</span><span class="p">,</span> <span class="s1">&#39;Source Verified&#39;</span><span class="p">,</span> <span class="s1">&#39;Verified&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;Not Verified&#39;</span><span class="p">,</span> <span class="s1">&#39;Source Verified&#39;</span><span class="p">,</span> <span class="s1">&#39;Verified&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Not Verified&#39;</span><span class="p">,</span> <span class="s1">&#39;Source Verified&#39;</span><span class="p">,</span> <span class="s1">&#39;Verified&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">shapiro_grupo_no_ver</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_grupo_s_ver</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">shapiro_grupo_ver</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span>
+                    <span class="n">ks_grupo_no_ver</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">ks_grupo_s_ver</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span> <span class="n">ks_grupo_ver</span><span class="o">.</span><span class="n">statistic</span><span class="p">,</span>
+                    <span class="n">lillie_grupo_no_ver</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">lillie_grupo_s_ver</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">lillie_grupo_ver</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">shapiro_grupo_no_ver</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_grupo_s_ver</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">shapiro_grupo_ver</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span>
+                <span class="n">ks_grupo_no_ver</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">ks_grupo_s_ver</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span> <span class="n">ks_grupo_ver</span><span class="o">.</span><span class="n">pvalue</span><span class="p">,</span>
+                <span class="n">lillie_grupo_no_ver</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">lillie_grupo_s_ver</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">lillie_grupo_ver</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">normalidad_df_status</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">normalidad_resultados_status</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalidad_df_status</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               Prueba            Grupo  Estadístico        p-valor
+0        Shapiro-Wilk     Not Verified     0.373742   0.000000e+00
+1        Shapiro-Wilk  Source Verified     0.296574   0.000000e+00
+2        Shapiro-Wilk         Verified     0.725082   0.000000e+00
+3  Kolmogorov-Smirnov     Not Verified     0.208876   0.000000e+00
+4  Kolmogorov-Smirnov  Source Verified     0.252673   0.000000e+00
+5  Kolmogorov-Smirnov         Verified     0.135945  3.970921e-200
+6          lilliefors     Not Verified     0.208876   1.000000e-03
+7          lilliefors  Source Verified     0.252673   1.000000e-03
+8          lilliefors         Verified     0.135945   1.000000e-03
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\scipy\stats\_morestats.py:1882: UserWarning: p-value may not be accurate for N &gt; 5000.
+  warnings.warn(&quot;p-value may not be accurate for N &gt; 5000.&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Veamos la igualdad de varianzas usando la prueba de levene</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prueba de Levene para igualdad de varianzas</span>
+<span class="n">levene_result</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">levene</span><span class="p">(</span><span class="n">grupo_no_ver</span><span class="p">,</span> <span class="n">grupo_s_ver</span><span class="p">,</span> <span class="n">grupo_ver</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de la prueba de Levene</span>
+<span class="n">igualdad_varianzas_levene_resultados</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;levene&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">levene_result</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">levene_result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">igualdad_varianzas_levene_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">igualdad_varianzas_levene_resultados</span><span class="p">)</span>
+<span class="n">igualdad_varianzas_levene_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>levene</td>
+      <td>71.150392</td>
+      <td>1.433660e-31</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>Apliquemos la prueba de Kruskal-Wallis:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Realizar la prueba de Kruskal-Wallis</span>
+<span class="n">kruskal_result</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kruskal</span><span class="p">(</span><span class="n">grupo_no_ver</span><span class="p">,</span> <span class="n">grupo_s_ver</span><span class="p">,</span> <span class="n">grupo_ver</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados de la prueba de kruskal-wallis</span>
+<span class="n">kw_resultados</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Prueba&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Kruskal-Wallis&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Estadístico&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">kruskal_result</span><span class="o">.</span><span class="n">statistic</span><span class="p">],</span>
+    <span class="s1">&#39;p-valor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">kruskal_result</span><span class="o">.</span><span class="n">pvalue</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Convertir a DataFrame para visualizar</span>
+<span class="n">kw_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">kw_resultados</span><span class="p">)</span>
+<span class="n">kw_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prueba</th>
+      <th>Estadístico</th>
+      <th>p-valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Kruskal-Wallis</td>
+      <td>2064.329137</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>El p-valor extremadamente bajo (0.0) indica que hay diferencias estadísticamente significativas en los ingresos anuales entre los diferentes niveles del estatus de verificación (<code class="docutils literal notranslate"><span class="pre">Verified</span></code>, <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Verified</span></code>, <code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">Verified</span></code>). Es decir, al menos uno de estos grupos tiene una mediana de ingresos significativamente diferente de las demás.</p>
+<ul class="simple">
+<li><p>Dado que la prueba de Kruskal-Wallis indica diferencias significativas entre al menos uno de los grupos, se recomienda realizar una prueba post-hoc para identificar cuáles pares específicos de estatus de verificación tienen diferencias significativas en los ingresos anuales. Aplicaremos la prueba de Dunn, pero debemos instalar el paquete <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scikit-posthocs</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar el paquete </span>
+<span class="kn">import</span> <span class="nn">scikit_posthocs</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="c1"># Aplicar la prueba de Dunn</span>
+<span class="n">dunn_result</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">posthoc_dunn</span><span class="p">(</span><span class="n">df_status</span><span class="p">,</span> <span class="n">val_col</span><span class="o">=</span><span class="s1">&#39;annual_inc&#39;</span><span class="p">,</span> <span class="n">group_col</span><span class="o">=</span><span class="s1">&#39;verification_status&#39;</span><span class="p">)</span>
+
+<span class="c1"># Convertir el resultado a un DataFrame para mejor visualización</span>
+<span class="n">dunn_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dunn_result</span><span class="p">)</span>
+<span class="n">dunn_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Not Verified</th>
+      <th>Source Verified</th>
+      <th>Verified</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Not Verified</th>
+      <td>1.000000e+00</td>
+      <td>1.755547e-22</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>Source Verified</th>
+      <td>1.755547e-22</td>
+      <td>1.000000e+00</td>
+      <td>6.075867e-198</td>
+    </tr>
+    <tr>
+      <th>Verified</th>
+      <td>0.000000e+00</td>
+      <td>6.075867e-198</td>
+      <td>1.000000e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Los resultados post-hoc de Dunn confirman que hay diferencias significativas en los ingresos anuales entre cada par de estatus de verificación.</p>
 </section>
+</section>
+</section>
+<section id="machine-learning-no-supervisado">
+<h2><strong>Machine learning no supervisado</strong><a class="headerlink" href="#machine-learning-no-supervisado" title="Permalink to this heading">#</a></h2>
+<p>En esta analizaremos los <strong>algoritmos de aprendizaje no supervisado</strong>. En el aprendizaje no supervisado, al algoritmo de aprendizaje sólo se le muestran los datos de entrada y se le pide que extraiga el conocimiento de estos datos.</p>
+<p>También, el aprendizaje no supervisado es una clase de técnicas de aprendizaje automático para descubrir patrones en los datos. Por ejemplo, encontrar los “clusters” naturales de los clientes basándose en sus historiales de compra, o buscar patrones y correlaciones entre estas compras, y utilizar estos patrones para expresar los datos de forma comprimida. Estos son ejemplos de técnicas de aprendizaje no supervisado denominadas “clustering” y “reducción de dimensiones”.</p>
+<p>El aprendizaje no supervisado se define en oposición al aprendizaje supervisado. Un ejemplo de aprendizaje supervisado es utilizar las mediciones de los tumores para clasificarlos como benignos o cancerosos. En este caso, el descubrimiento de patrones está guiado, o “supervisado”, para que los patrones sean lo más útiles posible para predecir la etiqueta: benigno o canceroso. El aprendizaje no supervisado, en cambio, es un aprendizaje sin etiquetas. Es puro descubrimiento de patrones, sin estar guiado por una tarea de predicción.</p>
+<p>Para hacer usado de las funciones de <strong>análisis de componentes principales</strong>, <strong>cluster</strong>, entre otras; debemos instalar el paquete <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p>
+<section id="tipos-de-aprendizaje-no-supervisado">
+<h3>Tipos de aprendizaje no supervisado<a class="headerlink" href="#tipos-de-aprendizaje-no-supervisado" title="Permalink to this heading">#</a></h3>
+<p>Los tipos de aprendizaje no supervisado son:</p>
+<ul class="simple">
+<li><p>Las <code class="docutils literal notranslate"><span class="pre">transformaciones</span> <span class="pre">no</span> <span class="pre">supervisadas</span></code> de un conjunto de datos son algoritmos que crean una nueva representación de los datos que podría ser más fácil de entender para los humanos u otros algoritmos de aprendizaje automático en comparación con la representación original de los datos. Una aplicación común de las <code class="docutils literal notranslate"><span class="pre">transformaciones</span> <span class="pre">no</span> <span class="pre">supervisadas</span></code> es la <code class="docutils literal notranslate"><span class="pre">reducción</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">dimensionalidad</span></code>, que toma una representación de alta dimensión de los datos, que consiste en muchas características, y encuentra una nueva forma de representar estos datos que resuma las características esenciales con menos características. Una aplicación común de la reducción de la dimensionalidad es la reducción a dos dimensiones con fines de visualización.</p></li>
+<li><p>Los <code class="docutils literal notranslate"><span class="pre">algoritmos</span> <span class="pre">de</span> <span class="pre">clustering</span></code>, por su parte, dividen los datos en distintos grupos de elementos similares. Consideremos el ejemplo de subir fotos a una red social. Para permitirle organizar sus fotos, el sitio podría querer agrupar las fotos que muestran la misma persona. Sin embargo, el sitio no sabe qué fotos muestran a quién, y no sabe cuántas personas diferentes aparecen en tu colección de fotos. Un enfoque sensato sería extraer todas las caras y dividirlas en grupos de caras que se parezcan. Con suerte, estos corresponden a la misma persona, y las imágenes pueden ser agrupar las imágenes.</p></li>
+</ul>
+</section>
+<section id="desafios-del-aprendizaje-no-supervisado">
+<h3><strong>Desafíos del aprendizaje no supervisado</strong><a class="headerlink" href="#desafios-del-aprendizaje-no-supervisado" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Un reto importante en el aprendizaje no supervisado es evaluar si el algoritmo aprendió algo útil.</p></li>
+<li><p>Los algoritmos de aprendizaje no supervisado suelen aplicarse a datos que no contienen ninguna información de etiquetas, por lo que no sabemos cuál debería ser la salida correcta. Por lo tanto, es muy difícil decir si un modelo <code class="docutils literal notranslate"><span class="pre">lo</span> <span class="pre">hizo</span> <span class="pre">bien</span></code>. Por ejemplo, nuestro hipotético algoritmo de agrupación podría haber agrupado todas las fotos que muestran caras de perfil y todas las fotos de caras completas. Esta sería, sin duda, una forma posible de dividir una colección de imágenes de rostros de personas, pero no es la que buscábamos. Sin embargo, no hay forma de <code class="docutils literal notranslate"><span class="pre">decirle</span></code> al algoritmo lo que estamos buscando, y a menudo la única forma de evaluar el resultado de un algoritmo no supervisado es inspeccionarlo manualmente.</p></li>
+<li><p>Los algoritmos no supervisados se <strong>utilizan a menudo en un entorno exploratorio, cuando un científico de datos quiere entender mejor los datos, más que como parte de un sistema automático más amplio</strong>.</p></li>
+<li><p>Otra aplicación habitual de los algoritmos no supervisados es como paso previo al procesamiento de los algoritmos supervisados. El aprendizaje de una nueva representación de los datos puede a veces mejorar la precisión de los algoritmos supervisados, o puede conducir a un menor consumo de memoria y tiempo.</p></li>
+</ul>
+<p>Antes de comenzar con los algoritmos “reales” no supervisados, discutiremos brevemente algunos métodos simples de preprocesamiento que a menudo resultan útiles. Aunque el preprocesamiento y el escalado se utilizan a menudo junto con los algoritmos de aprendizaje supervisado, los métodos de escalado no hacen uso de la información supervisada, lo que los convierte en no supervisados.</p>
+</section>
+<section id="preprocesamiento-y-escalado">
+<h3><strong>Preprocesamiento y escalado</strong><a class="headerlink" href="#preprocesamiento-y-escalado" title="Permalink to this heading">#</a></h3>
+<p>El <strong>preprocesamiento y escalado</strong> son pasos esenciales en la preparación de los datos para el análisis y modelado en machine learning. El preprocesamiento incluye tareas como la limpieza de datos, manejo de valores faltantes, codificación de variables categóricas y normalización de características. Estas actividades aseguran que los datos sean consistentes y estén en un formato adecuado para ser utilizados en modelos predictivos. El escalado, por su parte, ajusta la magnitud de las características numéricas, ya sea normalizándolas en un rango específico o estandarizándolas con una media de 0 y desviación estándar de 1, lo que mejora el rendimiento de muchos algoritmos.</p>
+<p>Podemos encontrar distintos de tipo de reescaladores:</p>
+<ul class="simple">
+<li><p>El <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> en scikit-learn asegura que para cada la media es 0 y la varianza es 1, lo que hace que todas las características tengan la misma magnitud. Sin embargo, este escalado no asegura ningún valor mínimo y máximo en particular para las características.
+$<span class="math notranslate nohighlight">\(
+Z = \frac{X-\mu}{\sigma}
+\)</span>$</p></li>
+<li><p>El <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> funciona de forma similar al <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> en que asegura propiedades estadísticas para cada característica que garantizan que están en la misma escala. Sin embargo, el <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> utiliza la mediana y los cuartiles, en lugar de la media y varianza. Esto hace que el <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> ignore los puntos de datos que son muy diferentes del resto (como los errores de medición). Estos puntos de datos extraños también se llamados <code class="docutils literal notranslate"><span class="pre">outliers</span></code>, y pueden dar problemas a otras técnicas de escalado.
+$<span class="math notranslate nohighlight">\(
+X_{robustScaler}= \frac{X- x_{Q_{2}}}{x_{Q_3}-x_{Q_1}}
+\)</span>$</p></li>
+<li><p>El <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>, por otro lado, desplaza los datos de manera que todas las características estén exactamente entre 0 y 1. Para el conjunto de datos bidimensional esto significa que todos los datos están contenidos dentro del rectángulo creado por el eje <span class="math notranslate nohighlight">\(x\)</span> entre 0 y 1 y el eje <span class="math notranslate nohighlight">\(y\)</span> entre 0 y 1.
+$<span class="math notranslate nohighlight">\(
+X_{MinMaxScaler}= \frac{X- x_{min}}{x_{max}-X_{min}}
+\)</span>$</p></li>
+<li><p>El <code class="docutils literal notranslate"><span class="pre">Normalizer</span></code> realiza un tipo de reescalado muy diferente. Escala cada punto de datos de manera que el vector de características tenga una longitud euclidiana de 1. En otras palabras, proyecta un punto de datos en el círculo (o esfera, en el caso de las dimensiones superiores) con un radio de 1. Esto significa que cada punto de datos se puede radio de 1. Esto significa que cada punto de datos está escalado por un número diferente (por la inversa de su longitud). Esta normalización se utiliza a menudo cuando sólo importa la dirección (o ángulo) de los datos, y no la longitud del vector de características. Estas son las normas que se usan
+$<span class="math notranslate nohighlight">\( 
+\begin{align*}
+||x||_1 &amp;= |x_1|+\cdots+|x_n|\\
+||x||_2 &amp;= \sqrt{x_1^2+\cdots+x_n^2}\\
+||x||_{\infty} &amp;= \max\{|x_1|,...,|x_n|\}
+\end{align*}
+\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="p">(</span><span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">Normalizer</span><span class="p">,</span>
+                                   <span class="n">RobustScaler</span><span class="p">)</span>
+
+<span class="c1"># Definir un mapa de colores usando &#39;viridis&#39; como ejemplo</span>
+<span class="n">cm2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_scaling</span><span class="p">():</span>
+    <span class="c1"># Generar datos</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">+=</span> <span class="mi">3</span>
+
+    <span class="c1"># Crear la figura principal</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">main_ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">rowspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">colspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Gráfico de los datos originales</span>
+    <span class="n">main_ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm2</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">maxx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">maxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="n">main_ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">maxx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">maxx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">main_ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">maxy</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">main_ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Original Data&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Crear otros gráficos para mostrar los datos escalados</span>
+    <span class="n">other_axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+                  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+
+    <span class="c1"># Aplicar diferentes técnicas de escalado</span>
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">scaler</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">other_axes</span><span class="p">,</span> <span class="p">[</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">RobustScaler</span><span class="p">(),</span>
+                                       <span class="n">MinMaxScaler</span><span class="p">(),</span> <span class="n">Normalizer</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)]):</span>
+        <span class="n">X_</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm2</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">scaler</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+    <span class="n">other_axes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">main_ax</span><span class="p">)</span>
+
+    <span class="c1"># Ajustar las espinas de los gráficos</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">other_axes</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ejecutar la función</span>
+<span class="n">plot_scaling</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c43395eb1ae0a52b3cd3a761b8a02cca249aaf005d7b6700ef954b17b03e7cb6.png" src="_images/c43395eb1ae0a52b3cd3a761b8a02cca249aaf005d7b6700ef954b17b03e7cb6.png" />
+</div>
+</div>
+</section>
+<section id="analisis-de-componentes-principales-reduccion-de-dimensiones">
+<h3><strong>Análisis de componentes principales (reducción de dimensiones)</strong><a class="headerlink" href="#analisis-de-componentes-principales-reduccion-de-dimensiones" title="Permalink to this heading">#</a></h3>
+<p>La reducción de dimensiones resume un conjunto de datos utilizando sus patrones comunes. El <code class="docutils literal notranslate"><span class="pre">PCA</span></code> se utiliza a menudo antes del aprendizaje supervisado para mejorar el rendimiento y la generalización del modelo. También puede ser útil para el aprendizaje no supervisado.</p>
+<p>La reducción de dimensiones encuentra patrones en los datos y utiliza estos patrones para volver a expresarlos en forma comprimida. Esto hace que el cálculo posterior con los datos sea mucho más eficiente. Sin embargo, la función más importante de la reducción de dimensiones es reducir un conjunto de datos a su “esqueleto básico”, descartando características ruidosas que causan grandes problemas para tareas de aprendizaje supervisado como la regresión y la clasificación. En muchas aplicaciones del mundo real, es la reducción de dimensiones lo que hace posible la predicción.</p>
+<p>El <strong><code class="docutils literal notranslate"><span class="pre">análisis</span> <span class="pre">de</span> <span class="pre">componentes</span> <span class="pre">principales</span></code></strong>, abreviado <strong><code class="docutils literal notranslate"><span class="pre">PCA</span></code></strong>:</p>
+<ul class="simple">
+<li><p>es un método de interdependencia para resumir la información contenida en las variables y facilitar su análisis.</p></li>
+<li><p>El PCA transforma el conjunto de variables originales en un subconjunto más pequeño de variables, las cuales son combinaciones lineales de las primeras, que contienen mayor parte de la variabilidad presente en el conjunto inicial, donde la naturaleza de las variable es cuantitativa</p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<p>El objetivo principal del PCA es descubrir la verdadera dimensionalidad del espacio en el que se encuentran los datos. En este proceso se pueden formar nuevas variables, de modo que:</p>
+<ul class="simple">
+<li><p>No estén correlacionadas.</p></li>
+<li><p>La primera componente principal explique tanto de la variabilidad en los datos como sea posible.</p></li>
+<li><p>Cada componente subsiguiente tome en cuenta tanto de la variabilidad restante como sea posible.</p></li>
+<li><p>En el caso de no correlación entre las variables originales, el ACP no tiene mucho que hacer, pues las componentes se corresponderían con cada variable por orden de magnitud en la varianza.</p></li>
+<li><p>Se presentará esta técnica como una herramienta exploratoria para facilitar la descripción e interpretación de los datos, es decir es una técnica descriptiva.</p></li>
+</ul>
+</div>
+<p>Solo como ejemplo del PCA, trabajaremos con los datos de vinos: <code class="docutils literal notranslate"><span class="pre">winequality-red</span></code>. Inicialmente importemos los paquetes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar los paquetes</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -2912,6 +3726,13 @@ memory usage: 1.1+ KB
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kw-para-mas-de-2-grupos-no-parametrica"><strong>KW para mas de 2 grupos no parametrica</strong></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-no-supervisado"><strong>Machine learning no supervisado</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-aprendizaje-no-supervisado">Tipos de aprendizaje no supervisado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desafios-del-aprendizaje-no-supervisado"><strong>Desafíos del aprendizaje no supervisado</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento-y-escalado"><strong>Preprocesamiento y escalado</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-componentes-principales-reduccion-de-dimensiones"><strong>Análisis de componentes principales (reducción de dimensiones)</strong></a></li>
 </ul>
 </li>
 </ul>
