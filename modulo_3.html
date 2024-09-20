@@ -397,10 +397,18 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-no-supervisado"><strong>Machine learning no supervisado</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-aprendizaje-no-supervisado">Tipos de aprendizaje no supervisado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-aprendizaje-no-supervisado"><strong>Tipos de aprendizaje no supervisado</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desafios-del-aprendizaje-no-supervisado"><strong>Desafíos del aprendizaje no supervisado</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento-y-escalado"><strong>Preprocesamiento y escalado</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-componentes-principales-reduccion-de-dimensiones"><strong>Análisis de componentes principales (reducción de dimensiones)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-agrupamiento-cluster"><strong>Análisis de agrupamiento (cluster)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means"><strong>K-Means</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#la-trampa-de-la-inicializacion-aleatoria"><strong>La trampa de la inicialización aleatoria</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-un-agrupamiento"><strong>Evaluación de un agrupamiento</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -3480,7 +3488,7 @@ group1 group2 meandiff p-adj   lower    upper  reject
 <p>El aprendizaje no supervisado se define en oposición al aprendizaje supervisado. Un ejemplo de aprendizaje supervisado es utilizar las mediciones de los tumores para clasificarlos como benignos o cancerosos. En este caso, el descubrimiento de patrones está guiado, o “supervisado”, para que los patrones sean lo más útiles posible para predecir la etiqueta: benigno o canceroso. El aprendizaje no supervisado, en cambio, es un aprendizaje sin etiquetas. Es puro descubrimiento de patrones, sin estar guiado por una tarea de predicción.</p>
 <p>Para hacer usado de las funciones de <strong>análisis de componentes principales</strong>, <strong>cluster</strong>, entre otras; debemos instalar el paquete <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p>
 <section id="tipos-de-aprendizaje-no-supervisado">
-<h3>Tipos de aprendizaje no supervisado<a class="headerlink" href="#tipos-de-aprendizaje-no-supervisado" title="Permalink to this heading">#</a></h3>
+<h3><strong>Tipos de aprendizaje no supervisado</strong><a class="headerlink" href="#tipos-de-aprendizaje-no-supervisado" title="Permalink to this heading">#</a></h3>
 <p>Los tipos de aprendizaje no supervisado son:</p>
 <ul class="simple">
 <li><p>Las <code class="docutils literal notranslate"><span class="pre">transformaciones</span> <span class="pre">no</span> <span class="pre">supervisadas</span></code> de un conjunto de datos son algoritmos que crean una nueva representación de los datos que podría ser más fácil de entender para los humanos u otros algoritmos de aprendizaje automático en comparación con la representación original de los datos. Una aplicación común de las <code class="docutils literal notranslate"><span class="pre">transformaciones</span> <span class="pre">no</span> <span class="pre">supervisadas</span></code> es la <code class="docutils literal notranslate"><span class="pre">reducción</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">dimensionalidad</span></code>, que toma una representación de alta dimensión de los datos, que consiste en muchas características, y encuentra una nueva forma de representar estos datos que resuma las características esenciales con menos características. Una aplicación común de la reducción de la dimensionalidad es la reducción a dos dimensiones con fines de visualización.</p></li>
@@ -3502,27 +3510,37 @@ group1 group2 meandiff p-adj   lower    upper  reject
 <p>El <strong>preprocesamiento y escalado</strong> son pasos esenciales en la preparación de los datos para el análisis y modelado en machine learning. El preprocesamiento incluye tareas como la limpieza de datos, manejo de valores faltantes, codificación de variables categóricas y normalización de características. Estas actividades aseguran que los datos sean consistentes y estén en un formato adecuado para ser utilizados en modelos predictivos. El escalado, por su parte, ajusta la magnitud de las características numéricas, ya sea normalizándolas en un rango específico o estandarizándolas con una media de 0 y desviación estándar de 1, lo que mejora el rendimiento de muchos algoritmos.</p>
 <p>Podemos encontrar distintos de tipo de reescaladores:</p>
 <ul class="simple">
-<li><p>El <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> en scikit-learn asegura que para cada la media es 0 y la varianza es 1, lo que hace que todas las características tengan la misma magnitud. Sin embargo, este escalado no asegura ningún valor mínimo y máximo en particular para las características.
-$<span class="math notranslate nohighlight">\(
+<li><p>El <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> en scikit-learn asegura que para cada la media es 0 y la varianza es 1, lo que hace que todas las características tengan la misma magnitud. Sin embargo, este escalado no asegura ningún valor mínimo y máximo en particular para las características.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
 Z = \frac{X-\mu}{\sigma}
-\)</span>$</p></li>
-<li><p>El <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> funciona de forma similar al <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> en que asegura propiedades estadísticas para cada característica que garantizan que están en la misma escala. Sin embargo, el <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> utiliza la mediana y los cuartiles, en lugar de la media y varianza. Esto hace que el <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> ignore los puntos de datos que son muy diferentes del resto (como los errores de medición). Estos puntos de datos extraños también se llamados <code class="docutils literal notranslate"><span class="pre">outliers</span></code>, y pueden dar problemas a otras técnicas de escalado.
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<ul class="simple">
+<li><p>El <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> funciona de forma similar al <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> en que asegura propiedades estadísticas para cada característica que garantizan que están en la misma escala. Sin embargo, el <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> utiliza la mediana y los cuartiles, en lugar de la media y varianza. Esto hace que el <code class="docutils literal notranslate"><span class="pre">RobustScaler</span></code> ignore los puntos de datos que son muy diferentes del resto (como los errores de medición). Estos puntos de datos extraños también se llamados <code class="docutils literal notranslate"><span class="pre">outliers</span></code>, y pueden dar problemas a otras técnicas de escalado.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
 X_{robustScaler}= \frac{X- x_{Q_{2}}}{x_{Q_3}-x_{Q_1}}
-\)</span>$</p></li>
-<li><p>El <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>, por otro lado, desplaza los datos de manera que todas las características estén exactamente entre 0 y 1. Para el conjunto de datos bidimensional esto significa que todos los datos están contenidos dentro del rectángulo creado por el eje <span class="math notranslate nohighlight">\(x\)</span> entre 0 y 1 y el eje <span class="math notranslate nohighlight">\(y\)</span> entre 0 y 1.
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<ul class="simple">
+<li><p>El <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>, por otro lado, desplaza los datos de manera que todas las características estén exactamente entre 0 y 1. Para el conjunto de datos bidimensional esto significa que todos los datos están contenidos dentro del rectángulo creado por el eje <span class="math notranslate nohighlight">\(x\)</span> entre 0 y 1 y el eje <span class="math notranslate nohighlight">\(y\)</span> entre 0 y 1.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
 X_{MinMaxScaler}= \frac{X- x_{min}}{x_{max}-X_{min}}
-\)</span>$</p></li>
-<li><p>El <code class="docutils literal notranslate"><span class="pre">Normalizer</span></code> realiza un tipo de reescalado muy diferente. Escala cada punto de datos de manera que el vector de características tenga una longitud euclidiana de 1. En otras palabras, proyecta un punto de datos en el círculo (o esfera, en el caso de las dimensiones superiores) con un radio de 1. Esto significa que cada punto de datos se puede radio de 1. Esto significa que cada punto de datos está escalado por un número diferente (por la inversa de su longitud). Esta normalización se utiliza a menudo cuando sólo importa la dirección (o ángulo) de los datos, y no la longitud del vector de características. Estas son las normas que se usan
-$<span class="math notranslate nohighlight">\( 
+\]</div>
+<ul class="simple">
+<li><p>El <code class="docutils literal notranslate"><span class="pre">Normalizer</span></code> realiza un tipo de reescalado muy diferente. Escala cada punto de datos de manera que el vector de características tenga una longitud euclidiana de 1. En otras palabras, proyecta un punto de datos en el círculo (o esfera, en el caso de las dimensiones superiores) con un radio de 1. Esto significa que cada punto de datos se puede radio de 1. Esto significa que cada punto de datos está escalado por un número diferente (por la inversa de su longitud). Esta normalización se utiliza a menudo cuando sólo importa la dirección (o ángulo) de los datos, y no la longitud del vector de características. Estas son las normas que se usan</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
 \begin{align*}
 ||x||_1 &amp;= |x_1|+\cdots+|x_n|\\
 ||x||_2 &amp;= \sqrt{x_1^2+\cdots+x_n^2}\\
 ||x||_{\infty} &amp;= \max\{|x_1|,...,|x_n|\}
 \end{align*}
-\)</span>$</p></li>
-</ul>
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -3616,10 +3634,1724 @@ $<span class="math notranslate nohighlight">\(
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="c1"># Importar la función train_test_split </span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Importemos del dataset. Vamos tomar la variable <code class="docutils literal notranslate"><span class="pre">Customer_Segment</span></code>, nuestra variable respuesta.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar un archivo CSV como DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/datadescrip/Wine.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ver las primeras 5 filas del DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Alcohol</th>
+      <th>Malic_Acid</th>
+      <th>Ash</th>
+      <th>Ash_Alcanity</th>
+      <th>Magnesium</th>
+      <th>Total_Phenols</th>
+      <th>Flavanoids</th>
+      <th>Nonflavanoid_Phenols</th>
+      <th>Proanthocyanins</th>
+      <th>Color_Intensity</th>
+      <th>Hue</th>
+      <th>OD280</th>
+      <th>Proline</th>
+      <th>Customer_Segment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>14.23</td>
+      <td>1.71</td>
+      <td>2.43</td>
+      <td>15.6</td>
+      <td>127</td>
+      <td>2.80</td>
+      <td>3.06</td>
+      <td>0.28</td>
+      <td>2.29</td>
+      <td>5.64</td>
+      <td>1.04</td>
+      <td>3.92</td>
+      <td>1065</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13.20</td>
+      <td>1.78</td>
+      <td>2.14</td>
+      <td>11.2</td>
+      <td>100</td>
+      <td>2.65</td>
+      <td>2.76</td>
+      <td>0.26</td>
+      <td>1.28</td>
+      <td>4.38</td>
+      <td>1.05</td>
+      <td>3.40</td>
+      <td>1050</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>13.16</td>
+      <td>2.36</td>
+      <td>2.67</td>
+      <td>18.6</td>
+      <td>101</td>
+      <td>2.80</td>
+      <td>3.24</td>
+      <td>0.30</td>
+      <td>2.81</td>
+      <td>5.68</td>
+      <td>1.03</td>
+      <td>3.17</td>
+      <td>1185</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>14.37</td>
+      <td>1.95</td>
+      <td>2.50</td>
+      <td>16.8</td>
+      <td>113</td>
+      <td>3.85</td>
+      <td>3.49</td>
+      <td>0.24</td>
+      <td>2.18</td>
+      <td>7.80</td>
+      <td>0.86</td>
+      <td>3.45</td>
+      <td>1480</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>13.24</td>
+      <td>2.59</td>
+      <td>2.87</td>
+      <td>21.0</td>
+      <td>118</td>
+      <td>2.80</td>
+      <td>2.69</td>
+      <td>0.39</td>
+      <td>1.82</td>
+      <td>4.32</td>
+      <td>1.04</td>
+      <td>2.93</td>
+      <td>735</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Seleccionemos las variables independientes o caracteristica sin la variable respuesta</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables independientes y variable respuesta</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span> <span class="c1"># Caracteristica o features</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">13</span><span class="p">]</span>   <span class="c1"># respuesta o target</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para tener una idea de si existen características fuertemente correlacionadas en nuestros datos, utilizaremos funciones incorporadas en el paquete pandas, especialmente <code class="docutils literal notranslate"><span class="pre">corr()</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mostrar la matriz de correlación con un mapa de calor</span>
+<span class="n">corr_wine</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="c1"># Crear la figura</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_wine</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm_r&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d36b66dd07b3f43359304b9cb7462a99f539b6cd265fc0c5504c49bbd4afa2df.png" src="_images/d36b66dd07b3f43359304b9cb7462a99f539b6cd265fc0c5504c49bbd4afa2df.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_wine</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm_r&#39;</span><span class="p">)</span>  <span class="c1"># Puedes usar otro cmap si prefieres</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_b472e_row0_col0, #T_b472e_row1_col1, #T_b472e_row2_col2, #T_b472e_row3_col3, #T_b472e_row4_col4, #T_b472e_row5_col5, #T_b472e_row6_col6, #T_b472e_row7_col7, #T_b472e_row8_col8, #T_b472e_row9_col9, #T_b472e_row10_col10, #T_b472e_row11_col11, #T_b472e_row12_col12 {
+  background-color: #3b4cc0;
+  color: #f1f1f1;
+}
+#T_b472e_row0_col1, #T_b472e_row0_col4 {
+  background-color: #efcfbf;
+  color: #000000;
+}
+#T_b472e_row0_col2 {
+  background-color: #f5a081;
+  color: #000000;
+}
+#T_b472e_row0_col3 {
+  background-color: #d44e41;
+  color: #f1f1f1;
+}
+#T_b472e_row0_col5, #T_b472e_row12_col8, #T_b472e_row12_col10 {
+  background-color: #dadce0;
+  color: #000000;
+}
+#T_b472e_row0_col6 {
+  background-color: #dcdddd;
+  color: #000000;
+}
+#T_b472e_row0_col7, #T_b472e_row4_col3, #T_b472e_row9_col8, #T_b472e_row10_col4 {
+  background-color: #f4987a;
+  color: #000000;
+}
+#T_b472e_row0_col8 {
+  background-color: #f5c2aa;
+  color: #000000;
+}
+#T_b472e_row0_col9 {
+  background-color: #9ebeff;
+  color: #000000;
+}
+#T_b472e_row0_col10 {
+  background-color: #f7b194;
+  color: #000000;
+}
+#T_b472e_row0_col11 {
+  background-color: #f3c7b1;
+  color: #000000;
+}
+#T_b472e_row0_col12 {
+  background-color: #8caffe;
+  color: #000000;
+}
+#T_b472e_row1_col0, #T_b472e_row2_col10, #T_b472e_row9_col2 {
+  background-color: #f7b093;
+  color: #000000;
+}
+#T_b472e_row1_col2 {
+  background-color: #f18d6f;
+  color: #f1f1f1;
+}
+#T_b472e_row1_col3, #T_b472e_row1_col9 {
+  background-color: #dbdcde;
+  color: #000000;
+}
+#T_b472e_row1_col4 {
+  background-color: #e67259;
+  color: #f1f1f1;
+}
+#T_b472e_row1_col5, #T_b472e_row8_col2 {
+  background-color: #d0473d;
+  color: #f1f1f1;
+}
+#T_b472e_row1_col6, #T_b472e_row5_col3 {
+  background-color: #d1493f;
+  color: #f1f1f1;
+}
+#T_b472e_row1_col7, #T_b472e_row12_col11 {
+  background-color: #d2dbe8;
+  color: #000000;
+}
+#T_b472e_row1_col8 {
+  background-color: #d85646;
+  color: #f1f1f1;
+}
+#T_b472e_row1_col10, #T_b472e_row3_col0, #T_b472e_row3_col12, #T_b472e_row6_col7, #T_b472e_row7_col4, #T_b472e_row7_col5, #T_b472e_row7_col6, #T_b472e_row7_col8, #T_b472e_row7_col11, #T_b472e_row10_col1, #T_b472e_row10_col2, #T_b472e_row10_col9, #T_b472e_row12_col3 {
+  background-color: #b40426;
+  color: #f1f1f1;
+}
+#T_b472e_row1_col11, #T_b472e_row3_col5, #T_b472e_row7_col12 {
+  background-color: #d24b40;
+  color: #f1f1f1;
+}
+#T_b472e_row1_col12 {
+  background-color: #e9785d;
+  color: #f1f1f1;
+}
+#T_b472e_row2_col0, #T_b472e_row4_col10 {
+  background-color: #f2cab5;
+  color: #000000;
+}
+#T_b472e_row2_col1, #T_b472e_row2_col12 {
+  background-color: #e6d7cf;
+  color: #000000;
+}
+#T_b472e_row2_col3 {
+  background-color: #bbd1f8;
+  color: #000000;
+}
+#T_b472e_row2_col4 {
+  background-color: #edd2c3;
+  color: #000000;
+}
+#T_b472e_row2_col5 {
+  background-color: #f2cbb7;
+  color: #000000;
+}
+#T_b472e_row2_col6 {
+  background-color: #eed0c0;
+  color: #000000;
+}
+#T_b472e_row2_col7, #T_b472e_row10_col12 {
+  background-color: #e4d9d2;
+  color: #000000;
+}
+#T_b472e_row2_col8 {
+  background-color: #f6a385;
+  color: #000000;
+}
+#T_b472e_row2_col9 {
+  background-color: #d9dce1;
+  color: #000000;
+}
+#T_b472e_row2_col11, #T_b472e_row4_col2 {
+  background-color: #f7b99e;
+  color: #000000;
+}
+#T_b472e_row3_col1 {
+  background-color: #d1dae9;
+  color: #000000;
+}
+#T_b472e_row3_col2, #T_b472e_row10_col8 {
+  background-color: #e1dad6;
+  color: #000000;
+}
+#T_b472e_row3_col4 {
+  background-color: #e16751;
+  color: #f1f1f1;
+}
+#T_b472e_row3_col6, #T_b472e_row3_col8, #T_b472e_row11_col1 {
+  background-color: #dd5f4b;
+  color: #f1f1f1;
+}
+#T_b472e_row3_col7 {
+  background-color: #c5d6f2;
+  color: #000000;
+}
+#T_b472e_row3_col9 {
+  background-color: #f6bea4;
+  color: #000000;
+}
+#T_b472e_row3_col10 {
+  background-color: #eb7d62;
+  color: #f1f1f1;
+}
+#T_b472e_row3_col11 {
+  background-color: #e36c55;
+  color: #f1f1f1;
+}
+#T_b472e_row4_col0 {
+  background-color: #ead4c8;
+  color: #000000;
+}
+#T_b472e_row4_col1, #T_b472e_row8_col9 {
+  background-color: #f7b599;
+  color: #000000;
+}
+#T_b472e_row4_col5, #T_b472e_row5_col0 {
+  background-color: #e7d7ce;
+  color: #000000;
+}
+#T_b472e_row4_col6 {
+  background-color: #e2dad5;
+  color: #000000;
+}
+#T_b472e_row4_col7, #T_b472e_row10_col0 {
+  background-color: #ea7b60;
+  color: #f1f1f1;
+}
+#T_b472e_row4_col8, #T_b472e_row9_col7 {
+  background-color: #ebd3c6;
+  color: #000000;
+}
+#T_b472e_row4_col9 {
+  background-color: #e3d9d3;
+  color: #000000;
+}
+#T_b472e_row4_col11 {
+  background-color: #f4c5ad;
+  color: #000000;
+}
+#T_b472e_row4_col12 {
+  background-color: #c6d6f1;
+  color: #000000;
+}
+#T_b472e_row5_col1, #T_b472e_row12_col7 {
+  background-color: #e36b54;
+  color: #f1f1f1;
+}
+#T_b472e_row5_col2, #T_b472e_row7_col10 {
+  background-color: #ec7f63;
+  color: #f1f1f1;
+}
+#T_b472e_row5_col4 {
+  background-color: #f5c4ac;
+  color: #000000;
+}
+#T_b472e_row5_col6 {
+  background-color: #5572df;
+  color: #f1f1f1;
+}
+#T_b472e_row5_col7 {
+  background-color: #c83836;
+  color: #f1f1f1;
+}
+#T_b472e_row5_col8 {
+  background-color: #98b9ff;
+  color: #000000;
+}
+#T_b472e_row5_col9 {
+  background-color: #f7af91;
+  color: #000000;
+}
+#T_b472e_row5_col10 {
+  background-color: #b3cdfb;
+  color: #000000;
+}
+#T_b472e_row5_col11 {
+  background-color: #7b9ff9;
+  color: #f1f1f1;
+}
+#T_b472e_row5_col12, #T_b472e_row6_col12 {
+  background-color: #afcafc;
+  color: #000000;
+}
+#T_b472e_row6_col0 {
+  background-color: #efcebd;
+  color: #000000;
+}
+#T_b472e_row6_col1 {
+  background-color: #d55042;
+  color: #f1f1f1;
+}
+#T_b472e_row6_col2, #T_b472e_row10_col7 {
+  background-color: #e97a5f;
+  color: #f1f1f1;
+}
+#T_b472e_row6_col3, #T_b472e_row11_col9 {
+  background-color: #ca3b37;
+  color: #f1f1f1;
+}
+#T_b472e_row6_col4, #T_b472e_row9_col4 {
+  background-color: #f5c0a7;
+  color: #000000;
+}
+#T_b472e_row6_col5 {
+  background-color: #5673e0;
+  color: #f1f1f1;
+}
+#T_b472e_row6_col8 {
+  background-color: #8fb1fe;
+  color: #000000;
+}
+#T_b472e_row6_col9 {
+  background-color: #f29072;
+  color: #f1f1f1;
+}
+#T_b472e_row6_col10 {
+  background-color: #9bbcff;
+  color: #000000;
+}
+#T_b472e_row6_col11 {
+  background-color: #6788ee;
+  color: #f1f1f1;
+}
+#T_b472e_row7_col0 {
+  background-color: #dc5d4a;
+  color: #f1f1f1;
+}
+#T_b472e_row7_col1, #T_b472e_row8_col10, #T_b472e_row12_col9 {
+  background-color: #cfdaea;
+  color: #000000;
+}
+#T_b472e_row7_col2 {
+  background-color: #f39778;
+  color: #000000;
+}
+#T_b472e_row7_col3 {
+  background-color: #cdd9ec;
+  color: #000000;
+}
+#T_b472e_row7_col9 {
+  background-color: #ecd3c5;
+  color: #000000;
+}
+#T_b472e_row8_col0 {
+  background-color: #f7ba9f;
+  color: #000000;
+}
+#T_b472e_row8_col1 {
+  background-color: #f08b6e;
+  color: #f1f1f1;
+}
+#T_b472e_row8_col3 {
+  background-color: #e8765c;
+  color: #f1f1f1;
+}
+#T_b472e_row8_col4 {
+  background-color: #f2c9b4;
+  color: #000000;
+}
+#T_b472e_row8_col5 {
+  background-color: #93b5fe;
+  color: #000000;
+}
+#T_b472e_row8_col6 {
+  background-color: #84a7fc;
+  color: #f1f1f1;
+}
+#T_b472e_row8_col7 {
+  background-color: #d95847;
+  color: #f1f1f1;
+}
+#T_b472e_row8_col11 {
+  background-color: #a5c3fe;
+  color: #000000;
+}
+#T_b472e_row8_col12 {
+  background-color: #d3dbe7;
+  color: #000000;
+}
+#T_b472e_row9_col0, #T_b472e_row12_col5 {
+  background-color: #aec9fc;
+  color: #000000;
+}
+#T_b472e_row9_col1, #T_b472e_row12_col4 {
+  background-color: #d8dce2;
+  color: #000000;
+}
+#T_b472e_row9_col3 {
+  background-color: #f7b396;
+  color: #000000;
+}
+#T_b472e_row9_col5 {
+  background-color: #f6a283;
+  color: #000000;
+}
+#T_b472e_row9_col6, #T_b472e_row12_col1 {
+  background-color: #f39475;
+  color: #000000;
+}
+#T_b472e_row9_col10 {
+  background-color: #bd1f2d;
+  color: #f1f1f1;
+}
+#T_b472e_row9_col11 {
+  background-color: #c53334;
+  color: #f1f1f1;
+}
+#T_b472e_row9_col12 {
+  background-color: #d6dce4;
+  color: #000000;
+}
+#T_b472e_row10_col3, #T_b472e_row11_col3 {
+  background-color: #da5a49;
+  color: #f1f1f1;
+}
+#T_b472e_row10_col5 {
+  background-color: #bcd2f7;
+  color: #000000;
+}
+#T_b472e_row10_col6 {
+  background-color: #9dbdff;
+  color: #000000;
+}
+#T_b472e_row10_col11 {
+  background-color: #9abbff;
+  color: #000000;
+}
+#T_b472e_row11_col0 {
+  background-color: #f7a98b;
+  color: #000000;
+}
+#T_b472e_row11_col2 {
+  background-color: #cd423b;
+  color: #f1f1f1;
+}
+#T_b472e_row11_col4 {
+  background-color: #f59c7d;
+  color: #000000;
+}
+#T_b472e_row11_col5 {
+  background-color: #7da0f9;
+  color: #f1f1f1;
+}
+#T_b472e_row11_col6 {
+  background-color: #6687ed;
+  color: #f1f1f1;
+}
+#T_b472e_row11_col7 {
+  background-color: #bb1b2c;
+  color: #f1f1f1;
+}
+#T_b472e_row11_col8 {
+  background-color: #b1cbfc;
+  color: #000000;
+}
+#T_b472e_row11_col10 {
+  background-color: #97b8ff;
+  color: #000000;
+}
+#T_b472e_row11_col12 {
+  background-color: #d7dce3;
+  color: #000000;
+}
+#T_b472e_row12_col0 {
+  background-color: #94b6ff;
+  color: #000000;
+}
+#T_b472e_row12_col2 {
+  background-color: #f6a586;
+  color: #000000;
+}
+#T_b472e_row12_col6 {
+  background-color: #a9c6fd;
+  color: #000000;
+}
+</style>
+<table id="T_b472e">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_b472e_level0_col0" class="col_heading level0 col0" >Alcohol</th>
+      <th id="T_b472e_level0_col1" class="col_heading level0 col1" >Malic_Acid</th>
+      <th id="T_b472e_level0_col2" class="col_heading level0 col2" >Ash</th>
+      <th id="T_b472e_level0_col3" class="col_heading level0 col3" >Ash_Alcanity</th>
+      <th id="T_b472e_level0_col4" class="col_heading level0 col4" >Magnesium</th>
+      <th id="T_b472e_level0_col5" class="col_heading level0 col5" >Total_Phenols</th>
+      <th id="T_b472e_level0_col6" class="col_heading level0 col6" >Flavanoids</th>
+      <th id="T_b472e_level0_col7" class="col_heading level0 col7" >Nonflavanoid_Phenols</th>
+      <th id="T_b472e_level0_col8" class="col_heading level0 col8" >Proanthocyanins</th>
+      <th id="T_b472e_level0_col9" class="col_heading level0 col9" >Color_Intensity</th>
+      <th id="T_b472e_level0_col10" class="col_heading level0 col10" >Hue</th>
+      <th id="T_b472e_level0_col11" class="col_heading level0 col11" >OD280</th>
+      <th id="T_b472e_level0_col12" class="col_heading level0 col12" >Proline</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_b472e_level0_row0" class="row_heading level0 row0" >Alcohol</th>
+      <td id="T_b472e_row0_col0" class="data row0 col0" >1.000000</td>
+      <td id="T_b472e_row0_col1" class="data row0 col1" >0.094397</td>
+      <td id="T_b472e_row0_col2" class="data row0 col2" >0.211545</td>
+      <td id="T_b472e_row0_col3" class="data row0 col3" >-0.310235</td>
+      <td id="T_b472e_row0_col4" class="data row0 col4" >0.270798</td>
+      <td id="T_b472e_row0_col5" class="data row0 col5" >0.289101</td>
+      <td id="T_b472e_row0_col6" class="data row0 col6" >0.236815</td>
+      <td id="T_b472e_row0_col7" class="data row0 col7" >-0.155929</td>
+      <td id="T_b472e_row0_col8" class="data row0 col8" >0.136698</td>
+      <td id="T_b472e_row0_col9" class="data row0 col9" >0.546364</td>
+      <td id="T_b472e_row0_col10" class="data row0 col10" >-0.071747</td>
+      <td id="T_b472e_row0_col11" class="data row0 col11" >0.072343</td>
+      <td id="T_b472e_row0_col12" class="data row0 col12" >0.643720</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row1" class="row_heading level0 row1" >Malic_Acid</th>
+      <td id="T_b472e_row1_col0" class="data row1 col0" >0.094397</td>
+      <td id="T_b472e_row1_col1" class="data row1 col1" >1.000000</td>
+      <td id="T_b472e_row1_col2" class="data row1 col2" >0.164045</td>
+      <td id="T_b472e_row1_col3" class="data row1 col3" >0.288500</td>
+      <td id="T_b472e_row1_col4" class="data row1 col4" >-0.054575</td>
+      <td id="T_b472e_row1_col5" class="data row1 col5" >-0.335167</td>
+      <td id="T_b472e_row1_col6" class="data row1 col6" >-0.411007</td>
+      <td id="T_b472e_row1_col7" class="data row1 col7" >0.292977</td>
+      <td id="T_b472e_row1_col8" class="data row1 col8" >-0.220746</td>
+      <td id="T_b472e_row1_col9" class="data row1 col9" >0.248985</td>
+      <td id="T_b472e_row1_col10" class="data row1 col10" >-0.561296</td>
+      <td id="T_b472e_row1_col11" class="data row1 col11" >-0.368710</td>
+      <td id="T_b472e_row1_col12" class="data row1 col12" >-0.192011</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row2" class="row_heading level0 row2" >Ash</th>
+      <td id="T_b472e_row2_col0" class="data row2 col0" >0.211545</td>
+      <td id="T_b472e_row2_col1" class="data row2 col1" >0.164045</td>
+      <td id="T_b472e_row2_col2" class="data row2 col2" >1.000000</td>
+      <td id="T_b472e_row2_col3" class="data row2 col3" >0.443367</td>
+      <td id="T_b472e_row2_col4" class="data row2 col4" >0.286587</td>
+      <td id="T_b472e_row2_col5" class="data row2 col5" >0.128980</td>
+      <td id="T_b472e_row2_col6" class="data row2 col6" >0.115077</td>
+      <td id="T_b472e_row2_col7" class="data row2 col7" >0.186230</td>
+      <td id="T_b472e_row2_col8" class="data row2 col8" >0.009652</td>
+      <td id="T_b472e_row2_col9" class="data row2 col9" >0.258887</td>
+      <td id="T_b472e_row2_col10" class="data row2 col10" >-0.074667</td>
+      <td id="T_b472e_row2_col11" class="data row2 col11" >0.003911</td>
+      <td id="T_b472e_row2_col12" class="data row2 col12" >0.223626</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row3" class="row_heading level0 row3" >Ash_Alcanity</th>
+      <td id="T_b472e_row3_col0" class="data row3 col0" >-0.310235</td>
+      <td id="T_b472e_row3_col1" class="data row3 col1" >0.288500</td>
+      <td id="T_b472e_row3_col2" class="data row3 col2" >0.443367</td>
+      <td id="T_b472e_row3_col3" class="data row3 col3" >1.000000</td>
+      <td id="T_b472e_row3_col4" class="data row3 col4" >-0.083333</td>
+      <td id="T_b472e_row3_col5" class="data row3 col5" >-0.321113</td>
+      <td id="T_b472e_row3_col6" class="data row3 col6" >-0.351370</td>
+      <td id="T_b472e_row3_col7" class="data row3 col7" >0.361922</td>
+      <td id="T_b472e_row3_col8" class="data row3 col8" >-0.197327</td>
+      <td id="T_b472e_row3_col9" class="data row3 col9" >0.018732</td>
+      <td id="T_b472e_row3_col10" class="data row3 col10" >-0.273955</td>
+      <td id="T_b472e_row3_col11" class="data row3 col11" >-0.276769</td>
+      <td id="T_b472e_row3_col12" class="data row3 col12" >-0.440597</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row4" class="row_heading level0 row4" >Magnesium</th>
+      <td id="T_b472e_row4_col0" class="data row4 col0" >0.270798</td>
+      <td id="T_b472e_row4_col1" class="data row4 col1" >-0.054575</td>
+      <td id="T_b472e_row4_col2" class="data row4 col2" >0.286587</td>
+      <td id="T_b472e_row4_col3" class="data row4 col3" >-0.083333</td>
+      <td id="T_b472e_row4_col4" class="data row4 col4" >1.000000</td>
+      <td id="T_b472e_row4_col5" class="data row4 col5" >0.214401</td>
+      <td id="T_b472e_row4_col6" class="data row4 col6" >0.195784</td>
+      <td id="T_b472e_row4_col7" class="data row4 col7" >-0.256294</td>
+      <td id="T_b472e_row4_col8" class="data row4 col8" >0.236441</td>
+      <td id="T_b472e_row4_col9" class="data row4 col9" >0.199950</td>
+      <td id="T_b472e_row4_col10" class="data row4 col10" >0.055398</td>
+      <td id="T_b472e_row4_col11" class="data row4 col11" >0.066004</td>
+      <td id="T_b472e_row4_col12" class="data row4 col12" >0.393351</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row5" class="row_heading level0 row5" >Total_Phenols</th>
+      <td id="T_b472e_row5_col0" class="data row5 col0" >0.289101</td>
+      <td id="T_b472e_row5_col1" class="data row5 col1" >-0.335167</td>
+      <td id="T_b472e_row5_col2" class="data row5 col2" >0.128980</td>
+      <td id="T_b472e_row5_col3" class="data row5 col3" >-0.321113</td>
+      <td id="T_b472e_row5_col4" class="data row5 col4" >0.214401</td>
+      <td id="T_b472e_row5_col5" class="data row5 col5" >1.000000</td>
+      <td id="T_b472e_row5_col6" class="data row5 col6" >0.864564</td>
+      <td id="T_b472e_row5_col7" class="data row5 col7" >-0.449935</td>
+      <td id="T_b472e_row5_col8" class="data row5 col8" >0.612413</td>
+      <td id="T_b472e_row5_col9" class="data row5 col9" >-0.055136</td>
+      <td id="T_b472e_row5_col10" class="data row5 col10" >0.433681</td>
+      <td id="T_b472e_row5_col11" class="data row5 col11" >0.699949</td>
+      <td id="T_b472e_row5_col12" class="data row5 col12" >0.498115</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row6" class="row_heading level0 row6" >Flavanoids</th>
+      <td id="T_b472e_row6_col0" class="data row6 col0" >0.236815</td>
+      <td id="T_b472e_row6_col1" class="data row6 col1" >-0.411007</td>
+      <td id="T_b472e_row6_col2" class="data row6 col2" >0.115077</td>
+      <td id="T_b472e_row6_col3" class="data row6 col3" >-0.351370</td>
+      <td id="T_b472e_row6_col4" class="data row6 col4" >0.195784</td>
+      <td id="T_b472e_row6_col5" class="data row6 col5" >0.864564</td>
+      <td id="T_b472e_row6_col6" class="data row6 col6" >1.000000</td>
+      <td id="T_b472e_row6_col7" class="data row6 col7" >-0.537900</td>
+      <td id="T_b472e_row6_col8" class="data row6 col8" >0.652692</td>
+      <td id="T_b472e_row6_col9" class="data row6 col9" >-0.172379</td>
+      <td id="T_b472e_row6_col10" class="data row6 col10" >0.543479</td>
+      <td id="T_b472e_row6_col11" class="data row6 col11" >0.787194</td>
+      <td id="T_b472e_row6_col12" class="data row6 col12" >0.494193</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row7" class="row_heading level0 row7" >Nonflavanoid_Phenols</th>
+      <td id="T_b472e_row7_col0" class="data row7 col0" >-0.155929</td>
+      <td id="T_b472e_row7_col1" class="data row7 col1" >0.292977</td>
+      <td id="T_b472e_row7_col2" class="data row7 col2" >0.186230</td>
+      <td id="T_b472e_row7_col3" class="data row7 col3" >0.361922</td>
+      <td id="T_b472e_row7_col4" class="data row7 col4" >-0.256294</td>
+      <td id="T_b472e_row7_col5" class="data row7 col5" >-0.449935</td>
+      <td id="T_b472e_row7_col6" class="data row7 col6" >-0.537900</td>
+      <td id="T_b472e_row7_col7" class="data row7 col7" >1.000000</td>
+      <td id="T_b472e_row7_col8" class="data row7 col8" >-0.365845</td>
+      <td id="T_b472e_row7_col9" class="data row7 col9" >0.139057</td>
+      <td id="T_b472e_row7_col10" class="data row7 col10" >-0.262640</td>
+      <td id="T_b472e_row7_col11" class="data row7 col11" >-0.503270</td>
+      <td id="T_b472e_row7_col12" class="data row7 col12" >-0.311385</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row8" class="row_heading level0 row8" >Proanthocyanins</th>
+      <td id="T_b472e_row8_col0" class="data row8 col0" >0.136698</td>
+      <td id="T_b472e_row8_col1" class="data row8 col1" >-0.220746</td>
+      <td id="T_b472e_row8_col2" class="data row8 col2" >0.009652</td>
+      <td id="T_b472e_row8_col3" class="data row8 col3" >-0.197327</td>
+      <td id="T_b472e_row8_col4" class="data row8 col4" >0.236441</td>
+      <td id="T_b472e_row8_col5" class="data row8 col5" >0.612413</td>
+      <td id="T_b472e_row8_col6" class="data row8 col6" >0.652692</td>
+      <td id="T_b472e_row8_col7" class="data row8 col7" >-0.365845</td>
+      <td id="T_b472e_row8_col8" class="data row8 col8" >1.000000</td>
+      <td id="T_b472e_row8_col9" class="data row8 col9" >-0.025250</td>
+      <td id="T_b472e_row8_col10" class="data row8 col10" >0.295544</td>
+      <td id="T_b472e_row8_col11" class="data row8 col11" >0.519067</td>
+      <td id="T_b472e_row8_col12" class="data row8 col12" >0.330417</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row9" class="row_heading level0 row9" >Color_Intensity</th>
+      <td id="T_b472e_row9_col0" class="data row9 col0" >0.546364</td>
+      <td id="T_b472e_row9_col1" class="data row9 col1" >0.248985</td>
+      <td id="T_b472e_row9_col2" class="data row9 col2" >0.258887</td>
+      <td id="T_b472e_row9_col3" class="data row9 col3" >0.018732</td>
+      <td id="T_b472e_row9_col4" class="data row9 col4" >0.199950</td>
+      <td id="T_b472e_row9_col5" class="data row9 col5" >-0.055136</td>
+      <td id="T_b472e_row9_col6" class="data row9 col6" >-0.172379</td>
+      <td id="T_b472e_row9_col7" class="data row9 col7" >0.139057</td>
+      <td id="T_b472e_row9_col8" class="data row9 col8" >-0.025250</td>
+      <td id="T_b472e_row9_col9" class="data row9 col9" >1.000000</td>
+      <td id="T_b472e_row9_col10" class="data row9 col10" >-0.521813</td>
+      <td id="T_b472e_row9_col11" class="data row9 col11" >-0.428815</td>
+      <td id="T_b472e_row9_col12" class="data row9 col12" >0.316100</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row10" class="row_heading level0 row10" >Hue</th>
+      <td id="T_b472e_row10_col0" class="data row10 col0" >-0.071747</td>
+      <td id="T_b472e_row10_col1" class="data row10 col1" >-0.561296</td>
+      <td id="T_b472e_row10_col2" class="data row10 col2" >-0.074667</td>
+      <td id="T_b472e_row10_col3" class="data row10 col3" >-0.273955</td>
+      <td id="T_b472e_row10_col4" class="data row10 col4" >0.055398</td>
+      <td id="T_b472e_row10_col5" class="data row10 col5" >0.433681</td>
+      <td id="T_b472e_row10_col6" class="data row10 col6" >0.543479</td>
+      <td id="T_b472e_row10_col7" class="data row10 col7" >-0.262640</td>
+      <td id="T_b472e_row10_col8" class="data row10 col8" >0.295544</td>
+      <td id="T_b472e_row10_col9" class="data row10 col9" >-0.521813</td>
+      <td id="T_b472e_row10_col10" class="data row10 col10" >1.000000</td>
+      <td id="T_b472e_row10_col11" class="data row10 col11" >0.565468</td>
+      <td id="T_b472e_row10_col12" class="data row10 col12" >0.236183</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row11" class="row_heading level0 row11" >OD280</th>
+      <td id="T_b472e_row11_col0" class="data row11 col0" >0.072343</td>
+      <td id="T_b472e_row11_col1" class="data row11 col1" >-0.368710</td>
+      <td id="T_b472e_row11_col2" class="data row11 col2" >0.003911</td>
+      <td id="T_b472e_row11_col3" class="data row11 col3" >-0.276769</td>
+      <td id="T_b472e_row11_col4" class="data row11 col4" >0.066004</td>
+      <td id="T_b472e_row11_col5" class="data row11 col5" >0.699949</td>
+      <td id="T_b472e_row11_col6" class="data row11 col6" >0.787194</td>
+      <td id="T_b472e_row11_col7" class="data row11 col7" >-0.503270</td>
+      <td id="T_b472e_row11_col8" class="data row11 col8" >0.519067</td>
+      <td id="T_b472e_row11_col9" class="data row11 col9" >-0.428815</td>
+      <td id="T_b472e_row11_col10" class="data row11 col10" >0.565468</td>
+      <td id="T_b472e_row11_col11" class="data row11 col11" >1.000000</td>
+      <td id="T_b472e_row11_col12" class="data row11 col12" >0.312761</td>
+    </tr>
+    <tr>
+      <th id="T_b472e_level0_row12" class="row_heading level0 row12" >Proline</th>
+      <td id="T_b472e_row12_col0" class="data row12 col0" >0.643720</td>
+      <td id="T_b472e_row12_col1" class="data row12 col1" >-0.192011</td>
+      <td id="T_b472e_row12_col2" class="data row12 col2" >0.223626</td>
+      <td id="T_b472e_row12_col3" class="data row12 col3" >-0.440597</td>
+      <td id="T_b472e_row12_col4" class="data row12 col4" >0.393351</td>
+      <td id="T_b472e_row12_col5" class="data row12 col5" >0.498115</td>
+      <td id="T_b472e_row12_col6" class="data row12 col6" >0.494193</td>
+      <td id="T_b472e_row12_col7" class="data row12 col7" >-0.311385</td>
+      <td id="T_b472e_row12_col8" class="data row12 col8" >0.330417</td>
+      <td id="T_b472e_row12_col9" class="data row12 col9" >0.316100</td>
+      <td id="T_b472e_row12_col10" class="data row12 col10" >0.236183</td>
+      <td id="T_b472e_row12_col11" class="data row12 col11" >0.312761</td>
+      <td id="T_b472e_row12_col12" class="data row12 col12" >1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Ahora seleccionemos el conjunto de entrenamiento y prueba usando la función <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code></p>
+<p>``train_test_split<code class="docutils literal notranslate"><span class="pre">es</span> <span class="pre">una</span> <span class="pre">función</span> <span class="pre">de</span> <span class="pre">la</span> <span class="pre">biblioteca</span></code>scikit-learn` en Python que se utiliza para dividir un conjunto de datos en dos partes: uno para entrenamiento (train) y otro para pruebas (test). Esta división es fundamental cuando se entrenan modelos de machine learning, ya que permite evaluar el rendimiento del modelo en datos no vistos después del entrenamiento.</p>
+<p>Aquí te explico brevemente cada parte:</p>
+<ul class="simple">
+<li><p><strong>Conjunto de entrenamiento (train set)</strong>: Es el subconjunto de datos que se utiliza para entrenar el modelo.</p></li>
+<li><p><strong>Conjunto de prueba (test set)</strong>: Es el subconjunto de datos que se reserva para evaluar el rendimiento del modelo entrenado.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dividir el conjunto de datos en entrenamiento y conjunto de testing</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Antes de realizar un análisis de componentes principales (PCA), es importante estandarizar los datos (es decir, escalarlos para que tengan media 0 y desviación estándar 1). Esto se debe a las siguientes razones clave:</p>
+<ol class="arabic simple">
+<li><p>Sensibilidad a la Escala
+PCA busca maximizar la varianza de los datos para identificar las principales direcciones de variación. Si las características de los datos están en diferentes escalas, las variables con valores más grandes (por ejemplo, ingresos en miles) dominarán el análisis, mientras que las variables con valores pequeños (por ejemplo, puntajes de satisfacción en una escala de 1 a 10) tendrán un impacto muy reducido. Estandarizar las variables pone todas las características en la misma escala, permitiendo que el PCA capte adecuadamente la importancia relativa de cada variable.</p></li>
+<li><p>Efecto en la Varianza
+PCA se basa en la matriz de covarianza de los datos, que calcula las relaciones entre las variables. Si las variables no están estandarizadas, las que tengan un rango mayor tendrán más peso en el cálculo de la varianza total, lo que sesgará los resultados hacia esas variables. Esto lleva a componentes principales que no reflejan adecuadamente la estructura subyacente de los datos.</p></li>
+<li><p>Comparabilidad de las Variables
+Las características en los conjuntos de datos reales a menudo tienen unidades diferentes (por ejemplo, ingresos, edades, kilómetros, etc.). Si no se estandarizan, PCA puede no ser capaz de comparar correctamente la contribución de cada característica. La estandarización asegura que todas las características contribuyan por igual al análisis, eliminando el sesgo de unidades.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Escalar las variables y establecer los valores en una nueva variabl</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="c1"># Estandaizamos los datos X_scaled_train y X_scaled_test</span>
+<span class="n">X_scaled_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_scaled_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<p>si aplicas <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> tanto en el conjunto de entrenamiento como en el de prueba, puedes cometer <strong>data leakage</strong> (fuga de datos). Esto sucede porque estarías utilizando información del conjunto de prueba (que debería ser “desconocido” para el modelo) durante la fase de preprocesamiento, lo cual afecta la evaluación y puede generar una visión poco realista del rendimiento del modelo.</p>
+<p>Al usar <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> en ambos conjuntos, los parámetros estadísticos (como la media y la desviación estándar) se calcularían con los datos de prueba, violando el principio de que estos datos deben permanecer completamente fuera del proceso de entrenamiento.</p>
+</div>
+<p>La idea de la reducción de dimensionalidad es la siguiente:</p>
+<p><img alt="pca" src="_images/pca.png" /></p>
+<p>El proceso algoritmico es el siguiente:</p>
+<ol class="arabic simple">
+<li><p>Aplicar escalado de variables a la matriz de características <span class="math notranslate nohighlight">\(X\)</span>, formada por <span class="math notranslate nohighlight">\(m\)</span> variables independientes.</p></li>
+<li><p>Calcular la matriz de covarianzas de las <span class="math notranslate nohighlight">\(m\)</span> variables independientes de <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>Calcular los valores y vectores propios de la matriz de covarianzas.</p></li>
+<li><p>Elegir un porcentaje <span class="math notranslate nohighlight">\(P\)</span> de varianza explicada y elegir los <span class="math notranslate nohighlight">\(p\leq m\)</span> valores propios más grandes tales que:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{\sum_{j=1}^{p}\lambda_j}{\sum_{i=1}^{m}\lambda_i}\geq P
+\]</div>
+<ol class="arabic simple" start="5">
+<li><p>Los <span class="math notranslate nohighlight">\(p\)</span> vectores propios asociados a estos <span class="math notranslate nohighlight">\(p\)</span> valores más grandes son las componentes principales. El espacio <span class="math notranslate nohighlight">\(m-\)</span> dimensional del dataset original se proyecta al nuevo subespacio <span class="math notranslate nohighlight">\(p-\)</span> dimensional de características, aplicando la matriz de proyecciones (que tiene los <span class="math notranslate nohighlight">\(p\)</span> vectores propios por columnas)</p></li>
+</ol>
+<p>Ahora que hemos preprocesado nuestros datos, estamos listos para usar PCA para determinar en qué medida podemos reducir la dimensionalidad de nuestros datos. Podemos usar <strong>gráficos de pantalla</strong> y <strong>gráficos de varianza explicada acumulativa</strong> para encontrar el número de componentes a utilizar en análisis posteriores.</p>
+<p>Los gráficos de pantalla muestran el número de componentes frente a la varianza explicada por cada componente, ordenada en orden descendente de varianza. Los gráficos de pantalla nos ayudan a tener una mejor idea de qué componentes explican una cantidad suficiente de varianza en nuestros datos. Al utilizar los gráficos de pantalla, generalmente se utiliza una "curva" (una caída abrupta de un punto de datos al siguiente) en el gráfico para decidir sobre un corte adecuado.</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtener nuestros ratios de varianza explicada de PCA utilizando todas las características.</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_scaled_train</span><span class="p">)</span>
+<span class="n">exp_variance</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+
+<span class="c1"># Graficar la varianza explicada utilizando un gráfico de barras.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">n_components_</span><span class="p">),</span> <span class="n">exp_variance</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Varianza&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Componentes principales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9639c18d5a414e76b7d86e1e28064c284ccf12880abd3c1fb874ce790efd28ef.png" src="_images/9639c18d5a414e76b7d86e1e28064c284ccf12880abd3c1fb874ce790efd28ef.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">n_components_</span><span class="p">),</span> <span class="n">exp_variance</span><span class="p">,</span> <span class="s1">&#39;bx-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Componentes principales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Varianza&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Método del codo para escogencia de la optima componente&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9d71c35b7fa0b06f126d2a9d8939aa5f909390f87ffd51bdd0bed5d78ff75258.png" src="_images/9d71c35b7fa0b06f126d2a9d8939aa5f909390f87ffd51bdd0bed5d78ff75258.png" />
+</div>
+</div>
+<p>Si somos desafortunads y no parece haber un <em>codo</em> claro en este gráfico, lo que significa que no es sencillo encontrar el número de dimensiones intrínsecas utilizando este método. En su lugar, también podemos mirar el <strong>gráfico acumulativo de varianza explicada</strong> para determinar cuántas características se requieren para explicar, por ejemplo, alrededor del <span class="math notranslate nohighlight">\(85\%\)</span> de la varianza (los puntos de corte son algo arbitrarios aquí, y generalmente se deciden por <em>reglas empíricas</em>). Una vez que determinamos el número adecuado de componentes, podemos realizar PCA con esa cantidad de componentes, idealmente reduciendo la dimensionalidad de nuestros datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular la varianza explicada acumulada</span>
+<span class="n">cum_exp_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">exp_variance</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cum_exp_variance</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Componentes principales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Varianza explicativa acumulada&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f4c3673f96d4194a6eadfc59698d641841cc26992ed25b75b824a40ecf2331a3.png" src="_images/f4c3673f96d4194a6eadfc59698d641841cc26992ed25b75b824a40ecf2331a3.png" />
+</div>
+</div>
+<p>¡Vimos en el gráfico que 7 características (recuerde que la indexación comienza en 0) pueden explicar el 85% de la varianza!. </p><p>Veamos como quedaría las variables característica con respecto a las componentes principales
+:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Supongamos que tienes pca.components_ y X definidos</span>
+<span class="n">num_components</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Número de componentes principales</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span>  <span class="c1"># Obtener los nombres de las características del DataFrame</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Establecer las etiquetas de los ticks en el eje y</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_components</span><span class="p">),</span>
+           <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">ra componente&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_components</span><span class="p">)])</span>
+
+<span class="c1"># Establecer las etiquetas de los ticks en el eje x</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)),</span>
+           <span class="n">labels</span><span class="o">=</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Características o variables independientes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Componentes Principales&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ab9a0725f02f84fdbe53c4308728ff67ea63c313b6115a015c47abdb874824ce.png" src="_images/ab9a0725f02f84fdbe53c4308728ff67ea63c313b6115a015c47abdb874824ce.png" />
+</div>
+</div>
+<p>Por lo tanto, podemos usar 7 componentes para realizar PCA y reducir la dimensionalidad de nuestras características de entrenamiento y prueba.</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Realizar PCA con el número de componentes elegido y proyectar los datos en los componentes.</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Ajustar y transformar las características de entrenamiento escaladas utilizando pca.</span>
+<span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_scaled_train</span><span class="p">)</span>
+
+<span class="c1"># Ajuste y transforme las características de prueba escaladas utilizando PCA.</span>
+<span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_scaled_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Muestras las variables del conjunto de entrenamiento</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un DataFrame con los datos transformados</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;PC</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">n_components_</span><span class="p">)]</span>
+<span class="n">X_train_pca_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">X_train_pca_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>PC3</th>
+      <th>PC4</th>
+      <th>PC5</th>
+      <th>PC6</th>
+      <th>PC7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.783937</td>
+      <td>-1.590432</td>
+      <td>0.568115</td>
+      <td>0.039495</td>
+      <td>1.177684</td>
+      <td>1.076519</td>
+      <td>-0.869513</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.792083</td>
+      <td>0.583400</td>
+      <td>-1.321347</td>
+      <td>-0.527003</td>
+      <td>-0.970855</td>
+      <td>-0.427172</td>
+      <td>-0.534818</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.101051</td>
+      <td>2.109598</td>
+      <td>0.790712</td>
+      <td>-0.591235</td>
+      <td>0.245845</td>
+      <td>0.613814</td>
+      <td>-0.696635</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.107242</td>
+      <td>0.448619</td>
+      <td>-1.057832</td>
+      <td>0.473768</td>
+      <td>-1.028770</td>
+      <td>-0.410854</td>
+      <td>0.651005</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.725718</td>
+      <td>-2.107998</td>
+      <td>0.588435</td>
+      <td>-0.829437</td>
+      <td>-0.875271</td>
+      <td>0.438685</td>
+      <td>0.583508</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Un <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> es una herramienta en <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> que te permite encadenar múltiples pasos de procesamiento y modelado en un solo flujo de trabajo. Es especialmente útil cuando necesitas aplicar varias transformaciones a tus datos (como escalado, reducción de dimensionalidad, etc.) antes de entrenar un modelo de aprendizaje automático.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">¿Por qué usar Pipeline?</p>
+<ul class="simple">
+<li><p><strong>Automatización</strong>: Automatiza el flujo de trabajo de preprocesamiento y modelado en una sola estructura. Esto asegura que los mismos pasos de preprocesamiento se apliquen a los datos de entrenamiento y a los datos de prueba.</p></li>
+<li><p><strong>Evitar fugas de datos</strong>: Al entrenar un modelo, debes asegurarte de que el preprocesamiento (como escalado) se hace solo con los datos de entrenamiento y luego se aplica a los datos de prueba, evitando fugas de información.</p></li>
+<li><p><strong>Código más limpio y organizado</strong>: Al agrupar todos los pasos en un solo objeto Pipeline, reduces la cantidad de código repetitivo, facilitando la lectura y el mantenimiento.</p></li>
+</ul>
+</div>
+<p>Automatización de lo realizado anteriormente</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar los paquetes</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar un archivo CSV como DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/datadescrip/Wine.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Variables independientes y variable respuesta</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span> <span class="c1"># Caracteristica o features</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">13</span><span class="p">]</span>   <span class="c1"># respuesta o target</span>
+
+<span class="c1"># Dividir el conjunto de datos en entrenamiento y conjunto de testing</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Pipeline </span>
+<span class="n">pca_line</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">7</span><span class="p">))])</span>
+
+<span class="c1"># Aplicar el pipeline a los datos (suponiendo que &#39;X_train&#39; es tu conjunto de características)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca_line</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un DataFrame con los componentes principales</span>
+<span class="n">acp</span> <span class="o">=</span> <span class="n">pca_line</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;pca&quot;</span><span class="p">]</span>
+<span class="n">df_pca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;PC</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">acp</span><span class="o">.</span><span class="n">n_components_</span><span class="p">)])</span>
+
+<span class="c1"># Mostrar las primeras filas del DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_pca</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        PC1       PC2       PC3       PC4       PC5       PC6       PC7
+0 -0.783937 -1.590432  0.568115  0.039495  1.177684  1.076519 -0.869513
+1 -1.792083  0.583400 -1.321347 -0.527003 -0.970855 -0.427172 -0.534818
+2  2.101051  2.109598  0.790712 -0.591235  0.245845  0.613814 -0.696635
+3  3.107242  0.448619 -1.057832  0.473768 -1.028770 -0.410854  0.651005
+4  0.725718 -2.107998  0.588435 -0.829437 -0.875271  0.438685  0.583508
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Ejercicios</strong></p>
+<ol class="arabic simple">
+<li><p>Cargue el conjunto de datos <code class="docutils literal notranslate"><span class="pre">grains</span></code> ubicados en la carpeta dataadescrip y realice un análisis de componentes principales similar a lo explicado, sin <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>.</p></li>
+<li><p>Cargue los datos de <code class="docutils literal notranslate"><span class="pre">fish</span></code>, haga un análisis exploratorio y desarrolle el codigo siguiente</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importación de paquetes necesarios</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="c1"># Usa un escalador: escalado</span>
+<span class="c1">## escalado = ____</span>
+
+<span class="c1"># Crea la instancia ACP: acp</span>
+<span class="c1">## acp = ____</span>
+
+<span class="c1"># Crea pipeline: pipeline</span>
+<span class="c1">## pipeline = ____</span>
+
+<span class="c1"># Ajuste el pipeline para samples (muestra de fish)</span>
+<span class="c1">## ____</span>
+
+<span class="c1"># Grafique la varianza explicada</span>
+<span class="c1">## caract = ____</span>
+<span class="c1">## plt.bar(____, ____)</span>
+<span class="c1">## plt.xlabel(&#39;Variables del ACP&#39;)</span>
+<span class="c1">## plt.ylabel(&#39;varianza&#39;)</span>
+<span class="c1">## plt.xticks(caract)</span>
+<span class="c1">## plt.show()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="analisis-de-agrupamiento-cluster">
+<h3><strong>Análisis de agrupamiento (cluster)</strong><a class="headerlink" href="#analisis-de-agrupamiento-cluster" title="Permalink to this heading">#</a></h3>
+<p>Descubra cómo identificar y analizar grupos subyacentes en conjuntos de datos mediante técnicas de agrupamiento. En este capítulo, aprenderá a:</p>
+<ul class="simple">
+<li><p><strong>Segmentar Empresas</strong>: Agrupe empresas según sus precios de mercado de valores para identificar patrones y similitudes en su desempeño.</p></li>
+<li><p><strong>Clasificar Especies</strong>: Diferencie entre diversas especies agrupando sus medidas biológicas para obtener una comprensión más clara de su diversidad y relaciones.</p></li>
+</ul>
+<p>Aprenderá a aplicar métodos de clustering para revelar estructuras ocultas en los datos, permitiéndole segmentar y analizar información de manera más eficaz y orientada a objetivos específicos.</p>
+<section id="k-means">
+<h4><strong>K-Means</strong><a class="headerlink" href="#k-means" title="Permalink to this heading">#</a></h4>
+<p>El algoritmo <strong>KMeans</strong> agrupa los datos intentando separar las muestras en <span class="math notranslate nohighlight">\(n\)</span> grupos de varianza igual, minimizando un criterio conocido como la <em>inercia o la suma de cuadrados</em> dentro del clúster. Este algoritmo requiere que se especifique el número de clústeres. Escala bien con grandes cantidades de muestras y se ha utilizado en una amplia gama de áreas de aplicación en muchos campos diferentes.</p>
+<p>El algoritmo <strong>k-means</strong> divide un conjunto de muestras en clústeres disjuntos, cada uno descrito por la media de las muestras en el clúster. Las medias se conocen comúnmente como los <em>centroides</em> de los clústeres; ten en cuenta que, en general, no son puntos del conjunto de datos, aunque viven en el mismo espacio.</p>
+<p>La inercia puede ser reconocida como una medida de cuán internamente coherentes son los clústeres. Presenta varios inconvenientes:</p>
+<ul class="simple">
+<li><p>La inercia supone que los clústeres son convexos e isotrópicos, lo cual no siempre es el caso. Responde mal a clústeres alargados o a variedades con formas irregulares.</p></li>
+<li><p>La inercia no es una métrica normalizada: solo sabemos que valores más bajos son mejores y que cero es óptimo. Pero en espacios de alta dimensión, las distancias euclidianas tienden a inflarse (esto es un ejemplo de la llamada “maldición de la dimensionalidad”). Ejecutar un algoritmo de reducción de dimensionalidad como el Análisis de Componentes Principales (PCA) antes del agrupamiento k-means puede aliviar este problema y acelerar los cálculos.</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas de K-Means</strong></p>
+<ul class="simple">
+<li><p>Simple de entender e implementar.</p></li>
+<li><p>Eficiente en términos de tiempo de cálculo para grandes conjuntos de datos.</p></li>
+</ul>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Desventajas de K-Means</strong></p>
+<ul class="simple">
+<li><p>Requiere especificar el número de clústeres K a priori.</p></li>
+<li><p>Sensible a la inicialización de los centroides.</p></li>
+<li><p>No siempre encuentra el clúster óptimo; puede converger a soluciones locales en lugar de globales.</p></li>
+</ul>
+</div>
+<p>Entendamos como funciona el algoritmo de <code class="docutils literal notranslate"><span class="pre">K-Means</span></code>:</p>
+<ol class="arabic simple">
+<li><p><strong>Paso 1</strong>: Elegir el número <span class="math notranslate nohighlight">\(K\)</span> de clusters. Tomemos <span class="math notranslate nohighlight">\(K=2\)</span></p></li>
+</ol>
+<figure class="align-center" id="paso-1-con-k-2">
+<a class="reference internal image-reference" href="_images/km1.png"><img alt="_images/km1.png" src="_images/km1.png" style="width: 348.0px; height: 198.5px;" /></a>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p><strong>Paso 2</strong>: Seleccionar al azar <span class="math notranslate nohighlight">\(K\)</span> puntos, los baricentros (no necesariamente de nuestrp dataset)</p></li>
+</ol>
+<figure class="align-center" id="paso-2-con-k-2">
+<a class="reference internal image-reference" href="_images/km2.png"><img alt="_images/km2.png" src="_images/km2.png" style="width: 343.2px; height: 193.2px;" /></a>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p><strong>Paso 3</strong>: Asignar cada punto al baricentro más cercano. Entonces esto formará los <span class="math notranslate nohighlight">\(K\)</span> clusters</p></li>
+</ol>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="km5" src="_images/km4.png" /></p></th>
+<th class="head"><p><img alt="km6" src="_images/km3.png" /></p></th>
+</tr>
+</thead>
+</table>
+<ol class="arabic simple" start="4">
+<li><p><strong>Paso 4</strong> Calcular y asignar el nuevo baricentro de cada cluster</p></li>
+</ol>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="km5" src="_images/km5.png" /></p></th>
+<th class="head"><p><img alt="km6" src="_images/km6.png" /></p></th>
+</tr>
+</thead>
+</table>
+<ol class="arabic simple" start="5">
+<li><p><strong>Paso 5</strong>:  Reasignar cada punto de los datos a su baricentro más cercano. Si ha habido nuevas asignaciones, ir al <strong>Paso 4</strong>, si no ir <strong>fin</strong>.</p></li>
+</ol>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="km7" src="_images/km7.png" /></p></th>
+<th class="head"><p><img alt="km8" src="_images/km8.png" /></p></th>
+</tr>
+</thead>
+</table>
+<p>Volvemos al <strong>paso 4</strong>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="km9" src="_images/km9.png" /></p></th>
+<th class="head"><p><img alt="km10" src="_images/km10.png" /></p></th>
+</tr>
+</thead>
+</table>
+<p>Y nuevamente al <strong>paso 5</strong></p>
+<figure class="align-center" id="paso-5-con-k-2">
+<a class="reference internal image-reference" href="_images/km11.png"><img alt="_images/km11.png" src="_images/km11.png" style="width: 319.2px; height: 183.6px;" /></a>
+</figure>
+<p>El modelo está listo para usar.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="km11" src="_images/km12.png" /></p></th>
+<th class="head"><p><img alt="km12" src="_images/km13.png" /></p></th>
+</tr>
+</thead>
+</table>
+<section id="la-trampa-de-la-inicializacion-aleatoria">
+<h5><strong>La trampa de la inicialización aleatoria</strong><a class="headerlink" href="#la-trampa-de-la-inicializacion-aleatoria" title="Permalink to this heading">#</a></h5>
+<p>El K-Means es un algoritmo de clustering popular que tiene como objetivo particionar un conjunto de datos en K grupos (clusters) basándose en la similitud de los datos. Sin embargo, uno de los problemas más comunes de este algoritmo es la trampa de la inicialización aleatoria.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">¿En qué consiste esta trampa?</p>
+<p>En K-Means, los centroides iniciales (puntos representativos de cada cluster) se seleccionan al azar. Esta aleatoriedad puede provocar los siguientes problemas:</p>
+<ol class="arabic simple">
+<li><p><strong>Convergencia a un mínimo local</strong>: Dado que K-Means minimiza la distancia dentro de los clusters, es posible que, dependiendo de los centroides iniciales, el algoritmo converja en un agrupamiento subóptimo (mínimo local), en lugar de encontrar la mejor agrupación posible (mínimo global).</p></li>
+<li><p><strong>Resultados inconsistentes</strong>: Cada vez que se ejecuta K-Means, el algoritmo puede producir resultados diferentes debido a la inicialización aleatoria, lo que puede generar clusters de baja calidad si los centroides iniciales no están bien elegidos.</p></li>
+<li><p><strong>Sensibilidad a outliers</strong>: Si un punto atípico es elegido como centroide inicial, puede sesgar significativamente los resultados y afectar la calidad del agrupamiento.</p></li>
+</ol>
+</div>
+<p>Si inicializamos ubicando los baricentros de la siguiente forma</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="km14" src="_images/km14.png" /></p></th>
+<th class="head"><p><img alt="km15" src="_images/km15.png" /></p></th>
+</tr>
+</thead>
+</table>
+<p>Pero si inicializamos los baricentros de otra forma</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="km16" src="_images/km16.png" /></p></th>
+<th class="head"><p><img alt="km17" src="_images/km17.png" /></p></th>
+</tr>
+</thead>
+</table>
+<p>Al inicializar de manera aleatoria, notamos que no llegamos al mismo cluster.</p>
+<p>Para evitar la trampa de la inicialización aleatoria, se han desarrollado varias estrategias, entre las cuales se destacan:</p>
+<ul class="simple">
+<li><p><strong>K-Means++</strong>: Esta variante mejora el proceso de inicialización al seleccionar los centroides de manera más inteligente. Los primeros centroides se eligen aleatoriamente, pero los centroides subsecuentes se seleccionan con base en la distancia máxima a los centroides ya seleccionados. Esto reduce significativamente las posibilidades de quedar atrapado en mínimos locales.</p></li>
+<li><p><strong>Múltiples inicializaciones</strong>: Ejecutar el algoritmo K-Means varias veces con diferentes inicializaciones aleatorias y quedarse con el mejor resultado (el que minimice más la suma de las distancias intra-cluster).</p></li>
+<li><p><strong>Métodos heurísticos o deterministas</strong>: Existen enfoques que usan algoritmos más complejos para seleccionar los centroides iniciales de manera no aleatoria, basándose en la estructura de los datos.</p></li>
+</ul>
+</section>
+<section id="evaluacion-de-un-agrupamiento">
+<h5><strong>Evaluación de un agrupamiento</strong><a class="headerlink" href="#evaluacion-de-un-agrupamiento" title="Permalink to this heading">#</a></h5>
+<p>La <strong>evaluación de un agrupamiento (clustering)</strong> es crucial para determinar la calidad de los grupos formados por un algoritmo como K-Means u otros métodos de clustering. A diferencia de los problemas supervisados, en los que se tiene una verdad conocida (etiquetas), en el clustering no hay etiquetas predeterminadas, lo que hace que la evaluación sea más compleja.</p>
+<p>Existen varias métricas y enfoques que se pueden utilizar para evaluar la calidad de un agrupamiento. Estos se dividen en dos grandes categorías: métricas internas (basadas solo en los datos y la estructura del cluster) y métricas externas (si se cuenta con alguna referencia o etiquetas verdaderas).</p>
+<ol class="arabic">
+<li><p><strong>Métricas Internas.</strong>
+Estas métricas se utilizan cuando no se tiene información de la verdad subyacente (etiquetas verdaderas) y se basan en propiedades del propio modelo y los datos.</p>
+<ul class="simple">
+<li><p><strong>Suma de errores al cuadrado (SSE) o Inertia</strong>: Es la métrica utilizada por el algoritmo de K-Means. Mide la suma de las distancias cuadráticas entre los puntos y sus centroides correspondientes. Cuanto más bajo es este valor, mejor ajustados están los puntos dentro de los clusters. Sin embargo, tiende a disminuir a medida que aumenta el número de clusters, lo que puede llevar a sobreajuste.</p></li>
+<li><p><strong>Índice de Silueta</strong>: Esta métrica mide la compacidad de los clusters y la separación entre ellos. Toma valores entre -1 y 1:</p>
+<ul>
+<li><p>Valores cercanos a 1 indican que los puntos están bien agrupados dentro de su cluster y bien separados de otros clusters.</p></li>
+<li><p>Valores cercanos a 0 sugieren que los puntos están en la frontera entre clusters.</p></li>
+<li><p>Valores negativos indican que los puntos están mal agrupados.</p></li>
+</ul>
+</li>
+</ul>
+<p>El índice de silueta tiene en cuenta tanto la cohesión (qué tan cerca están los puntos dentro de un cluster) como la separación (qué tan alejados están los clusters entre sí).</p>
+<ul class="simple">
+<li><p><strong>Distancia entre clusters (Dunn Index)</strong>: Cuantifica la distancia mínima entre dos clusters en relación con el diámetro máximo de los clusters. Un índice Dunn alto indica clusters compactos y bien separados.</p></li>
+<li><p><strong>Cohesión y Separación</strong>: La cohesión mide cuán cercanos están los puntos dentro de un mismo cluster, mientras que la separación mide cuán alejados están los diferentes clusters entre sí. Idealmente, queremos maximizar la cohesión y la separación.</p></li>
+</ul>
+</li>
+<li><p><strong>Métricas Externas.</strong>
+Si se cuenta con etiquetas de verdad, se pueden utilizar las siguientes métricas comparativas para evaluar qué tan bien el algoritmo agrupó los datos.</p>
+<ul class="simple">
+<li><p><strong>Índice de Rand Ajustado (ARI)</strong>: Mide la similitud entre el agrupamiento obtenido y el agrupamiento verdadero, ajustando por el azar. El ARI toma valores entre -1 y 1, donde 1 indica una coincidencia perfecta entre el clustering y las etiquetas verdaderas, y valores cercanos a 0 indican una agrupación aleatoria.</p></li>
+<li><p><strong>V-Measure</strong>: Evalúa la homogeneidad y completitud del agrupamiento en comparación con las etiquetas verdaderas. La homogeneidad mide si los clusters contienen solo puntos de una misma clase, y la completitud evalúa si todos los puntos de una misma clase están en el mismo cluster. La V-Measure es la media armónica de estas dos medidas.</p></li>
+</ul>
+</li>
+<li><p><strong>Elección del Número de Clusters.</strong>
+Determinar el número óptimo de clusters es un desafío en clustering. Algunos métodos para elegir el número adecuado de clusters son:</p>
+<ul class="simple">
+<li><p><strong>Método del codo</strong>: Gráfica la SSE (inertia) frente al número de clusters y busca el “codo” de la gráfica, que es el punto donde la disminución en la SSE se ralentiza. Este punto es sugerido como el número óptimo de clusters.</p></li>
+<li><p><strong>Criterio de la silueta</strong>: Calcula el índice de silueta para diferentes números de clusters y selecciona el número que maximice este índice.</p></li>
+<li><p><strong>Método Gap Statistic</strong>: Compara la variación intra-cluster observada con la esperada en una distribución aleatoria de los datos. El número óptimo de clusters es aquel que maximiza la brecha entre la observación y la expectativa.</p></li>
+</ul>
+</li>
+</ol>
+<p>Para el desarrollo del siguiente ejemplo escogeremos las inercia para usar el método del codo. La fórmula de la <strong>inercia</strong> (también conocida como <strong>SSE</strong>, <strong>Sum of Squared Errors</strong>) en el contexto de K-Means se define como la suma de las distancias cuadradas de cada punto a su centroide más cercano. Matemáticamente</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Inercia} = \sum_{i=1}^{k} \sum_{x \in C_i} \| x - \mu_i \|^2,
+\]</div>
+<p>donde</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k\)</span> es el número de clusters.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_i\)</span> es el conjunto de puntos en el <span class="math notranslate nohighlight">\(i\)</span>-ésimo cluster.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_i\)</span> es el centroide del <span class="math notranslate nohighlight">\(i\)</span>-ésimo cluster.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\| x - \mu_i \|^2\)</span> es la distancia euclidiana cuadrada entre el punto <span class="math notranslate nohighlight">\(x\)</span> y el centroide <span class="math notranslate nohighlight">\(\mu_i\)</span>.</p></li>
+</ul>
+<p>Hagamos un ejemplo.</p>
+<p><strong>Contexto empresarial</strong>: El centro comercial tiene una base de datos de sus clientes, con información sobre el <strong>ingreso anual</strong>, <strong>la edad</strong>, <strong>el género</strong> y una <strong>puntuación de gasto</strong> que refleja cómo estos clientes consumen dentro del centro comercial. Sin embargo, sin un análisis detallado, el centro comercial no tiene claro cómo estos clientes se comportan y qué características podrían definir diferentes segmentos de mercado. Este es un problema común en empresas que buscan maximizar la efectividad de sus campañas de marketing.</p>
+<p><strong>Problema empresarial</strong>:
+<strong>¿Cómo puede el centro comercial segmentar a sus clientes en grupos significativos que permitan implementar estrategias de marketing más efectivas y personalizadas?</strong></p>
+<p>Por la pregunta empresarial, debemos aplicar un cluster, cuyo objetivo es segmentar a los clientes en grupos homogéneos para que el equipo de marketing pueda:</p>
+<ul class="simple">
+<li><p>Personalizar las ofertas y promociones basadas en las características específicas de cada grupo.</p></li>
+<li><p>Optimizar los recursos de marketing, enfocándose en los clientes con mayor potencial de gasto o fidelización.</p></li>
+<li><p>Desarrollar estrategias de retención y atracción, especialmente en los grupos que podrían tener un comportamiento de gasto bajo o estar subatendidos.</p></li>
+<li><p>Maximizar los ingresos al identificar los patrones de consumo y diseñar productos o servicios que resuenen mejor con cada segmento.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># carguemos la data</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;_data\datadescrip\Mall_Customers.csv&#39;</span>
+<span class="n">df_mall</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># Mostrar las 5 primeras filas</span>
+<span class="n">df_mall</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CustomerID</th>
+      <th>Genre</th>
+      <th>Age</th>
+      <th>Annual Income (k$)</th>
+      <th>Spending Score (1-100)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Male</td>
+      <td>19</td>
+      <td>15</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Male</td>
+      <td>21</td>
+      <td>15</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Female</td>
+      <td>20</td>
+      <td>16</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Female</td>
+      <td>23</td>
+      <td>16</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Female</td>
+      <td>31</td>
+      <td>17</td>
+      <td>40</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Los datos que has proporcionado corresponden a un conjunto de clientes de un centro comercial. Contienen 200 registros y 5 columnas:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CustomerID</span></code>: Identificador único de cada cliente.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Genre</span></code>: Género del cliente (masculino o femenino).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Age</span></code>: Edad del cliente.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Annual</span> <span class="pre">Income</span> <span class="pre">(k$)</span></code>: Ingreso anual en miles de dólares.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Spending</span> <span class="pre">Score</span> <span class="pre">(1-100)</span></code>: Puntuación de gasto, que indica el comportamiento de consumo del cliente en una escala de 1 a 100.</p></li>
+</ul>
+<p>Ahora, usamos la codificación <strong>One-Hot-Coding</strong> es más útil si tienes más de dos categorías y deseas evitar cualquier sesgo implícito en el valor numérico.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aplicar la codificación One-Hot a la columna &#39;Genre&#39; (Género)</span>
+<span class="c1"># Esto creará nuevas columnas para cada categoría y eliminará la primera para evitar multicolinealidad</span>
+<span class="n">df_mall_ohc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df_mall</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Genre&#39;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Convertir la columna &#39;Genre_1&#39; a entero</span>
+<span class="n">df_mall_ohc</span><span class="p">[</span><span class="s1">&#39;Genre_Male&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_mall_ohc</span><span class="p">[</span><span class="s1">&#39;Genre_Male&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Mostrar las primeras filas para verificar el resultado</span>
+<span class="n">df_mall_ohc</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CustomerID</th>
+      <th>Age</th>
+      <th>Annual Income (k$)</th>
+      <th>Spending Score (1-100)</th>
+      <th>Genre_Male</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>19</td>
+      <td>15</td>
+      <td>39</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>21</td>
+      <td>15</td>
+      <td>81</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>20</td>
+      <td>16</td>
+      <td>6</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>23</td>
+      <td>16</td>
+      <td>77</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>31</td>
+      <td>17</td>
+      <td>40</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Escojamos el número optimo de cluster</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FuncFormatter</span>
+
+<span class="c1"># Aquí se asume que ya tienes el DataFrame `df_mall_ohc` con la codificación One-Hot aplicada</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_mall_ohc</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">])</span>  <span class="c1"># Excluir CustomerID para el clustering</span>
+
+<span class="c1"># Determinamos el número óptimo de clusters utilizando el Método del Codo</span>
+<span class="n">inercia</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">inercia</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+
+<span class="c1"># Graficamos el Método del Codo para visualizar el número óptimo de clusters</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">inercia</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Método del Codo para Número Óptimo de Clusters (con codificación One-Hot)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Número de Clusters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Inercia&#39;</span><span class="p">)</span>
+
+<span class="c1"># Formatear los valores del eje Y para evitar notación científica</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f6eabdf12c88e5b8098ba82fa380441c9cefda406565568ef4821661f34ba1f4.png" src="_images/f6eabdf12c88e5b8098ba82fa380441c9cefda406565568ef4821661f34ba1f4.png" />
+</div>
+</div>
+<p>Al buscar el <em>codo</em> o el <em>punto</em> donde el cambio en la inercia disminuye significativamente, podemos ver que el número óptimo de clusters podría estar alrededor de 4 o 5, ya que después de eso, la disminución de la inercia se vuelve más plana. Tomemos <span class="math notranslate nohighlight">\(k=4\)</span> para hacer los clusters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Elegir el número óptimo de clusters basado en el método del codo (aquí seleccionaremos 5)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">df_mall_ohc</span><span class="p">)</span>
+
+<span class="c1"># Añadir los clusters al conjunto de datos original</span>
+<span class="n">X</span><span class="p">[</span><span class="s1">&#39;Cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clusters</span>
+
+<span class="c1"># Graficar en 2D usando dos de las variables más relevantes: Ingreso Anual y Puntuación de Gasto</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Annual Income (k$)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Spending Score (1-100)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Cluster&#39;</span><span class="p">,</span> 
+                <span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set1&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Clusters de Clientes (Ingreso Anual vs Puntuación de Gasto)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Ingreso Anual (k$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Puntuación de Gasto (1-100)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cluster&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fe53af2975574f77730e92879d244ae429a6cf7401b089a3e553bf016380c7d9.png" src="_images/fe53af2975574f77730e92879d244ae429a6cf7401b089a3e553bf016380c7d9.png" />
+</div>
+</div>
+<p>Veamos un gráfico interactivo en 2D</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar plotly</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="c1"># Crear el gráfico en 2D usando Plotly, agregando Edad y Género como detalles adicionales</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_mall_ohc</span><span class="p">,</span> 
+                 <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Annual Income (k$)&#39;</span><span class="p">,</span> 
+                 <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Spending Score (1-100)&#39;</span><span class="p">,</span> 
+                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Cluster&#39;</span><span class="p">,</span>
+                 <span class="n">size</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span>  <span class="c1"># Usar &#39;Age&#39; para ajustar el tamaño de los puntos</span>
+                 <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;Genre_Male&#39;</span><span class="p">,</span>  <span class="c1"># Usar &#39;Genre_Male&#39; para diferenciar los géneros con símbolos</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Clusters de Clientes (Ingreso Anual vs Puntuación de Gasto)&#39;</span><span class="p">,</span>
+                 <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Annual Income (k$)&#39;</span><span class="p">:</span> <span class="s1">&#39;Ingreso Anual (k$)&#39;</span><span class="p">,</span> 
+                         <span class="s1">&#39;Spending Score (1-100)&#39;</span><span class="p">:</span> <span class="s1">&#39;Puntuación de Gasto (1-100)&#39;</span><span class="p">},</span>
+                 <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el tamaño de los puntos y mostrar el gráfico interactivo</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">sizemode</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">sizeref</span><span class="o">=</span><span class="mf">2.</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="n">df_mall_ohc</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mf">10.</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">sizemin</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>Algunas conclusiones de gráfico 2D, graficando <strong>ingreso anual</strong>`** vs <strong>puntuación de gasto</strong>:</p>
+<ol class="arabic simple">
+<li><p>Segmentación clara basada en ingresos y comportamiento de gasto:</p>
+<ul class="simple">
+<li><p>Se observa una clara separación de clusters en función de ingreso anual y puntuación de pasto. Los clusters en diferentes colores representan grupos de clientes con diferentes comportamientos.</p></li>
+<li><p>Los clientes con ingresos más bajos (por debajo de 40k) y puntuaciones de gasto bajas parecen agruparse en un cluster específico (amarillo). Este grupo puede representar clientes con un potencial de gasto bajo.</p></li>
+<li><p>Los clientes con ingresos altos y puntuaciones de gasto altas (como el cluster púrpura) son probablemente clientes clave de alto valor, y las empresas pueden enfocarse en retenerlos con estrategias de fidelización.</p></li>
+</ul>
+</li>
+<li><p>Clientes con ingresos moderados y alta puntuación de gasto:</p>
+<ul class="simple">
+<li><p>Hay un grupo de clientes con ingresos moderados (alrededor de 60k) pero con alta puntuación de gasto (alrededor de 60-80). Estos clientes pueden representar un buen target para campañas de up-selling (venta de versión mejorada o más cara del producto o servicio) o cross-selling (productos o servicios complementarios al producto).</p></li>
+</ul>
+</li>
+<li><p>Género:</p>
+<ul class="simple">
+<li><p>Usando <strong>Genre_Male</strong>, puedes ver que hay una combinación de géneros en varios clusters, lo que sugiere que las diferencias en género no son un factor principal de diferenciación en este caso, aunque se podrían estudiar estrategias específicas basadas en los clusters por género.</p></li>
+</ul>
+</li>
+</ol>
+<p>También se genera un gráfico 3D interactivo donde el “Género” (representado como la columna “Genre_Male”) se utiliza para cambiar el símbolo de los puntos en el gráfico.</p>
+<p>Te dejo el código que puedes ejecutar en tu entorno local para obtener el gráfico interactivo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="c1"># Crear el gráfico 3D interactivo usando Plotly</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> 
+                    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Annual Income (k$)&#39;</span><span class="p">,</span> 
+                    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Spending Score (1-100)&#39;</span><span class="p">,</span> 
+                    <span class="n">z</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> 
+                    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Cluster&#39;</span><span class="p">,</span>
+                    <span class="n">symbol</span><span class="o">=</span><span class="s1">&#39;Genre_Male&#39;</span><span class="p">,</span>  <span class="c1"># Usar &#39;Genre_Male&#39; como símbolo</span>
+                    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Clusters de Clientes en 3D (con Género)&#39;</span><span class="p">,</span>
+                    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Annual Income (k$)&#39;</span><span class="p">:</span> <span class="s1">&#39;Ingreso Anual (k$)&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;Spending Score (1-100)&#39;</span><span class="p">:</span> <span class="s1">&#39;Puntuación de Gasto&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="s1">&#39;Edad&#39;</span><span class="p">},</span>
+                    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>En conclusiones generales:</p>
+<ul class="simple">
+<li><p><strong>Clientes clave identificados</strong>: Los clusters identifican claramente a los clientes de alto valor con ingresos altos y puntuaciones de gasto altas. Estos clientes representan una gran oportunidad para estrategias de fidelización y personalización de productos premium.</p></li>
+<li><p><strong>Clientes con potencial de crecimiento</strong>: Hay un segmento claro de clientes con ingresos moderados y puntuaciones de gasto altas. Este grupo tiene un buen comportamiento de compra y podría beneficiarse de estrategias de up-selling o cross-selling.</p></li>
+<li><p><strong>Segmentación por edad</strong>: Los clientes jóvenes y con ingresos bajos podrían estar en la fase inicial de sus carreras y, con el tiempo, aumentar su capacidad de compra. Las estrategias a largo plazo dirigidas a este grupo podrían convertirlos en clientes valiosos a futuro.</p></li>
+<li><p><strong>Género</strong>: Aunque se incluyó el género en la segmentación, no parece ser un diferenciador importante en este análisis inicial. Sin embargo, se podrían estudiar estrategias específicas de género si fuera relevante para la empresa.</p></li>
+</ul>
+</section>
+</section>
 </section>
 </section>
 </section>
@@ -3729,10 +5461,18 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-no-supervisado"><strong>Machine learning no supervisado</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-aprendizaje-no-supervisado">Tipos de aprendizaje no supervisado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-aprendizaje-no-supervisado"><strong>Tipos de aprendizaje no supervisado</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desafios-del-aprendizaje-no-supervisado"><strong>Desafíos del aprendizaje no supervisado</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento-y-escalado"><strong>Preprocesamiento y escalado</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-componentes-principales-reduccion-de-dimensiones"><strong>Análisis de componentes principales (reducción de dimensiones)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-agrupamiento-cluster"><strong>Análisis de agrupamiento (cluster)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means"><strong>K-Means</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#la-trampa-de-la-inicializacion-aleatoria"><strong>La trampa de la inicialización aleatoria</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-un-agrupamiento"><strong>Evaluación de un agrupamiento</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
