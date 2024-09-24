@@ -67,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Despliegue de modelos" href="modulo_5.html" />
     <link rel="prev" title="Modulo 3: Análisis exploratorio de datos de la banca" href="modulo_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -163,6 +164,17 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="modulo_2.html"><strong>Módulo 2: Estructuración y manipulación de datos con Python</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modulo_3.html"><strong>Modulo 3: Análisis exploratorio de datos de la banca</strong></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Módulo 4: Visualización de datos con Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_5.html"><strong>Despliegue de modelos</strong></a></li>
+
+
+
+
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -356,7 +368,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-datos-faltantes-y-atipicos"><strong>Tratamiento de datos faltantes y atípicos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-datos-faltantes-y-atipicos"><strong>Tratamiento de datos faltantes y atípicos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion"><strong>Introducción</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-valores-faltantes"><strong>Tratamiento de valores faltantes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-datos-faltantes"><strong>Eliminación de datos faltantes</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#imputacion-de-datos-faltantes"><strong>Imputación de datos faltantes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-categoricos"><strong>Datos categóricos</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-numericos"><strong>Datos numéricos</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -379,6 +403,653 @@ document.write(`
 <p>Al completar este módulo, contarás con un conjunto sólido de habilidades para crear visualizaciones de datos desde cero, manejar datos atípicos y faltantes, y desarrollar aplicaciones visuales interactivas que sean impactantes y útiles.</p>
 <section id="tratamiento-de-datos-faltantes-y-atipicos">
 <h2><strong>Tratamiento de datos faltantes y atípicos</strong><a class="headerlink" href="#tratamiento-de-datos-faltantes-y-atipicos" title="Permalink to this heading">#</a></h2>
+<section id="introduccion">
+<h3><strong>Introducción</strong><a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h3>
+<p>En esta sección se enumeran y explican los posibles errores que pueden surgir durante diversas etapas del proceso de visualización de datos, tales como <strong>la representación de elementos no correlacionados</strong> para sugerir una relación o <strong>la incorporación de características interactivas inadecuadas</strong>.</p>
+<p>Aunque el proceso de visualización de datos puede parecer sencillo <strong>tomar algunos datos, trazar gráficos y añadir funciones interactivas</strong> en realidad es fácil cometer errores en diferentes fases del mismo. Estos errores pueden resultar en visualizaciones defectuosas que no logran comunicar de manera clara y eficaz la información contenida en los datos, lo que las convierte en herramientas inútiles para el público al que van dirigidas.</p>
+</section>
+<section id="tratamiento-de-valores-faltantes">
+<h3><strong>Tratamiento de valores faltantes</strong><a class="headerlink" href="#tratamiento-de-valores-faltantes" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Los datos perdidos son, como su nombre indica, valores que están en blanco (<strong>NaN</strong>, -, <strong>0</strong> cuando no deberían ser <strong>0</strong>, etc.). Al igual que los valores atípicos, los valores perdidos pueden ser problemáticos tanto en el caso de las visualizaciones como en el de los modelos predictivos.</p></li>
+<li><p>Los valores faltantes en las visualizaciones pueden mostrar una tendencia que en realidad no existe o no representa una relación entre dos variables que, en realidad, es significativa. Aunque es posible crear visualizaciones con un conjunto de datos que contenga valores perdidos, no se recomienda hacerlo. Al hacerlo, se ignoran los casos en los que se encuentran esos valores perdidos, creando así una visualización basada en algunos de los datos pero no en todos.</p></li>
+<li><p>Por lo tanto, el tratamiento de los valores perdidos es de suma importancia. Existen dos enfoques principales para tratar los valores perdidos: <strong>la supresión y la imputación</strong>.</p></li>
+</ul>
+<p>Este conjunto de datos contiene información relacionada con los <strong>empleos de profesionales de datos</strong>, recopilada durante varios años. Cada fila representa un empleo único y proporciona detalles sobre el puesto, nivel de experiencia, modalidad de trabajo, ubicación del empleado, y otros factores relevantes para el contexto laboral y el salario recibido. Este conjunto de datos es útil para analizar tendencias en el mercado laboral de la ciencia de datos, permitiendo comparaciones entre diferentes tipos de empleos, niveles de experiencia, y ubicaciones geográficas.</p>
+<p><strong>Descripción de las columnas</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Columna</strong></p></th>
+<th class="head"><p><strong>Descripción</strong></p></th>
+<th class="head"><p><strong>Tipo de dato</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Working_Year</strong></p></td>
+<td><p>Año en que se obtuvieron los datos sobre el empleo. Esto puede ser útil para observar tendencias a lo largo del tiempo.</p></td>
+<td><p>Float</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Designation</strong></p></td>
+<td><p>Título del puesto del profesional de datos. Ejemplos comunes incluyen “Data Scientist”, “Data Engineer”, etc.</p></td>
+<td><p>Cadena</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Experience</strong></p></td>
+<td><p>Nivel de experiencia del empleado en el puesto, categorizado como “Medio”, “Senior”, etc. Esto ayuda a segmentar los trabajos según la experiencia necesaria.</p></td>
+<td><p>Cadena</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Employment_Status</strong></p></td>
+<td><p>Tipo de contrato laboral bajo el cual se emplea a la persona. Puede ser a tiempo completo (“FT”), medio tiempo (“PT”), entre otros. Es un indicador de la estabilidad y dedicación del empleo.</p></td>
+<td><p>Cadena</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Employee_Location</strong></p></td>
+<td><p>País donde se encuentra ubicado el empleado. Esto puede influir en el salario y las condiciones laborales, dada la variación entre mercados internacionales.</p></td>
+<td><p>Cadena</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Company_Size</strong></p></td>
+<td><p>Tamaño de la empresa en la que trabaja el profesional de datos. Las empresas se clasifican en “S” (Pequeña), “M” (Mediana), o “L” (Grande), y esto puede influir en las oportunidades de crecimiento, ambiente de trabajo, y remuneración.</p></td>
+<td><p>Cadena</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Remote_Working_Ratio</strong></p></td>
+<td><p>Porcentaje de tiempo que el empleado trabaja de manera remota. Un valor del 100% indicaría que el empleo es completamente remoto, mientras que un valor del 0% indicaría un empleo presencial.</p></td>
+<td><p>Entero</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Salary_USD</strong></p></td>
+<td><p>Salario anual del empleado expresado en dólares estadounidenses (USD). Este valor es útil para hacer comparaciones salariales entre empleos de diferentes ubicaciones y niveles de experiencia.</p></td>
+<td><p>Float</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Cargar el archivo CSV proporcionado</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;_data/dataviz/ds_salaries.csv&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Informacion del dataset</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 607 entries, 0 to 606
+Data columns (total 8 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Working_Year          595 non-null    float64
+ 1   Designation           600 non-null    object 
+ 2   Experience            607 non-null    object 
+ 3   Employment_Status     607 non-null    object 
+ 4   Employee_Location     607 non-null    object 
+ 5   Company_Size          607 non-null    object 
+ 6   Remote_Working_Ratio  607 non-null    int64  
+ 7   Salary_USD            597 non-null    float64
+dtypes: float64(2), int64(1), object(5)
+memory usage: 38.1+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copia del dataset</span>
+<span class="n">df_va</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Revisar los datos faltantes en el conjunto de datos</span>
+<span class="n">missing_values</span> <span class="o">=</span> <span class="n">df_va</span> <span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Calcular el porcentaje de valores faltantes</span>
+<span class="n">missing_percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_va</span> <span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Crear un DataFrame con el análisis de datos faltantes</span>
+<span class="n">missing_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Valores Faltantes&#39;</span><span class="p">:</span> <span class="n">missing_values</span><span class="p">,</span>
+    <span class="s1">&#39;Porcentaje Faltante (%)&#39;</span><span class="p">:</span> <span class="n">missing_percentage</span>
+<span class="p">})</span>
+
+<span class="n">missing_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Valores Faltantes</th>
+      <th>Porcentaje Faltante (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Working_Year</th>
+      <td>12</td>
+      <td>1.98</td>
+    </tr>
+    <tr>
+      <th>Designation</th>
+      <td>7</td>
+      <td>1.15</td>
+    </tr>
+    <tr>
+      <th>Experience</th>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Employment_Status</th>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Employee_Location</th>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Company_Size</th>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Remote_Working_Ratio</th>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>Salary_USD</th>
+      <td>10</td>
+      <td>1.65</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Hay varias formas de tratar los datos faltantes. Como modo de ejemplo, se explicaran los procesos de cada uno.</p>
+<section id="eliminacion-de-datos-faltantes">
+<h4><strong>Eliminación de datos faltantes</strong><a class="headerlink" href="#eliminacion-de-datos-faltantes" title="Permalink to this heading">#</a></h4>
+<p>La estrategia <strong>eliminar valores faltantes</strong> implica quitar aquellas filas de tu conjunto de datos que contienen valores faltantes (<code class="docutils literal notranslate"><span class="pre">NaN</span></code>). Sin embargo, para evitar eliminar demasiados datos y reducir significativamente el tamaño del conjunto de datos, esta estrategia se aplica solo cuando los valores faltantes constituyen un pequeño porcentaje del total, en este caso, el <strong>5% o menos</strong>.</p>
+<ul class="simple">
+<li><p><strong>5% o menos del total de valores</strong>: Si la cantidad de valores faltantes en una columna o fila representa el 5% o menos del total de registros, es una pérdida aceptable de información. Por lo tanto, puedes eliminar esas filas o columnas sin comprometer demasiado la integridad del análisis.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Coloquemos un umbral</span>
+<span class="n">umbral</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_va</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.05</span>
+
+<span class="c1"># Selecciona columnas con valores faltantes &lt;= umbral</span>
+<span class="n">cols_to_drop</span> <span class="o">=</span> <span class="n">df_va</span> <span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df_va</span> <span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">umbral</span><span class="p">]</span>
+
+<span class="c1"># Elimina filas con valores faltantes en las columnas seleccionadas</span>
+<span class="n">df_va</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">cols_to_drop</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># informacion del dataset ajustado</span>
+<span class="n">df_va</span> <span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 578 entries, 0 to 606
+Data columns (total 8 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Working_Year          578 non-null    float64
+ 1   Designation           578 non-null    object 
+ 2   Experience            578 non-null    object 
+ 3   Employment_Status     578 non-null    object 
+ 4   Employee_Location     578 non-null    object 
+ 5   Company_Size          578 non-null    object 
+ 6   Remote_Working_Ratio  578 non-null    int64  
+ 7   Salary_USD            578 non-null    float64
+dtypes: float64(2), int64(1), object(5)
+memory usage: 40.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Revisar los datos faltantes en el conjunto de datos</span>
+<span class="n">missing_values</span> <span class="o">=</span> <span class="n">df_va</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Calcular el porcentaje de valores faltantes</span>
+<span class="n">missing_percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_va</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Crear un DataFrame con el análisis de datos faltantes</span>
+<span class="n">missing_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Valores Faltantes&#39;</span><span class="p">:</span> <span class="n">missing_values</span><span class="p">,</span>
+    <span class="s1">&#39;Porcentaje Faltante (%)&#39;</span><span class="p">:</span> <span class="n">missing_percentage</span>
+<span class="p">})</span>
+
+<span class="n">missing_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Valores Faltantes</th>
+      <th>Porcentaje Faltante (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Working_Year</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Designation</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Experience</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Employment_Status</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Employee_Location</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Company_Size</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Remote_Working_Ratio</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Salary_USD</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Otra forma para eliminar los datos faltantes es:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># copia del dataset</span>
+<span class="n">df_2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># eliminar las filas con Nans</span>
+<span class="n">df_2_new</span> <span class="o">=</span> <span class="n">df_2</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2_new</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 578 entries, 0 to 606
+Data columns (total 8 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Working_Year          578 non-null    float64
+ 1   Designation           578 non-null    object 
+ 2   Experience            578 non-null    object 
+ 3   Employment_Status     578 non-null    object 
+ 4   Employee_Location     578 non-null    object 
+ 5   Company_Size          578 non-null    object 
+ 6   Remote_Working_Ratio  578 non-null    int64  
+ 7   Salary_USD            578 non-null    float64
+dtypes: float64(2), int64(1), object(5)
+memory usage: 40.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Revisar los datos faltantes en el conjunto de datos</span>
+<span class="n">missing_values</span> <span class="o">=</span> <span class="n">df_2_new</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Calcular el porcentaje de valores faltantes</span>
+<span class="n">missing_percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_2_new</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Crear un DataFrame con el análisis de datos faltantes</span>
+<span class="n">missing_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Valores Faltantes&#39;</span><span class="p">:</span> <span class="n">missing_values</span><span class="p">,</span>
+    <span class="s1">&#39;Porcentaje Faltante (%)&#39;</span><span class="p">:</span> <span class="n">missing_percentage</span>
+<span class="p">})</span>
+
+<span class="n">missing_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Valores Faltantes</th>
+      <th>Porcentaje Faltante (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Working_Year</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Designation</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Experience</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Employment_Status</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Employee_Location</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Company_Size</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Remote_Working_Ratio</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Salary_USD</th>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Hay una diferencia muy importante entre ambos método; el <strong>primer enfoque es más flexible y te permite manejar datos faltantes de manera más controlada</strong>, mientras que el segundo es <strong>más directo y elimina todas las filas que tengan valores faltantes</strong>.</p>
+</section>
+<section id="imputacion-de-datos-faltantes">
+<h4><strong>Imputación de datos faltantes</strong><a class="headerlink" href="#imputacion-de-datos-faltantes" title="Permalink to this heading">#</a></h4>
+<section id="datos-categoricos">
+<h5><strong>Datos categóricos</strong><a class="headerlink" href="#datos-categoricos" title="Permalink to this heading">#</a></h5>
+<p>Para los datos categóricos (como “País”, “Categoría”, “Género”, etc.), los métodos comunes de imputación incluyen:</p>
+<ul class="simple">
+<li><p><strong>Moda</strong>: Imputar los valores faltantes con la categoría que más se repite. Este enfoque es simple y suele ser efectivo cuando los datos tienen una categoría predominante.</p></li>
+<li><p><strong>Asignación aleatoria</strong>: Reemplazar los valores faltantes con una categoría seleccionada al azar entre los valores no faltantes de la misma variable, preservando la distribución original de las categorías.</p></li>
+<li><p><strong>Imputación basada en subgrupos</strong>: Imputar los valores faltantes basándose en subgrupos definidos por otras variables, asegurando que la categoría imputada sea coherente con los datos restantes.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Usando la <strong>moda</strong>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copia del dataset</span>
+<span class="n">df_3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Iterar sobre cada columna del DataFrame</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_3</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="c1"># Comprobar si la columna es de tipo objeto (categórica)</span>
+    <span class="k">if</span> <span class="n">df_3</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
+        <span class="c1"># Imputar los valores faltantes con la moda (categoría más frecuente)</span>
+        <span class="n">df_3</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_3</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Usando <strong>Asignación aleatoria</strong>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copia del dataset</span>
+<span class="n">df_4</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Iterar sobre cada columna de df_4</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_4</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="c1"># Comprobar si la columna es de tipo objeto (categórica)</span>
+    <span class="k">if</span> <span class="n">df_4</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
+        <span class="c1"># Obtener las categorías no faltantes de la columna</span>
+        <span class="n">categorias_no_nan</span> <span class="o">=</span> <span class="n">df_4</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+        <span class="c1"># Reemplazar valores faltantes con una categoría seleccionada aleatoriamente</span>
+        <span class="n">df_4</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_4</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">categorias_no_nan</span><span class="p">)</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Usando <strong>imputación basada en grupos</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copia del dataset</span>
+<span class="n">df_5</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Definir la columna por la cual agrupar (por ejemplo, &quot;Experience&quot;)</span>
+<span class="n">grupo_col</span> <span class="o">=</span> <span class="s1">&#39;Experience&#39;</span>
+
+<span class="c1"># Iterar sobre cada columna de df_4</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_5</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="c1"># Comprobar si la columna es de tipo objeto (categórica) y no es la columna por la cual agrupamos</span>
+    <span class="k">if</span> <span class="n">df_5</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">!=</span> <span class="n">grupo_col</span><span class="p">:</span>
+        <span class="c1"># Agrupar por la columna definida (en este caso &#39;Experience&#39;) e imputar valores faltantes</span>
+        <span class="n">df_5</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_5</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">grupo_col</span><span class="p">)[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">x</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="datos-numericos">
+<h5><strong>Datos numéricos</strong><a class="headerlink" href="#datos-numericos" title="Permalink to this heading">#</a></h5>
+<p>Para los datos numéricos (como “Edad”, “Salario”, “Ingreso”, etc.), los métodos comunes de imputación incluyen:</p>
+<ul class="simple">
+<li><p><strong>Media</strong>: Reemplazar los valores faltantes con la media de la columna. Este método es útil cuando los datos tienen una distribución simétrica y no hay valores atípicos.</p></li>
+<li><p><strong>Mediana</strong>: Utilizar la mediana para imputar, lo cual es más robusto frente a valores atípicos o distribuciones asimétricas.</p></li>
+<li><p><strong>Imputación por métodos de machine learning</strong>: Estimar el valor faltante utilizando una regresión basada en otras variables del conjunto de datos. Este método es más avanzado y puede ser más preciso, pero requiere un modelo de regresión adecuado.</p></li>
+</ul>
+<p>Para poder usar la imputación de datos con la media o la mediana, se debe conocer la distribución de los datos sin los vacios. Con lo anterior podemos ver si tiene comportamiento normal o no. De la distribución depende si imputar con el promedio o la mediana.</p>
+<ol class="arabic simple">
+<li><p>Usando <strong>la media o el promedio</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copia del dataset</span>
+<span class="n">df_6</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Imputar los valores perdidos con imputación de medias</span>
+<span class="n">df_6</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_6</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Usando <strong>la mediana</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copia del dataset</span>
+<span class="n">df_7</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Imputar los valores perdidos con imputación de medias</span>
+<span class="n">df_7</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_7</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Otra manera adecuada de imputar valores ausentes es mediante la clase <code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code> de <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Libreria</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
+
+<span class="c1"># Copia del dataset</span>
+<span class="n">df_8</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Crear la instancia para imputar con la media</span>
+<span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+<span class="c1"># Imputar los valores faltantes</span>
+<span class="n">df_8</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_8</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el DataFrame después de la imputación</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">91</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">imputer</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Imputar los valores faltantes</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">df_8</span> <span class="o">=</span> <span class="n">imputer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_8</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># Mostrar el DataFrame después de la imputación</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="nb">print</span><span class="p">(</span><span class="n">df_8</span><span class="p">)</span>
+
+<span class="nn">File c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\_set_output.py:140,</span> in <span class="ni">_wrap_method_output.&lt;locals&gt;.wrapped</span><span class="nt">(self, X, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span> <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">140</span>     <span class="n">data_to_wrap</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_to_wrap</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>         <span class="c1"># only wrap the first output for cross decomposition</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>         <span class="n">return_tuple</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>             <span class="n">_wrap_data_with_container</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>             <span class="o">*</span><span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="p">)</span>
+
+<span class="nn">File c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\sklearn\base.py:915,</span> in <span class="ni">TransformerMixin.fit_transform</span><span class="nt">(self, X, y, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">911</span> <span class="c1"># non-optimized default implementation; override when a better</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="c1"># method is possible for a given clustering algorithm</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">914</span>     <span class="c1"># fit method of arity 1 (unsupervised transformation)</span>
+<span class="ne">--&gt; </span><span class="mi">915</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">917</span>     <span class="c1"># fit method of arity 2 (supervised transformation)</span>
+<span class="g g-Whitespace">    </span><span class="mi">918</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="nn">File c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\sklearn\base.py:1151,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1146</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1147</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1148</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1149</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1150</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1151</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\sklearn\impute\_base.py:366,</span> in <span class="ni">SimpleImputer.fit</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span> <span class="nd">@_fit_context</span><span class="p">(</span><span class="n">prefer_skip_nested_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span> <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">350</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Fit the imputer on `X`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">351</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span><span class="sd">         Fitted estimator.</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">366</span>     <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">in_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">368</span>     <span class="c1"># default fill_value is 0 for numerical input and &quot;missing_value&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="c1"># otherwise</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fill_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File c:\Users\cdeor\miniconda3\envs\ml_venv\lib\site-packages\sklearn\impute\_base.py:327,</span> in <span class="ni">SimpleImputer._validate_input</span><span class="nt">(self, X, in_fit)</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span> <span class="k">if</span> <span class="s2">&quot;could not convert&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">ve</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span>     <span class="n">new_ve</span> <span class="o">=</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">323</span>         <span class="s2">&quot;Cannot use </span><span class="si">{}</span><span class="s2"> strategy with non-numeric data:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">324</span>             <span class="bp">self</span><span class="o">.</span><span class="n">strategy</span><span class="p">,</span> <span class="n">ve</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">327</span>     <span class="k">raise</span> <span class="n">new_ve</span> <span class="kn">from</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>     <span class="k">raise</span> <span class="n">ve</span>
+
+<span class="ne">ValueError</span>: Cannot use mean strategy with non-numeric data:
+<span class="n">could</span> <span class="ow">not</span> <span class="n">convert</span> <span class="n">string</span> <span class="n">to</span> <span class="nb">float</span><span class="p">:</span> <span class="s1">&#39;Data Scientist&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
 </section>
 </section>
 
@@ -422,6 +1093,15 @@ document.write(`
         <p class="prev-next-title"><strong>Modulo 3: Análisis exploratorio de datos de la banca</strong></p>
       </div>
     </a>
+    <a class="right-next"
+       href="modulo_5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Despliegue de modelos</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -440,7 +1120,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-datos-faltantes-y-atipicos"><strong>Tratamiento de datos faltantes y atípicos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-datos-faltantes-y-atipicos"><strong>Tratamiento de datos faltantes y atípicos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion"><strong>Introducción</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-valores-faltantes"><strong>Tratamiento de valores faltantes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-datos-faltantes"><strong>Eliminación de datos faltantes</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#imputacion-de-datos-faltantes"><strong>Imputación de datos faltantes</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-categoricos"><strong>Datos categóricos</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-numericos"><strong>Datos numéricos</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
