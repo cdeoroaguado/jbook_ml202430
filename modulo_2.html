@@ -416,6 +416,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas-con-variable-categorica"><strong>Histogramas con variable categórica</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cajas-y-bigotes-con-variable-categorica"><strong>Cajas y bigotes con variable categórica</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-barras-con-variables-categoricas"><strong>Diagrama de barras con variables categóricas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-hexagonal"><strong>Diagrama hexagonal</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-contorno"><strong>Diagrama de contorno</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -747,6 +749,52 @@ necesidad de explicaciones. Mi dibujo número 2 era así:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fixed acidity;"volatile acidity";"citric acid";"residual sugar";"chlorides";"free sulfur dioxide";"total sulfur dioxide";"density";"pH";"sulphates";"alcohol";"quality"</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.4;0.7;0;1.9;0.076;11;34;0.9978;3.51;0.56;9.4;5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7.8;0.88;0;2.6;0.098;25;67;0.9968;3.2;0.68;9.8;5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8;0.76;0.04;2.3;0.092;15;54;0.997;3.26;0.65;...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11.2;0.28;0.56;1.9;0.075;17;60;0.998;3.16;0.58...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7.4;0.7;0;1.9;0.076;11;34;0.9978;3.51;0.56;9.4;5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>También podemos convertir fácilmente el DataFrame en una matriz <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
 <div class="cell docutils container">
@@ -5169,7 +5217,7 @@ Fácil de interpretar y comparar diferentes categorías.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13be0eb7aa4bfc4645b9280092510c82acc0606b2b1b4c192f641318d0c39fe9.png" src="_images/13be0eb7aa4bfc4645b9280092510c82acc0606b2b1b4c192f641318d0c39fe9.png" />
+<img alt="_images/a327f7bef2f609918f31044642020d3bb0c0fc1799dbd2bd4e50cf602fea07ed.png" src="_images/a327f7bef2f609918f31044642020d3bb0c0fc1799dbd2bd4e50cf602fea07ed.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5192,7 +5240,7 @@ Fácil de interpretar y comparar diferentes categorías.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/da108c1ef73912dc2710b41bdcb4ed5d2bb8c8c3de42fbecf6b6b659576049dc.png" src="_images/da108c1ef73912dc2710b41bdcb4ed5d2bb8c8c3de42fbecf6b6b659576049dc.png" />
+<img alt="_images/34fe0e20517d098cbbe09c43d65becb03a16dba31edc2899b26d4b470d487d97.png" src="_images/34fe0e20517d098cbbe09c43d65becb03a16dba31edc2899b26d4b470d487d97.png" />
 </div>
 </div>
 </section>
@@ -5442,6 +5490,101 @@ Fácil de interpretar y comparar diferentes categorías.</p></li>
 </div>
 <p>Este módulo ha proporcionado una base sólida en la importación, manipulación y visualización de datos en Python. Las habilidades adquiridas permitirán crear visualizaciones efectivas que faciliten la interpretación y comunicación de los datos, y la capacidad de manipular y preparar datos adecuadamente es esencial para realizar análisis significativos. La combinación de pandas para la manipulación de datos y Matplotlib para la visualización forma una potente herramienta en el análisis de datos y ciencia de datos.</p>
 </section>
+<section id="diagrama-hexagonal">
+<h3><strong>Diagrama hexagonal</strong><a class="headerlink" href="#diagrama-hexagonal" title="Permalink to this heading">#</a></h3>
+<p>Existe una versión más elegante de los gráficos de dispersión, llamada <code class="docutils literal notranslate"><span class="pre">hexagonal</span> <span class="pre">binning</span> <span class="pre">plot</span></code> (<code class="docutils literal notranslate"><span class="pre">hexbin</span> <span class="pre">plot</span></code>). En este ejercicio, utilizaremos <code class="docutils literal notranslate"><span class="pre">Seaborn</span></code> para crear una gráfica de dispersión hexagonal (<code class="docutils literal notranslate"><span class="pre">Hexbin</span> <span class="pre">Plot</span></code>) que muestre la relación entre las <strong>ventas semanales</strong> (<code class="docutils literal notranslate"><span class="pre">weekly_sales</span></code>) y el precio de la gasolina en <strong>USD por litro</strong> (<code class="docutils literal notranslate"><span class="pre">fuel_price_usd_per_l</span></code>). Este gráfico es útil para representar la densidad de datos cuando estos se superponen.</p>
+<ol class="arabic simple">
+<li><p>Importemos las bibliotecas necesarias:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Usaremos <code class="docutils literal notranslate"><span class="pre">sns.scatterplot</span></code> para crear una gráfica de dispersión, y añadiremos un esquema de color personalizado para mejorar la visualización.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+
+<span class="c1"># Establecer el estilo de los gráficos</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+
+<span class="c1"># Crear el gráfico hexbin</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weekly_sales&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;fuel_price_usd_per_l&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hex&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#4CB391&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/016b95ef9108dafe0cb2d1983c54b324d54b0642e166fbd149a4b67d38750db2.png" src="_images/016b95ef9108dafe0cb2d1983c54b324d54b0642e166fbd149a4b67d38750db2.png" />
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<ul class="simple">
+<li><p>Este gráfico utiliza celdas hexagonales para representar la densidad de puntos en áreas donde las ventas semanales y el precio de la gasolina están más concentrados.</p></li>
+<li><p>El histograma en los bordes superior y derecho muestra la variabilidad individual de cada variable (ventas semanales y precio de la gasolina, respectivamente).</p></li>
+</ul>
+</div>
+</section>
+<section id="diagrama-de-contorno">
+<h3><strong>Diagrama de contorno</strong><a class="headerlink" href="#diagrama-de-contorno" title="Permalink to this heading">#</a></h3>
+<p>Los gráficos de contorno son útiles cuando los puntos de datos están densamente poblados en ciertas áreas, ya que muestran la concentración de los datos mediante líneas de contorno. En este ejercicio, crearemos un gráfico de contorno para analizar la relación entre las <strong>ventas semanales</strong> (<code class="docutils literal notranslate"><span class="pre">weekly_sales</span></code>) y el <strong>precio de la gasolina en USD por litro</strong> (<code class="docutils literal notranslate"><span class="pre">fuel_price_usd_per_l</span></code>).</p>
+<ol class="arabic simple">
+<li><p>Importar las bibliotecas necesarias:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Utilizaremos el método <code class="docutils literal notranslate"><span class="pre">sns.kdeplot()</span></code> para generar un gráfico de contorno con las ventas semanales y el precio de la gasolina, y rellenar las áreas con gradientes de color para reflejar la densidad de puntos.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+
+<span class="c1"># Establecer el estilo de los gráficos</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+
+<span class="c1"># Crear el gráfico de contorno con densidad del núcleo (KDE)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weekly_sales&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;fuel_price_usd_per_l&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+
+<span class="c1"># Añadir título y etiquetas descriptivas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relación entre ventas semanales y precio de la gasolina&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Ventas semanales ($)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precio de la gasolina (USD por litro)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar el gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2fdd3c5b85d294be005fce57f45ed4395fd0f3556ca6365761bfc7aae2a0b135.png" src="_images/2fdd3c5b85d294be005fce57f45ed4395fd0f3556ca6365761bfc7aae2a0b135.png" />
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<ul class="simple">
+<li><p>En este gráfico, las áreas más oscuras y llenas representan zonas donde hay una mayor concentración de datos, lo que indica una relación más fuerte entre las ventas semanales y el precio de la gasolina en esas regiones.</p></li>
+<li><p>Al igual que el gráfico hexbin, este gráfico de contorno permite visualizar mejor la densidad de los datos cuando hay muchas observaciones en ciertas áreas del gráfico.</p></li>
+</ul>
+</div>
+</section>
 </section>
 </section>
 
@@ -5560,6 +5703,8 @@ Fácil de interpretar y comparar diferentes categorías.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas-con-variable-categorica"><strong>Histogramas con variable categórica</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cajas-y-bigotes-con-variable-categorica"><strong>Cajas y bigotes con variable categórica</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-barras-con-variables-categoricas"><strong>Diagrama de barras con variables categóricas</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-hexagonal"><strong>Diagrama hexagonal</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-contorno"><strong>Diagrama de contorno</strong></a></li>
 </ul>
 </li>
 </ul>
