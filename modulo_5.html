@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modulo 5: Despliegue de modelos &#8212; Ciencia de datos aplicada a la banca</title>
+    <title>Modulo 5: Streamlit o Dash &#8212; Ciencia de datos aplicada a la banca</title>
   
   
   
@@ -67,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_5';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modulo 6: Despliegue de modelos" href="modulo_6.html" />
     <link rel="prev" title="Módulo 4: Visualización de datos con Python" href="modulo_4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -163,7 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="modulo_2.html"><strong>Módulo 2: Estructuración y manipulación de datos con Python</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modulo_3.html"><strong>Modulo 3: Análisis exploratorio de datos de la banca</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modulo_4.html"><strong>Módulo 4: Visualización de datos con Python</strong></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Modulo 5: Despliegue de modelos</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Modulo 5: Streamlit o Dash</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_6.html"><strong>Modulo 6: Despliegue de modelos</strong></a></li>
 </ul>
 
     </div>
@@ -334,9 +336,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -347,28 +347,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modulo 5: Despliegue de modelos</h1>
+    <h1>Modulo 5: Streamlit o Dash</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guardar-el-modelo">1. Guardar el modelo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar">2. Instalar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-api-modelo-py">3. crear api_modelo.py</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levantamos-el-servidor-en-local">4. Levantamos el servidor en local</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-postman">5. <strong>Instalación de Postman</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-api-solicitud-post">6. <strong>Prueba de API: Solicitud POST</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subir-a-la-nube">Subir a la nube</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-docker">Instalar Docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-requierements-txt">Crear requierements.txt</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-dockerfile">Crear Dockerfile</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -378,130 +361,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modulo-5-despliegue-de-modelos">
-<h1><strong>Modulo 5: Despliegue de modelos</strong><a class="headerlink" href="#modulo-5-despliegue-de-modelos" title="Permalink to this heading">#</a></h1>
-<section id="guardar-el-modelo">
-<h2>1. Guardar el modelo<a class="headerlink" href="#guardar-el-modelo" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
-
-<span class="c1"># Guardar el modelo entrenado en un archivo pickle</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;modelo_lasso.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo_pickle</span><span class="p">:</span>
-    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_search_lasso</span><span class="p">,</span> <span class="n">archivo_pickle</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Modelo guardado exitosamente en &#39;modelo_lasso.pkl&#39;&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="instalar">
-<h2>2. Instalar<a class="headerlink" href="#instalar" title="Permalink to this heading">#</a></h2>
-<p>pip install fastapi</p>
-<p>pip install uvicorn</p>
-</section>
-<section id="crear-api-modelo-py">
-<h2>3. crear api_modelo.py<a class="headerlink" href="#crear-api-modelo-py" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
-<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-
-<span class="c1"># Crear la aplicación FastAPI</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
-
-<span class="c1"># Definir la estructura de la fila de entrada usando Pydantic</span>
-<span class="k">class</span> <span class="nc">InputData</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">housing_median_age</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">total_rooms</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">total_bedrooms</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">population</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">households</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">median_income</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">ocean_proximity_1</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Variable dummy 1</span>
-    <span class="n">ocean_proximity_2</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Variable dummy 2</span>
-    <span class="n">ocean_proximity_3</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Variable dummy 3</span>
-
-<span class="c1"># Cargar el modelo guardado (Pickle)</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;modelo_lasso.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo_pickle</span><span class="p">:</span>
-    <span class="n">modelo_lasso</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">archivo_pickle</span><span class="p">)</span>
-
-<span class="c1"># Definir la ruta POST para recibir la fila y devolver la predicción</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/predict/&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">InputData</span><span class="p">):</span>
-    <span class="c1"># Convertir la entrada en un array numpy</span>
-    <span class="n">fila</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">data</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> 
-                      <span class="n">data</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">housing_median_age</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">total_rooms</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">total_bedrooms</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">population</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">households</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">median_income</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">ocean_proximity_1</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">ocean_proximity_2</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">ocean_proximity_3</span><span class="p">]])</span>
-    
-    <span class="c1"># Realizar la predicción</span>
-    <span class="n">prediccion</span> <span class="o">=</span> <span class="n">modelo_lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
-    
-    <span class="c1"># Devolver la predicción</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;prediccion&quot;</span><span class="p">:</span> <span class="n">prediccion</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="levantamos-el-servidor-en-local">
-<h2>4. Levantamos el servidor en local<a class="headerlink" href="#levantamos-el-servidor-en-local" title="Permalink to this heading">#</a></h2>
-<p>La forma de levantar el servidor local es</p>
-<p><img alt="api_1" src="_images/api1.png" /></p>
-<p>Si esta ruta no funciona usa el path absoluto que es</p>
-<p><img alt="api_2" src="_images/api2.png" /></p>
-<p>La siguiente imagen nos indica que el servidor esta funcionando en local</p>
-<p><img alt="api_3" src="_images/api3.png" /></p>
-</section>
-<section id="instalacion-de-postman">
-<h2>5. <strong>Instalación de Postman</strong><a class="headerlink" href="#instalacion-de-postman" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="prueba-de-api-solicitud-post">
-<h2>6. <strong>Prueba de API: Solicitud POST</strong><a class="headerlink" href="#prueba-de-api-solicitud-post" title="Permalink to this heading">#</a></h2>
-<p>Para enviar una solicitud POST a la api local debo hacer:</p>
-<ol class="arabic">
-<li><p>Escoger POST
-<img alt="api_6" src="_images/api6.png" /></p></li>
-<li><p>Especificar la URL del servidor local( “<a class="reference external" href="http://127.0.0.1:8000/predict/">http://127.0.0.1:8000/predict/</a>”)</p>
-<p>Esto se creo asi:</p>
-<ul class="simple">
-<li><p><img alt="api_4" src="_images/api4.png" /></p></li>
-<li><p><img alt="api_5" src="_images/api5.png" /></p></li>
-</ul>
-</li>
-<li></li>
-</ol>
-<p><img alt="api_7" src="_images/api7.png" /></p>
-<p><img alt="api_8" src="_images/api8.png" /></p>
-<p><img alt="api_9" src="_images/api9.png" /></p>
-<p>Se le da enviar para obtener la prediccion y la prueba de la api</p>
-</section>
-<section id="subir-a-la-nube">
-<h2>Subir a la nube<a class="headerlink" href="#subir-a-la-nube" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="instalar-docker">
-<h2>Instalar Docker<a class="headerlink" href="#instalar-docker" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="crear-requierements-txt">
-<h2>Crear requierements.txt<a class="headerlink" href="#crear-requierements-txt" title="Permalink to this heading">#</a></h2>
-<p>(ml_venv) C:\Users\cdeor\OneDrive\Escritorio\api&gt;pip freeze &gt; requirements.txt</p>
-</section>
-<section id="crear-dockerfile">
-<h2>Crear Dockerfile<a class="headerlink" href="#crear-dockerfile" title="Permalink to this heading">#</a></h2>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-5-streamlit-o-dash">
+<h1><strong>Modulo 5: Streamlit o Dash</strong><a class="headerlink" href="#modulo-5-streamlit-o-dash" title="Permalink to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -544,6 +405,15 @@ document.write(`
         <p class="prev-next-title"><strong>Módulo 4: Visualización de datos con Python</strong></p>
       </div>
     </a>
+    <a class="right-next"
+       href="modulo_6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Modulo 6: Despliegue de modelos</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -553,29 +423,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guardar-el-modelo">1. Guardar el modelo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar">2. Instalar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-api-modelo-py">3. crear api_modelo.py</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levantamos-el-servidor-en-local">4. Levantamos el servidor en local</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-postman">5. <strong>Instalación de Postman</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-api-solicitud-post">6. <strong>Prueba de API: Solicitud POST</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subir-a-la-nube">Subir a la nube</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-docker">Instalar Docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-requierements-txt">Crear requierements.txt</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-dockerfile">Crear Dockerfile</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
