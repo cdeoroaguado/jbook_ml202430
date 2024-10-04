@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modulo 5: Streamlit o Dash &#8212; Ciencia de datos aplicada a la banca</title>
+    <title>Modulo 5: Introducción a Streamlit &#8212; Ciencia de datos aplicada a la banca</title>
   
   
   
@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="modulo_2.html"><strong>Módulo 2: Estructuración y manipulación de datos con Python</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modulo_3.html"><strong>Modulo 3: Análisis exploratorio de datos de la banca</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modulo_4.html"><strong>Módulo 4: Visualización de datos con Python</strong></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Modulo 5: Streamlit o Dash</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Modulo 5: Introducción a Streamlit</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modulo_6.html"><strong>Modulo 6: Despliegue de modelos</strong></a></li>
 </ul>
 
@@ -336,7 +336,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -347,11 +349,34 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modulo 5: Streamlit o Dash</h1>
+    <h1>Modulo 5: Introducción a Streamlit</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-streamlit"><strong>¿Qué es Streamlit?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-los-cientificos-de-datos-deberian-utilizar-streamlit"><strong>¿Por qué los científicos de datos deberían utilizar Streamlit?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-utilizar-streamlit"><strong>¿Cómo utilizar Streamlit?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guia-paso-a-paso-para-la-creacion-de-una-aplicacion-con-streamlit"><strong>Guía paso a paso para la creación de una aplicación con Streamlit</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-la-carpeta-app">Creación de la carpeta <strong>app</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apertura-de-la-carpeta-en-el-editor-de-codigo"><strong>Apertura de la carpeta en el editor de código</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-del-archivo-app-py"><strong>Creación del archivo <code class="docutils literal notranslate"><span class="pre">app.py</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escritura-y-ejecucion-del-codigo-en-app-py"><strong>Escritura y ejecución del código en <code class="docutils literal notranslate"><span class="pre">app.py</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostrar-textos-con-streamlit"><strong>Mostrar textos con Streamlit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-imagen-video-o-audio-con-streamlit"><strong>Visualización de imagen, vídeo o audio con Streamlit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-de-entrada"><strong>Widgets de entrada</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-del-progreso-y-el-estado-con-streamlit"><strong>Visualización del progreso y el estado con Streamlit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barra-lateral-y-contenedor"><strong>Barra lateral y contenedor</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-con-streamlit"><strong>Visualización con Streamlit</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -361,8 +386,285 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modulo-5-streamlit-o-dash">
-<h1><strong>Modulo 5: Streamlit o Dash</strong><a class="headerlink" href="#modulo-5-streamlit-o-dash" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-5-introduccion-a-streamlit">
+<h1><strong>Modulo 5: Introducción a Streamlit</strong><a class="headerlink" href="#modulo-5-introduccion-a-streamlit" title="Permalink to this heading">#</a></h1>
+<section id="que-es-streamlit">
+<h2><strong>¿Qué es Streamlit?</strong><a class="headerlink" href="#que-es-streamlit" title="Permalink to this heading">#</a></h2>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Streamlit</span></code></strong> es un marco de trabajo de <strong>código abierto, gratuito y altamente eficiente</strong>, diseñado para la <strong>creación rápida de aplicaciones web interactivas</strong> enfocadas en aprendizaje automático y ciencia de datos. Desarrollado en Python, Streamlit está pensado específicamente para científicos de datos e ingenieros de machine learning, quienes, sin ser necesariamente desarrolladores web, necesitan una herramienta sencilla y accesible que les permita construir visualizaciones y aplicaciones sin invertir semanas en aprender tecnologías web complejas.</p>
+<p>Con Streamlit, puedes desarrollar aplicaciones web atractivas y funcionales utilizando solo unas pocas líneas de código, lo que facilita la visualización de datos y la interacción con parámetros esenciales para los modelos, todo en un entorno que prioriza la simplicidad y la rapidez en el desarrollo.</p>
+<p><img alt="stream" src="_images/stream.png" /></p>
+</section>
+<section id="por-que-los-cientificos-de-datos-deberian-utilizar-streamlit">
+<h2><strong>¿Por qué los científicos de datos deberían utilizar Streamlit?</strong><a class="headerlink" href="#por-que-los-cientificos-de-datos-deberian-utilizar-streamlit" title="Permalink to this heading">#</a></h2>
+<p>Lo más destacado de <strong>Streamlit</strong> es que no necesitas conocimientos previos de desarrollo web para comenzar a crear tu primera aplicación. Si te dedicas a la ciencia de datos y quieres implementar tus modelos de forma rápida, sencilla y con solo unas pocas líneas de código, <strong>Streamlit</strong> es una opción excelente.</p>
+<p>Una característica clave para el éxito de cualquier aplicación es ofrecer una interfaz de usuario intuitiva y eficiente. Muchas aplicaciones modernas, que gestionan grandes volúmenes de datos, se enfrentan al desafío de desarrollar interfaces atractivas sin procesos complicados. Aquí es donde <strong>Streamlit</strong> brilla: esta biblioteca de Python de código abierto permite a los desarrolladores crear interfaces interactivas y visualmente atractivas en muy poco tiempo.</p>
+<p><strong>Streamlit</strong> es la forma más sencilla de convertir tu código en una aplicación web, especialmente si no tienes experiencia en desarrollo frontend:</p>
+<ul class="simple">
+<li><p>No necesitas conocimientos previos de front-end (HTML, JavaScript, CSS).</p></li>
+<li><p>En lugar de pasar días o meses desarrollando una aplicación web, puedes crear una aplicación de <em>machine learning</em> o ciencia de datos impresionante en tan solo unas horas, o incluso minutos.</p></li>
+<li><p>Es compatible con una amplia gama de bibliotecas de Python como <strong>pandas</strong>, <strong>matplotlib</strong>, <strong>seaborn</strong>, <strong>plotly</strong>, <strong>Keras</strong>, <strong>PyTorch</strong> y <strong>SymPy</strong> (incluyendo soporte para <em>latex</em>).</p></li>
+<li><p>Requiere menos código para construir aplicaciones sorprendentes.</p></li>
+<li><p>El almacenamiento en caché de datos simplifica y acelera los cálculos, haciendo que el rendimiento sea más eficiente.</p></li>
+</ul>
+</section>
+<section id="como-utilizar-streamlit">
+<h2><strong>¿Cómo utilizar Streamlit?</strong><a class="headerlink" href="#como-utilizar-streamlit" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Debemos crear un ambiente exclusivamente para <code class="docutils literal notranslate"><span class="pre">streamlit</span></code> usando anaconda powershell prompt.</p></li>
+</ol>
+<p><img alt="ambiente streamlit" src="_images/stream_1.png" /></p>
+<ol class="arabic simple" start="2">
+<li><p>Activamos el ambiente de <code class="docutils literal notranslate"><span class="pre">streamlit_venv</span></code></p></li>
+</ol>
+<p><img alt="ambiente activacion" src="_images/stream_2.png" /></p>
+<ol class="arabic simple" start="3">
+<li><p>Escriba este comando en la terminal para instalar Streamlit, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">streamlit</span></code></p></li>
+</ol>
+<p><img alt="instalacion" src="_images/stream_3.png" /></p>
+<ol class="arabic simple" start="4">
+<li><p>Si queremos ver que esta instalado correctamente, Pruebe en el terminal lo siguiente <code class="docutils literal notranslate"><span class="pre">streamlit</span> <span class="pre">hello</span></code></p></li>
+</ol>
+<p><img alt="instalacion" src="_images/stream_4.png" /></p>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<p>Cuando ejecutas el comando <strong><code class="docutils literal notranslate"><span class="pre">streamlit</span> <span class="pre">hello</span></code></strong> por primera vez, Windows puede mostrar una advertencia o mensaje de seguridad relacionado con el firewall de Windows Defender. Esto sucede porque Streamlit levanta un servidor local, y el sistema operativo detecta que está intentando establecer conexiones a través de redes. Windows te pregunta si deseas permitir que la aplicación use redes públicas o privadas.</p>
+<p>Aquí te doy algunas pautas para proceder de forma segura:</p>
+<ul class="simple">
+<li><p><strong>Red privada</strong>: Si estás en casa o en una red confiable, como la de tu trabajo, selecciona la opción de red privada. Esto permitirá que Streamlit se comunique con otros dispositivos en la misma red local sin restricciones.</p></li>
+<li><p><strong>Red pública</strong>: Si estás en una red pública (por ejemplo, en una cafetería o aeropuerto), puedes desmarcar esta opción para evitar que Streamlit exponga información o se comunique en redes que pueden no ser seguras.</p></li>
+</ul>
+<p><strong>Si ves la advertencia de Windows Firewall</strong>:</p>
+<ul class="simple">
+<li><p>Marca la casilla para permitir que Streamlit funcione en redes privadas (desmarca la opción de redes públicas si no es necesario).</p></li>
+<li><p>Luego, haz clic en <em>permitir acceso</em>.</p></li>
+</ul>
+<p>Esto le permitirá a Streamlit ejecutar sin problemas su servidor local en redes privadas.</p>
+</div>
+<p>Además, cuando escriba este comando en la terminal, la página siguiente debería abrirse automáticamente:</p>
+<p><img alt="desp_1" src="_images/stream_6.png" />
+<img alt="desp_2" src="_images/stream_7.png" />
+<img alt="desp_3" src="_images/stream_8.png" />
+<img alt="desp_4" src="_images/stream_9.png" />
+<img alt="desp_5" src="_images/stream_10.png" /></p>
+</section>
+<section id="guia-paso-a-paso-para-la-creacion-de-una-aplicacion-con-streamlit">
+<h2><strong>Guía paso a paso para la creación de una aplicación con Streamlit</strong><a class="headerlink" href="#guia-paso-a-paso-para-la-creacion-de-una-aplicacion-con-streamlit" title="Permalink to this heading">#</a></h2>
+<p>Una explicación paso a paso más detallada para la creación de la carpeta <em>app</em> y el uso de Streamlit con un script en Python llamado <strong><code class="docutils literal notranslate"><span class="pre">app.py</span></code></strong>.</p>
+<section id="creacion-de-la-carpeta-app">
+<h3>Creación de la carpeta <strong>app</strong><a class="headerlink" href="#creacion-de-la-carpeta-app" title="Permalink to this heading">#</a></h3>
+<p>Para organizar tu proyecto, es importante crear una carpeta donde se alojarán todos los archivos relacionados. Sigue estos pasos:</p>
+<ol class="arabic simple">
+<li><p><strong>En Windows</strong></p>
+<ul class="simple">
+<li><p>Abre el <strong>Explorador de archivos</strong>.</p></li>
+<li><p>Navega hasta la ubicación donde deseas crear tu proyecto (por ejemplo, el escritorio o una carpeta específica).</p></li>
+<li><p>Haz clic derecho en un espacio vacío.</p></li>
+<li><p>Selecciona la opción <strong>Nuevo &gt; Carpeta</strong>.</p></li>
+<li><p>Nombra la carpeta como <code class="docutils literal notranslate"><span class="pre">app</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>En macOS o Linux</strong></p>
+<ul class="simple">
+<li><p>Abre la terminal.</p></li>
+<li><p>Navega hasta la ubicación donde deseas crear tu carpeta usando el comando <code class="docutils literal notranslate"><span class="pre">cd</span></code>. Por ejemplo:
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/Desktop</span></code></p></li>
+<li><p>Crea la carpeta con el siguiente comando `mkdir app</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="apertura-de-la-carpeta-en-el-editor-de-codigo">
+<h3><strong>Apertura de la carpeta en el editor de código</strong><a class="headerlink" href="#apertura-de-la-carpeta-en-el-editor-de-codigo" title="Permalink to this heading">#</a></h3>
+<p>Tomando el editor de código de Visual Studio Code (VSCode)</p>
+<ul class="simple">
+<li><p>Abre <code class="docutils literal notranslate"><span class="pre">VSCode</span></code>.</p></li>
+<li><p>Haz clic en <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open</span> <span class="pre">Folder...</span></code>.</p></li>
+<li><p>Selecciona la carpeta recién creada llamada <code class="docutils literal notranslate"><span class="pre">app</span></code> y haz clic en <strong>Select Folder</strong>.</p></li>
+</ul>
+</section>
+<section id="creacion-del-archivo-app-py">
+<h3><strong>Creación del archivo <code class="docutils literal notranslate"><span class="pre">app.py</span></code></strong><a class="headerlink" href="#creacion-del-archivo-app-py" title="Permalink to this heading">#</a></h3>
+<p>Pasos para VSCode</p>
+<ul class="simple">
+<li><p>Dentro de la carpeta <code class="docutils literal notranslate"><span class="pre">app</span></code>, haz clic derecho y selecciona <strong>Nuevo archivo</strong>.</p></li>
+<li><p>Nombra el archivo <code class="docutils literal notranslate"><span class="pre">app.py</span></code>.</p></li>
+</ul>
+</section>
+<section id="escritura-y-ejecucion-del-codigo-en-app-py">
+<h3><strong>Escritura y ejecución del código en <code class="docutils literal notranslate"><span class="pre">app.py</span></code></strong><a class="headerlink" href="#escritura-y-ejecucion-del-codigo-en-app-py" title="Permalink to this heading">#</a></h3>
+<p>Abrimos el archivo <code class="docutils literal notranslate"><span class="pre">app.py</span></code> y se escribe el código en Streamlit para empezar. Y despues en la terminal de anaconda powershell, escribe lo siguiente para la ejecución <code class="docutils literal notranslate"><span class="pre">streamlit</span> <span class="pre">run</span> <span class="pre">app.py</span></code></p>
+<p><img alt="desp_6" src="_images/stream_11.png" /></p>
+<p>Los comandos de Streamlit son fáciles de escribir y comprender. Con un simple comando, podrá visualizar textos, elementos multimedia, widgets, gráficos, etc.</p>
+</section>
+<section id="mostrar-textos-con-streamlit">
+<h3><strong>Mostrar textos con Streamlit</strong><a class="headerlink" href="#mostrar-textos-con-streamlit" title="Permalink to this heading">#</a></h3>
+<p>Al principio, veremos cómo agregar texto a tu aplicación Streamlit y cuáles son los diferentes comandos para agregar textos.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.write()</span></code>: Esta función se utiliza para agregar cualquier cosa a una aplicación web, desde cadenas formateadas hasta gráficos en figuras de matplotlib, gráficos de Altair, figuras de plotly, marco de datos, modelo Keras y otros.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.title()</span></code>: Esta es una función que te permite agregar un título a tu aplicación web.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.text_input()</span></code>: Esta función se utiliza para crear un cuadro de texto donde el usuario puede escribir.</p></li>
+</ul>
+<p><img alt="desp_7" src="_images/stream_12.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.header()</span></code>: Establece el encabezado de una sección. Es ideal para crear encabezados que se ven más grandes y con un formato destacado en tu app, pero menos prominente que un título.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.markdown()</span></code>: Establece un markdown. Te permite escribir texto con formato usando el lenguaje de Markdown. Puedes usar negritas, cursivas, listas, enlaces, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.subheader()</span></code>: Establece el subencabezado de una sección. Es similar a <code class="docutils literal notranslate"><span class="pre">st.header()</span></code>, pero con un tamaño más pequeño, perfecto para subsecciones dentro de un encabezado.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.caption()</span></code>: Escribe un título o una pequeña descripción. Se usa para agregar descripciones breves o pies de página, generalmente en un tamaño de fuente pequeño.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.code()</span></code>: Establece un bloque de código. Es perfecto para mostrar bloques de código con formato. Puedes especificar el lenguaje del código para que se destaque la sintaxis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.latex()</span></code>: Mostrar expresiones matemáticas con LaTeX. Si necesitas mostrar ecuaciones o expresiones matemáticas, puedes usar LaTeX con esta función.</p></li>
+</ul>
+<p><img alt="desp_8" src="_images/stream_13.png" /></p>
+</section>
+<section id="visualizacion-de-imagen-video-o-audio-con-streamlit">
+<h3><strong>Visualización de imagen, vídeo o audio con Streamlit</strong><a class="headerlink" href="#visualizacion-de-imagen-video-o-audio-con-streamlit" title="Permalink to this heading">#</a></h3>
+<p>No encontrará funciones tan sencillas como las de Streamlit para mostrar imágenes, vídeos y archivos de audio. Veamos cómo mostrar archivos multimedia con Streamlit.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.image()</span></code>: Esta función se utiliza para mostrar una imagen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.audio()</span></code>: Esta función se utiliza para mostrar un audio.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.video()</span></code>: Esta función se utiliza para mostrar un vídeo.</p></li>
+</ul>
+<p>El código en python es:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+
+<span class="c1"># Título principal</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ejemplo de Visualización de Multimedia con Streamlit&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar una imagen</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">&quot;Visualización de una imagen&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="s2">&quot;ruta_de_la_imagen.jpg&quot;</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;Imagen de ejemplo&quot;</span><span class="p">,</span> <span class="n">use_column_width</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Reproducir un archivo de audio</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">&quot;Reproducción de audio&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">audio</span><span class="p">(</span><span class="s2">&quot;ruta_del_audio.mp3&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar un vídeo</span>
+<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">&quot;Visualización de un vídeo&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">video</span><span class="p">(</span><span class="s2">&quot;ruta_del_video.mp4&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="widgets-de-entrada">
+<h3><strong>Widgets de entrada</strong><a class="headerlink" href="#widgets-de-entrada" title="Permalink to this heading">#</a></h3>
+<p>Los <strong>widgets</strong> son los componentes más importantes de la interfaz de usuario. Streamlit tiene varios widgets que te permiten incorporar interactividad directamente a tus aplicaciones con botones, controles deslizantes, entradas de texto y más.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.checkbox()</span></code>: Casilla de verificación. Esta función devuelve un valor booleano: <code class="docutils literal notranslate"><span class="pre">True</span></code> si la casilla está marcada, <code class="docutils literal notranslate"><span class="pre">False</span></code> en caso contrario.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.button()</span></code>: Botón. Muestra un botón y ejecuta una acción cuando se pulsa.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.radio()</span></code>: Botones de opción (radio buttons). Permite a los usuarios seleccionar una opción de una lista.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.selectbox()</span></code>: Cuadro de selección. Crea un menú desplegable que permite seleccionar una opción.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.multiselect()</span></code>: Selección múltiple. Permite al usuario seleccionar múltiples opciones de una lista.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.select_slider()</span></code>: Control deslizante de selección. Permite seleccionar valores discretos de un control deslizante.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.slider()</span></code>: Control deslizante. Es un widget que permite seleccionar un valor numérico dentro de un rango.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ejemplo de Widgets de Entrada en Streamlit&quot;</span><span class="p">)</span>
+
+<span class="c1"># Checkbox</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">&quot;Mostrar texto adicional&quot;</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;¡Has marcado la casilla!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Botón</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Haz clic aquí&quot;</span><span class="p">):</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;¡Has pulsado el botón!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Radio</span>
+<span class="n">opcion_radio</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">radio</span><span class="p">(</span><span class="s2">&quot;Selecciona una opción de radio:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Opción 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Opción 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Opción 3&quot;</span><span class="p">])</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Opción seleccionada: </span><span class="si">{</span><span class="n">opcion_radio</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Selectbox</span>
+<span class="n">opcion_selectbox</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Selecciona una opción del cuadro desplegable:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Opción A&quot;</span><span class="p">,</span> <span class="s2">&quot;Opción B&quot;</span><span class="p">,</span> <span class="s2">&quot;Opción C&quot;</span><span class="p">])</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Opción seleccionada: </span><span class="si">{</span><span class="n">opcion_selectbox</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Multiselect</span>
+<span class="n">opciones_multiselect</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">multiselect</span><span class="p">(</span><span class="s2">&quot;Selecciona varias opciones:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Opción 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Opción 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Opción 3&quot;</span><span class="p">])</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Opciones seleccionadas: </span><span class="si">{</span><span class="n">opciones_multiselect</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Select Slider</span>
+<span class="n">opcion_slider</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">select_slider</span><span class="p">(</span><span class="s2">&quot;Selecciona un nivel:&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Bajo&quot;</span><span class="p">,</span> <span class="s2">&quot;Medio&quot;</span><span class="p">,</span> <span class="s2">&quot;Alto&quot;</span><span class="p">])</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nivel seleccionado: </span><span class="si">{</span><span class="n">opcion_slider</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Slider</span>
+<span class="n">valor_slider</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Selecciona un valor numérico:&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valor seleccionado: </span><span class="si">{</span><span class="n">valor_slider</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><img alt="desp_9" src="_images/stream_14.png" /></p>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<ul class="simple">
+<li><p>Estos widgets permiten captar información de los usuarios y usarla en tu aplicación de manera dinámica.</p></li>
+<li><p>Puedes combinar varios widgets para crear flujos interactivos más complejos, como formularios o dashboards.</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.number_input()</span></code>: Entrada numérica. Permite a los usuarios ingresar un número, con la posibilidad de especificar un rango y un valor predeterminado.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.date_input()</span></code>: Entrada de fecha. Permite seleccionar una fecha desde un calendario.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.time_input()</span></code>: Entrada de hora. Permite seleccionar una hora específica.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.text_area()</span></code>: Área de texto. Permite ingresar varias líneas de texto, como un comentario largo o una descripción.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.file_uploader()</span></code>: Cargar archivos. Permite a los usuarios cargar archivos desde su dispositivo. Puedes especificar el tipo de archivo permitido (como imágenes, PDFs, etc.).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.color_picker()</span></code>: Selector de color. Permite seleccionar un color de una paleta.</p></li>
+</ul>
+<p><img alt="desp_10" src="_images/stream_15.png" /></p>
+</section>
+<section id="visualizacion-del-progreso-y-el-estado-con-streamlit">
+<h3><strong>Visualización del progreso y el estado con Streamlit</strong><a class="headerlink" href="#visualizacion-del-progreso-y-el-estado-con-streamlit" title="Permalink to this heading">#</a></h3>
+<p>Ahora veremos cómo podemos agregar una barra de progreso y mensajes de estado como error y éxito a nuestra aplicación.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.balloons()</span></code>: Mostrar globos de celebración. Se utiliza para celebrar un evento o acción completada con éxito, mostrando animaciones de globos en la aplicación.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.progress()</span></code>: Barra de progreso. Permite mostrar una barra de progreso para que el usuario pueda visualizar el avance de un proceso.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.spinner()</span></code>: Mensaje de espera temporal. Muestra un mensaje de <em>cargando</em> mientras se ejecuta una tarea en segundo plano, indicando que algo está sucediendo.</p></li>
+</ul>
+<p><img alt="desp_11" src="_images/stream_16.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.success()</span></code>: Mostrar un mensaje de éxito. Este mensaje se utiliza cuando una operación o tarea se completa con éxito.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.error()</span></code>: Mostrar un mensaje de error. Este mensaje se utiliza cuando ocurre un error en la aplicación o durante la ejecución de una tarea.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.warning()</span></code>: Mostrar un mensaje de advertencia. Utiliza este mensaje para alertar al usuario sobre una posible advertencia, como configuraciones incorrectas o posibles problemas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.info()</span></code>: Mostrar un mensaje informativo. Este mensaje es ideal para proporcionar información adicional o contexto sobre lo que está sucediendo en la aplicación.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">st.exception()</span></code>: Mostrar un mensaje de excepción. Esta función se utiliza para mostrar excepciones o errores de Python, proporcionando detalles sobre el error.</p></li>
+</ul>
+<p><img alt="desp_12" src="_images/stream_17.png" /></p>
+</section>
+<section id="barra-lateral-y-contenedor">
+<h3><strong>Barra lateral y contenedor</strong><a class="headerlink" href="#barra-lateral-y-contenedor" title="Permalink to this heading">#</a></h3>
+<p>En Streamlit, puedes utilizar la barra lateral para organizar mejor tu contenido y proporcionar a los usuarios una experiencia más intuitiva. Al usar <code class="docutils literal notranslate"><span class="pre">st.sidebar</span></code>, los elementos que agregues aparecerán en un panel lateral fijo a la izquierda de la aplicación. Esto es útil para menús, controles o configuraciones que no interfieren directamente con el contenido principal.</p>
+<p>Veamos cómo usar la barra lateral y los contenedores para organizar tu aplicación.</p>
+<ul class="simple">
+<li><p><strong>Barra lateral con <code class="docutils literal notranslate"><span class="pre">st.sidebar</span></code></strong>: Cualquier componente que pases a <code class="docutils literal notranslate"><span class="pre">st.sidebar</span></code> aparecerá en la barra lateral. Puedes agregar títulos, sliders, botones y más en ese espacio.</p></li>
+</ul>
+<p><img alt="desp_13" src="_images/stream_18.png" /></p>
+<ul class="simple">
+<li><p><strong>Contenedores con <code class="docutils literal notranslate"><span class="pre">st.container()</span></code></strong>: Los contenedores permiten agrupar elementos de manera ordenada dentro de tu aplicación. Puedes utilizarlos para estructurar mejor el contenido en secciones específicas.</p></li>
+</ul>
+<p><img alt="desp_14" src="_images/stream_19.png" /></p>
+<p>Un ejemplo completo es el siguiente</p>
+<p><img alt="desp_15" src="_images/stream_20.png" /></p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">¿Cómo organizar el contenido?</p>
+<ul class="simple">
+<li><p><strong>Barra lateral</strong>: Ideal para menús, sliders, botones y configuraciones que no interfieren con el contenido principal.</p></li>
+<li><p><strong>Contenedores</strong>: Útiles para dividir tu aplicación en secciones claras y organizadas, manteniendo la interfaz limpia y fácil de seguir.</p></li>
+</ul>
+</div>
+</section>
+<section id="visualizacion-con-streamlit">
+<h3><strong>Visualización con Streamlit</strong><a class="headerlink" href="#visualizacion-con-streamlit" title="Permalink to this heading">#</a></h3>
+<p>La visualización de datos es una herramienta poderosa para comunicar información compleja de una manera clara y accesible. Con Streamlit, puedes integrar fácilmente gráficos y visualizaciones dentro de tu aplicación para contar historias a partir de los datos. Vamos a ver cómo usar la función <code class="docutils literal notranslate"><span class="pre">st.pyplot()</span></code> para mostrar gráficos creados con Matplotlib, una de las bibliotecas más populares para la creación de gráficos en Python.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">¿Por qué necesitamos la visualización de datos?</p>
+<p>La visualización de datos nos ayuda a:</p>
+<ul class="simple">
+<li><p>Detectar tendencias y patrones.</p></li>
+<li><p>Identificar valores atípicos.</p></li>
+<li><p>Resumir grandes cantidades de datos de una forma comprensible.</p></li>
+<li><p>Facilitar la toma de decisiones basadas en datos.</p></li>
+</ul>
+<p>Streamlit simplifica la integración de visualizaciones en aplicaciones interactivas, lo que permite a los usuarios interactuar con los gráficos de manera dinámica.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Uso de <code class="docutils literal notranslate"><span class="pre">st.pyplot()</span></code></strong>: La función <code class="docutils literal notranslate"><span class="pre">st.pyplot()</span></code> permite mostrar gráficos generados con Matplotlib en la aplicación de Streamlit. Primero creas el gráfico con Matplotlib y luego lo visualizas usando esta función.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -423,6 +725,35 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-es-streamlit"><strong>¿Qué es Streamlit?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-los-cientificos-de-datos-deberian-utilizar-streamlit"><strong>¿Por qué los científicos de datos deberían utilizar Streamlit?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-utilizar-streamlit"><strong>¿Cómo utilizar Streamlit?</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guia-paso-a-paso-para-la-creacion-de-una-aplicacion-con-streamlit"><strong>Guía paso a paso para la creación de una aplicación con Streamlit</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-la-carpeta-app">Creación de la carpeta <strong>app</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apertura-de-la-carpeta-en-el-editor-de-codigo"><strong>Apertura de la carpeta en el editor de código</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-del-archivo-app-py"><strong>Creación del archivo <code class="docutils literal notranslate"><span class="pre">app.py</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#escritura-y-ejecucion-del-codigo-en-app-py"><strong>Escritura y ejecución del código en <code class="docutils literal notranslate"><span class="pre">app.py</span></code></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mostrar-textos-con-streamlit"><strong>Mostrar textos con Streamlit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-imagen-video-o-audio-con-streamlit"><strong>Visualización de imagen, vídeo o audio con Streamlit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-de-entrada"><strong>Widgets de entrada</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-del-progreso-y-el-estado-con-streamlit"><strong>Visualización del progreso y el estado con Streamlit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barra-lateral-y-contenedor"><strong>Barra lateral y contenedor</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-con-streamlit"><strong>Visualización con Streamlit</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
