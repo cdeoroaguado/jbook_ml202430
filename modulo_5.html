@@ -373,6 +373,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-del-progreso-y-el-estado-con-streamlit"><strong>Visualización del progreso y el estado con Streamlit</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barra-lateral-y-contenedor"><strong>Barra lateral y contenedor</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-con-streamlit"><strong>Visualización con Streamlit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-mapas-con-streamlit"><strong>Visualización de mapas con Streamlit</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -663,6 +664,30 @@ document.write(`
 <ul class="simple">
 <li><p><strong>Uso de <code class="docutils literal notranslate"><span class="pre">st.pyplot()</span></code></strong>: La función <code class="docutils literal notranslate"><span class="pre">st.pyplot()</span></code> permite mostrar gráficos generados con Matplotlib en la aplicación de Streamlit. Primero creas el gráfico con Matplotlib y luego lo visualizas usando esta función.</p></li>
 </ul>
+<p><img alt="desp_17" src="_images/stream_21.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.line_chart()</span></code> en Streamlit se utiliza para mostrar un gráfico de líneas de manera muy sencilla a partir de un DataFrame o una estructura de datos similar. Es una forma rápida y efectiva de visualizar series de tiempo o cualquier otro conjunto de datos en forma de líneas.</p></li>
+</ul>
+<p><img alt="desp_18" src="_images/stream_22.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.bar_chart()</span></code> en Streamlit se utiliza para mostrar un gráfico de barras de manera rápida y sencilla a partir de un DataFrame o cualquier estructura de datos similar. Es ideal para visualizar datos categóricos o comparar valores de diferentes categorías.</p></li>
+</ul>
+<p><img alt="desp_19" src="_images/stream_23.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st.area_chart()</span></code> en Streamlit se utiliza para mostrar un gráfico de área de forma rápida y sencilla. Un gráfico de área es similar a un gráfico de líneas, pero con el área debajo de la línea rellenada, lo que lo hace ideal para mostrar tendencias a lo largo del tiempo o la acumulación de valores.</p></li>
+</ul>
+<p><img alt="desp_20" src="_images/stream_24.png" /></p>
+<ul class="simple">
+<li><p>La función <code class="docutils literal notranslate"><span class="pre">st.altair_chart()</span></code> en Streamlit se utiliza para mostrar gráficos creados con Altair, una biblioteca de visualización de datos declarativa en Python. Altair es conocida por su facilidad para crear gráficos interactivos y personalizados, ideal para mostrar visualizaciones complejas con un código relativamente simple.</p></li>
+</ul>
+<p><img alt="desp_21" src="_images/stream_25.png" /></p>
+</section>
+<section id="visualizacion-de-mapas-con-streamlit">
+<h3><strong>Visualización de mapas con Streamlit</strong><a class="headerlink" href="#visualizacion-de-mapas-con-streamlit" title="Permalink to this heading">#</a></h3>
+<p>La función <code class="docutils literal notranslate"><span class="pre">st.map()</span></code> en Streamlit se utiliza para visualizar mapas interactivos, siempre y cuando tengas datos que incluyan latitud y longitud. Es una forma sencilla de mostrar puntos en un mapa sin necesidad de instalar bibliotecas adicionales como folium o plotly. Un ejemplo básico</p>
+<p><img alt="desp_22" src="_images/stream_26.png" /></p>
+<p>También puedes integrar mapas en la barra lateral con filtros interactivos, por ejemplo, permitiendo al usuario seleccionar un rango de latitudes y longitudes:</p>
+<p><img alt="desp_23" src="_images/stream_27.png" /></p>
 </section>
 </section>
 </section>
@@ -748,6 +773,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-del-progreso-y-el-estado-con-streamlit"><strong>Visualización del progreso y el estado con Streamlit</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barra-lateral-y-contenedor"><strong>Barra lateral y contenedor</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-con-streamlit"><strong>Visualización con Streamlit</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-mapas-con-streamlit"><strong>Visualización de mapas con Streamlit</strong></a></li>
 </ul>
 </li>
 </ul>
