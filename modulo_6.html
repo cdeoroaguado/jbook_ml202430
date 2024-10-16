@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modulo 6: Despliegue de modelos &#8212; Ciencia de datos aplicada a la banca</title>
+    <title>Módulo 6: Machine Learning &#8212; Ciencia de datos aplicada a la banca</title>
   
   
   
@@ -64,9 +64,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modulo_6';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modulo 7: Despliegue de modelos" href="modulo_7.html" />
     <link rel="prev" title="Modulo 5: Introducción a Streamlit" href="modulo_5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -164,7 +167,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="modulo_3.html"><strong>Modulo 3: Análisis exploratorio de datos de la banca</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modulo_4.html"><strong>Módulo 4: Visualización de datos con Python</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="modulo_5.html"><strong>Modulo 5: Introducción a Streamlit</strong></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Modulo 6: Despliegue de modelos</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Módulo 6: Machine Learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_7.html"><strong>Modulo 7: Despliegue de modelos</strong></a></li>
 </ul>
 
     </div>
@@ -348,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modulo 6: Despliegue de modelos</h1>
+    <h1>Módulo 6: Machine Learning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -358,16 +362,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guardar-el-modelo">1. Guardar el modelo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar">2. Instalar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-api-modelo-py">3. crear api_modelo.py</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levantamos-el-servidor-en-local">4. Levantamos el servidor en local</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-postman">5. <strong>Instalación de Postman</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-api-solicitud-post">6. <strong>Prueba de API: Solicitud POST</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subir-a-la-nube">Subir a la nube</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-docker">Instalar Docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-requierements-txt">Crear requierements.txt</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-dockerfile">Crear Dockerfile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial">Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacion-sobreajuste-y-subajuste">Generalización, sobreajuste y subajuste</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion"><strong>Regresión</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-regresion">Tipos de regresión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal"><strong>Modelo de regresión lineal</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-regresion-lineal-simple-salario"><strong>Ejemplo de regresión lineal simple (Salario)</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -379,129 +383,537 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modulo-6-despliegue-de-modelos">
-<h1><strong>Modulo 6: Despliegue de modelos</strong><a class="headerlink" href="#modulo-6-despliegue-de-modelos" title="Permalink to this heading">#</a></h1>
-<section id="guardar-el-modelo">
-<h2>1. Guardar el modelo<a class="headerlink" href="#guardar-el-modelo" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
-
-<span class="c1"># Guardar el modelo entrenado en un archivo pickle</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;modelo_lasso.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo_pickle</span><span class="p">:</span>
-    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">grid_search_lasso</span><span class="p">,</span> <span class="n">archivo_pickle</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Modelo guardado exitosamente en &#39;modelo_lasso.pkl&#39;&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="modulo-6-machine-learning">
+<h1><strong>Módulo 6: Machine Learning</strong><a class="headerlink" href="#modulo-6-machine-learning" title="Permalink to this heading">#</a></h1>
+<p><strong>Machine Learning</strong> (ML), o aprendizaje automático, es una rama de la inteligencia artificial (IA) que se enfoca en construir sistemas capaces de aprender y mejorar automáticamente a partir de los datos sin necesidad de ser programados de manera explícita. Estos sistemas permiten identificar patrones y tomar decisiones basadas en grandes volúmenes de datos, aplicándose en diversas áreas como la clasificación de imágenes, la predicción de ventas o la personalización de recomendaciones.</p>
+<p>Uno de los algoritmos más simples y utilizados en Machine Learning es la <strong>regresión lineal</strong>, que permite predecir una variable continua a partir de la relación entre una variable dependiente y una o más variables independientes. Cuando se consideran múltiples variables independientes, se utiliza la <strong>regresión múltiple</strong> para mejorar las predicciones. A medida que los datos se vuelven más complejos, es importante aplicar técnicas como la <strong>regresión Ridge</strong> y <strong>Lasso</strong>, que introducen penalizaciones para evitar el sobreajuste y mejorar la regularización de los modelos. Ridge tiende a minimizar la magnitud de los coeficientes, mientras que Lasso puede reducir algunos de estos coeficientes a cero, facilitando la selección de las características más relevantes.</p>
+<p>En el ámbito de la clasificación, uno de los algoritmos más comunes es <strong>Naive Bayes</strong>, un modelo probabilístico basado en el teorema de Bayes que resulta especialmente útil para problemas donde se puede asumir independencia entre las características, como la clasificación de texto o el filtrado de correos no deseados. Otro algoritmo utilizado para clasificación es <strong>K-Vecinos Más Cercanos (K-NN)</strong>, que clasifica los nuevos datos en función de la cercanía a sus vecinos más cercanos, lo cual lo convierte en un enfoque intuitivo pero potencialmente costoso cuando se maneja un gran volumen de datos.</p>
+<p>Para abordar problemas más complejos que requieren modelos más potentes, se utilizan algoritmos avanzados como las <strong>Máquinas de Soporte Vectorial (SVM)</strong>, que buscan un hiperplano óptimo para separar las clases en un espacio de características. También destacan los modelos basados en árboles, como <strong>Random Forest</strong>, que combina varios árboles de decisión para mejorar la precisión y robustez del modelo, reduciendo el riesgo de sobreajuste. Un modelo de gran eficacia es <strong>XGBoost</strong>, una técnica de boosting que construye modelos secuenciales de árboles de decisión, lo que lo hace altamente eficiente y efectivo en grandes volúmenes de datos.</p>
+<p>La correcta <strong>evaluación del modelo</strong> es fundamental para garantizar que no solo funcione bien en los datos de entrenamiento, sino que también pueda generalizarse a datos nuevos. Este proceso incluye dividir los datos en conjuntos de entrenamiento y prueba, o utilizar validación cruzada. Las métricas más comunes para evaluar el rendimiento del modelo varían según el tipo de problema. En el caso de la regresión, se suelen utilizar métricas como el error cuadrático medio (MSE), el error absoluto medio (MAE) y el coeficiente de determinación (R²). Para la clasificación, se emplean métricas como la exactitud, la precisión, la recuperación (recall), la F1-Score y la curva ROC-AUC, que permiten medir la capacidad del modelo para distinguir entre las diferentes clases.</p>
+<p>Finalmente, las <strong>redes neuronales</strong> son modelos avanzados inspirados en la estructura del cerebro humano, que permiten resolver problemas complejos y no lineales. Estas redes están compuestas por capas de neuronas artificiales que transforman los datos a través de cálculos matemáticos. Las redes neuronales han demostrado ser especialmente útiles en aplicaciones como el reconocimiento de imágenes, el procesamiento de lenguaje natural y el análisis de grandes volúmenes de datos.</p>
+<section id="arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial">
+<h2>Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial<a class="headerlink" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial" title="Permalink to this heading">#</a></h2>
+<p>Arthur Samuel fue un visionario en el campo de la inteligencia artificial y la computación. Nacido en 1901, Samuel se graduó en ingeniería eléctrica y comenzó su carrera trabajando en IBM, donde se convirtió en uno de los pioneros del desarrollo de software y en uno de los primeros en explorar el potencial de las máquinas para “aprender” por sí mismas. A través de su trabajo, sentó las bases de lo que hoy conocemos como <strong>aprendizaje automático</strong> (<em>Machine Learning</em>).</p>
+<p>El logro más reconocido de Samuel fue el desarrollo del programa <strong>“Jugador de Damas”</strong> en 1959, donde utilizó conceptos de lo que más tarde se llamaría <strong>aprendizaje por refuerzo</strong> y <strong>algoritmos heurísticos</strong>. Su programa no solo jugaba a las damas, sino que también era capaz de mejorar su habilidad con el tiempo, jugando contra sí mismo y aprendiendo de sus errores. Lo innovador de este enfoque fue que permitía que el programa ajustara sus estrategias con base en la retroalimentación de las partidas previas, optimizando su desempeño sin intervención humana directa.</p>
+<p>Samuel también fue uno de los primeros en utilizar el término <strong>“aprendizaje automático”</strong>, lo que indica su clara visión de que las máquinas podrían, algún día, desarrollar la capacidad de aprender de manera similar a los humanos. Este concepto marcó un punto de inflexión en la historia de la informática y la IA, ya que introdujo la idea de que las computadoras podían ser programadas no solo para ejecutar tareas específicas, sino también para <strong>aprender y adaptarse</strong> a nuevas situaciones y mejorar su rendimiento a medida que acumulaban experiencia.</p>
+<p>El impacto de Arthur Samuel se extiende más allá de su programa de damas. Su trabajo inspiró a generaciones de investigadores en inteligencia artificial y aprendizaje automático, y es recordado como uno de los primeros en abrir el camino para el desarrollo de sistemas de IA modernos que, como los humanos, pueden aprender y mejorar a través de la experiencia. Gracias a sus contribuciones, Samuel es reconocido como uno de los <strong>padres fundadores de la inteligencia artificial</strong>.</p>
+<p><img alt="arthur" src="_images/arthut.jpg" /></p>
 </section>
-<section id="instalar">
-<h2>2. Instalar<a class="headerlink" href="#instalar" title="Permalink to this heading">#</a></h2>
-<p>pip install fastapi</p>
-<p>pip install uvicorn</p>
-</section>
-<section id="crear-api-modelo-py">
-<h2>3. crear api_modelo.py<a class="headerlink" href="#crear-api-modelo-py" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
-<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-
-<span class="c1"># Crear la aplicación FastAPI</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
-
-<span class="c1"># Definir la estructura de la fila de entrada usando Pydantic</span>
-<span class="k">class</span> <span class="nc">InputData</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">longitude</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">latitude</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">housing_median_age</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">total_rooms</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">total_bedrooms</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">population</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">households</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">median_income</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">ocean_proximity_1</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Variable dummy 1</span>
-    <span class="n">ocean_proximity_2</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Variable dummy 2</span>
-    <span class="n">ocean_proximity_3</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># Variable dummy 3</span>
-
-<span class="c1"># Cargar el modelo guardado (Pickle)</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;modelo_lasso.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo_pickle</span><span class="p">:</span>
-    <span class="n">modelo_lasso</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">archivo_pickle</span><span class="p">)</span>
-
-<span class="c1"># Definir la ruta POST para recibir la fila y devolver la predicción</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/predict/&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">InputData</span><span class="p">):</span>
-    <span class="c1"># Convertir la entrada en un array numpy</span>
-    <span class="n">fila</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">data</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> 
-                      <span class="n">data</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">housing_median_age</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">total_rooms</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">total_bedrooms</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">population</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">households</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">median_income</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">ocean_proximity_1</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">ocean_proximity_2</span><span class="p">,</span>
-                      <span class="n">data</span><span class="o">.</span><span class="n">ocean_proximity_3</span><span class="p">]])</span>
-    
-    <span class="c1"># Realizar la predicción</span>
-    <span class="n">prediccion</span> <span class="o">=</span> <span class="n">modelo_lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">fila</span><span class="p">)</span>
-    
-    <span class="c1"># Devolver la predicción</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;prediccion&quot;</span><span class="p">:</span> <span class="n">prediccion</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="levantamos-el-servidor-en-local">
-<h2>4. Levantamos el servidor en local<a class="headerlink" href="#levantamos-el-servidor-en-local" title="Permalink to this heading">#</a></h2>
-<p>La forma de levantar el servidor local es</p>
-<p><img alt="api_1" src="_images/api1.png" /></p>
-<p>Si esta ruta no funciona usa el path absoluto que es</p>
-<p><img alt="api_2" src="_images/api2.png" /></p>
-<p>La siguiente imagen nos indica que el servidor esta funcionando en local</p>
-<p><img alt="api_3" src="_images/api3.png" /></p>
-</section>
-<section id="instalacion-de-postman">
-<h2>5. <strong>Instalación de Postman</strong><a class="headerlink" href="#instalacion-de-postman" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="prueba-de-api-solicitud-post">
-<h2>6. <strong>Prueba de API: Solicitud POST</strong><a class="headerlink" href="#prueba-de-api-solicitud-post" title="Permalink to this heading">#</a></h2>
-<p>Para enviar una solicitud POST a la api local debo hacer:</p>
-<ol class="arabic">
-<li><p>Escoger POST
-<img alt="api_6" src="_images/api6.png" /></p></li>
-<li><p>Especificar la URL del servidor local( “<a class="reference external" href="http://127.0.0.1:8000/predict/">http://127.0.0.1:8000/predict/</a>”)</p>
-<p>Esto se creo asi:</p>
+<section id="generalizacion-sobreajuste-y-subajuste">
+<h2>Generalización, sobreajuste y subajuste<a class="headerlink" href="#generalizacion-sobreajuste-y-subajuste" title="Permalink to this heading">#</a></h2>
+<p>En el <strong>aprendizaje supervisado</strong>, el objetivo principal es construir un modelo a partir de los datos de entrenamiento y que este sea capaz de realizar <strong>predicciones precisas</strong> sobre datos desconocidos que tengan las mismas características que el conjunto de entrenamiento utilizado. Si un modelo es capaz de hacer predicciones acertadas sobre datos nuevos, decimos que tiene la capacidad de <strong>generalizar</strong> desde el conjunto de <strong>entrenamiento</strong> al conjunto de <strong>prueba</strong>. Nuestro objetivo es construir un modelo que pueda <strong>generalizar</strong> con la mayor precisión posible.</p>
+<p>Por lo general, entrenamos un modelo de manera que sea preciso en el conjunto de entrenamiento. Si los conjuntos de <strong>entrenamiento</strong> y de <strong>prueba</strong> comparten suficientes similitudes, esperamos que el modelo también funcione bien en el conjunto de prueba. Sin embargo, esto no siempre es así. Si construimos modelos demasiado complejos, podemos lograr un ajuste perfecto en el conjunto de entrenamiento, pero esto no garantiza que el modelo generalice bien a datos nuevos, lo que lleva a un fenómeno conocido como <strong>sobreajuste</strong>.</p>
+<p>El <strong>sobreajuste (overfitting)</strong> ocurre cuando el modelo se ajusta demasiado a las particularidades y ruido del conjunto de entrenamiento, lo que resulta en un modelo que tiene un rendimiento excelente en dicho conjunto, pero falla al enfrentarse a datos no vistos. Por el contrario, si el modelo es demasiado simple, podría no capturar adecuadamente la complejidad y variabilidad de los datos, causando un mal desempeño tanto en el conjunto de entrenamiento como en el de prueba. Esta situación se conoce como <strong>subajuste (underfitting)</strong>.</p>
+<p>El desafío en el aprendizaje supervisado es encontrar un balance adecuado entre un modelo demasiado simple y uno excesivamente complejo, de modo que pueda generalizar correctamente y ofrecer un rendimiento sólido en datos nuevos.</p>
+<p><img alt="overunder" src="_images/overunder.png" /></p>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
 <ul class="simple">
-<li><p><img alt="api_4" src="_images/api4.png" /></p></li>
-<li><p><img alt="api_5" src="_images/api5.png" /></p></li>
+<li><p><strong>Cuanto más complejo permitimos que sea nuestro modelo, mejor podremos predecir en los datos de entrenamiento</strong>. Sin embargo, si nuestro <strong>modelo se vuelve demasiado complejo</strong>, empezamos a <strong>centrarnos demasiado en cada punto de datos individual de nuestro conjunto de entrenamiento</strong>, y el modelo <strong>no se generalizará correctamente con nuevos datos</strong>.</p></li>
+<li><p>Hay un <strong>punto intermedio (sweet spot)</strong> en el que se obtiene el mejor rendimiento de generalización. Este es el modelo que queremos encontrar. El <strong>equilibrio entre el overfitting y underfitting</strong>.</p></li>
 </ul>
-</li>
-<li></li>
+</div>
+<p><img alt="sweet_spot" src="_images/sweet_spot.png" /></p>
+</section>
+<section id="regresion">
+<h2><strong>Regresión</strong><a class="headerlink" href="#regresion" title="Permalink to this heading">#</a></h2>
+<p>La <strong>regresión</strong> es una técnica estadística y de aprendizaje automático utilizada para modelar la relación entre una <strong>variable dependiente</strong> (o respuesta) y una o más <strong>variables independientes</strong> (o predictoras). El objetivo principal de la regresión es predecir el valor de la variable dependiente en función de los valores de las variables independientes, o entender cómo las variables independientes influyen en la variable dependiente.</p>
+<p>Existen varios tipos de regresión, siendo los más comunes la <strong>regresión lineal</strong> y la <strong>regresión no lineal</strong>, que se seleccionan en función de la relación entre las variables.</p>
+<section id="tipos-de-regresion">
+<h3>Tipos de regresión<a class="headerlink" href="#tipos-de-regresion" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Regresión lineal</strong>: Este es el tipo más básico de regresión, donde se asume que la relación entre la variable dependiente y las variables independientes es lineal. Se busca ajustar una línea recta que mejor represente los datos, minimizando la distancia entre los puntos de los datos y la línea ajustada. La <strong>regresión lineal simple</strong> involucra solo una variable independiente, mientras que la <strong>regresión lineal múltiple</strong> involucra varias variables independientes.</p></li>
+<li><p><strong>Regresión polinómica</strong>: Se utiliza cuando la relación entre la variable dependiente y las variables independientes no es lineal. En este caso, se ajusta una curva polinómica que puede capturar mejor las variaciones no lineales en los datos.</p></li>
+<li><p><strong>Regresión Ridge y Lasso</strong>: Son variaciones de la regresión lineal que incluyen regularización para evitar el sobreajuste. <strong>Ridge</strong> agrega una penalización a la magnitud de los coeficientes del modelo, mientras que <strong>Lasso</strong> no solo penaliza los coeficientes, sino que también puede llevar algunos de ellos a cero, lo que resulta en la selección automática de características.</p></li>
 </ol>
-<p><img alt="api_7" src="_images/api7.png" /></p>
-<p><img alt="api_8" src="_images/api8.png" /></p>
-<p><img alt="api_9" src="_images/api9.png" /></p>
-<p>Se le da enviar para obtener la prediccion y la prueba de la api</p>
 </section>
-<section id="subir-a-la-nube">
-<h2>Subir a la nube<a class="headerlink" href="#subir-a-la-nube" title="Permalink to this heading">#</a></h2>
+<section id="modelo-de-regresion-lineal">
+<h3><strong>Modelo de regresión lineal</strong><a class="headerlink" href="#modelo-de-regresion-lineal" title="Permalink to this heading">#</a></h3>
+<p>El objetivo principal de la regresión es encontrar los <strong>coeficientes</strong> que mejor ajusten el modelo, minimizando el <strong>error</strong> o la diferencia entre los valores predichos y los valores reales.</p>
+<p>El modelo tiene la forma:</p>
+<div class="math notranslate nohighlight" id="equation-linear-reg">
+<span class="eqno">(1)<a class="headerlink" href="#equation-linear-reg" title="Permalink to this equation">#</a></span>\[
+\boldsymbol{y}=\boldsymbol{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon},
+\]</div>
+<p>este se denomina, <code class="docutils literal notranslate"><span class="pre">modelo</span> <span class="pre">de</span> <span class="pre">regresión</span> <span class="pre">lineal</span></code> clásico, si se cumplen los siguientes supuestos:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E(\boldsymbol{\varepsilon})=\boldsymbol{0}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Cov(\boldsymbol{\varepsilon})=E(\boldsymbol{\varepsilon}\boldsymbol{\varepsilon}^{T})=\sigma^{2}\boldsymbol{I}\)</span></p></li>
+<li><p>La matriz de diseño <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> tiene rango completo, es decir <span class="math notranslate nohighlight">\(\textrm{rk}(\boldsymbol{X})=p+1\)</span></p></li>
+<li><p>El <code class="docutils literal notranslate"><span class="pre">modelo</span> <span class="pre">de</span> <span class="pre">regresión</span> <span class="pre">normal</span></code> clasico es obtenido si adicionalmente  se tiene que <span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\sim N(\boldsymbol{0}, \sigma^{2}\boldsymbol{I})\)</span>.</p></li>
+<li><p>El <code class="docutils literal notranslate"><span class="pre">modelo</span> <span class="pre">de</span> <span class="pre">regresión</span> <span class="pre">lineal</span></code> <a class="reference internal" href="#equation-linear-reg">(1)</a> puede escribirse en la siguiente forma</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-linear-reg-mat">
+<span class="eqno">(2)<a class="headerlink" href="#equation-linear-reg-mat" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{pmatrix}
+y_{1}\\
+y_{2}\\
+\vdots\\
+y_{i}\\
+\vdots\\
+y_{n}
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p}\\
+1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2p}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+1 &amp; x_{i1} &amp; x_{i2} &amp; \cdots &amp; x_{ip}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+1 &amp; x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{np}
+\end{pmatrix}
+\begin{pmatrix}
+\beta_{0}\\[2mm]
+\beta_{1}\\[2mm]
+\beta_{2}\\
+\vdots\\[2mm]
+\beta_{p}
+\end{pmatrix}
++
+\begin{pmatrix}
+\varepsilon_{1}\\
+\varepsilon_{2}\\
+\vdots\\
+\varepsilon_{i}\\
+\vdots\\
+\varepsilon_{n}
+\end{pmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>En el curso de <code class="docutils literal notranslate"><span class="pre">modelos</span> <span class="pre">lineales</span></code> se estudian estimaciones del vector de coeficientes de regresión <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> utilizando método de <code class="docutils literal notranslate"><span class="pre">mínimos</span> <span class="pre">cuadrados</span></code> y <code class="docutils literal notranslate"><span class="pre">máxima</span> <span class="pre">verosimilitud</span></code>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>A partir del sistema <a class="reference internal" href="#equation-linear-reg-mat">(2)</a>, se puede observar que la <span class="math notranslate nohighlight">\(i\)</span>-esima predicción para un modelo lineal es la siguiente:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_{i}=\hat{\beta}_{0}+\hat{\beta}_{1}\cdot x_{i1}+\hat{\beta}_{2}\cdot x_{i2}+\cdots+\hat{\beta}_{p}\cdot x_{ip}=\boldsymbol{\hat{\beta}}^{T}\boldsymbol{x}_{i},~i = 1,2,\dots, n.
+\]</div>
+<ul class="simple">
+<li><p>Aquí, <span class="math notranslate nohighlight">\(x_{i1},\dots, x_{ip}\)</span> denotan las <code class="docutils literal notranslate"><span class="pre">variables</span> <span class="pre">predictoras</span></code> o características (en este ejemplo, el número de características es <span class="math notranslate nohighlight">\(p\)</span>). Los valores, <span class="math notranslate nohighlight">\(\hat{\beta}_{i},~i=0,1,\dots,p\)</span>, son lo parámetros aprendidos por el modelo y <span class="math notranslate nohighlight">\(\hat{y}_{i}\)</span> es la predicción obtenida por el modelo. Para un conjunto de datos con una sola característica</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_{i} = \hat{\beta}_{0}+\hat{\beta}_{1}\cdot x_{i1},~i=1,2,\dots,n.
+\]</div>
+<ul class="simple">
+<li><p>Aquí, <span class="math notranslate nohighlight">\(\hat{\beta}_{1}\)</span> es la pendiente y <span class="math notranslate nohighlight">\(\hat{\beta}_{0}\)</span> es el desplazamiento en el eje <span class="math notranslate nohighlight">\(y\)</span>. Para más características, <span class="math notranslate nohighlight">\(\boldsymbol{\hat{\beta}}\)</span> contiene las pendientes a lo largo de cada eje de características. Alternativamente, se puede pensar en la respuesta predicha como una suma ponderada de las características de entrada, con pesos (que pueden ser negativos) dados por las entradas de <span class="math notranslate nohighlight">\(\boldsymbol{\hat{\beta}}\)</span>.</p></li>
+</ul>
+<p>Veamos una idea visual de la regresión lineal simple</p>
+<p><img alt="MRL1" src="_images/MRL_1.png" /></p>
+<p><img alt="MRL2" src="_images/MRL_2.png" /></p>
+<p><img alt="MRL3" src="_images/MRL_3.png" /></p>
+<p><img alt="MRL4" src="_images/MRL_4.png" /></p>
+<section id="ejemplo-de-regresion-lineal-simple-salario">
+<h4><strong>Ejemplo de regresión lineal simple (Salario)</strong><a class="headerlink" href="#ejemplo-de-regresion-lineal-simple-salario" title="Permalink to this heading">#</a></h4>
+<p>El siguiente  conjunto de datos relaciona los años de experiencia laboral con los salarios percibidos por empleados. Estas dos variables ofrecen una perspectiva clave para entender cómo la experiencia profesional puede influir en la remuneración en el contexto laboral.</p>
+<p>Las columnas presentes en el archivo son:</p>
+<ol class="arabic simple">
+<li><p><strong>YearsExperience</strong>: Indica los años de experiencia acumulada por un empleado. Esta variable podría ser útil para evaluar el crecimiento salarial promedio según la trayectoria laboral.</p></li>
+<li><p><strong>Salary</strong>: Refleja el salario anual correspondiente a esos años de experiencia. Este dato permite analizar la progresión del salario a medida que los empleados ganan más años de experiencia, lo que podría ser útil para modelos predictivos de salario.</p></li>
+</ol>
+<p>Este tipo de información suele ser relevante en estudios de recursos humanos, análisis de mercado laboral, o al construir modelos de regresión que estimen el salario en función de los años de experiencia, ayudando a identificar patrones o desigualdades salariales.</p>
+<ol class="arabic simple">
+<li><p>Importemos las librerias</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># Importa la librería NumPy para operaciones matemáticas avanzadas.</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># Importa Matplotlib para visualización de datos.</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># Importa pandas para manipulación y análisis de datos.</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1"># Importa seaborn para la visualizacion de datos</span>
+<span class="kn">import</span> <span class="nn">warnings</span> <span class="c1"># Importa warnings para las advertencia</span>
+
+<span class="c1"># Importa funciones de Scikit-learn para dividir el conjunto de datos y aplicar regresión lineal.</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Importa la librería Statsmodels para ajustar modelos de regresión con más opciones estadísticas.</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Carguemos los datos</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar el archivo CSV para inspeccionar su contenido</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/cdeor/OneDrive/Documentos/MachineLearningDipSerfinanzas/jbook_ml202430/docs/_data/dataml/Salary_Data.csv&#39;</span>
+<span class="n">df_salary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Procedemos a realizar un <strong>análisis exploratorio de datos</strong> para investigar y resumir principales características de nuestros datos.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mostrar las primeras filas del conjunto de datos para entender su estructura</span>
+<span class="n">df_salary</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>YearsExperience</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.1</td>
+      <td>39343.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.3</td>
+      <td>46205.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.5</td>
+      <td>37731.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.0</td>
+      <td>43525.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.2</td>
+      <td>39891.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mostrar la información</span>
+<span class="n">df_salary</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 30 entries, 0 to 29
+Data columns (total 2 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   YearsExperience  30 non-null     float64
+ 1   Salary           30 non-null     float64
+dtypes: float64(2)
+memory usage: 608.0 bytes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tamaño de los datos</span>
+<span class="n">df_salary</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(30, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>El método <code class="docutils literal notranslate"><span class="pre">DataFrame.describe()</span></code> genera estadísticos descriptivos que resumen la <strong>tendencia central</strong>, la <strong>dispersión</strong> y la <strong>forma de la distribución</strong> de un conjunto de datos, excluyendo los valores <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Este método es útil para obtener una visión general del comportamiento de los datos numéricos dentro del DataFrame.</p>
+<p>Algunos de los estadísticos que se generan incluyen:</p>
+<ul class="simple">
+<li><p><strong>Conteo (count)</strong>: La cantidad de valores no nulos.</p></li>
+<li><p><strong>Promedio (mean)</strong>: El valor promedio de la columna.</p></li>
+<li><p><strong>Desviación estándar (std)</strong>: La medida de dispersión o variabilidad de los datos.</p></li>
+<li><p><strong>Mínimo (min)</strong> y <strong>máximo (max)</strong>: Los valores más extremos.</p></li>
+<li><p><strong>Cuartiles (25%, 50%, 75%)</strong>: Los valores que dividen los datos en cuatro partes iguales.</p></li>
+</ul>
+<p>Es importante destacar que el método <code class="docutils literal notranslate"><span class="pre">describe()</span></code> <strong>solo trabaja con valores numéricos</strong> por defecto. Si el DataFrame contiene alguna columna categórica, el método la ignorará y solo mostrará el resumen de las columnas numéricas. Sin embargo, puedes incluir un resumen para todas las columnas, incluidas las categóricas, pasando el parámetro <code class="docutils literal notranslate"><span class="pre">include=&quot;all&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generar estadísticos descriptivos con salary_data</span>
+<span class="n">df_salary</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>YearsExperience</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>30.000000</td>
+      <td>30.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.313333</td>
+      <td>76003.000000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.837888</td>
+      <td>27414.429785</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.100000</td>
+      <td>37731.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>3.200000</td>
+      <td>56720.750000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>4.700000</td>
+      <td>65237.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>7.700000</td>
+      <td>100544.750000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>10.500000</td>
+      <td>122391.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Verifiquemos además si existen datos faltantes en nuestro conjunto de datos</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_salary</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>YearsExperience    0
+Salary             0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Realicemos un diagrama de cajas y bigotes para el salario</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ignorar advertencias de futuras versiones</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
+
+<span class="c1"># # Establecer el estilo de las gráficas como &#39;whitegrid&#39;</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="c1"># Diagrama de cajas y bigotes para &#39;Salary&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df_salary</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes - Salario&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d0320d0782a4de661ff8f1596cf57d501c6d0e21d788fb26ad8202a4ba2a94c4.png" src="_images/d0320d0782a4de661ff8f1596cf57d501c6d0e21d788fb26ad8202a4ba2a94c4.png" />
+</div>
+</div>
+<p>Este gráfico muestra la distribución de los salarios en el conjunto de datos. Podemos observar lo siguiente:</p>
+<ul class="simple">
+<li><p>La mayor concentración de salarios está en el rango entre 50,000 y 100,000 unidades monetarias.</p></li>
+<li><p>La mediana se encuentra alrededor de los 70,000, lo que indica que la mitad de los salarios están por debajo de este valor.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ignorar advertencias de futuras versiones</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
+
+<span class="c1"># # Establecer el estilo de las gráficas como &#39;whitegrid&#39;</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="c1"># Diagrama de cajas y bigotes para &#39;YearsExperience&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">df_salary</span><span class="p">[</span><span class="s1">&#39;YearsExperience&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Cajas y Bigotes - Años de Experiencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3a41659abd928efbd240158dc1354854f35f3fa6174cd05b51657685b60b8221.png" src="_images/3a41659abd928efbd240158dc1354854f35f3fa6174cd05b51657685b60b8221.png" />
+</div>
+</div>
+<p>Este gráfico muestra la distribución de los años de experiencia:</p>
+<ul class="simple">
+<li><p>La mayoría de los empleados tiene entre 2 y 7 años de experiencia.</p></li>
+<li><p>No se observan valores atípicos destacados en la variable de años de experiencia.</p></li>
+<li><p>La mediana se encuentra alrededor de los 5 años de experiencia, lo que sugiere que el conjunto de datos está centrado en empleados con experiencia moderada.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráfico de dispersión de &#39;Salary&#39; vs &#39;YearsExperience&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;YearsExperience&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">salary_data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gráfico de Dispersión - Salario vs Años de Experiencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/44b29f9baad142026133814a08596873254de8a174f9a2c6382fe8eeea0432a9.png" src="_images/44b29f9baad142026133814a08596873254de8a174f9a2c6382fe8eeea0432a9.png" />
+</div>
+</div>
+<p>El gráfico de dispersión nos muestra cómo se relacionan los años de experiencia con el salario:</p>
+<ul class="simple">
+<li><p>Existe una clara tendencia positiva: a medida que los empleados tienen más años de experiencia, su salario tiende a aumentar.</p></li>
+<li><p>Sin embargo, parece haber cierta dispersión en los salarios para aquellos con más experiencia, lo que indica que el crecimiento salarial no es lineal ni uniforme en todos los casos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapa de calor de las correlaciones</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">df_salary</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mapa de Calor de Correlaciones&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/45b10e1add9235e7901f574234dc35159a09b3be0d0c8b7ac89276966e290865.png" src="_images/45b10e1add9235e7901f574234dc35159a09b3be0d0c8b7ac89276966e290865.png" />
+</div>
+</div>
+<p>Este mapa de calor visualiza las correlaciones entre las variables <strong>Salary</strong> y <strong>YearsExperience</strong>:</p>
+<ul class="simple">
+<li><p>La correlación entre ambas variables es alta y positiva (+0.97), lo que confirma que los empleados con más años de experiencia suelen tener salarios más altos.</p></li>
+<li><p>Este fuerte coeficiente sugiere que la experiencia laboral es un predictor clave del salario, lo que podría ser relevante para modelos de predicción.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><strong>Ajuste del modelo</strong>:
+Se ajusta un modelo de regresión lineal utilizando <code class="docutils literal notranslate"><span class="pre">Salary</span></code> como variable respuesta y <code class="docutils literal notranslate"><span class="pre">YearsExperience</span></code> como variable predictora. En cualquier estudio predictivo, no solo es esencial ajustar el modelo, sino también evaluar su capacidad para predecir correctamente nuevas observaciones. Para realizar esta evaluación de manera adecuada, los datos se dividen en dos grupos: uno destinado al entrenamiento del modelo y otro reservado para pruebas, lo que permite validar su rendimiento en datos no utilizados durante el ajuste del modelo.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># División de los datos en conjuntos de entrenamiento y prueba</span>
+<span class="c1"># ==============================================================================</span>
+<span class="c1"># X contiene la variable predictora &#39;YearsExperience&#39; y y es la variable objetivo &#39;Salary&#39;.</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_salary</span><span class="p">[[</span><span class="s1">&#39;YearsExperience&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_salary</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se divide el conjunto de datos en un 80% para entrenamiento y un 20% para prueba.</span>
+<span class="c1"># random_state = 1 asegura que la división sea reproducible.</span>
+<span class="c1"># shuffle = True indica que los datos se mezclarán antes de dividirse.</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+                                        <span class="n">X</span><span class="p">,</span>               <span class="c1"># Variables predictoras</span>
+                                        <span class="n">y</span><span class="p">,</span>               <span class="c1"># Variable objetivo</span>
+                                        <span class="n">train_size</span>   <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>  <span class="c1"># Tamaño del conjunto de entrenamiento</span>
+                                        <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span>    <span class="c1"># Para obtener resultados reproducibles</span>
+                                        <span class="n">shuffle</span>      <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Mezclar los datos antes de dividir</span>
+                                    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<ul class="simple">
+<li><p>El número <code class="docutils literal notranslate"><span class="pre">42</span></code> es comúnmente elegido en la literatura relacionada con la <strong>inteligencia artificial</strong> (AI) como un homenaje al libro de Douglas Adams, <em><a class="reference external" href="https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#The_number_42">The Hitchhiker’s Guide to the Galaxy</a></em>, una popular serie de ciencia ficción. En este libro, el número 42 es presentado como la respuesta a la gran pregunta sobre “la vida, el universo y todo lo demás”, según los cálculos de un superordenador llamado <strong>“Deep Thought”</strong>. Esta referencia ha ganado notoriedad tanto entre los aficionados al género como entre los miembros de la comunidad científica.</p></li>
+<li><p>En el contexto de la programación, el parámetro <code class="docutils literal notranslate"><span class="pre">random_state</span></code> puede tomar cualquier número entero. Si bien se suele utilizar <code class="docutils literal notranslate"><span class="pre">42</span></code> por razones simbólicas, en realidad cualquier entero positivo es válido. Además, se podría realizar un <code class="docutils literal notranslate"><span class="pre">grid</span> <span class="pre">search</span></code> para encontrar el valor de <code class="docutils literal notranslate"><span class="pre">random_state</span></code> que proporcione el mejor rendimiento del modelo. Más adelante, abordaremos el uso de <strong>GridSearch</strong>.</p></li>
+<li><p>Es importante tener en cuenta que, si no se establece un valor específico para <code class="docutils literal notranslate"><span class="pre">random_state</span></code>, como <code class="docutils literal notranslate"><span class="pre">42</span></code> u otro número entero, cada vez que se ejecute el código, se generará un conjunto de prueba diferente, lo que puede afectar la reproducibilidad de los resultados.</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creación del modelo de regresión lineal</span>
+<span class="c1"># ==============================================================================</span>
+<span class="c1"># Se crea un objeto de regresión lineal utilizando la clase LinearRegression de sklearn.</span>
+<span class="c1"># Luego, se ajusta el modelo a los datos de entrenamiento X_train y y_train.</span>
+<span class="n">modelo</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
+</div>
+<ul class="simple">
+<li><p>Los parámetros de “pendiente” (<span class="math notranslate nohighlight">\(\hat{\beta}_{i},~i=1,2,\dots,p\)</span>), también llamados pesos o coeficientes, se almacenan en el atributo <code class="docutils literal notranslate"><span class="pre">coef_</span></code>, mientras que el desplazamiento o intercepción (<span class="math notranslate nohighlight">\(\hat{\beta}_{0}\)</span>) se almacena en el atributo <code class="docutils literal notranslate"><span class="pre">intercept_</span></code>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lr.coef_: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;lr.intercept_: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">intercept_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lr.coef_: [9332.94473799]
+lr.intercept_: 25609.89799835482
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title"><strong>Observación</strong></p>
+<p>El guión bajo (<code class="docutils literal notranslate"><span class="pre">_</span></code>) al final de atributos como <code class="docutils literal notranslate"><span class="pre">coef_</span></code> e <code class="docutils literal notranslate"><span class="pre">intercept_</span></code> es una convención comúnmente utilizada en <strong>scikit-learn</strong> para indicar que dichos atributos son derivados de los datos de entrenamiento. Esta convención permite distinguir entre los atributos que son calculados por el modelo y los parámetros que son definidos por el usuario. De esta manera, los atributos que terminan con un guión bajo (<code class="docutils literal notranslate"><span class="pre">_</span></code>) indican que son aprendidos o ajustados durante el proceso de entrenamiento del modelo.</p>
+</div>
 </section>
-<section id="instalar-docker">
-<h2>Instalar Docker<a class="headerlink" href="#instalar-docker" title="Permalink to this heading">#</a></h2>
 </section>
-<section id="crear-requierements-txt">
-<h2>Crear requierements.txt<a class="headerlink" href="#crear-requierements-txt" title="Permalink to this heading">#</a></h2>
-<p>(ml_venv) C:\Users\cdeor\OneDrive\Escritorio\api&gt;pip freeze &gt; requirements.txt</p>
-</section>
-<section id="crear-dockerfile">
-<h2>Crear Dockerfile<a class="headerlink" href="#crear-dockerfile" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -545,6 +957,15 @@ document.write(`
         <p class="prev-next-title"><strong>Modulo 5: Introducción a Streamlit</strong></p>
       </div>
     </a>
+    <a class="right-next"
+       href="modulo_7.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Modulo 7: Despliegue de modelos</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -563,16 +984,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guardar-el-modelo">1. Guardar el modelo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar">2. Instalar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-api-modelo-py">3. crear api_modelo.py</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levantamos-el-servidor-en-local">4. Levantamos el servidor en local</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalacion-de-postman">5. <strong>Instalación de Postman</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-api-solicitud-post">6. <strong>Prueba de API: Solicitud POST</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subir-a-la-nube">Subir a la nube</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalar-docker">Instalar Docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-requierements-txt">Crear requierements.txt</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crear-dockerfile">Crear Dockerfile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial">Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacion-sobreajuste-y-subajuste">Generalización, sobreajuste y subajuste</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion"><strong>Regresión</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-regresion">Tipos de regresión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal"><strong>Modelo de regresión lineal</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-regresion-lineal-simple-salario"><strong>Ejemplo de regresión lineal simple (Salario)</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
