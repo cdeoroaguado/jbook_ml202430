@@ -362,12 +362,80 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial">Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacion-sobreajuste-y-subajuste">Generalización, sobreajuste y subajuste</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial"><strong>Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacion-sobreajuste-y-subajuste"><strong>Generalización, sobreajuste y subajuste</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion"><strong>Regresión</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-regresion">Tipos de regresión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-regresion"><strong>Tipos de regresión</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal"><strong>Modelo de regresión lineal</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-regresion-lineal-simple-salario"><strong>Ejemplo de regresión lineal simple (Salario)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-del-modelo-de-regresion"><strong>Métricas de evaluacion del modelo de regresión</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse-mean-squared-error">1. <strong>Error Cuadrático Medio (<span class="math notranslate nohighlight">\(MSE\)</span> - Mean Squared Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-mse"><strong>Interpretación de MSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-mse"><strong>Conclusiones de MSE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae-mean-absolute-error">2. <strong>Error Absoluto Medio (<span class="math notranslate nohighlight">\(MAE\)</span> - Mean Absolute Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-mae"><strong>Interpretación de MAE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-mae"><strong>Conclusiones de MAE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse-root-mean-squared-error">3. <strong>Raíz del Error Cuadrático Medio (<span class="math notranslate nohighlight">\(RMSE\)</span> - Root Mean Squared Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-rmse"><strong>Interpretación de RMSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-rmse"><strong>Conclusiones de RMSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-rmse"><strong>Resumen de RMSE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2-r-squared">4. <strong>Coeficiente de Determinación (<span class="math notranslate nohighlight">\(R^2\)</span> - <span class="math notranslate nohighlight">\(R\)</span>-squared)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-r-2"><strong>Interpretación de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-r-2"><strong>Conclusiones de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-si-es-necesario-de-r-2"><strong>Posibles acciones para mejorar (si es necesario) de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-r-2"><strong>Resumen de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r-2-ajustado-adjusted-r-squared">5. <strong><span class="math notranslate nohighlight">\(R^2\)</span> Ajustado (Adjusted <span class="math notranslate nohighlight">\(R\)</span>-squared)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-r-2-ajustado"><strong>Interpretación de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-r-2-ajustado"><strong>Conclusiones de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-r-2-ajustado"><strong>Posibles acciones para mejorar <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-r-2-ajustado"><strong>Resumen de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-medio-proporcional-absoluto-mape-mean-absolute-percentage-error">6. <strong>Error Medio Proporcional Absoluto (<span class="math notranslate nohighlight">\(MAPE\)</span> - Mean Absolute Percentage Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-del-mape"><strong>Interpretación del MAPE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-mape"><strong>Conclusiones de MAPE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-si-es-necesario-de-mape"><strong>Posibles acciones para mejorar (si es necesario) de MAPE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-mape"><strong>Resumen de MAPE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-de-logaritmo-msle-mean-squared-logarithmic-error">7. <strong>Error Cuadrático Medio de Logaritmo (<span class="math notranslate nohighlight">\(MSLE\)</span> - Mean Squared Logarithmic Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-msle"><strong>Interpretación de MSLE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-msle"><strong>Conclusiones de MSLE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-de-msle"><strong>Posibles acciones para mejorar de MSLE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-msle"><strong>Resumen de MSLE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-relativo-absoluto-rae-relative-absolute-error">8. <strong>Error Relativo Absoluto (<span class="math notranslate nohighlight">\(RAE\)</span> - Relative Absolute Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-rae"><strong>Interpretación de RAE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-rae"><strong>Conclusiones de RAE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-de-rae"><strong>Posibles acciones para mejorar de RAE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-rae"><strong>Resumen de RAE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-relativo-rse-relative-squared-error">9. <strong>Error Cuadrático Relativo (<span class="math notranslate nohighlight">\(RSE\)</span> - Relative Squared Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-rse"><strong>Interpretación de RSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-rse"><strong>Conclusiones de RSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-de-rse"><strong>Posibles acciones para mejorar de RSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-rse"><strong>Resumen de RSE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-con-la-libreria-statsmodels"><strong>Regresión Lineal con la librería Statsmodels</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#formas-de-entrenar-un-modelo-de-regresion-en-statsmodels"><strong>Formas de entrenar un modelo de regresión en Statsmodels</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-de-la-regresion-lineal-ols"><strong>Resultados de la Regresión Lineal (OLS)</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-con-scikit-learn"><strong>Comparación con Scikit-learn</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusión</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -392,7 +460,7 @@ document.write(`
 <p>La correcta <strong>evaluación del modelo</strong> es fundamental para garantizar que no solo funcione bien en los datos de entrenamiento, sino que también pueda generalizarse a datos nuevos. Este proceso incluye dividir los datos en conjuntos de entrenamiento y prueba, o utilizar validación cruzada. Las métricas más comunes para evaluar el rendimiento del modelo varían según el tipo de problema. En el caso de la regresión, se suelen utilizar métricas como el error cuadrático medio (MSE), el error absoluto medio (MAE) y el coeficiente de determinación (R²). Para la clasificación, se emplean métricas como la exactitud, la precisión, la recuperación (recall), la F1-Score y la curva ROC-AUC, que permiten medir la capacidad del modelo para distinguir entre las diferentes clases.</p>
 <p>Finalmente, las <strong>redes neuronales</strong> son modelos avanzados inspirados en la estructura del cerebro humano, que permiten resolver problemas complejos y no lineales. Estas redes están compuestas por capas de neuronas artificiales que transforman los datos a través de cálculos matemáticos. Las redes neuronales han demostrado ser especialmente útiles en aplicaciones como el reconocimiento de imágenes, el procesamiento de lenguaje natural y el análisis de grandes volúmenes de datos.</p>
 <section id="arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial">
-<h2>Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial<a class="headerlink" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial" title="Permalink to this heading">#</a></h2>
+<h2><strong>Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial</strong><a class="headerlink" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial" title="Permalink to this heading">#</a></h2>
 <p>Arthur Samuel fue un visionario en el campo de la inteligencia artificial y la computación. Nacido en 1901, Samuel se graduó en ingeniería eléctrica y comenzó su carrera trabajando en IBM, donde se convirtió en uno de los pioneros del desarrollo de software y en uno de los primeros en explorar el potencial de las máquinas para “aprender” por sí mismas. A través de su trabajo, sentó las bases de lo que hoy conocemos como <strong>aprendizaje automático</strong> (<em>Machine Learning</em>).</p>
 <p>El logro más reconocido de Samuel fue el desarrollo del programa <strong>“Jugador de Damas”</strong> en 1959, donde utilizó conceptos de lo que más tarde se llamaría <strong>aprendizaje por refuerzo</strong> y <strong>algoritmos heurísticos</strong>. Su programa no solo jugaba a las damas, sino que también era capaz de mejorar su habilidad con el tiempo, jugando contra sí mismo y aprendiendo de sus errores. Lo innovador de este enfoque fue que permitía que el programa ajustara sus estrategias con base en la retroalimentación de las partidas previas, optimizando su desempeño sin intervención humana directa.</p>
 <p>Samuel también fue uno de los primeros en utilizar el término <strong>“aprendizaje automático”</strong>, lo que indica su clara visión de que las máquinas podrían, algún día, desarrollar la capacidad de aprender de manera similar a los humanos. Este concepto marcó un punto de inflexión en la historia de la informática y la IA, ya que introdujo la idea de que las computadoras podían ser programadas no solo para ejecutar tareas específicas, sino también para <strong>aprender y adaptarse</strong> a nuevas situaciones y mejorar su rendimiento a medida que acumulaban experiencia.</p>
@@ -400,7 +468,7 @@ document.write(`
 <p><img alt="arthur" src="_images/arthut.jpg" /></p>
 </section>
 <section id="generalizacion-sobreajuste-y-subajuste">
-<h2>Generalización, sobreajuste y subajuste<a class="headerlink" href="#generalizacion-sobreajuste-y-subajuste" title="Permalink to this heading">#</a></h2>
+<h2><strong>Generalización, sobreajuste y subajuste</strong><a class="headerlink" href="#generalizacion-sobreajuste-y-subajuste" title="Permalink to this heading">#</a></h2>
 <p>En el <strong>aprendizaje supervisado</strong>, el objetivo principal es construir un modelo a partir de los datos de entrenamiento y que este sea capaz de realizar <strong>predicciones precisas</strong> sobre datos desconocidos que tengan las mismas características que el conjunto de entrenamiento utilizado. Si un modelo es capaz de hacer predicciones acertadas sobre datos nuevos, decimos que tiene la capacidad de <strong>generalizar</strong> desde el conjunto de <strong>entrenamiento</strong> al conjunto de <strong>prueba</strong>. Nuestro objetivo es construir un modelo que pueda <strong>generalizar</strong> con la mayor precisión posible.</p>
 <p>Por lo general, entrenamos un modelo de manera que sea preciso en el conjunto de entrenamiento. Si los conjuntos de <strong>entrenamiento</strong> y de <strong>prueba</strong> comparten suficientes similitudes, esperamos que el modelo también funcione bien en el conjunto de prueba. Sin embargo, esto no siempre es así. Si construimos modelos demasiado complejos, podemos lograr un ajuste perfecto en el conjunto de entrenamiento, pero esto no garantiza que el modelo generalice bien a datos nuevos, lo que lleva a un fenómeno conocido como <strong>sobreajuste</strong>.</p>
 <p>El <strong>sobreajuste (overfitting)</strong> ocurre cuando el modelo se ajusta demasiado a las particularidades y ruido del conjunto de entrenamiento, lo que resulta en un modelo que tiene un rendimiento excelente en dicho conjunto, pero falla al enfrentarse a datos no vistos. Por el contrario, si el modelo es demasiado simple, podría no capturar adecuadamente la complejidad y variabilidad de los datos, causando un mal desempeño tanto en el conjunto de entrenamiento como en el de prueba. Esta situación se conoce como <strong>subajuste (underfitting)</strong>.</p>
@@ -420,10 +488,9 @@ document.write(`
 <p>La <strong>regresión</strong> es una técnica estadística y de aprendizaje automático utilizada para modelar la relación entre una <strong>variable dependiente</strong> (o respuesta) y una o más <strong>variables independientes</strong> (o predictoras). El objetivo principal de la regresión es predecir el valor de la variable dependiente en función de los valores de las variables independientes, o entender cómo las variables independientes influyen en la variable dependiente.</p>
 <p>Existen varios tipos de regresión, siendo los más comunes la <strong>regresión lineal</strong> y la <strong>regresión no lineal</strong>, que se seleccionan en función de la relación entre las variables.</p>
 <section id="tipos-de-regresion">
-<h3>Tipos de regresión<a class="headerlink" href="#tipos-de-regresion" title="Permalink to this heading">#</a></h3>
+<h3><strong>Tipos de regresión</strong><a class="headerlink" href="#tipos-de-regresion" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Regresión lineal</strong>: Este es el tipo más básico de regresión, donde se asume que la relación entre la variable dependiente y las variables independientes es lineal. Se busca ajustar una línea recta que mejor represente los datos, minimizando la distancia entre los puntos de los datos y la línea ajustada. La <strong>regresión lineal simple</strong> involucra solo una variable independiente, mientras que la <strong>regresión lineal múltiple</strong> involucra varias variables independientes.</p></li>
-<li><p><strong>Regresión polinómica</strong>: Se utiliza cuando la relación entre la variable dependiente y las variables independientes no es lineal. En este caso, se ajusta una curva polinómica que puede capturar mejor las variaciones no lineales en los datos.</p></li>
 <li><p><strong>Regresión Ridge y Lasso</strong>: Son variaciones de la regresión lineal que incluyen regularización para evitar el sobreajuste. <strong>Ridge</strong> agrega una penalización a la magnitud de los coeficientes del modelo, mientras que <strong>Lasso</strong> no solo penaliza los coeficientes, sino que también puede llevar algunos de ellos a cero, lo que resulta en la selección automática de características.</p></li>
 </ol>
 </section>
@@ -444,8 +511,7 @@ document.write(`
 <li><p>El <code class="docutils literal notranslate"><span class="pre">modelo</span> <span class="pre">de</span> <span class="pre">regresión</span> <span class="pre">lineal</span></code> <a class="reference internal" href="#equation-linear-reg">(1)</a> puede escribirse en la siguiente forma</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-linear-reg-mat">
-<span class="eqno">(2)<a class="headerlink" href="#equation-linear-reg-mat" title="Permalink to this equation">#</a></span>\[\begin{split}
-\begin{pmatrix}
+<span class="eqno">(2)<a class="headerlink" href="#equation-linear-reg-mat" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{pmatrix}
 y_{1}\\
 y_{2}\\
 \vdots\\
@@ -803,7 +869,7 @@ dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráfico de dispersión de &#39;Salary&#39; vs &#39;YearsExperience&#39;</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;YearsExperience&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">salary_data</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;YearsExperience&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_salary</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gráfico de Dispersión - Salario vs Años de Experiencia&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -838,14 +904,13 @@ dtype: int64
 <li><p>La correlación entre ambas variables es alta y positiva (+0.97), lo que confirma que los empleados con más años de experiencia suelen tener salarios más altos.</p></li>
 <li><p>Este fuerte coeficiente sugiere que la experiencia laboral es un predictor clave del salario, lo que podría ser relevante para modelos de predicción.</p></li>
 </ul>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li><p><strong>Ajuste del modelo</strong>:
 Se ajusta un modelo de regresión lineal utilizando <code class="docutils literal notranslate"><span class="pre">Salary</span></code> como variable respuesta y <code class="docutils literal notranslate"><span class="pre">YearsExperience</span></code> como variable predictora. En cualquier estudio predictivo, no solo es esencial ajustar el modelo, sino también evaluar su capacidad para predecir correctamente nuevas observaciones. Para realizar esta evaluación de manera adecuada, los datos se dividen en dos grupos: uno destinado al entrenamiento del modelo y otro reservado para pruebas, lo que permite validar su rendimiento en datos no utilizados durante el ajuste del modelo.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># División de los datos en conjuntos de entrenamiento y prueba</span>
-<span class="c1"># ==============================================================================</span>
 <span class="c1"># X contiene la variable predictora &#39;YearsExperience&#39; y y es la variable objetivo &#39;Salary&#39;.</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">df_salary</span><span class="p">[[</span><span class="s1">&#39;YearsExperience&#39;</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_salary</span><span class="p">[</span><span class="s1">&#39;Salary&#39;</span><span class="p">]</span>
@@ -856,7 +921,7 @@ Se ajusta un modelo de regresión lineal utilizando <code class="docutils litera
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se divide el conjunto de datos en un 80% para entrenamiento y un 20% para prueba.</span>
-<span class="c1"># random_state = 1 asegura que la división sea reproducible.</span>
+<span class="c1"># random_state = 42 asegura que la división sea reproducible.</span>
 <span class="c1"># shuffle = True indica que los datos se mezclarán antes de dividirse.</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
                                         <span class="n">X</span><span class="p">,</span>               <span class="c1"># Variables predictoras</span>
@@ -880,7 +945,6 @@ Se ajusta un modelo de regresión lineal utilizando <code class="docutils litera
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creación del modelo de regresión lineal</span>
-<span class="c1"># ==============================================================================</span>
 <span class="c1"># Se crea un objeto de regresión lineal utilizando la clase LinearRegression de sklearn.</span>
 <span class="c1"># Luego, se ajusta el modelo a los datos de entrenamiento X_train y y_train.</span>
 <span class="n">modelo</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
@@ -889,7 +953,7 @@ Se ajusta un modelo de regresión lineal utilizando <code class="docutils litera
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
 </div>
 <ul class="simple">
 <li><p>Los parámetros de “pendiente” (<span class="math notranslate nohighlight">\(\hat{\beta}_{i},~i=1,2,\dots,p\)</span>), también llamados pesos o coeficientes, se almacenan en el atributo <code class="docutils literal notranslate"><span class="pre">coef_</span></code>, mientras que el desplazamiento o intercepción (<span class="math notranslate nohighlight">\(\hat{\beta}_{0}\)</span>) se almacena en el atributo <code class="docutils literal notranslate"><span class="pre">intercept_</span></code>:</p></li>
@@ -902,8 +966,8 @@ Se ajusta un modelo de regresión lineal utilizando <code class="docutils litera
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lr.coef_: [9332.94473799]
-lr.intercept_: 25609.89799835482
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lr.coef_: [9423.81532303]
+lr.intercept_: 25321.583011776813
 </pre></div>
 </div>
 </div>
@@ -912,6 +976,1078 @@ lr.intercept_: 25609.89799835482
 <p class="admonition-title"><strong>Observación</strong></p>
 <p>El guión bajo (<code class="docutils literal notranslate"><span class="pre">_</span></code>) al final de atributos como <code class="docutils literal notranslate"><span class="pre">coef_</span></code> e <code class="docutils literal notranslate"><span class="pre">intercept_</span></code> es una convención comúnmente utilizada en <strong>scikit-learn</strong> para indicar que dichos atributos son derivados de los datos de entrenamiento. Esta convención permite distinguir entre los atributos que son calculados por el modelo y los parámetros que son definidos por el usuario. De esta manera, los atributos que terminan con un guión bajo (<code class="docutils literal notranslate"><span class="pre">_</span></code>) indican que son aprendidos o ajustados durante el proceso de entrenamiento del modelo.</p>
 </div>
+<ul class="simple">
+<li><p>La función <code class="docutils literal notranslate"><span class="pre">modelo.predict()</span></code> se utiliza en <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> para realizar <strong>predicciones utilizando un modelo previamente entrenado</strong>. En el contexto de un modelo de regresión lineal, como el que has ajustado, <code class="docutils literal notranslate"><span class="pre">modelo.predict()</span></code> toma como entrada un conjunto de datos (generalmente las variables predictoras) y devuelve las predicciones del modelo sobre esas entradas.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># para los datos conocidos del conjunto de train</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Primeras tres predicciones: </span><span class="si">{</span><span class="n">y_pred_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Primeras tres predicciones: [122386.880839   107308.77632215  63016.8443039 ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># para los datos desconocidos</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Primeras tres predicciones: </span><span class="si">{</span><span class="n">y_pred_test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Primeras tres predicciones: [115790.21011287  71498.27809463 102596.86866063]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Visualización del conjunto de entrenamiento y prueba</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una figura para mostrar ambas gráficas una al lado de la otra</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Visualizar los resultados del conjunto de entrenamiento</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sueldo vs Años de Experiencia (Conjunto de Entrenamiento)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Años de Experiencia&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sueldo (en $)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualizar los resultados del conjunto de prueba</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sueldo vs Años de Experiencia (Conjunto de Testing)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Años de Experiencia&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sueldo (en $)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mostrar las gráficas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f7d28829452d5b8b9865415554b8c4e9c39a22b9821648458be1f22d1d160625.png" src="_images/f7d28829452d5b8b9865415554b8c4e9c39a22b9821648458be1f22d1d160625.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="metricas-de-evaluacion-del-modelo-de-regresion">
+<h3><strong>Métricas de evaluacion del modelo de regresión</strong><a class="headerlink" href="#metricas-de-evaluacion-del-modelo-de-regresion" title="Permalink to this heading">#</a></h3>
+<p>La <strong>métricas de evaluación</strong> son medidas que se utilizan para evaluar el rendimiento de un modelo de regresión. Estas métricas permiten medir qué tan bien un modelo se ajusta a los datos observados y su capacidad para hacer predicciones precisas sobre nuevos datos. La elección de la métrica adecuada es crucial, ya que cada métrica puede destacar diferentes aspectos del rendimiento del modelo, como la magnitud del error, la sensibilidad a valores atípicos, o la proporción de la varianza explicada por el modelo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar las librerías necesarias para el cálculo de las métricas</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_squared_log_error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Algunas métricas de evaluación del modelo son:</p>
+<section id="error-cuadratico-medio-mse-mean-squared-error">
+<h4>1. <strong>Error Cuadrático Medio (<span class="math notranslate nohighlight">\(MSE\)</span> - Mean Squared Error)</strong><a class="headerlink" href="#error-cuadratico-medio-mse-mean-squared-error" title="Permalink to this heading">#</a></h4>
+<p>El <strong>Error Cuadrático Medio (<span class="math notranslate nohighlight">\(MSE\)</span>)</strong> mide la media de los errores al cuadrado entre los valores predichos y los valores reales. Penaliza los errores grandes más que los pequeños debido a la elevación al cuadrado.</p>
+<p>Este se utiliza para evaluar qué tan bien se ajusta el modelo a los datos de entrenamiento o de prueba. Un MSE más bajo indica un mejor ajuste del modelo.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2,
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número total de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> son los valores reales,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> son los valores predichos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error Cuadrático Medio (MSE)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set MSE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set MSE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set MSE: 27102249.7313
+Test set MSE: 49830096.8559
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-de-mse">
+<h5><strong>Interpretación de MSE</strong>:<a class="headerlink" href="#interpretacion-de-mse" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Diferencia significativa entre los MSE</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>MSE</strong> en el conjunto de prueba es considerablemente mayor que en el conjunto de entrenamiento. Esto indica que el modelo tiene un mejor rendimiento en los datos de entrenamiento en comparación con los datos no vistos (conjunto de prueba).</p></li>
+<li><p>Esta diferencia sugiere que el modelo podría estar <strong>sobreajustado</strong> (overfitting), lo que significa que ha aprendido bien los detalles de los datos de entrenamiento, pero no generaliza de manera óptima a nuevos datos.</p></li>
+</ul>
+</li>
+<li><p><strong>Sobreajuste (Overfitting)</strong>:</p>
+<ul class="simple">
+<li><p>El sobreajuste ocurre cuando el modelo se adapta demasiado a las particularidades del conjunto de entrenamiento, incluyendo el ruido, y por lo tanto tiene un error bajo en entrenamiento pero un error considerablemente mayor en los datos de prueba.</p></li>
+<li><p>En este caso, la diferencia en los MSEs indica un potencial sobreajuste, ya que el error en los datos de prueba es casi el doble del error en los datos de entrenamiento.</p></li>
+</ul>
+</li>
+<li><p><strong>Magnitud del MSE</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>MSE</strong> está en las unidades de la variable objetivo (salario), elevadas al cuadrado. Si bien el valor del MSE no es fácilmente interpretable directamente, la gran diferencia entre el conjunto de entrenamiento y el de prueba indica que el modelo no está generalizando bien.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-mse">
+<h5><strong>Conclusiones de MSE</strong>:<a class="headerlink" href="#conclusiones-de-mse" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El modelo tiene un rendimiento significativamente mejor en el conjunto de entrenamiento que en el conjunto de prueba, lo que sugiere que podría estar sobreajustado.</p></li>
+<li><p>Es posible que el modelo esté capturando patrones específicos del conjunto de entrenamiento que no se replican bien en datos nuevos.</p></li>
+<li><p>Para mejorar el rendimiento en el conjunto de prueba, podrían considerarse las siguientes acciones:</p>
+<ol class="arabic simple">
+<li><p>Aplicar técnicas de <strong>regularización</strong> (como <strong>Ridge</strong> o <strong>Lasso</strong>) para reducir el sobreajuste.</p></li>
+<li><p>Implementar <strong>validación cruzada</strong> para evaluar mejor el rendimiento del modelo y ajustar sus hiperparámetros.</p></li>
+<li><p><strong>Obtener más datos</strong> de entrenamiento para ayudar al modelo a generalizar mejor a nuevos datos.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+<section id="error-absoluto-medio-mae-mean-absolute-error">
+<h4>2. <strong>Error Absoluto Medio (<span class="math notranslate nohighlight">\(MAE\)</span> - Mean Absolute Error)</strong><a class="headerlink" href="#error-absoluto-medio-mae-mean-absolute-error" title="Permalink to this heading">#</a></h4>
+<p>El <strong>Error Absoluto Medio (<span class="math notranslate nohighlight">\(MAE\)</span>)</strong> mide el promedio de las diferencias absolutas entre los valores predichos y los valores reales. No eleva al cuadrado los errores, por lo que no es tan sensible a valores atípicos.</p>
+<p>Este se utiliza cuando queremos una interpretación más directa del error medio en las mismas unidades que la variable objetivo.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|,
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número total de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> son los valores reales,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> son los valores predichos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error Absoluto Medio (MAE)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set MAE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set MAE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set MAE: 4221.0467
+Test set MAE: 6286.4538
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-de-mae">
+<h5><strong>Interpretación de MAE</strong>:<a class="headerlink" href="#interpretacion-de-mae" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Diferencia entre los MAE de entrenamiento y prueba</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>MAE</strong> en el conjunto de prueba es significativamente mayor que en el conjunto de entrenamiento. Esto indica que el modelo tiene un mejor rendimiento en los datos de entrenamiento que en los datos de prueba.</p></li>
+<li><p>Esta diferencia sugiere que el modelo podría estar <strong>sobreajustado</strong> (overfitting). Es decir, el modelo se ajusta muy bien a los datos de entrenamiento, pero no generaliza tan bien cuando se le presentan datos nuevos.</p></li>
+</ul>
+</li>
+<li><p><strong>Magnitud del MAE</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>MAE</strong> mide el error promedio absoluto en las predicciones, es decir, cuánto se desvían las predicciones del modelo en promedio respecto a los valores reales de salario. El error promedio en el conjunto de entrenamiento es de aproximadamente <strong>4,221 unidades monetarias</strong>, mientras que en el conjunto de prueba es de <strong>6,286 unidades monetarias</strong>.</p></li>
+<li><p>Aunque la diferencia entre los errores en ambos conjuntos no es enorme, sigue siendo notable. Esto indica que el modelo está haciendo mejores predicciones en los datos que ha visto (entrenamiento) en comparación con los datos que no ha visto antes (prueba).</p></li>
+</ul>
+</li>
+<li><p><strong>Posible sobreajuste (Overfitting)</strong>:</p>
+<ul class="simple">
+<li><p>El hecho de que el error en el conjunto de prueba sea mayor que en el conjunto de entrenamiento sugiere que el modelo está capturando patrones específicos del conjunto de entrenamiento que no se reflejan bien en los nuevos datos. Este comportamiento es típico de un modelo que está sobreajustado.</p></li>
+<li><p>En este caso, el modelo podría estar adaptándose demasiado a las peculiaridades de los datos de entrenamiento, y esto está afectando su capacidad para generalizar a datos no vistos.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-mae">
+<h5><strong>Conclusiones de MAE</strong>:<a class="headerlink" href="#conclusiones-de-mae" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>La diferencia entre los <strong>MAE</strong> sugiere que el modelo está funcionando bien en el conjunto de entrenamiento, pero tiene un peor rendimiento en el conjunto de prueba, lo que indica que podría estar sobreajustado.</p></li>
+<li><p>El modelo tiene un error promedio en las predicciones de salario de aproximadamente <strong>6,286 unidades monetarias</strong> en los datos de prueba, lo que podría ser un error significativo dependiendo del contexto del problema.</p></li>
+<li><p>Para mejorar el rendimiento del modelo y reducir el posible sobreajuste, se pueden tomar las siguientes acciones:</p>
+<ol class="arabic simple">
+<li><p>Aplicar técnicas de <strong>regularización</strong> (como <strong>Ridge</strong> o <strong>Lasso</strong>) para reducir la complejidad del modelo y mejorar la generalización.</p></li>
+<li><p>Utilizar <strong>validación cruzada</strong> para evaluar el rendimiento del modelo en múltiples divisiones de los datos y reducir el riesgo de sobreajuste.</p></li>
+<li><p><strong>Aumentar el tamaño del conjunto de datos</strong> de entrenamiento, si es posible, para ayudar al modelo a generalizar mejor.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+<section id="raiz-del-error-cuadratico-medio-rmse-root-mean-squared-error">
+<h4>3. <strong>Raíz del Error Cuadrático Medio (<span class="math notranslate nohighlight">\(RMSE\)</span> - Root Mean Squared Error)</strong><a class="headerlink" href="#raiz-del-error-cuadratico-medio-rmse-root-mean-squared-error" title="Permalink to this heading">#</a></h4>
+<p>El <strong><span class="math notranslate nohighlight">\(RMSE\)</span></strong> es la raíz cuadrada del <span class="math notranslate nohighlight">\(MSE\)</span> y devuelve el error en las mismas unidades que la variable dependiente, lo que facilita la interpretación.</p>
+<p>Este al igual que el <span class="math notranslate nohighlight">\(MSE\)</span>, mide el ajuste del modelo, pero es más fácil de interpretar porque está en las mismas unidades que los datos.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2},
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número total de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> son los valores reales,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> son los valores predichos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Raíz del Error Cuadrático Medio (RMSE)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set RMSE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set RMSE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set RMSE: 5205.9821
+Test set RMSE: 7059.0436
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-de-rmse">
+<h5><strong>Interpretación de RMSE</strong>:<a class="headerlink" href="#interpretacion-de-rmse" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Diferencia entre los RMSE de entrenamiento y prueba</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>RMSE</strong> en el conjunto de prueba es mayor que en el conjunto de entrenamiento. Esto significa que el modelo está cometiendo errores más grandes en las predicciones de los datos no vistos (conjunto de prueba) en comparación con los datos con los que fue entrenado.</p></li>
+<li><p>Aunque la diferencia entre ambos <strong>RMSE</strong> no es extrema, sugiere que el modelo podría estar <strong>sobreajustado</strong> (overfitting) a los datos de entrenamiento. El modelo parece ajustarse mejor a los datos que ya ha visto y tiene un rendimiento inferior en nuevos datos.</p></li>
+</ul>
+</li>
+<li><p><strong>Magnitud del RMSE</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>RMSE</strong> te dice, en promedio, cuánto se desvían las predicciones del modelo respecto a los valores reales, pero en las mismas unidades de la variable objetivo (en este caso, el salario).</p></li>
+<li><p>En el conjunto de entrenamiento, el error promedio es de aproximadamente <strong>5,206 unidades monetarias</strong>, mientras que en el conjunto de prueba, el error promedio es de <strong>7,059 unidades monetarias</strong>.</p></li>
+<li><p>Esto significa que en datos de prueba (nuevos datos no vistos), las predicciones del modelo están, en promedio, a <strong>7,059 unidades</strong> de los valores reales de salario.</p></li>
+</ul>
+</li>
+<li><p><strong>Posible sobreajuste (Overfitting)</strong>:</p>
+<ul class="simple">
+<li><p>El hecho de que el <strong>RMSE</strong> sea mayor en el conjunto de prueba sugiere un posible <strong>sobreajuste</strong>. Aunque el modelo se desempeña bien en el conjunto de entrenamiento (con un <strong>RMSE</strong> más bajo), su rendimiento en datos no vistos no es tan bueno.</p></li>
+<li><p>Sin embargo, la diferencia en los <strong>RMSE</strong> entre los conjuntos de entrenamiento y prueba no es excesivamente grande, lo que indica que el sobreajuste no es muy severo, pero aún podría mejorarse.</p></li>
+</ul>
+</li>
+<li><p><strong>Comparación con el MAE y el MSE</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>RMSE</strong> es más sensible a los errores grandes en las predicciones que el <strong>MAE</strong>. Dado que el <strong>RMSE</strong> penaliza más los errores grandes, un <strong>RMSE</strong> mayor en el conjunto de prueba puede estar indicando que hay algunos errores considerables en las predicciones que el modelo está haciendo en datos no vistos.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-rmse">
+<h5><strong>Conclusiones de RMSE</strong>:<a class="headerlink" href="#conclusiones-de-rmse" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong>RMSE</strong> más alto en el conjunto de prueba en comparación con el de entrenamiento sugiere que el modelo podría estar ligeramente <strong>sobreajustado</strong>. Aunque no hay una diferencia extremadamente grande entre los valores de RMSE, el modelo claramente tiene un mejor rendimiento en los datos de entrenamiento.</p></li>
+<li><p>La magnitud del error promedio (alrededor de <strong>7,059 unidades monetarias</strong> en el conjunto de prueba) puede considerarse significativa, dependiendo del rango de salarios en los datos. Esto indica que hay margen para mejorar las predicciones del modelo.</p></li>
+<li><p>Para mejorar el rendimiento del modelo, especialmente en datos no vistos, se pueden considerar las siguientes acciones:</p>
+<ol class="arabic simple">
+<li><p>Aplicar técnicas de <strong>regularización</strong> (como <strong>Ridge</strong> o <strong>Lasso</strong>) para reducir el sobreajuste.</p></li>
+<li><p>Implementar <strong>validación cruzada</strong> para obtener una mejor medida de la capacidad de generalización del modelo.</p></li>
+<li><p>Considerar añadir más datos de entrenamiento, si es posible, o explorar nuevas variables predictoras que puedan mejorar la precisión del modelo.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="resumen-de-rmse">
+<h5><strong>Resumen de RMSE</strong>:<a class="headerlink" href="#resumen-de-rmse" title="Permalink to this heading">#</a></h5>
+<p>El modelo tiene un <strong>RMSE</strong> más bajo en el conjunto de entrenamiento, lo que indica un buen ajuste a esos datos, pero el mayor <strong>RMSE</strong> en el conjunto de prueba sugiere que el modelo no generaliza tan bien en datos nuevos. Aunque la diferencia no es extremadamente grande, esto sugiere que el modelo puede estar sobreajustado y hay margen para mejorar su capacidad de generalización.</p>
+</section>
+</section>
+<section id="coeficiente-de-determinacion-r-2-r-squared">
+<h4>4. <strong>Coeficiente de Determinación (<span class="math notranslate nohighlight">\(R^2\)</span> - <span class="math notranslate nohighlight">\(R\)</span>-squared)</strong><a class="headerlink" href="#coeficiente-de-determinacion-r-2-r-squared" title="Permalink to this heading">#</a></h4>
+<p>El <strong>coeficiente de determinación (<span class="math notranslate nohighlight">\(R^2\)</span>)</strong> mide la proporción de la varianza de la variable dependiente que es explicada por las variables independientes. Su valor está entre 0 y 1.</p>
+<p>Esto indica qué tan bien se ajusta el modelo a los datos. Un valor cercano a 1 sugiere un ajuste muy bueno.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2},
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número total de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> son los valores reales,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> son los valores predichos.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{y}\)</span> es el promedio de los valores reales.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Coeficiente de Determinación (R²)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set R²: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set R²: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set R²: 0.9645
+Test set R²: 0.9024
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Como tenemos integrado el <code class="docutils literal notranslate"><span class="pre">.score</span></code> en <strong>scikit-learn</strong>, este también calcula <span class="math notranslate nohighlight">\(R^2\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Coeficiente de Determinación (R²)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set R²: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set R²: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set R²: 0.9645
+Test set R²: 0.9024
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-de-r-2">
+<h5><strong>Interpretación de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:<a class="headerlink" href="#interpretacion-de-r-2" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Valor de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</p>
+<ul class="simple">
+<li><p>El <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> indica qué proporción de la variabilidad en la variable dependiente (salario) es explicada por el modelo basado en la variable independiente (años de experiencia). Un valor de <strong>R²</strong> más cercano a 1 indica un mejor ajuste del modelo.</p></li>
+<li><p>En el conjunto de entrenamiento, un <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> de <strong>0.9645</strong> significa que el modelo explica el <strong>96.45%</strong> de la variabilidad en los salarios en función de los años de experiencia.</p></li>
+<li><p>En el conjunto de prueba, un <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> de <strong>0.9024</strong> indica que el modelo sigue explicando el <strong>90.24%</strong> de la variabilidad en los salarios, lo que sugiere que el modelo sigue siendo bastante preciso en datos no vistos.</p></li>
+</ul>
+</li>
+<li><p><strong>Diferencia entre los valores de <span class="math notranslate nohighlight">\(R^2\)</span> de entrenamiento y prueba</strong>:</p>
+<ul class="simple">
+<li><p>Aunque el <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> del conjunto de prueba es un poco menor que en el conjunto de entrenamiento, la diferencia no es grande. Esto sugiere que el modelo generaliza relativamente bien en nuevos datos, aunque hay una leve disminución en su capacidad para explicar la variabilidad en los salarios en los datos de prueba.</p></li>
+<li><p>Esta diferencia menor podría indicar un <strong>ligero sobreajuste</strong> (overfitting), donde el modelo se ajusta un poco mejor a los datos de entrenamiento que a los de prueba, pero aún generaliza razonablemente bien.</p></li>
+</ul>
+</li>
+<li><p><strong>Buen ajuste del modelo</strong>:</p>
+<ul class="simple">
+<li><p>Con un <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> superior a 0.90 tanto en los datos de entrenamiento como de prueba, podemos decir que el modelo tiene un <strong>buen ajuste</strong> y que la variable de <strong>años de experiencia</strong> explica bien la variabilidad en los salarios.</p></li>
+<li><p>A pesar de la pequeña disminución en el rendimiento en los datos de prueba, el modelo sigue siendo útil para predecir salarios en función de la experiencia.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-r-2">
+<h5><strong>Conclusiones de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:<a class="headerlink" href="#conclusiones-de-r-2" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El alto <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> en el conjunto de entrenamiento (<strong>0.9645</strong>) indica que el modelo está bien ajustado a los datos de entrenamiento.</p></li>
+<li><p>El <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> del conjunto de prueba (<strong>0.9024</strong>) sugiere que el modelo generaliza bien en datos no vistos, aunque existe una pequeña diferencia que podría indicar un leve <strong>sobreajuste</strong>.</p></li>
+<li><p>A pesar de esta pequeña diferencia, el modelo sigue siendo robusto, ya que explica más del <strong>90%</strong> de la variabilidad en los salarios en el conjunto de prueba.</p></li>
+</ul>
+</section>
+<section id="posibles-acciones-para-mejorar-si-es-necesario-de-r-2">
+<h5><strong>Posibles acciones para mejorar (si es necesario) de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:<a class="headerlink" href="#posibles-acciones-para-mejorar-si-es-necesario-de-r-2" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Dado que el modelo ya está funcionando bien, las siguientes acciones solo serían necesarias si se busca mejorar aún más la generalización:</p>
+<ol class="arabic simple">
+<li><p>Aplicar <strong>técnicas de regularización</strong> (como <strong>Ridge</strong> o <strong>Lasso</strong>) para evitar cualquier posible sobreajuste.</p></li>
+<li><p>Implementar <strong>validación cruzada</strong> para obtener una mejor evaluación de la capacidad del modelo para generalizar.</p></li>
+<li><p>Añadir más datos o explorar otras características predictoras que puedan mejorar la precisión del modelo.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="resumen-de-r-2">
+<h5><strong>Resumen de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:<a class="headerlink" href="#resumen-de-r-2" title="Permalink to this heading">#</a></h5>
+<p>El modelo tiene un <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> alto en ambos conjuntos (entrenamiento y prueba), lo que indica que el modelo ajusta bien los datos y generaliza razonablemente bien a datos no vistos. La pequeña diferencia entre el <strong>R²</strong> del entrenamiento y el de prueba podría sugerir un leve sobreajuste, pero en general el modelo es sólido para predecir salarios basados en la experiencia.</p>
+</section>
+</section>
+<section id="r-2-ajustado-adjusted-r-squared">
+<h4>5. <strong><span class="math notranslate nohighlight">\(R^2\)</span> Ajustado (Adjusted <span class="math notranslate nohighlight">\(R\)</span>-squared)</strong><a class="headerlink" href="#r-2-ajustado-adjusted-r-squared" title="Permalink to this heading">#</a></h4>
+<p>El <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> es una versión modificada del coeficiente de determinación <span class="math notranslate nohighlight">\(R^2\)</span> que tiene en cuenta el número de predictores en el modelo. Penaliza la adición de predictores irrelevantes que no mejoran significativamente el modelo.</p>
+<p>Es útil cuando se está comparando el rendimiento de modelos que tienen diferentes cantidades de variables independientes. Un <span class="math notranslate nohighlight">\(R^2\)</span> puede aumentar simplemente por agregar más variables, pero el <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> solo aumenta si las nuevas variables realmente mejoran el modelo.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+R^2_{\text{ajustado}} = 1 - \left( \frac{(1 - R^2)(n - 1)}{n - k - 1} \right)
+\]</div>
+<p>Donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R^2\)</span> es el coeficiente de determinación,</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> es el número de predictores (variables independientes).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular R² ajustado train</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>  <span class="c1"># número de observaciones</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># número de predictores</span>
+<span class="n">r2_ajustado_train</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">modelo</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Calcular R² ajustado test</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>  <span class="c1"># número de observaciones</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># número de predictores</span>
+<span class="n">r2_ajustado_test</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">modelo</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set R² ajustado: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_ajustado_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set R² ajustado: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_ajustado_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set R² ajustado: 0.9629
+Test set R² ajustado: 0.8781
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-de-r-2-ajustado">
+<h5><strong>Interpretación de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:<a class="headerlink" href="#interpretacion-de-r-2-ajustado" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>¿Qué es el <span class="math notranslate nohighlight">\(R^2\)</span> ajustado?</strong>:</p>
+<ul class="simple">
+<li><p>El <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> es una versión ajustada del <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> que penaliza por la cantidad de predictores utilizados en el modelo. Es especialmente útil cuando se trabaja con múltiples variables independientes, ya que evita inflar artificialmente el <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> simplemente añadiendo más predictores que podrían no ser útiles.</p></li>
+<li><p>El <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> proporciona una mejor medida de la capacidad de generalización del modelo cuando se tiene más de una variable predictora. Si solo tienes una variable predictora (como en este caso, con <strong>YearsExperience</strong>), la diferencia entre el <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> y el <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> será pequeña, como se refleja en tus resultados.</p></li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado en el conjunto de entrenamiento</strong>:</p>
+<ul class="simple">
+<li><p>Un <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> de <strong>0.9629</strong> en el conjunto de entrenamiento sugiere que el modelo explica el <strong>96.29%</strong> de la variación en los salarios en función de los años de experiencia, incluso teniendo en cuenta posibles sobreajustes.</p></li>
+<li><p>La diferencia entre el <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> original (<strong>0.9645</strong>) y el <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> (<strong>0.9629</strong>) es muy pequeña, lo que indica que el modelo es bastante confiable en los datos de entrenamiento y que no hay un impacto significativo por tener un número limitado de predictores.</p></li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado en el conjunto de prueba</strong>:</p>
+<ul class="simple">
+<li><p>Un <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> de <strong>0.8781</strong> en el conjunto de prueba significa que, cuando se penaliza la complejidad del modelo, este sigue explicando el <strong>87.81%</strong> de la variación en los salarios en los datos no vistos.</p></li>
+<li><p>La diferencia entre el <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> y el <strong><span class="math notranslate nohighlight">\(R^2\)</span></strong> original en el conjunto de prueba (<strong>0.9024</strong>) indica una leve penalización, lo que sugiere que el modelo no generaliza tan bien en comparación con su rendimiento en los datos de entrenamiento.</p></li>
+</ul>
+</li>
+<li><p><strong>Comparación entre <span class="math notranslate nohighlight">\(R^2\)</span> ajustado en entrenamiento y prueba</strong>:</p>
+<ul class="simple">
+<li><p>El <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> en el conjunto de entrenamiento es mayor que en el conjunto de prueba, lo que refleja que el modelo tiene un mejor ajuste a los datos con los que fue entrenado que a los nuevos datos.</p></li>
+<li><p>La diferencia entre el <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> del conjunto de entrenamiento (<strong>0.9629</strong>) y el del conjunto de prueba (<strong>0.8781</strong>) sugiere que el modelo puede estar ligeramente <strong>sobreajustado</strong> (overfitting), ya que está funcionando un poco mejor en el conjunto de entrenamiento en comparación con el conjunto de prueba.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-r-2-ajustado">
+<h5><strong>Conclusiones de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:<a class="headerlink" href="#conclusiones-de-r-2-ajustado" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> más bajo en el conjunto de prueba (0.8781) en comparación con el conjunto de entrenamiento (0.9629) indica que, aunque el modelo está funcionando bien, hay una pequeña diferencia en la capacidad de generalización, lo que podría indicar un <strong>leve sobreajuste</strong>.</p></li>
+<li><p>A pesar de esta diferencia, el <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> sigue siendo relativamente alto, lo que sugiere que el modelo es razonablemente robusto y explica la mayor parte de la variabilidad en los salarios, tanto en los datos de entrenamiento como en los de prueba.</p></li>
+</ul>
+</section>
+<section id="posibles-acciones-para-mejorar-r-2-ajustado">
+<h5><strong>Posibles acciones para mejorar <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:<a class="headerlink" href="#posibles-acciones-para-mejorar-r-2-ajustado" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Si deseas mejorar la capacidad de generalización del modelo, podrías aplicar técnicas de <strong>regularización</strong> como <strong>Ridge</strong> o <strong>Lasso</strong> para reducir el sobreajuste y mejorar el rendimiento en datos no vistos.</p></li>
+<li><p>Implementar <strong>validación cruzada</strong> para tener una mejor estimación de la capacidad de generalización del modelo y asegurarse de que está optimizado para datos nuevos.</p></li>
+<li><p>Explorar la adición de más características predictoras, si están disponibles, o aumentar el tamaño del conjunto de datos para mejorar aún más el ajuste y la generalización del modelo.</p></li>
+</ul>
+</section>
+<section id="resumen-de-r-2-ajustado">
+<h5><strong>Resumen de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:<a class="headerlink" href="#resumen-de-r-2-ajustado" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong><span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong> del conjunto de entrenamiento (0.9629) y el del conjunto de prueba (0.8781) muestran que el modelo tiene un buen ajuste en los datos de entrenamiento, pero podría estar ligeramente sobreajustado. A pesar de esto, el modelo sigue explicando una gran parte de la variabilidad en los salarios, incluso en los datos de prueba. Sin embargo, hay margen para mejorar la capacidad de generalización mediante regularización u otras técnicas.</p></li>
+</ul>
+</section>
+</section>
+<section id="error-medio-proporcional-absoluto-mape-mean-absolute-percentage-error">
+<h4>6. <strong>Error Medio Proporcional Absoluto (<span class="math notranslate nohighlight">\(MAPE\)</span> - Mean Absolute Percentage Error)</strong><a class="headerlink" href="#error-medio-proporcional-absoluto-mape-mean-absolute-percentage-error" title="Permalink to this heading">#</a></h4>
+<p>El <strong><span class="math notranslate nohighlight">\(MAPE\)</span></strong> mide el error porcentual promedio entre los valores reales y los predichos, lo que permite interpretar el error en términos relativos.</p>
+<p>Es útil para entender el error en términos porcentuales, lo que es valioso cuando las magnitudes de los datos varían mucho.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+MAPE = \frac{100\%}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número total de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> son los valores reales,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> son los valores predichos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error Medio Proporcional (MAPE)</span>
+<span class="n">mape_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_train</span> <span class="o">-</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span> <span class="o">/</span> <span class="n">y_train</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">mape_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span> <span class="o">/</span> <span class="n">y_test</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set MAPE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mape_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set MAPE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mape_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set MAPE: 6.7656
+Test set MAPE: 7.7449
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-del-mape">
+<h5><strong>Interpretación del MAPE</strong>:<a class="headerlink" href="#interpretacion-del-mape" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>¿Qué es el MAPE?</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>MAPE</strong> mide el error porcentual medio absoluto entre los valores predichos y los valores reales. Indica el porcentaje promedio por el cual las predicciones del modelo difieren de los valores reales.</p></li>
+<li><p>El <strong>MAPE</strong> se expresa como un porcentaje, por lo que un valor de <strong>6.77%</strong> en el conjunto de entrenamiento significa que, en promedio, las predicciones del modelo difieren un <strong>6.77%</strong> de los valores reales.</p></li>
+</ul>
+</li>
+<li><p><strong>MAPE en el conjunto de entrenamiento</strong>:</p>
+<ul class="simple">
+<li><p>Un <strong>MAPE</strong> de <strong>6.77%</strong> en el conjunto de entrenamiento sugiere que el modelo tiene un error porcentual medio relativamente bajo en los datos con los que fue entrenado. En otras palabras, las predicciones del modelo en el conjunto de entrenamiento son bastante cercanas a los valores reales.</p></li>
+<li><p>Un MAPE menor al 10% generalmente se considera un buen resultado, ya que implica que las predicciones están relativamente bien ajustadas a los valores reales.</p></li>
+</ul>
+</li>
+<li><p><strong>MAPE en el conjunto de prueba</strong>:</p>
+<ul class="simple">
+<li><p>Un <strong>MAPE</strong> de <strong>7.74%</strong> en el conjunto de prueba sugiere que el modelo también predice con bastante precisión los valores de salario en datos no vistos, pero con un pequeño aumento en el error en comparación con los datos de entrenamiento.</p></li>
+<li><p>Aunque hay una pequeña diferencia entre los valores de MAPE en el conjunto de entrenamiento y el de prueba, ambos valores son menores al 10%, lo que indica un buen desempeño del modelo.</p></li>
+</ul>
+</li>
+<li><p><strong>Diferencia entre los MAPE de entrenamiento y prueba</strong>:</p>
+<ul class="simple">
+<li><p>La diferencia entre el <strong>MAPE</strong> del conjunto de entrenamiento (<strong>6.77%</strong>) y el del conjunto de prueba (<strong>7.74%</strong>) es relativamente pequeña. Esta diferencia sugiere que el modelo tiene una buena capacidad de generalización, ya que no hay un aumento significativo en el error porcentual cuando se aplican las predicciones a nuevos datos.</p></li>
+<li><p>Aunque el <strong>MAPE</strong> en el conjunto de prueba es un poco mayor, lo cual es esperado, esta diferencia no es lo suficientemente grande como para ser preocupante.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-mape">
+<h5><strong>Conclusiones de MAPE</strong>:<a class="headerlink" href="#conclusiones-de-mape" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Los valores de <strong>MAPE</strong> tanto en el conjunto de entrenamiento (<strong>6.77%</strong>) como en el conjunto de prueba (<strong>7.74%</strong>) son relativamente bajos, lo que indica que el modelo está haciendo predicciones precisas en ambas muestras.</p></li>
+<li><p>La pequeña diferencia entre los <strong>MAPE</strong> sugiere que el modelo no está sobreajustado y tiene una buena capacidad para generalizar a nuevos datos.</p></li>
+<li><p>En general, los valores obtenidos indican que el modelo es confiable para hacer predicciones de salario basadas en la experiencia, con un error porcentual medio bastante razonable.</p></li>
+</ul>
+</section>
+<section id="posibles-acciones-para-mejorar-si-es-necesario-de-mape">
+<h5><strong>Posibles acciones para mejorar (si es necesario) de MAPE</strong>:<a class="headerlink" href="#posibles-acciones-para-mejorar-si-es-necesario-de-mape" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Aunque los resultados son buenos, si se desea mejorar aún más la precisión del modelo, se podrían explorar las siguientes acciones:</p>
+<ol class="arabic simple">
+<li><p>Aplicar <strong>técnicas de regularización</strong> (como <strong>Ridge</strong> o <strong>Lasso</strong>) para reducir cualquier posible sobreajuste residual.</p></li>
+<li><p><strong>Aumentar el tamaño del conjunto de datos</strong> de entrenamiento o añadir más características predictoras relevantes, si están disponibles, para mejorar la precisión del modelo en datos no vistos.</p></li>
+<li><p>Utilizar <strong>validación cruzada</strong> para asegurar una estimación robusta del rendimiento del modelo en diferentes divisiones de los datos.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="resumen-de-mape">
+<h5><strong>Resumen de MAPE</strong>:<a class="headerlink" href="#resumen-de-mape" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong>MAPE</strong> en el conjunto de entrenamiento es <strong>6.77%</strong>, mientras que en el conjunto de prueba es <strong>7.74%</strong>. Estos valores sugieren que el modelo tiene un buen rendimiento en ambas muestras, con una ligera disminución de precisión en los datos de prueba. En general, el modelo es robusto y las predicciones de salario basadas en la experiencia son razonablemente precisas, con un error porcentual medio bajo.</p></li>
+</ul>
+</section>
+</section>
+<section id="error-cuadratico-medio-de-logaritmo-msle-mean-squared-logarithmic-error">
+<h4>7. <strong>Error Cuadrático Medio de Logaritmo (<span class="math notranslate nohighlight">\(MSLE\)</span> - Mean Squared Logarithmic Error)</strong><a class="headerlink" href="#error-cuadratico-medio-de-logaritmo-msle-mean-squared-logarithmic-error" title="Permalink to this heading">#</a></h4>
+<p>El <strong><span class="math notranslate nohighlight">\(MSLE\)</span></strong> es una variante del <span class="math notranslate nohighlight">\(MSE\)</span> que utiliza los logaritmos de los valores reales y predichos, en lugar de los valores originales.</p>
+<p>Este se utiliza cuando se quiere penalizar más los errores de predicción en valores pequeños que en valores grandes.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+MSLE = \frac{1}{n} \sum_{i=1}^{n} \left( \log(1 + y_i) - \log(1 + \hat{y}_i) \right)^2,
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número total de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> son los valores reales,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> son los valores predichos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error Cuadrático Medio de Logaritmo (MSLE)</span>
+<span class="n">msle_train</span> <span class="o">=</span> <span class="n">mean_squared_log_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<span class="n">msle_test</span> <span class="o">=</span> <span class="n">mean_squared_log_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set MSLE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msle_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set MSLE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msle_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set MSLE: 0.0075
+Test set MSLE: 0.0082
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-de-msle">
+<h5><strong>Interpretación de MSLE</strong>:<a class="headerlink" href="#interpretacion-de-msle" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>¿Qué es el MSLE?</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>Error Cuadrático Medio Logarítmico (MSLE)</strong> mide el error entre los logaritmos de las predicciones y los logaritmos de los valores reales. Es especialmente útil cuando deseas penalizar menos los errores grandes en las predicciones relativas, ya que considera las proporciones entre las predicciones y los valores reales.</p></li>
+<li><p>Un <strong>MSLE</strong> bajo, como los valores obtenidos aquí, indica que las predicciones del modelo están relativamente cerca de los valores reales en términos proporcionales.</p></li>
+</ul>
+</li>
+<li><p><strong>MSLE en el conjunto de entrenamiento</strong>:</p>
+<ul class="simple">
+<li><p>Un <strong>MSLE</strong> de <strong>0.0075</strong> en el conjunto de entrenamiento sugiere que el modelo tiene un error logarítmico medio muy bajo. Esto significa que las diferencias entre los valores predichos y los valores reales, después de aplicar el logaritmo, son pequeñas.</p></li>
+<li><p>El logaritmo suaviza las diferencias, lo que hace que este error sea útil cuando las diferencias relativas son importantes o cuando hay outliers en los datos.</p></li>
+</ul>
+</li>
+<li><p><strong>MSLE en el conjunto de prueba</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>MSLE</strong> de <strong>0.0082</strong> en el conjunto de prueba indica que el modelo también tiene un error bajo en los datos no vistos. Aunque este valor es ligeramente mayor que el del conjunto de entrenamiento, la diferencia es pequeña.</p></li>
+<li><p>Este bajo valor del <strong>MSLE</strong> sugiere que el modelo está prediciendo de manera precisa incluso en datos que no ha visto antes.</p></li>
+</ul>
+</li>
+<li><p><strong>Diferencia entre los MSLE de entrenamiento y prueba</strong>:</p>
+<ul class="simple">
+<li><p>La diferencia entre el <strong>MSLE</strong> del conjunto de entrenamiento (<strong>0.0075</strong>) y el del conjunto de prueba (<strong>0.0082</strong>) es mínima, lo que indica que el modelo tiene una buena capacidad de generalización y no muestra signos evidentes de sobreajuste (overfitting).</p></li>
+<li><p>Esta pequeña diferencia es esperada, ya que los modelos suelen funcionar mejor en los datos con los que han sido entrenados, pero la diferencia aquí no es lo suficientemente grande como para ser preocupante.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-msle">
+<h5><strong>Conclusiones de MSLE</strong>:<a class="headerlink" href="#conclusiones-de-msle" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Los valores bajos de <strong>MSLE</strong> en ambos conjuntos (entrenamiento y prueba) sugieren que el modelo es capaz de predecir los valores con un alto grado de precisión en términos relativos, incluso cuando se consideran errores grandes.</p></li>
+<li><p>La pequeña diferencia entre el <strong>MSLE</strong> de entrenamiento y prueba sugiere que el modelo tiene una <strong>buena capacidad de generalización</strong> y está funcionando bien tanto en los datos de entrenamiento como en los datos no vistos.</p></li>
+</ul>
+</section>
+<section id="posibles-acciones-para-mejorar-de-msle">
+<h5><strong>Posibles acciones para mejorar de MSLE</strong>:<a class="headerlink" href="#posibles-acciones-para-mejorar-de-msle" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Aunque los resultados son buenos, si se busca mejorar aún más la precisión del modelo, se pueden considerar las siguientes acciones:</p>
+<ol class="arabic simple">
+<li><p>Aplicar técnicas de <strong>regularización</strong> (como <strong>Ridge</strong> o <strong>Lasso</strong>) para reducir cualquier posible sobreajuste residual.</p></li>
+<li><p>Explorar más variables predictoras, si están disponibles, para mejorar la precisión del modelo y reducir aún más el error.</p></li>
+<li><p><strong>Validación cruzada</strong> podría ser útil para obtener una mejor estimación de la capacidad de generalización del modelo en diferentes divisiones de los datos.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="resumen-de-msle">
+<h5><strong>Resumen de MSLE</strong>:<a class="headerlink" href="#resumen-de-msle" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong>MSLE</strong> en el conjunto de entrenamiento es <strong>0.0075</strong>, mientras que en el conjunto de prueba es <strong>0.0082</strong>. Estos valores bajos sugieren que el modelo está haciendo predicciones precisas tanto en los datos de entrenamiento como en los de prueba. La diferencia mínima entre ambos valores indica una <strong>buena capacidad de generalización</strong>, y el modelo es sólido en cuanto a su rendimiento en datos no vistos.</p></li>
+</ul>
+</section>
+</section>
+<section id="error-relativo-absoluto-rae-relative-absolute-error">
+<h4>8. <strong>Error Relativo Absoluto (<span class="math notranslate nohighlight">\(RAE\)</span> - Relative Absolute Error)</strong><a class="headerlink" href="#error-relativo-absoluto-rae-relative-absolute-error" title="Permalink to this heading">#</a></h4>
+<p>El <strong><span class="math notranslate nohighlight">\(RAE\)</span></strong> compara el error absoluto del modelo con el error absoluto de un modelo de referencia, que usualmente es el modelo que predice el valor medio de la variable dependiente.</p>
+<p>Este evalúa el rendimiento relativo del modelo comparado con una solución trivial.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+RAE = \frac{\sum_{i=1}^{n} |y_i - \hat{y}_i|}{\sum_{i=1}^{n} |y_i - \bar{y}|},
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número total de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> son los valores reales,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> son los valores predichos.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{y}\)</span> es el promedio de los valores reales.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error Relativo Absoluto (RAE)</span>
+<span class="n">rae_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_train</span> <span class="o">-</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_train</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_train</span><span class="p">)))</span>
+<span class="n">rae_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_test</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set RAE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rae_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set RAE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rae_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set RAE: 0.1684
+Test set RAE: 0.3139
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-de-rae">
+<h5><strong>Interpretación de RAE</strong>:<a class="headerlink" href="#interpretacion-de-rae" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>¿Qué es el RAE?</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>Error Relativo Absoluto (RAE)</strong> mide la suma de los errores absolutos de las predicciones en relación con la suma de los errores absolutos de un modelo simple que predice la media de los valores reales. En resumen, compara el rendimiento del modelo con un modelo base.</p></li>
+<li><p>Un valor de <strong>RAE</strong> más cercano a 0 indica que el modelo tiene un buen rendimiento en comparación con el modelo base. Cuanto más se acerque a 1, peor es el rendimiento relativo del modelo.</p></li>
+</ul>
+</li>
+<li><p><strong>RAE en el conjunto de entrenamiento</strong>:</p>
+<ul class="simple">
+<li><p>Un <strong>RAE</strong> de <strong>0.1684</strong> en el conjunto de entrenamiento significa que el modelo está cometiendo un error absoluto aproximadamente <strong>16.84%</strong> del error que cometería un modelo que simplemente predijera la media de los valores de entrenamiento. Este es un resultado muy bueno, ya que sugiere que el modelo es significativamente mejor que predecir simplemente la media.</p></li>
+</ul>
+</li>
+<li><p><strong>RAE en el conjunto de prueba</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>RAE</strong> de <strong>0.3139</strong> en el conjunto de prueba indica que el modelo está cometiendo un error absoluto aproximadamente <strong>31.39%</strong> del error que cometería un modelo que simplemente predijera la media de los valores de prueba.</p></li>
+<li><p>Aunque este valor sigue siendo bueno (ya que está lejos de 1), es mayor que el <strong>RAE</strong> en el conjunto de entrenamiento, lo que sugiere que el modelo es un poco menos efectivo en los datos de prueba que en los de entrenamiento.</p></li>
+</ul>
+</li>
+<li><p><strong>Diferencia entre los RAE de entrenamiento y prueba</strong>:</p>
+<ul class="simple">
+<li><p>La diferencia entre el <strong>RAE</strong> del conjunto de entrenamiento (<strong>0.1684</strong>) y el del conjunto de prueba (<strong>0.3139</strong>) es notable. Esto sugiere que el modelo tiene un rendimiento considerablemente mejor en los datos de entrenamiento que en los datos de prueba, lo que podría ser una señal de <strong>sobreajuste</strong> (overfitting).</p></li>
+<li><p>El hecho de que el <strong>RAE</strong> sea mayor en el conjunto de prueba sugiere que el modelo está capturando detalles específicos del conjunto de entrenamiento que no se replican bien en los nuevos datos.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-rae">
+<h5><strong>Conclusiones de RAE</strong>:<a class="headerlink" href="#conclusiones-de-rae" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong>RAE</strong> del conjunto de entrenamiento es bajo (<strong>0.1684</strong>), lo que indica que el modelo está funcionando significativamente mejor que un modelo que predijera simplemente la media de los valores reales.</p></li>
+<li><p>El <strong>RAE</strong> del conjunto de prueba es mayor (<strong>0.3139</strong>), lo que sugiere que el modelo no generaliza tan bien a los nuevos datos como lo hace en el conjunto de entrenamiento. A pesar de esto, el modelo sigue teniendo un rendimiento relativamente bueno en comparación con un modelo base.</p></li>
+<li><p>La diferencia entre los <strong>RAE</strong> de entrenamiento y prueba indica que el modelo podría estar <strong>sobreajustado</strong> a los datos de entrenamiento y necesita mejorar su capacidad de generalización.</p></li>
+</ul>
+</section>
+<section id="posibles-acciones-para-mejorar-de-rae">
+<h5><strong>Posibles acciones para mejorar de RAE</strong>:<a class="headerlink" href="#posibles-acciones-para-mejorar-de-rae" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Aplicar regularización</strong>: Utilizar técnicas de regularización como <strong>Ridge</strong> o <strong>Lasso</strong> para reducir el sobreajuste y mejorar la capacidad de generalización del modelo en los datos de prueba.</p></li>
+<li><p><strong>Validación cruzada</strong>: Implementar validación cruzada para obtener una estimación más robusta del rendimiento del modelo en diferentes particiones de los datos.</p></li>
+<li><p><strong>Añadir más datos</strong>: Si es posible, aumentar el tamaño del conjunto de datos de entrenamiento podría ayudar a mejorar la capacidad del modelo para generalizar a nuevos datos.</p></li>
+</ol>
+</section>
+<section id="resumen-de-rae">
+<h5><strong>Resumen de RAE</strong>:<a class="headerlink" href="#resumen-de-rae" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong>RAE</strong> en el conjunto de entrenamiento es <strong>0.1684</strong>, lo que sugiere un buen ajuste a los datos de entrenamiento, mientras que el <strong>RAE</strong> en el conjunto de prueba es <strong>0.3139</strong>, lo que indica un rendimiento un poco peor en datos no vistos.</p></li>
+<li><p>La diferencia entre estos valores sugiere que el modelo está capturando patrones específicos de los datos de entrenamiento y no generaliza tan bien en datos nuevos, lo que podría indicar un <strong>leve sobreajuste</strong>. Para mejorar, se podrían aplicar técnicas de regularización o validación cruzada.</p></li>
+</ul>
+</section>
+</section>
+<section id="error-cuadratico-relativo-rse-relative-squared-error">
+<h4>9. <strong>Error Cuadrático Relativo (<span class="math notranslate nohighlight">\(RSE\)</span> - Relative Squared Error)</strong><a class="headerlink" href="#error-cuadratico-relativo-rse-relative-squared-error" title="Permalink to this heading">#</a></h4>
+<p>El <strong><span class="math notranslate nohighlight">\(RSE\)</span></strong> compara el error cuadrático del modelo con el error cuadrático de un modelo de referencia (generalmente el promedio de los valores reales).</p>
+<p>Similar al <span class="math notranslate nohighlight">\(RAE\)</span>, compara el rendimiento del modelo frente a un predictor básico.</p>
+<ul class="simple">
+<li><p><strong>Fórmula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+RSE = \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2},
+\]</div>
+<p>donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es el número total de observaciones,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> son los valores reales,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_i\)</span> son los valores predichos.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{y}\)</span> es el promedio de los valores reales.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error Cuadrático Relativo (RSE)</span>
+<span class="n">rse_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y_train</span> <span class="o">-</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y_train</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">rse_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_test</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set RSE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rse_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set RSE: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rse_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set RSE: 0.0355
+Test set RSE: 0.0976
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interpretacion-de-rse">
+<h5><strong>Interpretación de RSE</strong>:<a class="headerlink" href="#interpretacion-de-rse" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>¿Qué es el RSE?</strong>:</p>
+<ul class="simple">
+<li><p>El <strong>Error Cuadrático Relativo (RSE)</strong> mide el error cuadrático de las predicciones en relación con el error cuadrático de un modelo simple que predice la media de los valores reales. Al igual que el <strong>RAE</strong>, el <strong>RSE</strong> compara el rendimiento del modelo con un modelo base que predice la media.</p></li>
+<li><p>Un valor de <strong>RSE</strong> más cercano a 0 indica que el modelo está funcionando mucho mejor que un modelo base, mientras que un valor más cercano a 1 indica que el modelo tiene un rendimiento comparable al de un modelo base.</p></li>
+</ul>
+</li>
+<li><p><strong>RSE en el conjunto de entrenamiento</strong>:</p>
+<ul class="simple">
+<li><p>Un <strong>RSE</strong> de <strong>0.0355</strong> en el conjunto de entrenamiento significa que el modelo está cometiendo un error cuadrático que es aproximadamente el <strong>3.55%</strong> del error que cometería un modelo que predijera simplemente la media de los salarios en los datos de entrenamiento.</p></li>
+<li><p>Este valor extremadamente bajo indica que el modelo tiene un rendimiento significativamente mejor que el modelo base en el conjunto de entrenamiento, ajustándose muy bien a los datos.</p></li>
+</ul>
+</li>
+<li><p><strong>RSE en el conjunto de prueba</strong>:</p>
+<ul class="simple">
+<li><p>Un <strong>RSE</strong> de <strong>0.0976</strong> en el conjunto de prueba indica que el modelo está cometiendo un error cuadrático que es aproximadamente el <strong>9.76%</strong> del error que cometería un modelo que simplemente predijera la media de los salarios en los datos de prueba.</p></li>
+<li><p>Aunque este valor sigue siendo bajo, es considerablemente mayor que el <strong>RSE</strong> en el conjunto de entrenamiento, lo que sugiere que el modelo no tiene el mismo nivel de precisión en los datos no vistos.</p></li>
+</ul>
+</li>
+<li><p><strong>Diferencia entre los RSE de entrenamiento y prueba</strong>:</p>
+<ul class="simple">
+<li><p>La diferencia entre el <strong>RSE</strong> del conjunto de entrenamiento (<strong>0.0355</strong>) y el del conjunto de prueba (<strong>0.0976</strong>) indica que el modelo está funcionando mejor en los datos de entrenamiento que en los datos de prueba, lo que sugiere un posible <strong>sobreajuste</strong> (overfitting).</p></li>
+<li><p>Aunque el <strong>RSE</strong> en el conjunto de prueba sigue siendo bajo, esta diferencia sugiere que el modelo ha aprendido patrones específicos de los datos de entrenamiento que no generalizan tan bien a los datos de prueba.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="conclusiones-de-rse">
+<h5><strong>Conclusiones de RSE</strong>:<a class="headerlink" href="#conclusiones-de-rse" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong>RSE</strong> del conjunto de entrenamiento es muy bajo (<strong>0.0355</strong>), lo que indica que el modelo tiene un rendimiento significativamente mejor que un modelo que predice la media de los salarios en esos datos.</p></li>
+<li><p>El <strong>RSE</strong> del conjunto de prueba es mayor (<strong>0.0976</strong>), pero sigue siendo bajo, lo que sugiere que el modelo sigue siendo mejor que un modelo base en los datos de prueba, aunque con menor precisión en comparación con los datos de entrenamiento.</p></li>
+<li><p>La diferencia entre los <strong>RSE</strong> de entrenamiento y prueba indica un posible <strong>sobreajuste</strong>, donde el modelo ha aprendido patrones específicos de los datos de entrenamiento que no se replican bien en los datos no vistos.</p></li>
+</ul>
+</section>
+<section id="posibles-acciones-para-mejorar-de-rse">
+<h5><strong>Posibles acciones para mejorar de RSE</strong>:<a class="headerlink" href="#posibles-acciones-para-mejorar-de-rse" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Aplicar regularización</strong>: Utilizar técnicas de regularización como <strong>Ridge</strong> o <strong>Lasso</strong> podría ayudar a reducir el sobreajuste y mejorar la capacidad del modelo para generalizar a nuevos datos.</p></li>
+<li><p><strong>Validación cruzada</strong>: Implementar validación cruzada para evaluar mejor el rendimiento del modelo y optimizar su capacidad de generalización en diferentes subconjuntos de los datos.</p></li>
+<li><p><strong>Añadir más datos</strong>: Si es posible, aumentar el tamaño del conjunto de entrenamiento o explorar otras características predictoras para mejorar aún más la precisión y capacidad de generalización del modelo.</p></li>
+</ol>
+</section>
+<section id="resumen-de-rse">
+<h5><strong>Resumen de RSE</strong>:<a class="headerlink" href="#resumen-de-rse" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>El <strong>RSE</strong> en el conjunto de entrenamiento es <strong>0.0355</strong>, lo que sugiere que el modelo se ajusta muy bien a los datos de entrenamiento. El <strong>RSE</strong> en el conjunto de prueba es <strong>0.0976</strong>, lo que indica que el modelo tiene un buen rendimiento en los datos no vistos, pero con una precisión algo menor.</p></li>
+<li><p>La diferencia entre los <strong>RSE</strong> sugiere que el modelo podría estar <strong>ligeramente sobreajustado</strong>, pero sigue siendo significativamente mejor que un modelo base que predice simplemente la media de los valores de salario.</p></li>
+</ul>
+<p>Estas métricas permiten evaluar de manera precisa el rendimiento de los modelos de regresión. Dependiendo de la naturaleza del problema y de los objetivos del proyecto, se puede elegir una o varias métricas para obtener una visión completa del ajuste del modelo.</p>
+</section>
+</section>
+<section id="regresion-lineal-con-la-libreria-statsmodels">
+<h4><strong>Regresión Lineal con la librería Statsmodels</strong><a class="headerlink" href="#regresion-lineal-con-la-libreria-statsmodels" title="Permalink to this heading">#</a></h4>
+<p>La implementación de <strong>regresión lineal</strong> en <strong>Statsmodels</strong> es más completa que la de <strong>Scikit-learn</strong>, ya que, además de ajustar el modelo, permite calcular pruebas estadísticas y realizar análisis necesarios para verificar que se cumplen las condiciones sobre las que se basa este tipo de modelos. Esto la convierte en una herramienta más robusta para el análisis de regresión.</p>
+<div class="note admonition">
+<p class="admonition-title">Ventajas de Statsmodels</p>
+<ul class="simple">
+<li><p><strong>Pruebas estadísticas</strong>: Permite realizar pruebas como el análisis de varianza (ANOVA), pruebas de significancia de los coeficientes, e intervalos de confianza para los parámetros del modelo.</p></li>
+<li><p><strong>Análisis de residuales</strong>: Facilita el análisis de los residuos, permitiendo evaluar si el modelo cumple con los supuestos de homocedasticidad, normalidad de los errores, entre otros.</p></li>
+</ul>
+</div>
+<section id="formas-de-entrenar-un-modelo-de-regresion-en-statsmodels">
+<h5><strong>Formas de entrenar un modelo de regresión en Statsmodels</strong>:<a class="headerlink" href="#formas-de-entrenar-un-modelo-de-regresion-en-statsmodels" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Indicando la fórmula del modelo</strong>:</p>
+<ul class="simple">
+<li><p>En esta forma, se especifica la fórmula del modelo (similar a cómo se hace en <strong>R</strong>) y se pasan los datos de entrenamiento como un DataFrame que incluye tanto la variable respuesta como los predictores.</p></li>
+<li><p>Ejemplo de uso:</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># datos train</span>
+<span class="n">datos_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># construcción del modelo</span>
+<span class="n">modelo</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;Salary ~ YearsExperience&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">datos_train</span><span class="p">)</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 Salary   R-squared:                       0.965
+Model:                            OLS   Adj. R-squared:                  0.963
+Method:                 Least Squares   F-statistic:                     598.4
+Date:                Wed, 16 Oct 2024   Prob (F-statistic):           1.91e-17
+Time:                        18:54:38   Log-Likelihood:                -239.44
+No. Observations:                  24   AIC:                             482.9
+Df Residuals:                      22   BIC:                             485.2
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P&gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+Intercept        2.532e+04   2285.938     11.077      0.000    2.06e+04    3.01e+04
+YearsExperience  9423.8153    385.233     24.463      0.000    8624.891    1.02e+04
+==============================================================================
+Omnibus:                        0.647   Durbin-Watson:                   2.026
+Prob(Omnibus):                  0.724   Jarque-Bera (JB):                0.697
+Skew:                           0.323   Prob(JB):                        0.706
+Kurtosis:                       2.472   Cond. No.                         12.5
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Pasando matrices de predictores y la variable respuesta</strong>:</p>
+<ul class="simple">
+<li><p>En este enfoque, se pasa una matriz con los predictores y otra con la variable respuesta, similar a cómo se hace en <strong>Scikit-learn</strong>. Sin embargo, en <strong>Statsmodels</strong> es necesario añadir manualmente una columna de unos (<code class="docutils literal notranslate"><span class="pre">1s</span></code>) a la matriz de predictores para incluir el término independiente (intercepto) en el modelo.</p></li>
+<li><p>Ejemplo de uso:</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importar la libreria</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="c1"># construcción del modelo</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">prepend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Añadir la columna de 1s para el intercepto</span>
+<span class="n">modelo</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">endog</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">exog</span><span class="o">=</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">modelo</span> <span class="o">=</span> <span class="n">modelo</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                 Salary   R-squared:                       0.965
+Model:                            OLS   Adj. R-squared:                  0.963
+Method:                 Least Squares   F-statistic:                     598.4
+Date:                Wed, 16 Oct 2024   Prob (F-statistic):           1.91e-17
+Time:                        18:58:57   Log-Likelihood:                -239.44
+No. Observations:                  24   AIC:                             482.9
+Df Residuals:                      22   BIC:                             485.2
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+===================================================================================
+                      coef    std err          t      P&gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+const            2.532e+04   2285.938     11.077      0.000    2.06e+04    3.01e+04
+YearsExperience  9423.8153    385.233     24.463      0.000    8624.891    1.02e+04
+==============================================================================
+Omnibus:                        0.647   Durbin-Watson:                   2.026
+Prob(Omnibus):                  0.724   Jarque-Bera (JB):                0.697
+Skew:                           0.323   Prob(JB):                        0.706
+Kurtosis:                       2.472   Cond. No.                         12.5
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="resultados-de-la-regresion-lineal-ols">
+<h5><strong>Resultados de la Regresión Lineal (OLS)</strong><a class="headerlink" href="#resultados-de-la-regresion-lineal-ols" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Estadísticos del Modelo</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>R-squared (R²)</strong>: 0.965</p>
+<ul>
+<li><p>El modelo explica el <strong>96.5%</strong> de la variabilidad en el salario en función de los años de experiencia. Esto indica un <strong>buen ajuste</strong> del modelo a los datos.</p></li>
+</ul>
+</li>
+<li><p><strong>Adjusted R-squared (R² ajustado)</strong>: 0.963</p>
+<ul>
+<li><p>El <strong>R² ajustado</strong> es ligeramente menor que el R², lo que es normal, ya que penaliza la inclusión de variables adicionales. En este caso, la diferencia es mínima, ya que solo tenemos un predictor.</p></li>
+</ul>
+</li>
+<li><p><strong>F-statistic</strong>: 598.4</p>
+<ul>
+<li><p>La estadística <strong>F</strong> mide si el modelo en su conjunto es significativo. Un valor alto, como en este caso, sugiere que el modelo es válido y que la relación entre la variable dependiente (salario) y la independiente (años de experiencia) es estadísticamente significativa.</p></li>
+</ul>
+</li>
+<li><p><strong>Prob(F-statistic)</strong>: 1.91e-17</p>
+<ul>
+<li><p>El valor p asociado con la estadística <strong>F</strong> es extremadamente pequeño (<strong>1.91e-17</strong>), lo que indica que es altamente improbable que el modelo en su conjunto sea insignificante. Esto refuerza la idea de que el modelo es significativo.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>Coeficientes del Modelo</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Intercepto (const)</strong>: 25,320.53</p>
+<ul>
+<li><p>El salario base estimado para alguien con <strong>0 años de experiencia</strong> es de <strong>25,320.53</strong> unidades monetarias. Este es el valor esperado cuando <strong>YearsExperience</strong> es igual a 0.</p></li>
+</ul>
+</li>
+<li><p><strong>YearsExperience</strong>: 9423.82</p>
+<ul>
+<li><p>El coeficiente para <strong>YearsExperience</strong> indica que, por cada año adicional de experiencia, el salario aumenta en <strong>9,423.82</strong> unidades monetarias, en promedio, manteniendo todas las demás variables constantes.</p></li>
+</ul>
+</li>
+<li><p><strong>Valores P (P&gt;|t|)</strong>:</p>
+<ul>
+<li><p>Tanto el intercepto como el coeficiente de <strong>YearsExperience</strong> tienen valores p extremadamente bajos (<strong>0.000</strong>), lo que indica que ambos son <strong>estadísticamente significativos</strong>. Esto significa que tanto el salario base como el aumento en salario asociado con cada año adicional de experiencia son diferentes de cero con un nivel de confianza muy alto.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>Intervalos de Confianza</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>[0.025, 0.975] para el Intercepto</strong>: [20,600, 30,100]</p>
+<ul>
+<li><p>Esto significa que, con un 95% de confianza, el salario base para alguien con 0 años de experiencia está entre <strong>20,600</strong> y <strong>30,100</strong> unidades monetarias.</p></li>
+</ul>
+</li>
+<li><p><strong>[0.025, 0.975] para YearsExperience</strong>: [8,625, 10,223]</p>
+<ul>
+<li><p>Para <strong>YearsExperience</strong>, se puede decir con un 95% de confianza que el incremento en salario por cada año adicional de experiencia está entre <strong>8,625</strong> y <strong>10,223</strong> unidades monetarias.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><strong>Pruebas de Supuestos del Modelo</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Durbin-Watson</strong>: 2.026</p>
+<ul>
+<li><p>Este estadístico mide la autocorrelación de los residuos. Un valor cercano a <strong>2</strong> (como en este caso) indica que no hay autocorrelación significativa en los errores.</p></li>
+</ul>
+</li>
+<li><p><strong>Omnibus Prob(Omnibus)</strong>: 0.724</p>
+<ul>
+<li><p>Esta prueba evalúa si los residuos del modelo se distribuyen de forma normal. Un valor p de <strong>0.724</strong> indica que no hay evidencia significativa de que los residuos se desvíen de la normalidad.</p></li>
+</ul>
+</li>
+<li><p><strong>Jarque-Bera (Prob JB)</strong>: 0.706</p>
+<ul>
+<li><p>Al igual que el estadístico <strong>Omnibus</strong>, esta prueba evalúa la normalidad de los residuos. Un valor p de <strong>0.706</strong> también sugiere que no hay evidencia de que los residuos se desvíen de una distribución normal.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p><strong>Cond. No. (Número de Condición)</strong>: 12.5</p></li>
+</ol>
+<ul class="simple">
+<li><p>El número de condición es una medida de la multicolinealidad. Un valor menor de <strong>30</strong> sugiere que no hay problemas de multicolinealidad, lo cual es lógico ya que solo hay una variable independiente en el modelo.</p></li>
+</ul>
+<ol class="arabic simple" start="6">
+<li><p><strong>Conclusiones</strong>:</p></li>
+</ol>
+<ul class="simple">
+<li><p>El modelo tiene un <strong>buen ajuste</strong> a los datos, ya que el <strong>R²</strong> es alto (<strong>96.5%</strong>).</p></li>
+<li><p>Tanto el <strong>intercepto</strong> como el <strong>coeficiente de YearsExperience</strong> son <strong>estadísticamente significativos</strong>, lo que indica que la experiencia tiene un impacto claro y positivo en los salarios.</p></li>
+<li><p>Los <strong>residuos</strong> del modelo parecen ser <strong>normales</strong> y no presentan problemas de autocorrelación, como lo indican las pruebas de <strong>Durbin-Watson</strong>, <strong>Omnibus</strong> y <strong>Jarque-Bera</strong>.</p></li>
+<li><p>En general, el modelo es <strong>válido y robusto</strong>, y se puede concluir que los años de experiencia explican gran parte de la variación en los salarios.</p></li>
+</ul>
+</section>
+<section id="comparacion-con-scikit-learn">
+<h5><strong>Comparación con Scikit-learn</strong><a class="headerlink" href="#comparacion-con-scikit-learn" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>Scikit-learn</strong> está más orientado a la predicción y es ideal para construir modelos de regresión de forma rápida y eficiente, sin tener que preocuparse por el análisis estadístico detallado.</p></li>
+<li><p><strong>Statsmodels</strong>, en cambio, está más orientado al análisis estadístico completo, proporcionando una visión detallada del ajuste del modelo y permitiendo realizar pruebas estadísticas y análisis de residuales de manera sencilla.</p></li>
+</ul>
+</section>
+<section id="conclusion">
+<h5><strong>Conclusión</strong><a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h5>
+<p>Si solo necesitas ajustar un modelo de regresión lineal rápidamente para hacer predicciones, <strong>Scikit-learn</strong> es una excelente opción. Sin embargo, si necesitas realizar un análisis estadístico completo del modelo, incluyendo pruebas de significancia y validación de los supuestos del modelo, <strong>Statsmodels</strong> es una herramienta más adecuada.</p>
+</section>
 </section>
 </section>
 </section>
@@ -984,12 +2120,80 @@ lr.intercept_: 25609.89799835482
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial">Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacion-sobreajuste-y-subajuste">Generalización, sobreajuste y subajuste</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arthur-samuel-pionero-del-aprendizaje-automatico-y-la-inteligencia-artificial"><strong>Arthur Samuel: Pionero del Aprendizaje Automático y la Inteligencia Artificial</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacion-sobreajuste-y-subajuste"><strong>Generalización, sobreajuste y subajuste</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion"><strong>Regresión</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-regresion">Tipos de regresión</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-regresion"><strong>Tipos de regresión</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-lineal"><strong>Modelo de regresión lineal</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-de-regresion-lineal-simple-salario"><strong>Ejemplo de regresión lineal simple (Salario)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-del-modelo-de-regresion"><strong>Métricas de evaluacion del modelo de regresión</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-mse-mean-squared-error">1. <strong>Error Cuadrático Medio (<span class="math notranslate nohighlight">\(MSE\)</span> - Mean Squared Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-mse"><strong>Interpretación de MSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-mse"><strong>Conclusiones de MSE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-absoluto-medio-mae-mean-absolute-error">2. <strong>Error Absoluto Medio (<span class="math notranslate nohighlight">\(MAE\)</span> - Mean Absolute Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-mae"><strong>Interpretación de MAE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-mae"><strong>Conclusiones de MAE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#raiz-del-error-cuadratico-medio-rmse-root-mean-squared-error">3. <strong>Raíz del Error Cuadrático Medio (<span class="math notranslate nohighlight">\(RMSE\)</span> - Root Mean Squared Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-rmse"><strong>Interpretación de RMSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-rmse"><strong>Conclusiones de RMSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-rmse"><strong>Resumen de RMSE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-de-determinacion-r-2-r-squared">4. <strong>Coeficiente de Determinación (<span class="math notranslate nohighlight">\(R^2\)</span> - <span class="math notranslate nohighlight">\(R\)</span>-squared)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-r-2"><strong>Interpretación de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-r-2"><strong>Conclusiones de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-si-es-necesario-de-r-2"><strong>Posibles acciones para mejorar (si es necesario) de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-r-2"><strong>Resumen de <span class="math notranslate nohighlight">\(R^2\)</span></strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r-2-ajustado-adjusted-r-squared">5. <strong><span class="math notranslate nohighlight">\(R^2\)</span> Ajustado (Adjusted <span class="math notranslate nohighlight">\(R\)</span>-squared)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-r-2-ajustado"><strong>Interpretación de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-r-2-ajustado"><strong>Conclusiones de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-r-2-ajustado"><strong>Posibles acciones para mejorar <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-r-2-ajustado"><strong>Resumen de <span class="math notranslate nohighlight">\(R^2\)</span> ajustado</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-medio-proporcional-absoluto-mape-mean-absolute-percentage-error">6. <strong>Error Medio Proporcional Absoluto (<span class="math notranslate nohighlight">\(MAPE\)</span> - Mean Absolute Percentage Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-del-mape"><strong>Interpretación del MAPE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-mape"><strong>Conclusiones de MAPE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-si-es-necesario-de-mape"><strong>Posibles acciones para mejorar (si es necesario) de MAPE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-mape"><strong>Resumen de MAPE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-medio-de-logaritmo-msle-mean-squared-logarithmic-error">7. <strong>Error Cuadrático Medio de Logaritmo (<span class="math notranslate nohighlight">\(MSLE\)</span> - Mean Squared Logarithmic Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-msle"><strong>Interpretación de MSLE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-msle"><strong>Conclusiones de MSLE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-de-msle"><strong>Posibles acciones para mejorar de MSLE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-msle"><strong>Resumen de MSLE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-relativo-absoluto-rae-relative-absolute-error">8. <strong>Error Relativo Absoluto (<span class="math notranslate nohighlight">\(RAE\)</span> - Relative Absolute Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-rae"><strong>Interpretación de RAE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-rae"><strong>Conclusiones de RAE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-de-rae"><strong>Posibles acciones para mejorar de RAE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-rae"><strong>Resumen de RAE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-cuadratico-relativo-rse-relative-squared-error">9. <strong>Error Cuadrático Relativo (<span class="math notranslate nohighlight">\(RSE\)</span> - Relative Squared Error)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-rse"><strong>Interpretación de RSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-rse"><strong>Conclusiones de RSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-acciones-para-mejorar-de-rse"><strong>Posibles acciones para mejorar de RSE</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-de-rse"><strong>Resumen de RSE</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal-con-la-libreria-statsmodels"><strong>Regresión Lineal con la librería Statsmodels</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#formas-de-entrenar-un-modelo-de-regresion-en-statsmodels"><strong>Formas de entrenar un modelo de regresión en Statsmodels</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-de-la-regresion-lineal-ols"><strong>Resultados de la Regresión Lineal (OLS)</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-con-scikit-learn"><strong>Comparación con Scikit-learn</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusión</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
