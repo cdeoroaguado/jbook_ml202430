@@ -478,6 +478,22 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-del-modelo-de-svr"><strong>Construcción del modelo de SVR</strong></a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-los-modelos"><strong>Evaluación de los módelos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-cruzada-cross-validation"><strong>Validación cruzada (Cross-Validation)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-validacion-cruzada"><strong>Tipos de validación cruzada</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concepto-de-grid-search-busqueda-de-grilla"><strong>Concepto de Grid Search (busqueda de grilla)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-regresion-que-pueden-usar-grid-search-para-hiperparametrizacion"><strong>Modelos de Regresión que pueden usar Grid Search para hiperparametrización</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-search-con-validacion-cruzada"><strong>Grid Search con validación cruzada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-completo-de-los-modelos"><strong>Análisis completo de los modelos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-rigde"><strong>Modelo Rigde</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -3731,8 +3747,16 @@ M_{i,j} = \exp \left( \sum_{k} \theta_k |x_i^k - x_j^k|^2 \right) + \epsilon \de
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.1065
-Test set score: 0.1122
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Crear y entrenar el modelo de SVR con kernel lineal</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">svr_lineal</span> <span class="o">=</span> <span class="n">SVR</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">svr_lineal</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaler</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Evaluar el modelo</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set score: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">svr_lineal</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_scaler</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)))</span>
+
+<span class="ne">NameError</span>: name &#39;X_train_scaler&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -3818,6 +3842,949 @@ Test set score: 0.6119
 </ol>
 <p>Esto conceptos los desarrollaremos proximamente</p>
 </div>
+</section>
+</section>
+<section id="evaluacion-de-los-modelos">
+<h3><strong>Evaluación de los módelos</strong><a class="headerlink" href="#evaluacion-de-los-modelos" title="Permalink to this heading">#</a></h3>
+<p>Después de discutir algunos modelos del aprendizaje supervisado y los distintos algoritmos utilizados, pasaremos a abordar la evaluación de modelos y la selección de hiperparámetros. Nos centraremos en los modelos supervisados, particularmente en los problemas de regresión, dado que la evaluación en el aprendizaje no supervisado suele ser más cualitativa y subjetiva.</p>
+<p>Una vez que se han definido <strong>las métricas de evaluación</strong>, el siguiente paso es garantizar que el modelo sea capaz de generalizar a datos nuevos. Para ello, se utilizan técnicas como la <strong>validación cruzada</strong> y la <strong>selección de hiperparámetros</strong>.</p>
+<section id="validacion-cruzada-cross-validation">
+<h4><strong>Validación cruzada (Cross-Validation)</strong><a class="headerlink" href="#validacion-cruzada-cross-validation" title="Permalink to this heading">#</a></h4>
+<p>La <strong>validación cruzada</strong> es un método estadístico utilizado para evaluar el rendimiento de un modelo de manera más estable y exhaustiva que simplemente dividiendo los datos en un conjunto de entrenamiento y otro de prueba. En la validación cruzada, los datos se dividen varias veces y se entrenan múltiples modelos para obtener una mejor estimación de la capacidad de generalización del modelo.</p>
+<p>La forma más común de validación cruzada es la <strong>validación cruzada k-fold</strong>, donde <span class="math notranslate nohighlight">\(k\)</span> es un número especificado por el usuario, típicamente 5 o 10.</p>
+<div class="note admonition">
+<p class="admonition-title"><strong>¿Cómo funciona la validación cruzada k-fold?</strong></p>
+<p>En la <strong>validación cruzada five-fold (k=5)</strong>, los datos se dividen en cinco partes de tamaño (aproximadamente) igual, llamadas <strong>pliegues (folds)</strong>. Luego, se sigue un proceso iterativo de entrenamiento y evaluación de modelos:</p>
+<ol class="arabic simple">
+<li><p><strong>Primera iteración:</strong> El primer modelo se entrena utilizando los pliegues 2, 3, 4 y 5 como conjunto de entrenamiento, y el pliegue 1 se utiliza como conjunto de prueba. Se evalúa el rendimiento del modelo, por ejemplo, calculando la métrica de <strong>accuracy</strong>.</p></li>
+<li><p><strong>Segunda iteración:</strong> Se construye otro modelo, esta vez utilizando el pliegue 2 como conjunto de prueba y los pliegues 1, 3, 4 y 5 como conjunto de entrenamiento. Se evalúa nuevamente el modelo en el pliegue 2.</p></li>
+<li><p><strong>Iteraciones restantes:</strong> El proceso se repite para los pliegues 3, 4 y 5, utilizando cada uno de ellos como conjunto de prueba una vez, mientras que los pliegues restantes se usan para el entrenamiento.</p></li>
+</ol>
+<p>Al final del proceso, se han entrenado y evaluado cinco modelos, cada uno utilizando un conjunto diferente de datos de prueba. Esto da lugar a cinco valores de <strong>accuracy</strong> (o cualquier otra métrica de evaluación utilizada). La estimación final del rendimiento del modelo se obtiene promediando estos cinco valores, lo que proporciona una medida más robusta y confiable de la capacidad de generalización del modelo.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas de la validación cruzada k-fold</strong></p>
+<ul class="simple">
+<li><p><strong>Mejor estimación de la generalización:</strong> Al evaluar el modelo en diferentes subconjuntos de los datos, se obtiene una estimación más precisa y menos dependiente de una sola partición específica.</p></li>
+<li><p><strong>Maximiza el uso de los datos:</strong> Cada muestra en el conjunto de datos se utiliza tanto para el entrenamiento como para la evaluación, lo que es especialmente útil en conjuntos de datos pequeños.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Consideraciones al usar validación cruzada</strong></p>
+<ul class="simple">
+<li><p><strong>Costo computacional:</strong> Entrenar y evaluar el modelo <span class="math notranslate nohighlight">\(k\)</span> veces puede ser costoso para conjuntos de datos grandes o modelos complejos.</p></li>
+<li><p><strong>Elección de <span class="math notranslate nohighlight">\(k\)</span>:</strong> Valores típicos son 5 o 10, aunque un valor mayor de <span class="math notranslate nohighlight">\(k\)</span> puede proporcionar una mejor estimación a costa de un mayor tiempo de cómputo.</p></li>
+</ul>
+<p>La validación cruzada es una herramienta fundamental en el aprendizaje automático para evaluar de manera confiable el rendimiento de un modelo y evitar problemas de sobreajuste.</p>
+</div>
+<section id="tipos-de-validacion-cruzada">
+<h5><strong>Tipos de validación cruzada</strong><a class="headerlink" href="#tipos-de-validacion-cruzada" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Validación cruzada k-fold:</strong></p>
+<ul class="simple">
+<li><p>Es el enfoque más común y se recomienda para la mayoría de los problemas.</p></li>
+<li><p>Un valor típico es <span class="math notranslate nohighlight">\(k = 5\)</span> o <span class="math notranslate nohighlight">\(k = 10\)</span>, aunque se pueden usar valores mayores.</p></li>
+<li><p>A medida que <span class="math notranslate nohighlight">\(k\)</span> aumenta, el sesgo de la evaluación disminuye, pero el costo computacional aumenta.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mglearn</span>
+<span class="n">mglearn</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">plot_cross_validation</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/aa557bdb5079f148667eb0825fd90cf07b0c8d074e9c1df1bb09be72ea85c648.png" src="_images/aa557bdb5079f148667eb0825fd90cf07b0c8d074e9c1df1bb09be72ea85c648.png" />
+</div>
+</div>
+<p>Normalmente, la primera quinta parte de los datos es conocida como el primer fold, la segunda quinta parte de los datos es el segundo fold, y así sucesivamente.</p>
+<ul class="simple">
+<li><p>Continuando con el conjunto de datos del <strong>precio promedio de las casas</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="c1"># Realizar la validación cruzada con 10 folds</span>
+<span class="c1"># &#39;lr&#39; es el modelo de regresión logística previamente entrenado</span>
+<span class="c1"># &#39;X&#39; son las características del conjunto de datos housing</span>
+<span class="c1"># &#39;y&#39; son las etiquetas de las clases en el conjunto de datos Iris</span>
+<span class="c1"># &#39;cv=10&#39; especifica que se debe usar validación cruzada con 10 folds</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lr</span><span class="p">,</span> <span class="n">X_train_scaler</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Imprimir los puntajes obtenidos en cada fold de la validación cruzada</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validation scores: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.67879183 0.63217854 0.65223844 0.64493131 0.63888288 0.68265384
+ 0.66552723 0.62771705 0.60631577 0.64556482]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Una forma habitual de <strong>resumir la precisión de la validación cruzada es calcular la media y la desviación estandar</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mostrar los resultados</span>
+<span class="n">mean_score</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_score</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">mean_score</span><span class="p">,</span> <span class="n">std_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6474801707218913, 0.02229181975018435)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utilizando la validación cruzada con 10 pliegues (k-fold cross-validation), podemos concluir que esperamos que el modelo tenga una precisión media (medida en términos de <span class="math notranslate nohighlight">\(R^2\)</span>) de aproximadamente 0.49. Esto sugiere que el modelo es capaz de explicar cerca del 49% de la variabilidad en los valores de las viviendas.</p>
+<p>Si observamos los resultados de la validación cruzada, la desviación estándar de los puntajes <span class="math notranslate nohighlight">\(R^2\)</span> es de aproximadamente 0.12. Esto indica que hay una variación moderada en la precisión entre los diferentes pliegues. Los puntajes <span class="math notranslate nohighlight">\(R^2\)</span> oscilan alrededor del promedio de 0.49, lo que sugiere que el rendimiento del modelo varía según la partición de los datos utilizada para el entrenamiento y la prueba.</p>
+<p><strong>Posibles Implicaciones</strong>:</p>
+<ul class="simple">
+<li><p><strong>Dependencia de los pliegues:</strong> La variabilidad en los puntajes podría indicar que el modelo es sensible a los pliegues específicos utilizados para el entrenamiento. Esto puede ser un indicio de que el modelo no está generalizando de manera óptima en todas las particiones.</p></li>
+<li><p><strong>Tamaño del conjunto de datos:</strong> La variación también podría ser una consecuencia de la cantidad y calidad de los datos disponibles. Si el conjunto de datos es relativamente pequeño o no representa suficientemente la distribución de los datos reales, la validación cruzada puede mostrar una variabilidad mayor en los resultados.</p></li>
+</ul>
+<p>En resumen, aunque el modelo muestra una precisión media moderada, la variabilidad entre los pliegues sugiere que se podrían considerar ajustes adicionales al modelo o al preprocesamiento de los datos para mejorar la consistencia del rendimiento.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Validación cruzada estratificada:</strong></p>
+<ul class="simple">
+<li><p>Se usa principalmente en problemas de clasificación, donde la distribución de clases se mantiene aproximadamente igual en cada fold.</p></li>
+<li><p>Ayuda a evitar problemas si una clase es mucho menos frecuente que las otras.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mglearn</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">plot_stratified_cross_validation</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cfc2289b827814972bc54341ab0482a351d0c498542b5ce562db9dd6475c512f.png" src="_images/cfc2289b827814972bc54341ab0482a351d0c498542b5ce562db9dd6475c512f.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Hagamos la validación cruzada estratificada</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="c1"># Ignorar advertencias de futuras versiones</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
+
+<span class="c1"># Convertir la variable objetivo en categorías para realizar la estratificación</span>
+<span class="c1"># Usaremos los cuartiles para dividir la variable objetivo en 4 categorías</span>
+<span class="n">y_binned</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Configurar la validación cruzada estratificada</span>
+<span class="n">stratified_kfold</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Realizar la validación cruzada con estratificación utilizando la regresión lineal</span>
+<span class="n">stratified_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lr</span><span class="p">,</span> <span class="n">X_train_scaler</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">stratified_kfold</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Imprimir los puntajes obtenidos en cada fold de la validación cruzada</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validation scores: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">stratified_scores</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.67575123 0.64399604 0.65134703 0.63949908 0.6551713  0.65445309
+ 0.66368391 0.65250726 0.59160867 0.64839183]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mostrar los resultados</span>
+<span class="n">stratified_mean_score</span> <span class="o">=</span> <span class="n">stratified_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">stratified_std_score</span> <span class="o">=</span> <span class="n">stratified_scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">stratified_mean_score</span><span class="p">,</span> <span class="n">stratified_std_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6476409436205404, 0.020994872943330658)
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Shuffle-Split Cross-Validation:</strong></p>
+<ul class="simple">
+<li><p>Divide el conjunto de datos en un conjunto de entrenamiento y prueba varias veces (número especificado de iteraciones) con un tamaño de muestra diferente en cada iteración.</p></li>
+<li><p>Es útil cuando el conjunto de datos es muy grande.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mglearn</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">plot_shuffle_split</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/93a69c5bb20c86ef358bc7af0a3d733edd8727015f5bb0b0a63667ca0dbb706c.png" src="_images/93a69c5bb20c86ef358bc7af0a3d733edd8727015f5bb0b0a63667ca0dbb706c.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Hagamos la validación cruzada aleatoria y dividida</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
+
+<span class="c1"># Configurar la validación cruzada ShuffleSplit</span>
+<span class="n">shuffle_split</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Realizar la validación cruzada utilizando ShuffleSplit con la regresión lineal</span>
+<span class="n">shuffle_split_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lr</span><span class="p">,</span> <span class="n">X_train_scaler</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">shuffle_split</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Imprimir los puntajes obtenidos en cada fold de la validación cruzada</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validation scores: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shuffle_split_scores</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validation scores: [0.64701625 0.64923413 0.64515198 0.65042711 0.64160176 0.64603228
+ 0.66995032 0.6611581  0.62929803 0.65992796]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mostrar los resultados</span>
+<span class="n">shuffle_split_mean_score</span> <span class="o">=</span> <span class="n">shuffle_split_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">shuffle_split_std_score</span> <span class="o">=</span> <span class="n">shuffle_split_scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">shuffle_split_mean_score</span><span class="p">,</span> <span class="n">shuffle_split_std_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6499797919709206, 0.010812486515730819)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>El puntaje promedio de <span class="math notranslate nohighlight">\(R^2\)</span> es similar al obtenido con la validación cruzada estratificada (0.6369), lo que indica que el modelo tiene un rendimiento comparable.</p></li>
+<li><p>La desviación estándar es más baja (0.0117), lo que sugiere una mayor consistencia en los puntajes de los diferentes pliegues en comparación con la validación cruzada estratificada.</p></li>
+</ul>
+<p>En general, el uso de <code class="docutils literal notranslate"><span class="pre">ShuffleSplit</span></code> ofrece una buena alternativa para evaluar la capacidad de generalización del modelo, proporcionando resultados estables y consistentes.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Leave-One-Out Cross-Validation (LOOCV):</strong></p>
+<ul class="simple">
+<li><p>Es un caso especial de k-fold donde <span class="math notranslate nohighlight">\(k\)</span> es igual al número de observaciones en el conjunto de datos.</p></li>
+<li><p>Cada muestra se utiliza una vez como conjunto de prueba, y el resto de los datos como conjunto de entrenamiento.</p></li>
+<li><p>Es útil en conjuntos de datos muy pequeños, pero puede ser costoso computacionalmente en conjuntos grandes.</p></li>
+</ul>
+</li>
+</ol>
+<p>Ahora, <strong>haremos el proceso solo por prueba</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
+
+<span class="c1"># Configurar la validación cruzada Leave-One-Out</span>
+<span class="n">loo</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">()</span>
+
+<span class="c1"># Realizar la validación cruzada utilizando Leave-One-Out con la regresión lineal</span>
+<span class="n">loo_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lr</span><span class="p">,</span> <span class="n">X_train_scaler</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">loo</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+
+<span class="c1"># Imprimir los puntajes obtenidos en cada fold de la validación cruzada</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validation scores: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loo_scores</span><span class="p">))</span>
+
+<span class="c1"># Mostrar los resultados</span>
+<span class="n">loo_mean_score</span> <span class="o">=</span> <span class="n">loo_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">loo_std_score</span> <span class="o">=</span> <span class="n">loo_scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">loo_mean_score</span><span class="p">,</span> <span class="n">loo_std_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(nan, nan)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="concepto-de-grid-search-busqueda-de-grilla">
+<h4><strong>Concepto de Grid Search (busqueda de grilla)</strong><a class="headerlink" href="#concepto-de-grid-search-busqueda-de-grilla" title="Permalink to this heading">#</a></h4>
+<p><strong>Grid Search</strong> es un método de búsqueda exhaustiva para encontrar la mejor combinación de hiperparámetros para un modelo de aprendizaje automático. La idea es definir un conjunto de posibles valores para cada hiperparámetro y probar todas las combinaciones posibles para determinar cuál produce el mejor rendimiento del modelo, normalmente utilizando una métrica de evaluación específica, como la precisión o el error cuadrático medio.</p>
+<p>El proceso de Grid Search incluye:</p>
+<ol class="arabic simple">
+<li><p><strong>Definir la malla de hiperparámetros (<code class="docutils literal notranslate"><span class="pre">param_grid</span></code>)</strong>: Un conjunto de valores posibles para cada hiperparámetro del modelo.</p></li>
+<li><p><strong>Entrenar el modelo para cada combinación de hiperparámetros</strong>: Se realiza una validación cruzada para evaluar el rendimiento de cada combinación.</p></li>
+<li><p><strong>Seleccionar la mejor combinación</strong>: La combinación de hiperparámetros que obtiene el mejor rendimiento en la métrica de evaluación se selecciona como la óptima.</p></li>
+</ol>
+<section id="modelos-de-regresion-que-pueden-usar-grid-search-para-hiperparametrizacion">
+<h5><strong>Modelos de Regresión que pueden usar Grid Search para hiperparametrización</strong><a class="headerlink" href="#modelos-de-regresion-que-pueden-usar-grid-search-para-hiperparametrizacion" title="Permalink to this heading">#</a></h5>
+<p>Grid Search se puede aplicar a varios modelos de regresión que tienen hiperparámetros ajustables. A continuación, se presentan algunos modelos comunes de regresión y la malla de hiperparámetros típica que se puede utilizar para cada uno.</p>
+<ol class="arabic simple">
+<li><p><strong>Regresión Ridge</strong></p></li>
+</ol>
+<p>La regresión Ridge es una variante de la regresión lineal que incluye una penalización para reducir la magnitud de los coeficientes del modelo. Los hiperparámetros importantes son:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">alpha</span></code></strong>: Controla la magnitud de la penalización. Un valor más alto implica una mayor regularización.</p></li>
+</ul>
+<p><strong>Malla de Hiperparámetros para Ridge:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">],</span>
+        <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;svd&#39;</span><span class="p">,</span> <span class="s1">&#39;cholesky&#39;</span><span class="p">,</span> <span class="s1">&#39;lsqr&#39;</span><span class="p">,</span> <span class="s1">&#39;sag&#39;</span><span class="p">,</span> <span class="s1">&#39;saga&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Regresión Lasso</strong></p></li>
+</ol>
+<p>La regresión Lasso también es una variante de la regresión lineal, pero utiliza una penalización <span class="math notranslate nohighlight">\(L^1\)</span>, que puede llevar a coeficientes exactamente iguales a cero.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code>: Controla la magnitud de la penalización.</p></li>
+</ul>
+<p><strong>Malla de Hiperparámetros para Lasso:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">],</span>
+        <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">],</span>
+        <span class="s1">&#39;tol&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Regresión Elastic Net</strong></p></li>
+</ol>
+<p>Elastic Net combina las penalizaciones de Ridge y Lasso.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code>: Controla la magnitud de la penalización.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">l1_ratio</span></code>: Controla la mezcla entre la penalización <span class="math notranslate nohighlight">\(L^1\)</span> (Lasso) y <span class="math notranslate nohighlight">\(L^2\)</span> (Ridge). Un valor de <span class="math notranslate nohighlight">\(0\)</span> equivale a Ridge, y un valor de 1 equivale a Lasso.</p></li>
+</ul>
+<p><strong>Malla de Hiperparámetros para ElasticNet:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">],</span>
+        <span class="s1">&#39;l1_ratio&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
+        <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">],</span>
+        <span class="s1">&#39;tol&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Regresión de K-Vecinos Más Cercanos (KNN Regression)</strong>
+El modelo <code class="docutils literal notranslate"><span class="pre">KNN</span></code> para regresión predice el valor de la variable objetivo basándose en los valores de los vecinos más cercanos.</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code>: Número de vecinos considerados.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weights</span></code>: Función de ponderación (<code class="docutils literal notranslate"><span class="pre">'uniform'</span></code> o <code class="docutils literal notranslate"><span class="pre">'distance'</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span></code>: Parámetro de la distancia de Minkowski. <span class="math notranslate nohighlight">\(p=2\)</span> es la distancia <strong>euclidiana</strong>, y <span class="math notranslate nohighlight">\(p=1\)</span> es la distancia de <strong>Manhattan</strong>.</p></li>
+</ul>
+<p><strong>Malla de Hiperparámetros para KNN regression:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>  <span class="c1"># Número de vecinos a considerar</span>
+    <span class="s1">&#39;weights&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;uniform&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">],</span>  <span class="c1"># Pesos uniformes o basados en la distancia</span>
+    <span class="s1">&#39;algorithm&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;ball_tree&#39;</span><span class="p">,</span> <span class="s1">&#39;kd_tree&#39;</span><span class="p">,</span> <span class="s1">&#39;brute&#39;</span><span class="p">],</span>  <span class="c1"># Algoritmo para computar los vecinos más cercanos</span>
+    <span class="s1">&#39;leaf_size&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>  <span class="c1"># Tamaño de la hoja en el árbol</span>
+    <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># Distancia de Minkowski: 1 para Manhattan, 2 para Euclidiana</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>Support Vector Regression (SVR)</strong>
+El modelo SVR es una versión del algoritmo de Máquinas de Soporte Vectorial (SVM) aplicada a problemas de regresión.</p></li>
+</ol>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">C</span></code>: Parámetro de penalización que controla el trade-off entre un ajuste perfecto del modelo y la suavidad de la función de decisión.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gamma</span></code>: Coeficiente del kernel que define la influencia de un solo punto de entrenamiento. Aplica a kernels no lineales como <code class="docutils literal notranslate"><span class="pre">'rbf'</span></code> o <code class="docutils literal notranslate"><span class="pre">'poly'</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kernel</span></code>: Tipo de kernel utilizado en el modelo (por ejemplo, ‘linear’, ‘poly’, ‘rbf’).</p></li>
+</ul>
+<p><strong>Malla de Hiperparámetros para SVR:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmoid&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">],</span>
+        <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;degree&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>  <span class="c1"># solo para &#39;poly&#39; kernel</span>
+        <span class="s1">&#39;epsilon&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="grid-search-con-validacion-cruzada">
+<h4><strong>Grid Search con validación cruzada</strong><a class="headerlink" href="#grid-search-con-validacion-cruzada" title="Permalink to this heading">#</a></h4>
+<p>Para una mejor estimación del rendimiento de la generalización, <strong>en lugar de usar una única división en un conjunto de entrenamiento y otro de validación, podemos usar la validación cruzada para evaluar el rendimiento de cada combinación de parámetros</strong>.</p>
+<ul class="simple">
+<li><p>El proceso general de división de los datos, la ejecución de grid search y la evaluación de los parámetros finales se ilustra en la siguiente figura</p></li>
+</ul>
+<p><img alt="mod" src="_image%5Cmod.png" /></p>
+<ul class="simple">
+<li><p>Debido a que <code class="docutils literal notranslate"><span class="pre">grid</span> <span class="pre">search</span></code> con <strong>validación cruzada</strong> es un método tan comúnmente utilizado para ajustar parámetros, <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> proporciona la clase <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>, que lo implementa en la forma de un estimador. Para utilizar la clase <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>, primero hay que especificar los parámetros sobre los que se quiere buscar utilizando un <strong>diccionario</strong>.</p></li>
+</ul>
+</section>
+<section id="analisis-completo-de-los-modelos">
+<h4><strong>Análisis completo de los modelos</strong><a class="headerlink" href="#analisis-completo-de-los-modelos" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Carguemos la libreria</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Cargar sklearn</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Separemos el conjunto de entrenamiento y el conjunto de prueba</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ocean_proximity&#39;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">array</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">array</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">],</span> <span class="n">array</span><span class="p">[:,</span> <span class="mi">9</span><span class="p">:</span><span class="mi">12</span><span class="p">]))</span>  <span class="c1"># Ajustar índices según las columnas</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">array</span><span class="p">[:,</span> <span class="mi">8</span><span class="p">]</span>  <span class="c1"># Ajustar índice según la columna de salida</span>
+<span class="n">validation_size</span> <span class="o">=</span> <span class="mf">0.20</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="n">validation_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="modelo-rigde">
+<h5><strong>Modelo Rigde</strong><a class="headerlink" href="#modelo-rigde" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Encontremos los mejores parámetros</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un pipeline que estandariza los datos y aplica Ridge</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span><span class="n">Ridge</span><span class="p">())</span>
+
+<span class="c1"># Definir el rango de valores para el parámetro alpha</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ridge__alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span>  <span class="c1"># Usar &#39;ridge__alpha&#39; para especificar el paso del pipeline</span>
+    <span class="s1">&#39;ridge__solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;svd&#39;</span><span class="p">,</span> <span class="s1">&#39;cholesky&#39;</span><span class="p">,</span> <span class="s1">&#39;lsqr&#39;</span><span class="p">,</span> <span class="s1">&#39;sag&#39;</span><span class="p">,</span> <span class="s1">&#39;saga&#39;</span><span class="p">]</span>  <span class="c1"># Usar &#39;ridge__solver&#39;</span>
+<span class="p">}</span>
+
+<span class="c1"># Configurar el Grid Search con validación cruzada</span>
+<span class="n">grid_search_ridge</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Ejecutar el Grid Search (mejor modelo)</span>
+<span class="n">grid_search_ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 10 folds for each of 30 candidates, totalling 300 fits
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-14 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-14 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-14 pre {
+  padding: 0;
+}
+
+#sk-container-id-14 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-14 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-14 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-14 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-14 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-14 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-14 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-14 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-14 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-14 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-14 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-14 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-14 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-14 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-14 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-14 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-14 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-14 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-14 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-14 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-14 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-14 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-14 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-14 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-14 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-14 div.sk-label label.sk-toggleable__label,
+#sk-container-id-14 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-14 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-14 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-14 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-14 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-14 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-14 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-14 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-14 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-14 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-14 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-14 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-14 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-14" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=10,
+             estimator=Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
+                                       (&#x27;ridge&#x27;, Ridge())]),
+             param_grid={&#x27;ridge__alpha&#x27;: [0.01, 0.1, 1, 10, 100],
+                         &#x27;ridge__solver&#x27;: [&#x27;auto&#x27;, &#x27;svd&#x27;, &#x27;cholesky&#x27;, &#x27;lsqr&#x27;,
+                                           &#x27;sag&#x27;, &#x27;saga&#x27;]},
+             verbose=1)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-42" type="checkbox" ><label for="sk-estimator-id-42" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;GridSearchCV<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.model_selection.GridSearchCV.html">?<span>Documentation for GridSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>GridSearchCV(cv=10,
+             estimator=Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
+                                       (&#x27;ridge&#x27;, Ridge())]),
+             param_grid={&#x27;ridge__alpha&#x27;: [0.01, 0.1, 1, 10, 100],
+                         &#x27;ridge__solver&#x27;: [&#x27;auto&#x27;, &#x27;svd&#x27;, &#x27;cholesky&#x27;, &#x27;lsqr&#x27;,
+                                           &#x27;sag&#x27;, &#x27;saga&#x27;]},
+             verbose=1)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-43" type="checkbox" ><label for="sk-estimator-id-43" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">best_estimator_: Pipeline</label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
+                (&#x27;ridge&#x27;, Ridge(alpha=100, solver=&#x27;saga&#x27;))])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-44" type="checkbox" ><label for="sk-estimator-id-44" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-45" type="checkbox" ><label for="sk-estimator-id-45" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;Ridge<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.Ridge.html">?<span>Documentation for Ridge</span></a></label><div class="sk-toggleable__content fitted"><pre>Ridge(alpha=100, solver=&#x27;saga&#x27;)</pre></div> </div></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<ul class="simple">
+<li><p>Estos son los mejores parámetros</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imprimir los mejores parámetros encontrados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor valor de alpha:&quot;</span><span class="p">,</span> <span class="n">grid_search_ridge</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;ridge__alpha&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mejor solver:&quot;</span><span class="p">,</span> <span class="n">grid_search_ridge</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;ridge__solver&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mejor valor de alpha: 100
+Mejor solver: saga
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Calculo de las métricas</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predecir utilizando el modelo ajustado y calcular métricas</span>
+<span class="n">y_train_preds</span> <span class="o">=</span> <span class="n">grid_search_ridge</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_test_preds</span> <span class="o">=</span> <span class="n">grid_search_ridge</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">mse_train</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_preds</span><span class="p">)</span>
+<span class="n">rmse_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse_train</span><span class="p">)</span>
+
+<span class="n">mse_test</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_preds</span><span class="p">)</span>
+<span class="n">rmse_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular el R^2</span>
+<span class="n">r2_test</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_preds</span><span class="p">)</span>
+<span class="n">r2_train</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_preds</span><span class="p">)</span>
+
+<span class="c1">#imprimir</span>
+<span class="n">mse_train</span><span class="p">,</span> <span class="n">mse_test</span><span class="p">,</span> <span class="n">rmse_train</span><span class="p">,</span> <span class="n">rmse_test</span><span class="p">,</span> <span class="n">r2_train</span><span class="p">,</span> <span class="n">r2_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4997202705.382251,
+ 5150691506.0685425,
+ 70690.89549144395,
+ 71768.31826139263,
+ 0.6261756317307914,
+ 0.6069401544407258)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 </section>
@@ -4004,6 +4971,22 @@ Test set score: 0.6119
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-un-modelo-de-svr"><strong>Construcción de un Modelo de SVR</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen"><strong>Resumen</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-del-modelo-de-svr"><strong>Construcción del modelo de SVR</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-los-modelos"><strong>Evaluación de los módelos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-cruzada-cross-validation"><strong>Validación cruzada (Cross-Validation)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-validacion-cruzada"><strong>Tipos de validación cruzada</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#concepto-de-grid-search-busqueda-de-grilla"><strong>Concepto de Grid Search (busqueda de grilla)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-regresion-que-pueden-usar-grid-search-para-hiperparametrizacion"><strong>Modelos de Regresión que pueden usar Grid Search para hiperparametrización</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-search-con-validacion-cruzada"><strong>Grid Search con validación cruzada</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-completo-de-los-modelos"><strong>Análisis completo de los modelos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-rigde"><strong>Modelo Rigde</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
