@@ -507,7 +507,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica"><strong>Regresión logística</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-claves"><strong>Características claves</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-de-la-regresion-logistica"><strong>Idea de la regresión logística</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-logistica-de-entrega-o-no-de-tarjetas-de-creditos"><strong>Modelo de regresión logística de entrega o no de tarjetas de créditos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-clasificacion-usando-regresion-logistica-de-entrega-o-no-de-tarjetas-de-creditos"><strong>Modelo de clasificación usando regresión logística de entrega o no de tarjetas de créditos</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-las-librerias">1. <strong>Importar las librerias</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2. <strong>Lectura de los datos</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-faltantes-o-atipicos">3. <strong>Datos faltantes o atípicos</strong></a></li>
@@ -525,6 +525,12 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score"><strong>F1-Score</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#curva-roc-y-auc-roc"><strong>Curva ROC y AUC-ROC</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-del-modelo-de-regresion-logistica"><strong>Metricas de evaluación del modelo de regresión logística</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-clasificacion-de-knn-de-entrega-o-no-de-tarjetas-de-creditos"><strong>Modelo de clasificación de KNN de entrega o no de tarjetas de créditos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas"><strong>Características</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-distancia"><strong>Métricas de distancia</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-del-knn"><strong>Idea del KNN</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -4358,7 +4364,7 @@ El modelo SVR es una versión del algoritmo de Máquinas de Soporte Vectorial (S
 <span class="p">}</span>
 
 <span class="c1"># Configurar el Grid Search con validación cruzada</span>
-<span class="n">grid_search_ridge</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_ridge</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid_search_ridge</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_ridge</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
 
 <span class="c1"># Ejecutar el Grid Search (mejor modelo)</span>
 <span class="n">grid_search_ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -4859,7 +4865,7 @@ Mejor solver: lsqr
     <span class="p">}</span>
 
 <span class="c1"># Configurar el Grid Search con validación cruzada</span>
-<span class="n">grid_search_lasso</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_lasso</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid_search_lasso</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_lasso</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
 
 <span class="c1"># Ejecutar el Grid Search (mejor modelo)</span>
 <span class="n">grid_search_lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -5359,7 +5365,7 @@ Mejor número de iteraciones: 1000
 <span class="p">}</span>
 
 <span class="c1"># Configurar el Grid Search con validación cruzada</span>
-<span class="n">grid_search_knn</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_knn</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid_search_knn</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_knn</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
 
 <span class="c1"># Ejecutar el Grid Search (mejor modelo)</span>
 <span class="n">grid_search_knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -5862,7 +5868,7 @@ Mejor distancia: 1
     <span class="p">}</span>
 
 <span class="c1"># Configurar el Grid Search con validación cruzada</span>
-<span class="n">grid_search_svrlineal</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_svrlineal</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid_search_svrlineal</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_svrlineal</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
 
 <span class="c1"># Ejecutar el Grid Search (mejor modelo)</span>
 <span class="n">grid_search_svrlineal</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -6361,7 +6367,7 @@ Mejor gamma : scale
     <span class="p">}</span>
 
 <span class="c1"># Configurar el Grid Search con validación cruzada</span>
-<span class="n">grid_search_svrpoly</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_svrpoly</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid_search_svrpoly</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_svrpoly</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
 
 <span class="c1"># Ejecutar el Grid Search (mejor modelo)</span>
 <span class="n">grid_search_svrpoly</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -6860,7 +6866,7 @@ Mejor gamma : scale
     <span class="p">}</span>
 
 <span class="c1"># Configurar el Grid Search con validación cruzada</span>
-<span class="n">grid_search_svrrbf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_svrrbf</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid_search_svrrbf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline_svrrbf</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
 
 <span class="c1"># Ejecutar el Grid Search (mejor modelo)</span>
 <span class="n">grid_search_svrrbf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -7564,8 +7570,8 @@ J(\theta) = -\frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)} \log(h_\theta(x^{(i)})) +
 <p><img alt="rl_8" src="_images/rl8.png" /></p>
 <p><img alt="rl_9" src="_images/rl9.png" /></p>
 </section>
-<section id="modelo-de-regresion-logistica-de-entrega-o-no-de-tarjetas-de-creditos">
-<h4><strong>Modelo de regresión logística de entrega o no de tarjetas de créditos</strong><a class="headerlink" href="#modelo-de-regresion-logistica-de-entrega-o-no-de-tarjetas-de-creditos" title="Permalink to this heading">#</a></h4>
+<section id="modelo-de-clasificacion-usando-regresion-logistica-de-entrega-o-no-de-tarjetas-de-creditos">
+<h4><strong>Modelo de clasificación usando regresión logística de entrega o no de tarjetas de créditos</strong><a class="headerlink" href="#modelo-de-clasificacion-usando-regresion-logistica-de-entrega-o-no-de-tarjetas-de-creditos" title="Permalink to this heading">#</a></h4>
 <p>Los bancos comerciales reciben <em>muchas</em> solicitudes de tarjetas de crédito.
 Muchas de ellas son rechazadas por muchas razones, como saldos de préstamos elevados, bajos niveles de ingresos o demasiadas consultas en el informe crediticio de una persona, por ejemplo. Analizar manualmente estas solicitudes es una tarea rutinaria, propensa a errores y requiere mucho tiempo (¡y el tiempo es dinero!). Por suerte, esta tarea puede automatizarse con el poder del aprendizaje automático y casi todos los bancos comerciales lo hacen hoy en día. En colab, construiremos un predictor automático de aprobación de tarjetas de crédito utilizando técnicas de aprendizaje automático, tal y como hacen los bancos de verdad.</p><p><img alt="tarjeta" src="_images/images.png" /></p>
 <p>Utilizaremos el conjunto de datos  <a href="http://archive.ics.uci.edu/ml/datasets/credit+approval">Credit Card Approval</a> del UCI Machine Learning Repository. La estructura de este cuaderno es la siguiente:</p>
@@ -9928,6 +9934,98 @@ weighted avg       0.81      0.81      0.81       138
 </div>
 </section>
 </section>
+<section id="modelo-de-clasificacion-de-knn-de-entrega-o-no-de-tarjetas-de-creditos">
+<h4><strong>Modelo de clasificación de KNN de entrega o no de tarjetas de créditos</strong><a class="headerlink" href="#modelo-de-clasificacion-de-knn-de-entrega-o-no-de-tarjetas-de-creditos" title="Permalink to this heading">#</a></h4>
+<p><strong>K-Nearest Neighbors (KNN)</strong> es un algoritmo de aprendizaje supervisado utilizado tanto para clasificación como para regresión. En la clasificación, asigna una clase a una nueva instancia basada en las clases de sus <strong>k</strong> vecinos más cercanos en el espacio de características. La proximidad o cercanía se mide usando diversas métricas de distancia, como la <strong>distancia euclidiana</strong>, <strong>Manhattan</strong>, o <strong>Minkowski</strong>.</p>
+<section id="caracteristicas">
+<h5><strong>Características</strong>:<a class="headerlink" href="#caracteristicas" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p><strong>Simple y fácil de implementar</strong>: El algoritmo es intuitivo, ya que se basa en medir distancias entre puntos para clasificar las instancias.</p></li>
+<li><p><strong>Aprendizaje perezoso</strong>: No “aprende” un modelo explícitamente, sino que almacena los datos de entrenamiento y hace las predicciones calculando distancias en el momento de la clasificación.</p></li>
+<li><p><strong>Sensibilidad a la escala de los datos</strong>: Las características con escalas diferentes pueden dominar el cálculo de distancias. Es común normalizar o estandarizar los datos antes de aplicar KNN.</p></li>
+<li><p><strong>Parámetro k</strong>: El número de vecinos a considerar (k) es un hiperparámetro clave que debe ajustarse adecuadamente. Un valor bajo puede ser sensible al ruido, mientras que un valor alto puede hacer el modelo demasiado general.</p></li>
+<li><p><strong>Necesita almacenar todos los datos de entrenamiento</strong>: Requiere mantener todos los ejemplos en memoria para calcular las distancias durante la predicción.</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title"><strong>Ventajas del KNN</strong></p>
+<ul class="simple">
+<li><p><strong>Fácil de entender e implementar</strong>: Es un algoritmo intuitivo y no requiere parámetros complejos.</p></li>
+<li><p><strong>No asume distribuciones específicas</strong>: Es un método no paramétrico, lo que significa que no necesita suposiciones sobre la distribución subyacente de los datos.</p></li>
+<li><p><strong>Puede funcionar bien en conjuntos de datos pequeños</strong>: Es efectivo para datasets pequeños o con pocas características.</p></li>
+</ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title"><strong>Desventajas del KNN</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Computacionalmente costoso</strong>: La clasificación de una nueva instancia implica calcular la distancia a todos los puntos del conjunto de datos, lo cual puede ser ineficiente para grandes volúmenes de datos.</p></li>
+<li><p><strong>Sensibilidad al ruido</strong>: Puede verse afectado negativamente si el conjunto de datos contiene ruido o está desbalanceado.</p></li>
+<li><p><strong>Maldición de la dimensionalidad</strong>: A medida que aumenta el número de dimensiones, la distancia entre los puntos se vuelve menos significativa, lo que afecta el rendimiento del algoritmo.</p></li>
+<li><p><strong>Requiere un buen valor de k</strong>: La elección del valor de <strong>k</strong> es crítica y puede requerir experimentación.</p></li>
+</ol>
+</div>
+</section>
+<section id="metricas-de-distancia">
+<h5><strong>Métricas de distancia</strong><a class="headerlink" href="#metricas-de-distancia" title="Permalink to this heading">#</a></h5>
+<ol class="arabic">
+<li><p><strong>Distancia Euclidiana</strong>:<br />
+La distancia euclidiana mide la “distancia recta” entre dos puntos en un espacio euclidiano. Para dos puntos <span class="math notranslate nohighlight">\(x = (x_1, x_2, \ldots, x_n)\)</span> y <span class="math notranslate nohighlight">\(y = (y_1, y_2, \ldots, y_n)\)</span>, se calcula como:</p>
+<div class="math notranslate nohighlight">
+\[
+   d_{\text{euclidiana}}(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+   \]</div>
+<p>Es una medida común cuando la diferencia cuadrática es significativa.</p>
+</li>
+<li><p><strong>Distancia Manhattan</strong>:<br />
+La distancia Manhattan (o distancia <span class="math notranslate nohighlight">\(L_1\)</span>) mide la distancia a lo largo de los ejes. Se define como:</p>
+<div class="math notranslate nohighlight">
+\[
+   d_{\text{manhattan}}(x, y) = \sum_{i=1}^{n} |x_i - y_i|
+   \]</div>
+<p>Es útil en problemas donde la diferencia absoluta en cada característica es importante.</p>
+</li>
+<li><p><strong>Distancia de Minkowski</strong>:<br />
+Es una generalización de las distancias Euclidiana y Manhattan. Está dada por:</p>
+<div class="math notranslate nohighlight">
+\[
+   d_{\text{minkowski}}(x, y) = \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{\frac{1}{p}}
+   \]</div>
+<p>Donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( p \)</span> es un parámetro que determina la forma de la distancia. Cuando <span class="math notranslate nohighlight">\( p=2 \)</span>, se convierte en la distancia Euclidiana; y cuando <span class="math notranslate nohighlight">\( p=1 \)</span>, se convierte en la distancia Manhattan.</p></li>
+</ul>
+</li>
+<li><p><strong>Distancia Chebyshev</strong>:<br />
+La distancia Chebyshev mide la mayor diferencia absoluta entre las coordenadas de dos puntos:</p>
+<div class="math notranslate nohighlight">
+\[
+   d_{\text{chebyshev}}(x, y) = \max_{i} |x_i - y_i|
+   \]</div>
+<p>Es útil en aplicaciones donde el movimiento es limitado a lo largo de un solo eje.</p>
+</li>
+</ol>
+<p>Estas métricas ayudan a determinar qué tan cerca están dos puntos en el espacio de características y son fundamentales para que el algoritmo KNN determine los vecinos más cercanos. La elección de la métrica depende del tipo de datos y la naturaleza del problema.</p>
+</section>
+<section id="idea-del-knn">
+<h5><strong>Idea del KNN</strong><a class="headerlink" href="#idea-del-knn" title="Permalink to this heading">#</a></h5>
+<p>La idea visual de KNN es la siguiente:</p>
+<p><img alt="knn_1" src="_images/knn1.png" /></p>
+<ul class="simple">
+<li><p><strong>¿Como lo hace?</strong></p>
+<ol class="arabic simple">
+<li><p>Elegir el <strong>número K</strong> de vecinos.</p></li>
+<li><p>Tomar los <strong>K</strong> vecinos más cercanos del nuevo dato, según la distancia escogida.</p></li>
+<li><p>Entre esos <span class="math notranslate nohighlight">\(K\)</span> vecinos, contar el <strong>número de puntos que pertenecen a cada categoría</strong></p></li>
+<li><p>Asignar el **nuevo dato a la categoría con más vecinos en ella.</p></li>
+</ol>
+</li>
+</ul>
+<p><img alt="knn_4" src="_images/knn4.png" /></p>
+<p><img alt="knn_5" src="_images/knn5.png" /></p>
+<p><img alt="knn_6" src="_images/knn6.png" /></p>
+<p><img alt="knn_7" src="_images/knn7.png" /></p>
+<p><img alt="knn_8" src="_images/knn8.png" /></p>
+</section>
+</section>
 </section>
 </section>
 </section>
@@ -10144,7 +10242,7 @@ weighted avg       0.81      0.81      0.81       138
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica"><strong>Regresión logística</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-claves"><strong>Características claves</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-de-la-regresion-logistica"><strong>Idea de la regresión logística</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-regresion-logistica-de-entrega-o-no-de-tarjetas-de-creditos"><strong>Modelo de regresión logística de entrega o no de tarjetas de créditos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-clasificacion-usando-regresion-logistica-de-entrega-o-no-de-tarjetas-de-creditos"><strong>Modelo de clasificación usando regresión logística de entrega o no de tarjetas de créditos</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-las-librerias">1. <strong>Importar las librerias</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2. <strong>Lectura de los datos</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-faltantes-o-atipicos">3. <strong>Datos faltantes o atípicos</strong></a></li>
@@ -10162,6 +10260,12 @@ weighted avg       0.81      0.81      0.81       138
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score"><strong>F1-Score</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#curva-roc-y-auc-roc"><strong>Curva ROC y AUC-ROC</strong></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-evaluacion-del-modelo-de-regresion-logistica"><strong>Metricas de evaluación del modelo de regresión logística</strong></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-de-clasificacion-de-knn-de-entrega-o-no-de-tarjetas-de-creditos"><strong>Modelo de clasificación de KNN de entrega o no de tarjetas de créditos</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas"><strong>Características</strong>:</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-de-distancia"><strong>Métricas de distancia</strong></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-del-knn"><strong>Idea del KNN</strong></a></li>
 </ul>
 </li>
 </ul>
