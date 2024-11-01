@@ -1,0 +1,1570 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Predicción de entrega o no de tarjeta de credito &#8212; Ciencia de datos aplicada a la banca</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'clasificación';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Ciencia de datos aplicada a la banca
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="modulo_1.html"><strong>Módulo 1: Introducción a la ciencia de datos con Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_2.html"><strong>Módulo 2: Estructuración y manipulación de datos con Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_3.html"><strong>Modulo 3: Análisis exploratorio de datos de la banca</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_4.html"><strong>Módulo 4: Visualización de datos con Python</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_5.html"><strong>Modulo 5: Introducción a Streamlit</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_6.html"><strong>Módulo 6: Machine Learning</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_7.html"><strong>Modulo 7: Despliegue de modelos</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fclasificación.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/clasificación.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Predicción de entrega o no de tarjeta de credito</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Predicción de entrega o no de tarjeta de credito</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-las-librerias">Importar las librerias</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="prediccion-de-entrega-o-no-de-tarjeta-de-credito">
+<h1>Predicción de entrega o no de tarjeta de credito<a class="headerlink" href="#prediccion-de-entrega-o-no-de-tarjeta-de-credito" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="importar-las-librerias">
+<h1>Importar las librerias<a class="headerlink" href="#importar-las-librerias" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar el conjunto de datos</span>
+<span class="n">cc_apps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;C:/Users/cdeor/OneDrive/Documentos/MachineLearningDipSerfinanzas/jbook_ml202430/docs/_data/dataml/cc_approvals.data&quot;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Inspeccionar los datos</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">cc_apps</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">cc_apps</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>b</td>
+      <td>30.83</td>
+      <td>0.000</td>
+      <td>u</td>
+      <td>g</td>
+      <td>w</td>
+      <td>v</td>
+      <td>1.25</td>
+      <td>t</td>
+      <td>t</td>
+      <td>1</td>
+      <td>f</td>
+      <td>g</td>
+      <td>00202</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>58.67</td>
+      <td>4.460</td>
+      <td>u</td>
+      <td>g</td>
+      <td>q</td>
+      <td>h</td>
+      <td>3.04</td>
+      <td>t</td>
+      <td>t</td>
+      <td>6</td>
+      <td>f</td>
+      <td>g</td>
+      <td>00043</td>
+      <td>560</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a</td>
+      <td>24.50</td>
+      <td>0.500</td>
+      <td>u</td>
+      <td>g</td>
+      <td>q</td>
+      <td>h</td>
+      <td>1.50</td>
+      <td>t</td>
+      <td>f</td>
+      <td>0</td>
+      <td>f</td>
+      <td>g</td>
+      <td>00280</td>
+      <td>824</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>27.83</td>
+      <td>1.540</td>
+      <td>u</td>
+      <td>g</td>
+      <td>w</td>
+      <td>v</td>
+      <td>3.75</td>
+      <td>t</td>
+      <td>t</td>
+      <td>5</td>
+      <td>t</td>
+      <td>g</td>
+      <td>00100</td>
+      <td>3</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>20.17</td>
+      <td>5.625</td>
+      <td>u</td>
+      <td>g</td>
+      <td>w</td>
+      <td>v</td>
+      <td>1.71</td>
+      <td>t</td>
+      <td>f</td>
+      <td>0</td>
+      <td>f</td>
+      <td>s</td>
+      <td>00120</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>685</th>
+      <td>b</td>
+      <td>21.08</td>
+      <td>10.085</td>
+      <td>y</td>
+      <td>p</td>
+      <td>e</td>
+      <td>h</td>
+      <td>1.25</td>
+      <td>f</td>
+      <td>f</td>
+      <td>0</td>
+      <td>f</td>
+      <td>g</td>
+      <td>00260</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>686</th>
+      <td>a</td>
+      <td>22.67</td>
+      <td>0.750</td>
+      <td>u</td>
+      <td>g</td>
+      <td>c</td>
+      <td>v</td>
+      <td>2.00</td>
+      <td>f</td>
+      <td>t</td>
+      <td>2</td>
+      <td>t</td>
+      <td>g</td>
+      <td>00200</td>
+      <td>394</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>687</th>
+      <td>a</td>
+      <td>25.25</td>
+      <td>13.500</td>
+      <td>y</td>
+      <td>p</td>
+      <td>ff</td>
+      <td>ff</td>
+      <td>2.00</td>
+      <td>f</td>
+      <td>t</td>
+      <td>1</td>
+      <td>t</td>
+      <td>g</td>
+      <td>00200</td>
+      <td>1</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>688</th>
+      <td>b</td>
+      <td>17.92</td>
+      <td>0.205</td>
+      <td>u</td>
+      <td>g</td>
+      <td>aa</td>
+      <td>v</td>
+      <td>0.04</td>
+      <td>f</td>
+      <td>f</td>
+      <td>0</td>
+      <td>f</td>
+      <td>g</td>
+      <td>00280</td>
+      <td>750</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>689</th>
+      <td>b</td>
+      <td>35.00</td>
+      <td>3.375</td>
+      <td>u</td>
+      <td>g</td>
+      <td>c</td>
+      <td>h</td>
+      <td>8.29</td>
+      <td>f</td>
+      <td>f</td>
+      <td>0</td>
+      <td>t</td>
+      <td>g</td>
+      <td>00000</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># nombres de las columnas</span>
+<span class="n">cc_apps</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Debt&#39;</span><span class="p">,</span><span class="s1">&#39;Married&#39;</span><span class="p">,</span><span class="s1">&#39;BankCustomer&#39;</span><span class="p">,</span><span class="s1">&#39;EducationLevel&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;Ethnicity&#39;</span><span class="p">,</span><span class="s1">&#39;YearsEmployed&#39;</span><span class="p">,</span><span class="s1">&#39;PriorDefault&#39;</span><span class="p">,</span><span class="s1">&#39;Employed&#39;</span><span class="p">,</span><span class="s1">&#39;CreditScore&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;DriversLicense&#39;</span><span class="p">,</span><span class="s1">&#39;Citizen&#39;</span><span class="p">,</span><span class="s1">&#39;ZipCode&#39;</span><span class="p">,</span><span class="s1">&#39;Income&#39;</span><span class="p">,</span><span class="s1">&#39;Approved&#39;</span><span class="p">]</span>
+
+<span class="n">cc_apps</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>Debt</th>
+      <th>Married</th>
+      <th>BankCustomer</th>
+      <th>EducationLevel</th>
+      <th>Ethnicity</th>
+      <th>YearsEmployed</th>
+      <th>PriorDefault</th>
+      <th>Employed</th>
+      <th>CreditScore</th>
+      <th>DriversLicense</th>
+      <th>Citizen</th>
+      <th>ZipCode</th>
+      <th>Income</th>
+      <th>Approved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>b</td>
+      <td>30.83</td>
+      <td>0.000</td>
+      <td>u</td>
+      <td>g</td>
+      <td>w</td>
+      <td>v</td>
+      <td>1.25</td>
+      <td>t</td>
+      <td>t</td>
+      <td>1</td>
+      <td>f</td>
+      <td>g</td>
+      <td>00202</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>58.67</td>
+      <td>4.460</td>
+      <td>u</td>
+      <td>g</td>
+      <td>q</td>
+      <td>h</td>
+      <td>3.04</td>
+      <td>t</td>
+      <td>t</td>
+      <td>6</td>
+      <td>f</td>
+      <td>g</td>
+      <td>00043</td>
+      <td>560</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a</td>
+      <td>24.50</td>
+      <td>0.500</td>
+      <td>u</td>
+      <td>g</td>
+      <td>q</td>
+      <td>h</td>
+      <td>1.50</td>
+      <td>t</td>
+      <td>f</td>
+      <td>0</td>
+      <td>f</td>
+      <td>g</td>
+      <td>00280</td>
+      <td>824</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>27.83</td>
+      <td>1.540</td>
+      <td>u</td>
+      <td>g</td>
+      <td>w</td>
+      <td>v</td>
+      <td>3.75</td>
+      <td>t</td>
+      <td>t</td>
+      <td>5</td>
+      <td>t</td>
+      <td>g</td>
+      <td>00100</td>
+      <td>3</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>20.17</td>
+      <td>5.625</td>
+      <td>u</td>
+      <td>g</td>
+      <td>w</td>
+      <td>v</td>
+      <td>1.71</td>
+      <td>t</td>
+      <td>f</td>
+      <td>0</td>
+      <td>f</td>
+      <td>s</td>
+      <td>00120</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cc_apps</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 690 entries, 0 to 689
+Data columns (total 16 columns):
+ #   Column          Non-Null Count  Dtype  
+---  ------          --------------  -----  
+ 0   Sex             690 non-null    object 
+ 1   Age             690 non-null    object 
+ 2   Debt            690 non-null    float64
+ 3   Married         690 non-null    object 
+ 4   BankCustomer    690 non-null    object 
+ 5   EducationLevel  690 non-null    object 
+ 6   Ethnicity       690 non-null    object 
+ 7   YearsEmployed   690 non-null    float64
+ 8   PriorDefault    690 non-null    object 
+ 9   Employed        690 non-null    object 
+ 10  CreditScore     690 non-null    int64  
+ 11  DriversLicense  690 non-null    object 
+ 12  Citizen         690 non-null    object 
+ 13  ZipCode         690 non-null    object 
+ 14  Income          690 non-null    int64  
+ 15  Approved        690 non-null    object 
+dtypes: float64(2), int64(2), object(12)
+memory usage: 86.4+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cc_apps</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;30.83&#39;, &#39;58.67&#39;, &#39;24.50&#39;, &#39;27.83&#39;, &#39;20.17&#39;, &#39;32.08&#39;, &#39;33.17&#39;,
+       &#39;22.92&#39;, &#39;54.42&#39;, &#39;42.50&#39;, &#39;22.08&#39;, &#39;29.92&#39;, &#39;38.25&#39;, &#39;48.08&#39;,
+       &#39;45.83&#39;, &#39;36.67&#39;, &#39;28.25&#39;, &#39;23.25&#39;, &#39;21.83&#39;, &#39;19.17&#39;, &#39;25.00&#39;,
+       &#39;47.75&#39;, &#39;27.42&#39;, &#39;41.17&#39;, &#39;15.83&#39;, &#39;47.00&#39;, &#39;56.58&#39;, &#39;57.42&#39;,
+       &#39;42.08&#39;, &#39;29.25&#39;, &#39;42.00&#39;, &#39;49.50&#39;, &#39;36.75&#39;, &#39;22.58&#39;, &#39;27.25&#39;,
+       &#39;23.00&#39;, &#39;27.75&#39;, &#39;54.58&#39;, &#39;34.17&#39;, &#39;28.92&#39;, &#39;29.67&#39;, &#39;39.58&#39;,
+       &#39;56.42&#39;, &#39;54.33&#39;, &#39;41.00&#39;, &#39;31.92&#39;, &#39;41.50&#39;, &#39;23.92&#39;, &#39;25.75&#39;,
+       &#39;26.00&#39;, &#39;37.42&#39;, &#39;34.92&#39;, &#39;34.25&#39;, &#39;23.33&#39;, &#39;23.17&#39;, &#39;44.33&#39;,
+       &#39;35.17&#39;, &#39;43.25&#39;, &#39;56.75&#39;, &#39;31.67&#39;, &#39;23.42&#39;, &#39;20.42&#39;, &#39;26.67&#39;,
+       &#39;36.00&#39;, &#39;25.50&#39;, &#39;19.42&#39;, &#39;32.33&#39;, &#39;34.83&#39;, &#39;38.58&#39;, &#39;44.25&#39;,
+       &#39;44.83&#39;, &#39;20.67&#39;, &#39;34.08&#39;, &#39;21.67&#39;, &#39;21.50&#39;, &#39;49.58&#39;, &#39;27.67&#39;,
+       &#39;39.83&#39;, &#39;?&#39;, &#39;37.17&#39;, &#39;25.67&#39;, &#39;34.00&#39;, &#39;49.00&#39;, &#39;62.50&#39;, &#39;31.42&#39;,
+       &#39;52.33&#39;, &#39;28.75&#39;, &#39;28.58&#39;, &#39;22.50&#39;, &#39;28.50&#39;, &#39;37.50&#39;, &#39;35.25&#39;,
+       &#39;18.67&#39;, &#39;54.83&#39;, &#39;40.92&#39;, &#39;19.75&#39;, &#39;29.17&#39;, &#39;24.58&#39;, &#39;33.75&#39;,
+       &#39;25.42&#39;, &#39;37.75&#39;, &#39;52.50&#39;, &#39;57.83&#39;, &#39;20.75&#39;, &#39;39.92&#39;, &#39;24.75&#39;,
+       &#39;44.17&#39;, &#39;23.50&#39;, &#39;47.67&#39;, &#39;22.75&#39;, &#39;34.42&#39;, &#39;28.42&#39;, &#39;67.75&#39;,
+       &#39;47.42&#39;, &#39;36.25&#39;, &#39;32.67&#39;, &#39;48.58&#39;, &#39;33.58&#39;, &#39;18.83&#39;, &#39;26.92&#39;,
+       &#39;31.25&#39;, &#39;56.50&#39;, &#39;43.00&#39;, &#39;22.33&#39;, &#39;32.83&#39;, &#39;40.33&#39;, &#39;30.50&#39;,
+       &#39;52.83&#39;, &#39;46.67&#39;, &#39;58.33&#39;, &#39;37.33&#39;, &#39;23.08&#39;, &#39;32.75&#39;, &#39;68.67&#39;,
+       &#39;28.00&#39;, &#39;44.00&#39;, &#39;25.08&#39;, &#39;32.00&#39;, &#39;60.58&#39;, &#39;40.83&#39;, &#39;19.33&#39;,
+       &#39;41.33&#39;, &#39;56.00&#39;, &#39;49.83&#39;, &#39;22.67&#39;, &#39;27.00&#39;, &#39;26.08&#39;, &#39;18.42&#39;,
+       &#39;21.25&#39;, &#39;57.08&#39;, &#39;22.42&#39;, &#39;48.75&#39;, &#39;40.00&#39;, &#39;40.58&#39;, &#39;28.67&#39;,
+       &#39;33.08&#39;, &#39;21.33&#39;, &#39;41.75&#39;, &#39;34.50&#39;, &#39;48.17&#39;, &#39;27.58&#39;, &#39;24.08&#39;,
+       &#39;24.83&#39;, &#39;36.33&#39;, &#39;35.42&#39;, &#39;71.58&#39;, &#39;39.50&#39;, &#39;39.33&#39;, &#39;24.33&#39;,
+       &#39;60.08&#39;, &#39;55.92&#39;, &#39;53.92&#39;, &#39;18.92&#39;, &#39;50.08&#39;, &#39;65.42&#39;, &#39;17.58&#39;,
+       &#39;18.08&#39;, &#39;19.67&#39;, &#39;25.17&#39;, &#39;33.50&#39;, &#39;58.42&#39;, &#39;26.17&#39;, &#39;42.83&#39;,
+       &#39;38.17&#39;, &#39;20.50&#39;, &#39;48.25&#39;, &#39;28.33&#39;, &#39;18.75&#39;, &#39;18.50&#39;, &#39;45.00&#39;,
+       &#39;40.25&#39;, &#39;41.42&#39;, &#39;17.83&#39;, &#39;18.17&#39;, &#39;20.00&#39;, &#39;52.17&#39;, &#39;50.75&#39;,
+       &#39;17.08&#39;, &#39;18.33&#39;, &#39;59.67&#39;, &#39;18.00&#39;, &#39;37.58&#39;, &#39;30.67&#39;, &#39;18.58&#39;,
+       &#39;16.25&#39;, &#39;21.17&#39;, &#39;17.67&#39;, &#39;16.50&#39;, &#39;29.50&#39;, &#39;21.75&#39;, &#39;18.25&#39;,
+       &#39;35.75&#39;, &#39;16.08&#39;, &#39;69.17&#39;, &#39;32.92&#39;, &#39;16.33&#39;, &#39;22.17&#39;, &#39;57.58&#39;,
+       &#39;15.92&#39;, &#39;31.75&#39;, &#39;19.00&#39;, &#39;17.50&#39;, &#39;33.67&#39;, &#39;30.17&#39;, &#39;33.25&#39;,
+       &#39;25.25&#39;, &#39;34.75&#39;, &#39;47.33&#39;, &#39;39.08&#39;, &#39;42.75&#39;, &#39;38.92&#39;, &#39;62.75&#39;,
+       &#39;32.25&#39;, &#39;26.75&#39;, &#39;63.33&#39;, &#39;30.75&#39;, &#39;16.00&#39;, &#39;19.50&#39;, &#39;32.42&#39;,
+       &#39;30.25&#39;, &#39;26.83&#39;, &#39;16.92&#39;, &#39;24.42&#39;, &#39;39.42&#39;, &#39;23.58&#39;, &#39;21.42&#39;,
+       &#39;33.00&#39;, &#39;26.33&#39;, &#39;26.25&#39;, &#39;28.17&#39;, &#39;20.83&#39;, &#39;43.17&#39;, &#39;56.83&#39;,
+       &#39;15.17&#39;, &#39;29.83&#39;, &#39;31.00&#39;, &#39;51.92&#39;, &#39;69.50&#39;, &#39;19.58&#39;, &#39;22.25&#39;,
+       &#39;38.42&#39;, &#39;26.58&#39;, &#39;35.00&#39;, &#39;29.42&#39;, &#39;49.17&#39;, &#39;51.83&#39;, &#39;58.58&#39;,
+       &#39;53.33&#39;, &#39;27.17&#39;, &#39;25.92&#39;, &#39;30.58&#39;, &#39;17.25&#39;, &#39;27.33&#39;, &#39;36.50&#39;,
+       &#39;29.75&#39;, &#39;52.42&#39;, &#39;36.17&#39;, &#39;34.58&#39;, &#39;21.92&#39;, &#39;36.58&#39;, &#39;31.08&#39;,
+       &#39;30.42&#39;, &#39;21.08&#39;, &#39;17.42&#39;, &#39;39.17&#39;, &#39;26.50&#39;, &#39;17.33&#39;, &#39;23.75&#39;,
+       &#39;34.67&#39;, &#39;74.83&#39;, &#39;45.33&#39;, &#39;47.25&#39;, &#39;24.17&#39;, &#39;39.25&#39;, &#39;39.00&#39;,
+       &#39;64.08&#39;, &#39;31.33&#39;, &#39;21.00&#39;, &#39;13.75&#39;, &#39;46.00&#39;, &#39;20.25&#39;, &#39;60.92&#39;,
+       &#39;30.00&#39;, &#39;22.83&#39;, &#39;45.17&#39;, &#39;41.58&#39;, &#39;55.75&#39;, &#39;25.33&#39;, &#39;31.83&#39;,
+       &#39;33.92&#39;, &#39;24.92&#39;, &#39;80.25&#39;, &#39;30.08&#39;, &#39;48.33&#39;, &#39;76.75&#39;, &#39;51.33&#39;,
+       &#39;41.92&#39;, &#39;29.58&#39;, &#39;32.17&#39;, &#39;51.42&#39;, &#39;42.17&#39;, &#39;43.08&#39;, &#39;59.50&#39;,
+       &#39;65.17&#39;, &#39;20.33&#39;, &#39;48.50&#39;, &#39;28.08&#39;, &#39;73.42&#39;, &#39;51.58&#39;, &#39;38.67&#39;,
+       &#39;46.08&#39;, &#39;20.08&#39;, &#39;42.25&#39;, &#39;16.17&#39;, &#39;47.83&#39;, &#39;22.00&#39;, &#39;38.33&#39;,
+       &#39;25.58&#39;, &#39;21.58&#39;, &#39;36.08&#39;, &#39;38.75&#39;, &#39;35.58&#39;, &#39;31.58&#39;, &#39;15.75&#39;,
+       &#39;17.92&#39;, &#39;30.33&#39;, &#39;47.17&#39;, &#39;25.83&#39;, &#39;50.25&#39;, &#39;36.42&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cc_apps_2</span> <span class="o">=</span> <span class="n">cc_apps</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cc_apps_2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">cc_apps_2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cc_apps_2</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cambiar la variable Age que esta en objeto por float</span>
+<span class="n">cc_apps_2</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cc_apps_2</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># Eliminar las variables 11 y 13</span>
+<span class="n">cc_apps_3</span> <span class="o">=</span> <span class="n">cc_apps_2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;DriversLicense&#39;</span><span class="p">,</span> <span class="s1">&#39;ZipCode&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cc_apps_3</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">cc_apps_3</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cc_apps_3</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sex               12
+Age                0
+Debt               0
+Married            6
+BankCustomer       6
+EducationLevel     9
+Ethnicity          9
+YearsEmployed      0
+PriorDefault       0
+Employed           0
+CreditScore        0
+Citizen            0
+Income             0
+Approved           0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imputación de datos para variables categóricas</span>
+
+<span class="c1"># Iterar sobre cada columna de cc_apps_3</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cc_apps_3</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="c1"># Comprobar si la columna es de tipo objeto</span>
+    <span class="k">if</span> <span class="n">cc_apps_3</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
+        <span class="n">cc_apps_3</span> <span class="o">=</span> <span class="n">cc_apps_3</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">cc_apps_3</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Contar el número de NaNs en el conjunto de datos e imprimir los recuentos para verificar</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cc_apps_3</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sex               0
+Age               0
+Debt              0
+Married           0
+BankCustomer      0
+EducationLevel    0
+Ethnicity         0
+YearsEmployed     0
+PriorDefault      0
+Employed          0
+CreditScore       0
+Citizen           0
+Income            0
+Approved          0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cc_apps_3</span><span class="p">[</span><span class="s1">&#39;Approved&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cc_apps_3</span><span class="p">[</span><span class="s1">&#39;Approved&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;+&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convertir las variables categóricas en variables dummy</span>
+<span class="n">df_dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">cc_apps_3</span><span class="p">,</span>
+               <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span><span class="s1">&#39;Married&#39;</span><span class="p">,</span><span class="s1">&#39;BankCustomer&#39;</span><span class="p">,</span><span class="s1">&#39;EducationLevel&#39;</span><span class="p">,</span><span class="s1">&#39;Ethnicity&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;PriorDefault&#39;</span><span class="p">,</span><span class="s1">&#39;Employed&#39;</span><span class="p">,</span><span class="s1">&#39;Citizen&#39;</span><span class="p">],</span>
+               <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Separar características y objetivo</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_dummies</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Approved&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_dummies</span><span class="p">[</span><span class="s1">&#39;Approved&#39;</span><span class="p">]</span>
+
+<span class="c1"># Dividir en conjuntos de entrenamiento (80%) y prueba (20%)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span><span class="n">shuffle</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span>  <span class="kn">import</span> <span class="n">make_pipeline</span>
+
+<span class="c1"># Crear y entrenar el modelo de regresión logística</span>
+<span class="n">pipeline_logreg</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span><span class="n">LogisticRegression</span><span class="p">())</span>
+
+<span class="c1"># Ajusta logreg al conjunto de entrenamiento</span>
+<span class="n">pipeline_logreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-6 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-6 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-6 pre {
+  padding: 0;
+}
+
+#sk-container-id-6 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-6 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-6 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-6 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-6 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-6 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-6 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-6 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-6 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-6 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-6 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-6 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-6 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-6 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-6 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-6 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-6 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-6 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-6 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-6 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-6 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-6 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-6 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-6 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-6 div.sk-label label.sk-toggleable__label,
+#sk-container-id-6 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-6 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-6 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-6 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-6 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-6 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-6 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-6 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-6 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-6 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-6 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-6 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-6 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;minmaxscaler&#x27;, MinMaxScaler()),
+                (&#x27;logisticregression&#x27;, LogisticRegression())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-16" type="checkbox" ><label for="sk-estimator-id-16" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;Pipeline<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>Pipeline(steps=[(&#x27;minmaxscaler&#x27;, MinMaxScaler()),
+                (&#x27;logisticregression&#x27;, LogisticRegression())])</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-17" type="checkbox" ><label for="sk-estimator-id-17" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;MinMaxScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.MinMaxScaler.html">?<span>Documentation for MinMaxScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>MinMaxScaler()</pre></div> </div></div><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-18" type="checkbox" ><label for="sk-estimator-id-18" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;LogisticRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression()</pre></div> </div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline_logreg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8260869565217391
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicciones del modelo con el conjunto train</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">pipeline_logreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_prob_train</span> <span class="o">=</span> <span class="n">pipeline_logreg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Probabilidad de la clase positiva</span>
+
+<span class="c1"># Predicciones del modelo con el conjunto test</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">pipeline_logreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_prob_test</span> <span class="o">=</span> <span class="n">pipeline_logreg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Probabilidad de la clase positiva</span>
+
+<span class="c1"># Calcular la precisión del train (accuracy)</span>
+<span class="n">accuracy_train</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión train (Accuracy): </span><span class="si">{</span><span class="n">accuracy_train</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">32</span><span class="p">)</span>
+
+<span class="c1"># Calcular la precisión del test (accuracy)</span>
+<span class="n">accuracy_test</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precisión test (Accuracy): </span><span class="si">{</span><span class="n">accuracy_test</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión train (Accuracy): 0.89
+--------------------------------
+Precisión test (Accuracy): 0.82
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Predicción de entrega o no de tarjeta de credito</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-las-librerias">Importar las librerias</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Centro de Estudios e Investigación en Análisis y Ciencia de datos - Data Invest -
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
